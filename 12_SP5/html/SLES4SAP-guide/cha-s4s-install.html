@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Installing the Operating System | Guide | SUSE Linux Enterprise Server for SAP Applications 12 SP5</title><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /><link rel="stylesheet" type="text/css" href="static/css/style.css" /><link rel="stylesheet" type="text/css" href="static/css/highlight.css" /><meta name="generator" content="DAPS 3.0.0 (https://opensuse.github.io/daps) using SUSE XSL Stylesheets 2.0.17 (based on DocBook XSL Stylesheets 1.79.2) - chunked" /><meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications" /><meta name="product-number" content="12 SP5" /><meta name="book-title" content="Guide" /><meta name="chapter-title" content="Chapter 3. Installing the Operating System" /><meta name="description" content="The following section provides instructions for installing the base operating system. Using the installation workflow, you can install either using a local installation medium or over the network. Alternatively, you can install using AutoYaST." /><meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi" /><meta name="tracker-type" content="bsc" /><meta name="tracker-bsc-assignee" content="thomas.schraitle@suse.com" /><meta name="tracker-bsc-component" content="Documentation" /><meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP5" /><link rel="home" href="index.html" title="Guide" /><link rel="up" href="index.html" title="Guide" /><link rel="prev" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation" /><link rel="next" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications" />
+<script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css"></link>');
+}
+else {
+  document.write('<link rel="stylesheet" type="text/css" href="static/css/fonts-onlylocal.css"></link>');
+}
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css" /></noscript><script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="static/js/script.js" type="text/javascript"></script><script src="static/js/highlight.min.js" type="text/javascript"></script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script></head><body class="draft offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-navigation">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><div id="_outer-wrap"><div id="_white-bg" style="background-color: #FABEBE;"><div id="_header"><div id="_logo"><img src="static/images/logo.png" alt="Logo" /></div><div class="crumbs"><a class="book-link" href="index.html" title="Guide"><span class="book-icon">Guide</span></a><span> › </span><a class="crumb" href="cha-s4s-install.html">Installing the Operating System</a></div><div class="clearme"></div></div></div><div id="_toolbar-wrap"><div id="_toolbar"><div id="_toc-area" class="inactive"><a id="_toc-area-button" class="tool" title="Contents" accesskey="c" href="index.html"><span class="tool-spacer"><span class="toc-icon">Contents</span><span class="clearme"></span></span><span class="tool-label">Contents</span></a><div class="active-contents bubble-corner"></div><div class="active-contents bubble"><div class="bubble-container"><h6>Guide</h6><div id="_bubble-toc"><ol><li class="inactive"><a href="pre-s4s.html"><span class="number"> </span><span class="name">About This Guide</span></a></li><li class="inactive"><a href="cha-s4s-about.html"><span class="number">1 </span><span class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li class="inactive"><a href="cha-s4s-plan.html"><span class="number">2 </span><span class="name">Planning the Installation</span></a></li><li class="inactive"><a href="cha-s4s-install.html"><span class="number">3 </span><span class="name">Installing the Operating System</span></a></li><li class="inactive"><a href="cha-s4s-install-sap.html"><span class="number">4 </span><span class="name">Installing SAP Applications</span></a></li><li class="inactive"><a href="cha-s4s-serve-mediaset.html"><span class="number">5 </span><span class="name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li class="inactive"><a href="cha-s4s-cluster.html"><span class="number">6 </span><span class="name">Setting Up an SAP HANA Cluster</span></a></li><li class="inactive"><a href="cha-s4s-tune.html"><span class="number">7 </span><span class="name">Tuning</span></a></li><li class="inactive"><a href="cha-s4s-access.html"><span class="number">8 </span><span class="name">Firewalling</span></a></li><li class="inactive"><a href="cha-s4s-configure-cryptctl.html"><span class="number">9 </span><span class="name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li class="inactive"><a href="cha-clamsap.html"><span class="number">10 </span><span class="name">Protecting Against Malware With ClamSAP</span></a></li><li class="inactive"><a href="cha-s4s-configure-rdp.html"><span class="number">11 </span><span class="name">Connecting via RDP</span></a></li><li class="inactive"><a href="cha-s4s-image.html"><span class="number">12 </span><span class="name">Creating Operating System Images</span></a></li><li class="inactive"><a href="cha-s4s-trouble.html"><span class="number">13 </span><span class="name">Important Log Files</span></a></li><li class="inactive"><a href="app-s4s-additional-software.html"><span class="number">A </span><span class="name">Additional Software for SLES-SAP</span></a></li><li class="inactive"><a href="app-s4s-autoyast-partition.html"><span class="number">B </span><span class="name">Partitioning for the SAP System Using AutoYaST</span></a></li><li class="inactive"><a href="app-s4s-component-supplement.html"><span class="number">C </span><span class="name">Supplementary Media</span></a></li></ol></div><div class="clearme"></div></div></div></div><div id="_nav-area" class="inactive"><div class="tool"><span class="nav-inner"><span class="tool-label">Navigation</span><a accesskey="p" class="tool-spacer" title="Chapter 2. Planning the Installation" href="cha-s4s-plan.html"><span class="prev-icon">←</span></a><a accesskey="n" class="tool-spacer" title="Chapter 4. Installing SAP Applications" href="cha-s4s-install-sap.html"><span class="next-icon">→</span></a></span></div></div></div></div><div id="_fixed-header-wrap" style="background-color: #FABEBE;" class="inactive"><div id="_fixed-header"><div class="crumbs"><a class="book-link" href="index.html" title="Guide"><span class="book-icon">Guide</span></a><span> › </span><a class="crumb" href="cha-s4s-install.html">Installing the Operating System</a></div><div class="buttons"><a class="top-button button" href="#">Top</a><div class="button"><a accesskey="p" class="tool-spacer" title="Chapter 2. Planning the Installation" href="cha-s4s-plan.html"><span class="prev-icon">←</span></a><a accesskey="n" class="tool-spacer" title="Chapter 4. Installing SAP Applications" href="cha-s4s-install-sap.html"><span class="next-icon">→</span></a></div><div class="clearme"></div></div><div class="clearme"></div></div></div><div id="_content" class="draft "><div class="documentation"><div class="chapter " id="cha-s4s-install"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname ">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber ">12 SP5</span></div><div><h1 class="title"><span class="number">3 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Installing the Operating System</span> <a title="Permalink" class="permalink" href="cha-s4s-install.html#">#</a></h1><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation.xml</li><li><span class="ds-label">ID: </span>cha-s4s-install</li></ul></div></div></div></div><div class="line"><div class="toc"><dl><dt><span class="sect1"><a href="cha-s4s-install.html#sec-s4s-install-workflow"><span class="number">3.1 </span><span class="name">Using the Installation Workflow</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install.html#sec-s4s-install-network"><span class="number">3.2 </span><span class="name">Using SLES-SAP Media from the Network</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install.html#sec-s4s-autoyast"><span class="number">3.3 </span><span class="name">Using an External AutoYaST Profile</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install.html#sec-s4s-convert-sles"><span class="number">3.4 </span><span class="name">Converting a SLES Installation to a SLES-SAP Installation</span></a></span></dt></dl></div></div><p>
+  The following section provides instructions for installing the base operating
+  system. Using the installation workflow, you can install either using a local
+  installation medium or over the network. Alternatively, you can install using
+  AutoYaST.
+ </p><div class="sect1 " id="sec-s4s-install-workflow"><div class="titlepage"><div><div><h2 class="title"><span class="number">3.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Using the Installation Workflow</span> <a title="Permalink" class="permalink" href="cha-s4s-install.html#sec-s4s-install-workflow">#</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-workflow</li></ul></div></div></div></div><p>
+   The installation workflow is a guided installation of the operating system
+   with optimized
+   settings for SAP applications. During the installation workflow, you can
+   choose whether you want to install an SAP application. If so, you will be
+   asked to provide SAP installation media when the SUSE Linux Enterprise Server installation is
+   finished. You can also choose whether to install third-party extensions.
+  </p><p>
+   This section assumes that you are starting the installation from a local
+   medium. To learn how to start the installation from a remote medium, see
+   <a class="xref" href="cha-s4s-install.html#sec-s4s-install-network" title="3.2. Using SLES-SAP Media from the Network">Section 3.2, “Using SLES-SAP Media from the Network”</a>.
+  </p><p>
+   For more information, see <a class="xref" href="cha-s4s-plan.html#sec-s4s-workflow-overview" title="2.5. Overview of the Installation Workflow">Section 2.5, “Overview of the Installation Workflow”</a>.
+  </p><p>
+   This section guides you through the installation of the SUSE Linux Enterprise Server for SAP Applications
+   operating system.
+  </p><div class="procedure " id="pro-s4s-workflow-start"><div class="procedure-title-wrap"><h6 class="procedure-title"><span class="number">Procedure 3.1: </span><span class="name">Starting the OS Installation </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#pro-s4s-workflow-start">#</a></h6></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       On Intel 64/AMD64, boot from the DVD.
+       From the DVD boot menu, select <span class="guimenu ">Installation</span>.
+       
+       
+      </p></li><li class="listitem "><p>
+       On POWER, follow the instructions in the SUSE Linux Enterprise Server documentation, see
+       <em class="citetitle "><em class="citetitle ">Deployment Guide</em>,
+       Part <span class="quote">“<span class="quote ">Installation Preparation</span>”</span>,
+       Chapter <span class="quote">“<span class="quote ">Installation on IBM POWER</span>”</span></em>
+       (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+      </p></li></ul></div><div class="figure" id="fig-s4s-dvd-bootmenu"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-dvd-boot-menu.png" target="_blank"><img src="images/s4s-dvd-boot-menu.png" width="" alt="DVD Boot Menu" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.1: </span><span class="name">DVD Boot Menu </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-dvd-bootmenu">#</a></h6></div></div><p>
+     While the initial operating system is starting, you can view boot messages
+     by pressing <span class="keycap">Esc</span>.
+     When this process has completed, the graphical installation workflow
+     will start.
+    </p></li><li class="step "><p>
+     Select the default system language under <span class="guimenu ">Language</span>.
+    </p><div class="figure" id="fig-s4s-install-license"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-install-license.png" target="_blank"><img src="images/s4s-install-license.png" width="" alt="Language, Keyboard and License Agreement" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.2: </span><span class="name">Language, Keyboard and License Agreement </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-install-license">#</a></h6></div></div></li><li class="step "><p>
+     Select the appropriate keyboard layout under
+     <span class="guimenu ">Keyboard Layout</span>.
+     To test whether the selected layout matches your physical keyboard,
+     use the text box <span class="guimenu ">Keyboard Test</span>.
+    </p></li><li class="step "><p>
+     Read the license agreement. If you agree, select
+     <span class="guimenu ">I Agree to the License Terms</span>.
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><p>
+     Otherwise, cancel the installation with
+     <span class="guimenu ">Abort</span> › <span class="guimenu ">Abort Installation</span>.
+    </p></li><li class="step "><p><span class="step-optional">(Optional)</span> 
+     If automatic network configuration via DHCP fails, the screen
+     <span class="guimenu ">Network Settings</span> will open.
+    </p><p>
+     If instead the screen <span class="guimenu ">Registration</span> appears,
+     your network connection works. To change network settings anyway, click
+     <span class="guimenu ">Network Configuration</span>.
+    </p><p>
+     When you are finished configuring networking, proceed with
+     <span class="guimenu ">Next</span>.
+    </p><div id="id-1.6.3.6.6.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
+      Make sure to configure the network connection as recommended in the
+      documentation provided to you by SAP.
+     </p></div><p>
+     For information about configuring networking, see
+     <em class="citetitle ">
+      <em class="citetitle ">Administration Guide</em>, Chapter <span class="quote">“<span class="quote ">Basic Networking</span>”</span>,
+      Section <span class="quote">“<span class="quote ">Configuring a Network Connection with YaST</span>”</span>
+     </em> (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+    </p></li><li class="step "><p>
+     On the screen <span class="guimenu ">Registration</span>, enter your
+     <span class="guimenu ">E-mail Address</span> and <span class="guimenu ">Registration Code</span>.
+     Successful registration is a prerequisite for receiving product updates and
+     the entitlement to technical support.
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><div id="id-1.6.3.6.7.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Register at This Step</h6><p>
+      Make sure to register your system at this step in the installation.
+      Otherwise, you will not receive package updates immediately.
+     </p></div><div class="figure" id="fig-s4s-install-reg-dialog"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-install-registration.png" target="_blank"><img src="images/s4s-install-registration.png" width="" alt="Registration" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.3: </span><span class="name">Registration </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-install-reg-dialog">#</a></h6></div></div></li><li class="step "><p>
+     When asked whether to enable update repositories, choose
+     <span class="guimenu ">Yes</span>.
+    </p></li><li class="step "><p>
+     
+     After the system is successfully registered, YaST lists additional
+     software that is available for your product from the SUSE Customer Center. The list
+     contains modules, which are free, and extensions, which require a
+     registration key that is liable for costs. To enable a module or an
+     extension, activate its entry.
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li><li class="step "><p>
+     The following screen allows you to choose the
+     <span class="guimenu ">Product Installation Mode</span>.
+     You can now choose between:
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p><span class="formalpara-title">A SUSE Linux Enterprise Server Installation. </span>
+        To install a SLES system without SAP-specific customization,
+        choose <span class="guimenu ">Proceed with standard SLES installation</span>.
+        For details, see
+        <em class="citetitle ">
+         <em class="citetitle ">Installation Quick Start</em>, Section <span class="quote">“<span class="quote ">Installing SUSE Linux Enterprise Server</span>”</span>
+        </em> (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+       </p><div id="id-1.6.3.6.10.2.1.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Installing Oracle Databases</h6><p>
+        To be able to install an Oracle database later, choose
+        <span class="guimenu ">Proceed with standard SLES installation</span> and later
+        convert your installation to SLES-SAP.
+       </p><p>
+        This is necessary because the
+        installer for Oracle databases queries for the existence of certain
+        files, not all of which are included in a SLES-SAP installation.
+       </p><p>
+        For more information about converting, see
+        <a class="xref" href="cha-s4s-install.html#sec-s4s-convert-sles" title="3.4. Converting a SLES Installation to a SLES-SAP Installation">Section 3.4, “Converting a SLES Installation to a SLES-SAP Installation”</a>.
+       </p></div></li><li class="listitem "><p><span class="formalpara-title">A SUSE Linux Enterprise Server for SAP Applications Installation. </span>
+        To install a SLES system with SAP-specific customization,
+        choose
+        <span class="guimenu ">Proceed with standard SLES for SAP Applications
+        installation</span>.
+       </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+         To install an SAP Application together with the system,
+         activate <span class="guimenu ">Launch the SAP Installation Wizard right after the
+         operating system is installed</span>.
+        </p></li><li class="listitem "><p>
+         To enable RDP access (Remote Desktop Protocol) to this machine,
+         activate <span class="guimenu ">Enable RDP service and open port in
+         firewall</span>.
+        </p><p>
+         For more information about connecting via RDP, see
+         <a class="xref" href="cha-s4s-configure-rdp.html" title="Chapter 11. Connecting via RDP">Chapter 11, <em>Connecting via RDP</em></a>.
+        </p></li></ul></div><p>
+       Proceed with <span class="guimenu ">Next</span>.
+      </p></li></ul></div><div class="figure" id="fig-s4s-install-type"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-install-installationtype.png" target="_blank"><img src="images/s4s-install-installationtype.png" width="" alt="Installation Type" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.4: </span><span class="name">Installation Type </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-install-type">#</a></h6></div></div></li></ol></div></div><div class="procedure " id="pro-s4s-workflow-finish"><div class="procedure-title-wrap"><h6 class="procedure-title"><span class="number">Procedure 3.2: </span><span class="name">Finishing the OS Installation </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#pro-s4s-workflow-finish">#</a></h6></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>
+     You can now choose whether to install an <span class="guimenu ">Add On Product</span>.
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li><li class="step "><p>
+     Review the proposed partition setup for the volumes
+     <code class="literal">/dev/system/root</code> and <code class="literal">/dev/system/swap</code>.
+     The volume <code class="literal">/dev/system/data</code> will be created later,
+     as described in <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
+    </p><p>
+     Suitable values are preselected. However, if necessary, change the
+     partition layout.
+     You have the following options:
+    </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.6.3.7.3.3.1"><span class="term "><span class="guimenu ">Edit Proposal Settings</span></span></dt><dd><p>
+        Allows you to change the options for the proposed settings, but not the
+        suggested partition layout itself.
+       </p></dd><dt id="id-1.6.3.7.3.3.2"><span class="term "><span class="guimenu ">Create Partition Setup</span></span></dt><dd><p>
+        Select a disk to which to apply the proposal.
+       </p></dd><dt id="id-1.6.3.7.3.3.3"><span class="term "><span class="guimenu ">Expert Partitioner</span></span></dt><dd><p>
+        Open the <span class="guimenu ">Expert Partitioner</span> described in
+        <em class="citetitle ">Deployment Guide,
+         Chapter <span class="quote">“<span class="quote ">Advanced Disk Setup</span>”</span>,
+         Section <span class="quote">“<span class="quote ">Using the YaST Partitioner</span>”</span></em>
+         (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+       </p><p>
+        For partitioning advice specific to SUSE Linux Enterprise Server for SAP Applications, see
+        <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
+       </p></dd></dl></div><p>
+     To accept the proposed setup without changes, proceed with
+     <span class="guimenu ">Next</span>.
+    </p><div class="figure" id="fig-s4s-install-partition"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-install-partitioning.png" target="_blank"><img src="images/s4s-install-partitioning.png" width="" alt="Suggested Partitioning" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.5: </span><span class="name">Suggested Partitioning </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-install-partition">#</a></h6></div></div><div id="id-1.6.3.7.3.7" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Release Notes</h6><p>
+      From this point on, the Release Notes can be viewed from any screen during
+      the installation process by selecting <span class="guimenu ">Release Notes</span>.
+     </p></div></li><li class="step "><p>
+     Select the clock and time zone to use on your system. To manually adjust
+     the time or to configure an NTP server for time synchronization, choose
+     <span class="guimenu ">Other Settings</span>.
+     For detailed information, see
+     <em class="citetitle "><em class="citetitle ">Deployment Guide</em>,
+     Chapter <span class="quote">“<span class="quote ">Installation with YaST</span>”</span>,
+     Section <span class="quote">“<span class="quote ">Clock and Time Zone</span>”</span></em> (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li><li class="step "><p>
+     Type a password for the system administrator account (called
+     <code class="systemitem">root</code>) and repeat the password under
+     <span class="guimenu ">Confirm Password</span>.
+     You can use the text box <span class="guimenu ">Test Keyboard Layout</span> to
+     make sure that all special characters appear correctly.
+    </p><p>
+     For more information, see
+     <em class="citetitle "><em class="citetitle ">Deployment Guide</em>,
+     Chapter <span class="quote">“<span class="quote ">Installation with YaST</span>”</span>,
+     Section <span class="quote">“<span class="quote ">Password for the System Administrator
+     root</span>”</span></em>
+     (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><div id="id-1.6.3.7.5.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Do Not Forget the <code class="systemitem">root</code> Password</h6><p>
+      The user <code class="systemitem">root</code> has the
+      permission to carry out all administrative tasks. Without this password,
+      you cannot log in to the system as
+      <code class="systemitem">root</code>.
+      The password entered here cannot be retrieved later.
+     </p></div></li><li class="step "><p>
+     On the screen <span class="guimenu ">Installation Settings</span>, you can review
+     and, if necessary, change several proposed installation settings.
+     Each setting is shown alongside its current configuration.
+     To change parts of the configuration, click the appropriate headline or
+     other underlined items.
+    </p><div id="id-1.6.3.7.6.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Firewall Configuration</h6><p>
+      The software firewall of SLES-SAP is enabled by default.
+      However, often, the ports your SAP product requires to be open
+      are not opened automatically.
+      This means that there may be network issues until you open the required
+      ports manually.
+     </p><p>
+      For details, see <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-firewall" title="8.1. Configuring SuSEfirewall2">Section 8.1, “Configuring SuSEfirewall2”</a>.
+     </p></div><div class="figure" id="fig-s4s-install-overview"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s-install-overview.png" target="_blank"><img src="images/s4s-install-overview.png" width="" alt="Installation Settings" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 3.6: </span><span class="name">Installation Settings </span><a title="Permalink" class="permalink" href="cha-s4s-install.html#fig-s4s-install-overview">#</a></h6></div></div></li><li class="step "><p>
+     When you are satisfied with the system configuration, click
+     <span class="guimenu ">Install</span>.
+    </p><p>
+     Depending on your software selection, you may need to agree to further
+     license agreements before you are asked to confirm that you want to start
+     the installation process.
+    </p><div id="id-1.6.3.7.7.3" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: Deletion of Data</h6><p>
+      The installation process fully or partially overwrites existing
+      data on the disk.
+     </p></div><p>
+     In the installation confirmation box, click <span class="guimenu ">Install</span>.
+    </p><p>
+     When the installation of the operating system is finished, the system
+     will reboot automatically:
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       If you chose to only prepare the system for installation, the system will
+       boot to a desktop login screen.
+      </p></li><li class="listitem "><p>
+       If you chose to install an SAP application immediately after the
+       operating system, the installation will continue after the reboot.
+      </p><p>
+       In this case, continue with <a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>.
+      </p></li></ul></div></li></ol></div></div></div><div class="sect1 " id="sec-s4s-install-network"><div class="titlepage"><div><div><h2 class="title"><span class="number">3.2 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Using SLES-SAP Media from the Network</span> <a title="Permalink" class="permalink" href="cha-s4s-install.html#sec-s4s-install-network">#</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-network</li></ul></div></div></div></div><p>
+   This section provides a short description of how to install from an
+   installation medium served over the network. This allows, for example,
+   using a regular SLES medium to install SLES-SAP.
+  </p><div class="procedure "><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>
+     Copy the content of the SUSE Linux Enterprise Server for SAP Applications DVD to a Web server (for example,
+     <code class="literal">example.com</code>), to the directory
+     <code class="filename">/srv/www/htdocs/sap_repo</code>.
+    </p></li><li class="step "><p>
+     Boot from a SUSE DVD.
+    </p></li><li class="step "><p>
+     Select one of the boot menu options using the keys
+     <span class="keycap">↓</span>/<span class="keycap">↑</span>.
+     Then add to the command line. To do so, specify the parameters listed
+     below:
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       To allow network usage, add <code class="literal">ifcfg=*=dhcp</code> (though this
+       should be the default).
+      </p></li><li class="listitem "><p>
+       Add the parameter
+       <code class="literal">install=<em class="replaceable ">SERVER</em>/<em class="replaceable ">DIRECTORY</em></code>.
+      </p></li></ul></div></li><li class="step "><p>
+     Follow the instructions in <a class="xref" href="cha-s4s-install.html#sec-s4s-install-workflow" title="3.1. Using the Installation Workflow">Section 3.1, “Using the Installation Workflow”</a>.
+    </p></li></ol></div></div><p>
+   For more information, see
+   <em class="citetitle "><em class="citetitle ">Deployment Guide</em>, Chapter <span class="quote">“<span class="quote ">Remote Installation</span>”</span></em>
+   (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+  </p><p>
+   To avoid having to use a DVD to initialize the system, you can boot over
+   the network via PXE.
+   For details, see <em class="citetitle ">AutoYaST Guide,
+   Chapter <span class="quote">“<span class="quote ">Booting via PXE over the Network</span>”</span></em>
+   (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+  </p></div><div class="sect1 " id="sec-s4s-autoyast"><div class="titlepage"><div><div><h2 class="title"><span class="number">3.3 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Using an External AutoYaST Profile</span> <a title="Permalink" class="permalink" href="cha-s4s-install.html#sec-s4s-autoyast">#</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_autoyast.xml</li><li><span class="ds-label">ID: </span>sec-s4s-autoyast</li></ul></div></div></div></div><p>
+  For more information about installing with AutoYaST, see:
+ </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+    <em class="citetitle "><em class="citetitle ">Deployment Guide</em>, Part <span class="quote">“<span class="quote ">Automated Installations</span>”</span>,
+     Chapter <span class="quote">“<span class="quote ">Automated Installation</span>”</span>
+    </em> (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+   </p></li><li class="listitem "><p>
+    <em class="citetitle ">AutoYaST Guide</em> (<a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>).
+   </p></li></ul></div><p>
+  For more information about partitioning for SAP applications with AutoYaST, see
+  <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
+ </p><p>
+   If you plan to deploy SUSE Linux Enterprise Server for SAP Applications from a SUSE Manager server, refer to
+   <em class="citetitle ">SUSE Manager <span class="quote">“<span class="quote ">Reference Manual</span>”</span>, <span class="quote">“<span class="quote ">Systems</span>”</span>, <span class="quote">“<span class="quote ">Autoinstallation</span>”</span></em> and <em class="citetitle ">SUSE Manager <span class="quote">“<span class="quote ">Advanced Topics</span>”</span>, Chapter <span class="quote">“<span class="quote ">Minimalist AutoYaST Profile for Automated Installations and Useful Enhancements</span>”</span></em> (<a class="link" href="https://documentation.suse.com/suma" target="_blank">https://documentation.suse.com/suma</a>).
+ </p></div><div class="sect1 " id="sec-s4s-convert-sles"><div class="titlepage"><div><div><h2 class="title"><span class="number">3.4 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Converting a SLES Installation to a SLES-SAP Installation</span> <a title="Permalink" class="permalink" href="cha-s4s-install.html#sec-s4s-convert-sles">#</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation.xml</li><li><span class="ds-label">ID: </span>sec-s4s-convert-sles</li></ul></div></div></div></div><p>
+   To convert an installation of SUSE Linux Enterprise Server 12 SP5 or JeOS
+   12 SP5 to an installation of SLES-SAP, use the script
+   <code class="command">Migrate_SLES_to_SLES-for-SAP.sh</code>. The script will
+   register the system correctly and subscribe it to the appropriate
+   repositories.
+  </p><p>
+   Make sure that you have an e-mail address for registration and a
+   registration code for SLES-SAP.
+  </p><div class="procedure " id="pro-s4s-convert-sles"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>
+     Install the package <span class="package ">migrate-sles-to-sles4sap</span>.
+    </p></li><li class="step "><p>
+     Execute the following command:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">Migrate_SLES_to_SLES-for-SAP-12.sh</code></pre></div></li><li class="step "><p>
+     When asked to confirm to continue the migration, press
+     <span class="keycap">Y</span>, then <span class="keycap">Enter</span>.
+    </p></li><li class="step "><p>
+     When asked, type the e-mail address to use for registration, then press
+     <span class="keycap">Enter</span>.
+    </p></li><li class="step "><p>
+     When asked, type the registration key, then press
+     <span class="keycap">Enter</span>.
+    </p><p>
+     Wait until the script is finished. Afterward, you are subscribed to the
+     SUSE Linux Enterprise Server for SAP Applications software repositories and the package
+     <span class="package ">SLES-release</span> is removed in favor of
+     <span class="package ">SLES_SAP-release</span>.
+    </p></li></ol></div></div><div id="id-1.6.6.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Script Does Not Install Default SLES-SAP Packages</h6><p>
+    The script does not install all packages that are included with a default
+    SLES-SAP installation. However, you can install these yourself manually.
+    To install the default package selection, use:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">zypper in patterns-sles-sap_server</code></pre></div></div></div></div></div><div class="page-bottom"><div id="_bottom-navigation"><a class="nav-link" href="cha-s4s-install-sap.html"><span class="next-icon">→</span><span class="nav-label"><span class="number">Chapter 4 </span>Installing SAP Applications</span></a><a class="nav-link" href="cha-s4s-plan.html"><span class="prev-icon">←</span><span class="nav-label"><span class="number">Chapter 2 </span>Planning the Installation</span></a></div><div class="_share-print"><div class="online-contents share"><strong>Share this page: </strong><span class="share-buttons"><span class="_share-fb bottom-button">Facebook</span><span class="spacer"> • </span><span class="_share-in bottom-button">LinkedIn</span><span class="spacer"> • </span><span class="_share-tw bottom-button">Twitter</span><span class="spacer"> • </span><span class="_share-mail bottom-button">E-Mail</span></span></div><div class="print"><span class="_print-button bottom-button">Print this page</span></div><div class="clearme"></div></div></div></div><div id="_inward"></div></div><div id="_footer-wrap"><div id="_footer"><p>©
+        2021 
+        SUSE</p><ul><li><a href="https://jobs.suse.com/" target="_top">Careers</a></li><li><a href="https://www.suse.com/company/legal/" target="_top">Legal</a></li><li><a href="https://www.suse.com/company/about/" target="_top">About</a></li><li><a href="https://www.suse.com/contact/" target="_top">Contact Us</a></li></ul></div></div></body></html>

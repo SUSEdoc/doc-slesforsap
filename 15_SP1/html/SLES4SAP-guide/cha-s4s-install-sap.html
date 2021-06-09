@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Installing SAP Applications | Guide | SUSE Linux Enterprise Server for SAP Applications 15 SP1</title><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /><link rel="stylesheet" type="text/css" href="static/css/style.css" /><link rel="stylesheet" type="text/css" href="static/css/highlight.css" /><meta name="generator" content="DAPS 3.0.0 (https://opensuse.github.io/daps) using SUSE XSL Stylesheets 2.0.17 (based on DocBook XSL Stylesheets 1.79.2) - chunked" /><meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications" /><meta name="product-number" content="15 SP1" /><meta name="book-title" content="Guide" /><meta name="chapter-title" content="Chapter 4. Installing SAP Applications" /><meta name="description" content="This section guides you through the installation of SAP media sets you received from SAP." /><meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi" /><meta name="tracker-type" content="bsc" /><meta name="tracker-bsc-assignee" content="thomas.schraitle@suse.com" /><meta name="tracker-bsc-component" content="Documentation" /><meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP1" /><link rel="home" href="index.html" title="Guide" /><link rel="up" href="index.html" title="Guide" /><link rel="prev" href="cha-s4s-install.html" title="Chapter 3. Installing the Operating System" /><link rel="next" href="cha-s4s-upgrade-sap-hana-cluster.html" title="Chapter 5. Upgrading an SAP HANA Cluster" />
+<script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css"></link>');
+}
+else {
+  document.write('<link rel="stylesheet" type="text/css" href="static/css/fonts-onlylocal.css"></link>');
+}
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css" /></noscript><script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="static/js/script.js" type="text/javascript"></script><script src="static/js/highlight.min.js" type="text/javascript"></script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script></head><body class="draft offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-navigation">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><div id="_outer-wrap"><div id="_white-bg" style="background-color: #FABEBE;"><div id="_header"><div id="_logo"><img src="static/images/logo.png" alt="Logo" /></div><div class="crumbs"><a class="book-link" href="index.html" title="Guide"><span class="book-icon">Guide</span></a><span> › </span><a class="crumb" href="cha-s4s-install-sap.html">Installing SAP Applications</a></div><div class="clearme"></div></div></div><div id="_toolbar-wrap"><div id="_toolbar"><div id="_toc-area" class="inactive"><a id="_toc-area-button" class="tool" title="Contents" accesskey="c" href="index.html"><span class="tool-spacer"><span class="toc-icon">Contents</span><span class="clearme"></span></span><span class="tool-label">Contents</span></a><div class="active-contents bubble-corner"></div><div class="active-contents bubble"><div class="bubble-container"><h6>Guide</h6><div id="_bubble-toc"><ol><li class="inactive"><a href="pre-s4s.html"><span class="number"> </span><span class="name">About This Guide</span></a></li><li class="inactive"><a href="cha-s4s-about.html"><span class="number">1 </span><span class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li class="inactive"><a href="cha-s4s-plan.html"><span class="number">2 </span><span class="name">Planning the Installation</span></a></li><li class="inactive"><a href="cha-s4s-install.html"><span class="number">3 </span><span class="name">Installing the Operating System</span></a></li><li class="inactive"><a href="cha-s4s-install-sap.html"><span class="number">4 </span><span class="name">Installing SAP Applications</span></a></li><li class="inactive"><a href="cha-s4s-upgrade-sap-hana-cluster.html"><span class="number">5 </span><span class="name">Upgrading an SAP HANA Cluster</span></a></li><li class="inactive"><a href="cha-s4s-serve-mediaset.html"><span class="number">6 </span><span class="name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li class="inactive"><a href="cha-s4s-cluster.html"><span class="number">7 </span><span class="name">Setting Up an SAP HANA Cluster</span></a></li><li class="inactive"><a href="cha-s4s-tune.html"><span class="number">8 </span><span class="name">Tuning</span></a></li><li class="inactive"><a href="cha-s4s-access.html"><span class="number">9 </span><span class="name">Firewalling</span></a></li><li class="inactive"><a href="cha-s4s-configure-cryptctl.html"><span class="number">10 </span><span class="name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li class="inactive"><a href="cha-clamsap.html"><span class="number">11 </span><span class="name">Protecting Against Malware with ClamSAP</span></a></li><li class="inactive"><a href="cha-s4s-configure-rdp.html"><span class="number">12 </span><span class="name">Connecting via RDP</span></a></li><li class="inactive"><a href="cha-s4s-image.html"><span class="number">13 </span><span class="name">Creating Operating System Images</span></a></li><li class="inactive"><a href="cha-s4s-trouble.html"><span class="number">14 </span><span class="name">Important Log Files</span></a></li><li class="inactive"><a href="app-s4s-additional-software.html"><span class="number">A </span><span class="name">Additional Software for SLES-SAP</span></a></li><li class="inactive"><a href="app-s4s-autoyast-partition.html"><span class="number">B </span><span class="name">Partitioning for the SAP System Using AutoYaST</span></a></li><li class="inactive"><a href="app-s4s-component-supplement.html"><span class="number">C </span><span class="name">Supplementary Media</span></a></li><li class="inactive"><a href="apd.html"><span class="number">D </span><span class="name">GNU Licenses</span></a></li></ol></div><div class="clearme"></div></div></div></div><div id="_nav-area" class="inactive"><div class="tool"><span class="nav-inner"><span class="tool-label">Navigation</span><a accesskey="p" class="tool-spacer" title="Chapter 3. Installing the Operating System" href="cha-s4s-install.html"><span class="prev-icon">←</span></a><a accesskey="n" class="tool-spacer" title="Chapter 5. Upgrading an SAP HANA Cluster" href="cha-s4s-upgrade-sap-hana-cluster.html"><span class="next-icon">→</span></a></span></div></div></div></div><div id="_fixed-header-wrap" style="background-color: #FABEBE;" class="inactive"><div id="_fixed-header"><div class="crumbs"><a class="book-link" href="index.html" title="Guide"><span class="book-icon">Guide</span></a><span> › </span><a class="crumb" href="cha-s4s-install-sap.html">Installing SAP Applications</a></div><div class="buttons"><a class="top-button button" href="#">Top</a><div class="button"><a accesskey="p" class="tool-spacer" title="Chapter 3. Installing the Operating System" href="cha-s4s-install.html"><span class="prev-icon">←</span></a><a accesskey="n" class="tool-spacer" title="Chapter 5. Upgrading an SAP HANA Cluster" href="cha-s4s-upgrade-sap-hana-cluster.html"><span class="next-icon">→</span></a></div><div class="clearme"></div></div><div class="clearme"></div></div></div><div id="_content" class="draft "><div class="documentation"><div class="chapter " id="cha-s4s-install-sap"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname ">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber ">15 SP1</span></div><div><h1 class="title"><span class="number">4 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Installing SAP Applications</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h1><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>cha-s4s-install-sap</li></ul></div></div></div></div><div class="line"><div class="toc"><dl><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-s4s-install-sap-list"><span class="number">4.1 </span><span class="name">Products That Can Be Installed Using SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-s4s-install-sap-welcome"><span class="number">4.2 </span><span class="name">First Steps</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-s4s-install-sap-product"><span class="number">4.3 </span><span class="name">Using the SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-s4s-install-continue"><span class="number">4.4 </span><span class="name">Continuing an Installation Using an Installation Profile</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-partition-command"><span class="number">4.5 </span><span class="name">Partitioning for an SAP Application without the SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="cha-s4s-install-sap.html#sec-s4s-install-sap-autoyast"><span class="number">4.6 </span><span class="name">Automated Installation of SAP Applications with AutoYaST</span></a></span></dt></dl></div></div><p>
+  This section guides you through the installation of SAP media sets you
+  received from SAP.
+ </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+    If you are installing an SAP application within the installation workflow,
+    continue with <a class="xref" href="cha-s4s-install-sap.html#sec-s4s-install-sap-welcome" title="4.2. First Steps">Section 4.2, “First Steps”</a>.
+   </p></li><li class="listitem "><p>
+    If you are installing an SAP application within an installed system,
+    continue with <a class="xref" href="cha-s4s-install-sap.html#sec-s4s-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>.
+   </p></li></ul></div><div class="sect1 " id="sec-s4s-install-sap-list"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Products That Can Be Installed Using SAP Installation Wizard</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-list">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-list</li></ul></div></div></div></div><p>
+   Using the SAP Installation Wizard, you can install stand-alone SAP HANA database instances.
+   Additionally, the following SAP products (along with a database) can be
+   installed using the SAP Installation Wizard:
+  </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>SAP S/4HANA, on-premise edition 1511</p></li><li class="listitem "><p>SAP NetWeaver 7.5</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 2</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 1</p></li><li class="listitem "><p>SAP NetWeaver 7.4</p></li><li class="listitem "><p>SAP Enhancement Package 1 for SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.2</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP EHP1 SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP Business Suite powered by SAP HANA</p></li><li class="listitem "><p>SAP Business Suite 7i 2016</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 2</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 1</p></li><li class="listitem "><p>SAP Business Suite 7i 2011 Java</p></li><li class="listitem "><p>SAP Business Suite 7i 2010 Java</p></li><li class="listitem "><p>SAP Business Suite 7 Support Release 1 Java</p></li><li class="listitem "><p>SAP Solution Manager 7.2 Support Release 1</p></li><li class="listitem "><p>SAP Solution Manager 7.1 powered by SAP HANA</p></li><li class="listitem "><p>SAP NetWeaver AS ABAP 7.4, OEM version 1.0</p></li></ul></div><div id="id-1.7.4.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Installation of Oracle Databases Not Possible</h6><p>
+     The SAP Installation Wizard does not allow installing products together with Oracle
+     databases. To install an Oracle database, install the base product SUSE Linux Enterprise Server
+     first, then install the Oracle database and later convert your
+     installation to SLES-SAP. This is necessary because the Oracle databases
+     installer queries for the existence of certain files, not all of which are
+     included in a SLES-SAP installation.
+    </p><p>
+     For more information about converting, see
+     <a class="xref" href="cha-s4s-install.html#sec-s4s-convert-sles" title="3.4. Converting an SLES Installation to an SLES-SAP Installation">Section 3.4, “Converting an SLES Installation to an SLES-SAP Installation”</a>.
+    </p></div></div><div class="sect1 " id="sec-s4s-install-sap-welcome"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.2 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">First Steps</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-welcome">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-welcome</li></ul></div></div></div></div><p>
+   These first steps are only relevant during the installation workflow.
+  </p><div class="procedure "><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>
+     When the system is booted, it displays the screen
+     <span class="guimenu ">Welcome</span>.
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li><li class="step "><p>
+     The screen <span class="guimenu ">Network Settings</span> will now open.
+     This gives you an opportunity to change the network settings.
+    </p><p>
+     When you are finished configuring networking, proceed with
+     <span class="guimenu ">Next</span>.
+    </p><div id="id-1.7.5.3.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
+      Make sure to configure the network connection according to the
+      documentation of your SAP application.
+     </p></div><p>
+     For information about configuring networking, see
+     <em class="citetitle ">
+      <em class="citetitle ">Administration Guide</em>, Chapter <span class="quote">“<span class="quote ">Basic Networking</span>”</span>,
+      Section <span class="quote">“<span class="quote ">Configuring a Network Connection with YaST</span>”</span>
+     </em> (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
+    </p><p>
+      (While the next screen loads, the <span class="guimenu ">Welcome</span>
+      screen may appear again for a few seconds.)
+     </p></li><li class="step "><p>
+     Choose one of the following options:
+    </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.7.5.3.3.2.1"><span class="term ">
+       <span class="guimenu ">Create SAP file systems and start SAP product
+       installation</span>
+      </span></dt><dd><p>
+        Allows installing an SAP application and setting up the system as a
+        server providing SAP installation routines to other systems.
+       </p><p>
+        Continue with <a class="xref" href="cha-s4s-install-sap.html#sec-s4s-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>.
+       </p></dd><dt id="id-1.7.5.3.3.2.2"><span class="term ">
+       <span class="guimenu ">Only create SAP HANA file systems, do not install SAP products
+       now</span>
+      </span></dt><dd><p>
+        Create an SAP HANA file system on SAP BusinessOne-certified hardware.
+       </p><div id="id-1.7.5.3.3.2.2.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Hardware Requirements</h6><p>
+         Make sure your machine fulfills the hardware requirements for SAP HANA
+         detailed in <a class="xref" href="cha-s4s-plan.html#sec-s4s-hardware" title="2.1. Hardware Requirements">Section 2.1, “Hardware Requirements”</a>.
+         Otherwise, this option will not create a new file system and the
+         installation workflow ends at this point.
+        </p></div></dd><dt id="id-1.7.5.3.3.2.3"><span class="term ">
+       <span class="guimenu ">Finish wizard and proceed to OS login</span>
+      </span></dt><dd><p>
+        Do not install an SAP application and continue to the login screen of
+        SUSE Linux Enterprise Server for SAP Applications.
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li></ol></div></div></div><div class="sect1 " id="sec-s4s-install-sap-product"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.3 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Using the SAP Installation Wizard</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-product">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-product</li></ul></div></div></div></div><p>
+   Use the SAP Installation Wizard to install an SAP NetWeaver system (including database) or an
+   SAP HANA system.
+  </p><p>
+   To install other SAP applications or to create a more advanced SAP HANA
+   setup, directly use one of the installation methods provided by SAP instead
+   of this wizard.
+  </p><div id="id-1.7.6.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Installing an SAP Application in a Fully Installed System</h6><p>
+    This process is documented as it appears during the installation workflow.
+    However, it also applies to the YaST module <span class="guimenu ">SAP Installation Wizard</span>
+    which is available in the installed system.
+   </p><p>
+    To start the SAP Installer, from the desktop, choose
+    <span class="guimenu ">Applications</span> › <span class="guimenu ">System</span> › <span class="guimenu ">YaST</span>, continue in the YaST control center
+    by choosing
+    <span class="guimenu ">Miscellaneous</span> › <span class="guimenu ">SAP Installation Wizard</span>.
+   </p></div><div id="id-1.7.6.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: SAP Installation Wizard Configuration</h6><p>
+    The SAP Installation Wizard configuration is specified and
+    documented in
+    <code class="filename">/etc/sysconfig/sap-installation-wizard</code>. You can
+    change it according to your needs.
+   </p></div><div class="procedure "><div class="procedure-contents"><ol class="procedure" type="1"><li class="step " id="st-s4s-copy-master"><p>
+     In the screen <span class="guimenu ">SAP Installation Wizard</span>, provide the
+     <span class="guimenu ">Location of the SAP Installation Master</span>
+     (<a class="xref" href="cha-s4s-install-sap.html#fig-s4s-sap-wizard-source" title="Location of SAP Installation Master">Figure 4.1, “Location of SAP Installation Master”</a>). The
+     location can either be a local, removable, or remote installation source.
+    </p><div class="figure" id="fig-s4s-sap-wizard-source"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sap_wizard_source.png" target="_blank"><img src="images/s4s_sap_wizard_source.png" width="" alt="Location of SAP Installation Master" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.1: </span><span class="name">Location of SAP Installation Master </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-sap-wizard-source">#</a></h6></div></div><p>
+     Select the appropriate option from the drop-down box.
+     In the text box, specify the path to your source according to the format
+     given in the following table.
+    </p><div class="table" id="tab-sap-media-source"><div class="table-title-wrap"><h6 class="table-title"><span class="number">Table 4.1: </span><span class="name">Media Source Path </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#tab-sap-media-source">#</a></h6></div><div class="table-contents"><table class="table" summary="Media Source Path" border="1"><colgroup><col class="option" /><col class="desc" /><col class="format" /></colgroup><thead><tr><th>
+         <p>
+          Option
+         </p>
+        </th><th>
+         <p>
+          Description
+         </p>
+        </th><th>
+         <p>
+          Format of Path
+         </p>
+        </th></tr></thead><tbody><tr><td colspan="3">
+         <span class="strong"><strong>Local Sources</strong></span>
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">dir://</span>
+         </p>
+        </td><td>
+         <p>
+          a local directory
+         </p>
+        </td><td>
+         <p>
+          <code class="filename"><em class="replaceable ">/path/to/dir/</em></code>
+         </p>
+        </td></tr><tr><td colspan="3">
+         <span class="strong"><strong>Removable Sources</strong></span>
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">device://</span>
+         </p>
+        </td><td>
+         <p>
+          a locally connected hard disk
+         </p>
+        </td><td>
+         <p>
+          <code class="filename"><em class="replaceable ">devicename</em><em class="replaceable ">/path/to/dir/on/device</em></code>
+         </p>
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">usb://</span>
+         </p>
+        </td><td>
+         <p>
+          a USB mass storage device
+         </p>
+        </td><td>
+         <p>
+          <code class="filename"><em class="replaceable ">/path/to/dir/on/USB</em></code>
+         </p>
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">cdrom://</span>
+         </p>
+        </td><td>
+         <p>
+          a CD or DVD
+         </p>
+        </td><td>
+         <p>
+          <code class="filename"><em class="replaceable ">//</em></code>
+         </p>
+         
+        </td></tr><tr><td colspan="3">
+         <span class="strong"><strong>Remote Sources</strong></span>
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">nfs://</span>
+         </p>
+        </td><td>
+         <p>
+          an NFS share
+         </p>
+        </td><td>
+         <p>
+          <code class="filename"><em class="replaceable ">server_name</em><em class="replaceable ">/path/to/dir/on/device</em></code>
+         </p>
+         
+        </td></tr><tr><td>
+         <p>
+          <span class="guimenu ">smb://</span>
+         </p>
+        </td><td>
+         <p>
+          an SMB share
+         </p>
+        </td><td>
+         <p>
+          <code class="filename">[<em class="replaceable ">user_name</em>:<em class="replaceable ">password</em>@]<em class="replaceable ">server_name</em>/<em class="replaceable ">/path/to/dir/on/server</em>[?workgroup=<em class="replaceable ">workgroup_name</em>]</code>
+         </p>
+        </td></tr></tbody></table></div></div><div id="id-1.7.6.6.1.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Remote Location Specification</h6><p>
+      To install from an NFS source, specify the name of
+      the server and the complete path to the media data. For
+      information about setting up a remote installation server, see
+      <a class="xref" href="cha-s4s-serve-mediaset.html" title="Chapter 6. Setting Up an Installation Server for SAP Media Sets">Chapter 6, <em>Setting Up an Installation Server for SAP Media Sets</em></a>.
+     </p></div><p>
+     If you have installed an SAP application from an installation server
+     before or set up your
+     system to be an installation server, you can also directly choose
+     that server as the provider of the Installation Master.
+     To do so, use the drop-down box below <span class="guimenu ">Choose an installation
+     master</span>.
+    </p></li><li class="step "><p>
+     Under <span class="guimenu ">Advanced Options</span>, choose from the following
+     options:
+    </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.7.6.6.2.2.1"><span class="term ">
+       <span class="guimenu ">Collect installation profiles for SAP products but do not execute
+        installation</span>
+      </span></dt><dd><p>
+        Use this option to set the installation parameters,
+        but not perform the actual installation. With this option, the
+        SAP Installer (SAPinst) will stop without performing the actual SAP
+        product installation. However, the steps that follow fully apply.
+       </p><p>
+        For more information, see <a class="xref" href="cha-s4s-install-sap.html#sec-s4s-install-continue" title="4.4. Continuing an Installation Using an Installation Profile">Section 4.4, “Continuing an Installation Using an Installation Profile”</a>.
+       </p></dd><dt id="id-1.7.6.6.2.2.2"><span class="term ">
+       <span class="guimenu ">Serve all installation media (including master) to local
+       network via NFS</span>
+      </span></dt><dd><p>
+        Set up this system as an installation server for other SUSE Linux Enterprise Server for SAP Applications
+        systems.
+        The media copied to this installation server will be offered through
+        NFS and can be discovered via Service Location Protocol (SLP).
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><p>
+     The SAP Installation Wizard will now copy the Installation Master to your local disk.
+     Depending on the type of Installation Master you selected, the installation
+     will continue differently:
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       If you are installing an SAP HANA database, skip ahead to
+       <a class="xref" href="cha-s4s-install-sap.html#st-s4s-supplement" title="Step 8">Step 8</a>.
+      </p></li><li class="listitem "><p>
+       If you are installing an SAP NetWeaver application, continue with the
+       next step.
+      </p></li></ul></div></li><li class="step " id="st-s4s-copy-media"><p>
+     On the screen <span class="guimenu ">SAP Installation Wizard</span>, provide
+     the location of additional Installation Media you want to install.
+     This can include an SAP kernel, a database, and
+     database exports.
+    </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.7.6.6.3.2.1"><span class="term "><span class="guimenu ">Copy a medium</span></span></dt><dd><p>
+        Specify a path to additional Installation Media. For more information about
+        specifying the path, see <a class="xref" href="cha-s4s-install-sap.html#tab-sap-media-source" title="Media Source Path">Table 4.1, “Media Source Path”</a>.
+       </p></dd><dt id="id-1.7.6.6.3.2.2"><span class="term "><span class="guimenu ">Skip copying of medium</span></span></dt><dd><p>
+        Do not copy additional Installation Media. Choose this option
+        if you do not need additional Installation Media or to install
+        additional Installation Media directly from their source, for example
+        CDs/DVDs or flash disks.
+       </p><p>
+        When choosing this option despite your SAP product requiring additional
+        Installation Media, you will later need to provide the SAP Installer (SAPinst)
+        with the relevant paths.
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><p>
+     If you chose to copy Installation Media, the SAP Installation Wizard will copy the relevant
+     files to your local hard disk.
+    </p><div class="figure" id="fig-s4s-sap-wizard-sapmedia"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sap_wizard_location_sapmedia.png" target="_blank"><img src="images/s4s_sap_wizard_location_sapmedia.png" width="" alt="SAP Installation Wizard: Additional Installation Media" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.2: </span><span class="name">SAP Installation Wizard: Additional Installation Media </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-sap-wizard-sapmedia">#</a></h6></div></div></li><li class="step "><p>
+     After copying the Installation Media, you will be asked whether you want to
+     prepare additional Installation Media.
+     To do so, click <span class="guimenu ">Yes</span>.
+     Then follow the instructions in
+     <a class="xref" href="cha-s4s-install-sap.html#st-s4s-copy-media" title="Step 3">Step 3</a>.
+    </p><p>
+     Otherwise, click <span class="guimenu ">No</span>.
+    </p></li><li class="step "><p>
+     In the screen <span class="guimenu ">What Would You Like to Install</span>,
+     under <span class="guimenu ">The SAP product is</span>, choose how you want to
+     install the product:
+    </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.7.6.6.5.2.1"><span class="term "><span class="guimenu ">SAP Standard System</span></span></dt><dd><p>
+        Install an SAP application including its database.
+       </p></dd><dt id="id-1.7.6.6.5.2.2"><span class="term "><span class="guimenu ">SAP Standalone Engines</span></span></dt><dd><p>
+        Engines that add functionality to a standard product: SAP TREX,
+        SAP Gateway, and Web Dispatcher.
+       </p></dd><dt id="id-1.7.6.6.5.2.3"><span class="term "><span class="guimenu ">Distributed System</span></span></dt><dd><p>
+        An SAP application that is separated onto multiple servers.
+       </p></dd><dt id="id-1.7.6.6.5.2.4"><span class="term "><span class="guimenu ">SAP High-Availability System</span></span></dt><dd><p>
+        Installation of SAP NetWeaver in a high-availability setup.
+       </p></dd><dt id="id-1.7.6.6.5.2.5"><span class="term "><span class="guimenu ">System Rename</span></span></dt><dd><p>
+        Allows changing the various system properties such as the SAP system
+        ID, database ID, instance number, or host name. This can be used to
+        install the same product in a very similar configuration on different
+        systems.
+       </p></dd></dl></div><div class="figure" id="fig-s4s-sap-wizard-mode-db"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sap_wizard_mode_db.png" target="_blank"><img src="images/s4s_sap_wizard_mode_db.png" width="" alt="SAP Installation Wizard: Installation Type and Database" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.3: </span><span class="name">SAP Installation Wizard: Installation Type and Database </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-sap-wizard-mode-db">#</a></h6></div></div></li><li class="step "><p>
+     If you selected <span class="guimenu ">SAP Standard System</span>,
+     <span class="guimenu ">Distributed System</span>, or
+     <span class="guimenu ">SAP High-Availability System</span>,
+     additionally choose a back-end database under
+     <span class="guimenu ">Back-end Databases</span>.
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p></li><li class="step "><p>
+     You will now see the screen <span class="guimenu ">Choose a Product</span>.
+     The products shown depend on the Media Set and Installation Master you received
+     from SAP.
+     From the list, select the product you want to install.
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><div class="figure" id="fig-s4s-sap-wizard-avail-products"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sap_wizard_available_products.png" target="_blank"><img src="images/s4s_sap_wizard_available_products.png" width="" alt="SAP Installation Wizard: Choose a Product" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.4: </span><span class="name">SAP Installation Wizard: Choose a Product </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-sap-wizard-avail-products">#</a></h6></div></div></li><li class="step " id="st-s4s-supplement"><p>
+     You will be asked whether to copy Supplementary Media or
+     Third-Party Media.
+     To do so, click <span class="guimenu ">Yes</span> and then follow the instructions in
+     <a class="xref" href="cha-s4s-install-sap.html#st-s4s-copy-media" title="Step 3">Step 3</a>.
+    </p><p>
+     Otherwise, click <span class="guimenu ">No</span>.
+    </p><div id="id-1.7.6.6.8.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Difference Between Supplementary Media/Third-Party Media and Additional Software Repositories</h6><p>
+      Both types of delivery mechanisms allow installing software
+      that is neither part of the SUSE Linux Enterprise Server for SAP Applications media nor part of your Media Set
+      from SAP. However, the delivery mechanism is different:
+     </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+        Supplementary Media/Third-Party Media is installed using an AutoYaST file which allows
+        creating an installation wizard and custom installation scripts.
+       </p></li><li class="listitem "><p>
+        Additional software repositories are RPM package repositories that you will
+        remain subscribed to. This means you receive updates for Third-Party Media
+        along with your regular system updates.
+       </p></li></ul></div></div><p>
+     For information on creating Supplementary Media, see
+     <a class="xref" href="app-s4s-component-supplement.html" title="Appendix C. Supplementary Media">Appendix C, <em>Supplementary Media</em></a>.
+    </p></li><li class="step "><p>
+     On the screen <span class="guimenu ">Additional software repositories for your
+     SAP installation</span>, you can add further software repositories.
+     For example, for add-ons that are packaged
+     as RPM. To do so, click <span class="guimenu ">Add new software repositories</span>.
+     For more information about adding repositories, see
+     <em class="citetitle "><em class="citetitle ">Deployment Guide</em>,
+     Chapter <span class="quote">“<span class="quote ">Installing and Removing Software</span>”</span>,
+     Section <span class="quote">“<span class="quote ">Adding Software Repositories</span>”</span></em>
+     (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
+    </p><p>
+     Proceed with <span class="guimenu ">Next</span>.
+    </p><div id="id-1.7.6.6.9.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Location of Copied SAP Media</h6><p>
+      At this point, all data required for the SAP installation has been
+      copied to <code class="filename">/data/SAP_CDs</code> (unless you chose to skip
+      the process of copying).
+      Each Installation Medium is copied to a separate directory. You might find
+      the following directory structure, for example:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">tux &gt; </code>ls /data/SAP_CDs
+742-KERNEL-SAP-Kernel-742
+742-UKERNEL-SAP-Unicode-Kernel-742
+RDBMS-MAX-DB-LINUX_X86_64
+SAP-NetWeaver-740-SR2-Installation-Export-CD-1-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-2-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
+      <code class="filename">/data/SAP_CDs</code> is the default directory as specified
+      in the <code class="filename">/etc/sysconfig/sap-installation-wizard</code>
+      configuration file.
+     </p></div></li><li class="step " id="st-s4s-collect-parameter"><p>
+     Depending on the product you are installing, one or more dialogs will
+     prompt you to supply values for several configuration parameters for the
+     SAP application you are installing.
+    </p><p>
+     Supply the values as described in the documentation provided to you by
+     SAP. Help for the configuration parameters is also
+     available on the left side of the dialog. For more information, see
+     <a class="xref" href="cha-s4s-plan.html#sec-s4s-data" title="2.6. Required Data for Installing">Section 2.6, “Required Data for Installing”</a>.
+    </p><p>
+     Fill out the form (or forms), then proceed with <span class="guimenu ">OK</span>.
+    </p><div class="figure" id="fig-s4s-product-parameter"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sap_wizard_product_param.png" target="_blank"><img src="images/s4s_sap_wizard_product_param.png" width="" alt="Dialog to configure product parameters" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.5: </span><span class="name">Product Parameters </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-product-parameter">#</a></h6></div></div><p>
+     When you are done, the SAP Installation Wizard will download additional software packages.
+    </p></li><li class="step "><p>
+     You will be asked whether to continue the installation or prepare another
+     SAP product for installation. If you choose to prepare another SAP
+     product, start from the beginning of this procedure.
+    </p></li><li class="step "><p><span class="step-optional">(Optional)</span> 
+     When installing SAP HANA on a system that is not certified for SAP HANA and
+     does not meet the minimum hardware requirements for SAP HANA TDI
+     (Tailored Datacenter Integration), you will be
+     asked whether to continue. If you receive this message unexpectedly,
+     check <a class="xref" href="cha-s4s-plan.html#sec-s4s-hardware" title="2.1. Hardware Requirements">Section 2.1, “Hardware Requirements”</a> and the sizing guidelines from
+     SAP at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>
+     (you need your SAP ID to access the information).
+    </p><p>
+     Otherwise, continue with <span class="guimenu ">Yes</span>.
+    </p></li><li class="step " id="st-s4s-sapinst"><p>
+     The following steps differ depending on the type of
+     SAP application you are installing:
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       When installing an SAP HANA database, SAP HANA will now be installed
+       without further question.
+      </p></li><li class="listitem "><p>
+       When installing an SAP NetWeaver application, the actual installation will
+       be performed using the SAP Installer (SAPinst). After a few seconds, SAP Installer
+       will open automatically.
+      </p><p>
+       Follow the SAP Installer as described in the documentation provided
+       by SAP. Most configuration parameters are correctly filled already.
+      </p></li></ul></div><div class="figure" id="fig-s4s-sapinst-param"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sapinst_param.png" target="_blank"><img src="images/s4s_sapinst_param.png" width="" alt="SAP Installer: Defining Parameters" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.6: </span><span class="name">SAP Installer: Defining Parameters </span><a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#fig-s4s-sapinst-param">#</a></h6></div></div><div id="id-1.7.6.6.13.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Installation Log Files</h6><p>
+      If the installation of the SAP application fails, refer to the
+      installation log files. They are located in
+      <code class="filename">/var/adm/autoinstall</code>. Failed installations are
+      recorded in files with names ending in <code class="filename">.err</code>.
+     </p><p>
+      For more information about log files, see
+      <a class="xref" href="cha-s4s-trouble.html" title="Chapter 14. Important Log Files">Chapter 14, <em>Important Log Files</em></a>.
+     </p></div></li><li class="step "><p>
+     The final screen is <span class="guimenu ">Installation Completed</span>.
+    </p><p>
+     To create an AutoYaST file for this installation, activate
+     <span class="guimenu ">Clone This System for AutoYaST</span>.
+     The AutoYaST file will be placed in <code class="filename">/root/autoinst.xml</code>.
+    </p><p>
+     Click <span class="guimenu ">Finish</span>.
+    </p></li></ol></div></div></div><div class="sect1 " id="sec-s4s-install-continue"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.4 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Continuing an Installation Using an Installation Profile</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-continue">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-continue</li></ul></div></div></div></div><p>
+   If you chose <span class="guimenu ">Collect installation profiles but do not execute
+   installation</span> during the previous run of the SAP Installation Wizard, this section
+   will show you how to continue the installation of the selected
+   SAP applications.
+  </p><p>
+   When collecting an installation profile, the SAP Installation Wizard copies
+   product images to <code class="filename">/data/SAP_CDs</code>.
+   It also prepares an installation environment for every product under the
+   path <code class="filename">/data/SAP_INST</code>:
+  </p><div class="verbatim-wrap"><pre class="screen">/data/SAP_INST/0/Instmaster
+/data/SAP_INST/1/Instmaster
+/data/SAP_INST/2/Instmaster
+[...]</pre></div><p>
+   These files are re-used in the following.
+   To continue the installation, follow these steps:
+  </p><div class="procedure "><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>
+     In <code class="filename">/etc/sysconfig/sap-installation-wizard</code>,
+     set the following:
+    </p><div class="verbatim-wrap"><pre class="screen">SAP_AUTO_INSTALL="yes"</pre></div></li><li class="step "><p>
+     In the case of an SAP HANA/SAP BusinessOne installation, the SAP Installation Wizard will later use
+     the parameters documented in the AutoYaST files in
+     <code class="filename">/data/SAP_INST/<em class="replaceable ">number</em></code>.
+    </p><p>
+     If you need to change any parameters, make sure to adapt the AutoYaST files at
+     this point.
+    </p></li><li class="step "><p>
+     Open the YaST control center and start
+     <span class="guimenu ">SAP Installation Wizard</span>.
+    </p></li><li class="step "><p>
+     You will be asked whether to continue the pending installation.
+     Select <span class="guimenu ">Install</span>.
+    </p></li><li class="step "><p>
+     All further interactions happen within the SAP Installer.
+     Follow the steps of SAP Installer as described in the documentation provided to
+     you by SAP.
+    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+       In the case of an SAP NetWeaver installation, all parameters of the SAP Installer
+       will be offered again for fine-tuning.
+      </p></li><li class="listitem "><p>
+       In the case of an SAP HANA/SAP BusinessOne installation, the installer will not be
+       offer to make any changes to parameters.
+      </p></li></ul></div></li></ol></div></div></div><div class="sect1 " id="sec-partition-command"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.5 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Partitioning for an SAP Application without the SAP Installation Wizard</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-partition-command">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-partition-command</li></ul></div></div></div></div><p>
+   If you do not want to use the SAP Installation Wizard, you can also create the partitioning
+   for SAP applications directly from the command line. First, find the
+   correct partitioning file in the directory
+   <code class="filename">/usr/share/YaST2/include/sap-installation-wizard/</code> or
+   create your own partitioning file. For more information, see
+   <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition-sap" title="2.7.2. Partitioning for the SAP System (stage 2)">Section 2.7.2, “Partitioning for the SAP System (stage 2)”</a>.
+  </p><p>
+   When you have determined the correct partitioning XML file, run:
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">yast2 sap_create_storage_ng <em class="replaceable ">ABSOLUTE_PATH_TO_PARTITIONING_FILE</em></code></pre></div></div><div class="sect1 " id="sec-s4s-install-sap-autoyast"><div class="titlepage"><div><div><h2 class="title"><span class="number">4.6 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Automated Installation of SAP Applications with AutoYaST</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-autoyast">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-autoyast</li></ul></div></div></div></div><p>
+   The SAP Installation Wizard can be used from AutoYaST to automate the installation of SAP
+   Applications.
+  </p><div class="sect2 " id="sec-s4s-install-sap-autoyast-hana"><div class="titlepage"><div><div><h3 class="title"><span class="number">4.6.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">SAP HANA Installation</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-autoyast-hana">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h3><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-autoyast-hana</li></ul></div></div></div></div><p>
+    The following AutoYaST snippet shows how an SAP HANA or SAP TREX installation can
+    be automated:
+   </p><div class="verbatim-wrap highlight xml"><pre class="screen">&lt;sap-inst&gt;
+  &lt;products config:type="list"&gt;
+    &lt;product&gt;
+      &lt;media config:type="list"&gt;
+        &lt;medium&gt;
+          &lt;url&gt;nfs://server/path1&lt;/url&gt;
+          &lt;type&gt;sap&lt;/type&gt;
+        &lt;/medium&gt;
+        &lt;medium&gt;
+          &lt;url&gt;nfs://server/path3&lt;/url&gt;
+          &lt;type&gt;supplement&lt;/type&gt;
+        &lt;/medium&gt;
+      &lt;/media&gt;
+      &lt;sapMasterPW&gt;<em class="replaceable ">PASSWORD</em>&lt;/sapMasterPW&gt;
+      &lt;sid&gt;<em class="replaceable ">SID</em>&lt;/sid&gt;
+      &lt;sapInstNr&gt;<em class="replaceable ">INSTANCE_NUMBER</em>&lt;/sapInstNr&gt;
+      &lt;sapMDC&gt;no&lt;/sapMDC&gt;
+    &lt;/product&gt;
+  &lt;/products&gt;
+&lt;/sap-inst&gt;</pre></div><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+      The <code class="sgmltag-element">sapMDC</code> element is only applicable to SAP HANA.
+     </p></li><li class="listitem "><p>
+      The <code class="sgmltag-element">sapVirtHostname</code> element must be specified for
+      distributed or highly available installations.
+     </p></li></ul></div><p>
+     For a full SAP HANA example, including partitioning, see
+     <code class="filename">/usr/share/doc/packages/sap-installation-wizard/hana-autoyast.xml</code>.
+   </p></div><div class="sect2 " id="sec-s4s-install-sap-autoyast-netweaver"><div class="titlepage"><div><div><h3 class="title"><span class="number">4.6.2 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">SAP NetWeaver Installation</span> <a title="Permalink" class="permalink" href="cha-s4s-install-sap.html#sec-s4s-install-sap-autoyast-netweaver">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_installation_sap.xml" title="Edit the source file for this section">Edit source</a></h3><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_installation_sap.xml</li><li><span class="ds-label">ID: </span>sec-s4s-install-sap-autoyast-netweaver</li></ul></div></div></div></div><p>
+    For SAP NetWeaver, the following example shows how the installation can be
+    automated. Specifically, this example is tailored to installing ASCS
+    Instance of an SAP NetWeaver 7.5 ABAP Server distributed system with MaxDB
+    (product ID <code class="literal">NW_ABAP_ASCS:NW750.ADA.ABAP</code>). When
+    installing other products based on SAP NetWeaver, not all of the following
+    variables may be necessary or these variables might need to be replaced
+    by others:
+   </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
+      The master password for the SAP NetWeaver instance:
+      <em class="replaceable ">MASTER_PASSWORD</em>
+     </p></li><li class="listitem "><p>
+      The SAP Identifier (SID): <em class="replaceable ">SID</em>
+     </p></li><li class="listitem "><p>
+      The SAP kernel: <em class="replaceable ">KERNEL</em>
+     </p></li><li class="listitem "><p>
+      The SAP instance number: <em class="replaceable ">INSTANCE_NUMBER</em>
+     </p></li><li class="listitem "><p>
+      The ASCS virtual host name:
+      <em class="replaceable ">ASCS_VIRTUAL_HOSTNAME</em>
+     </p></li><li class="listitem "><p>
+      The SCS virtual host name: <em class="replaceable ">SCS_VIRTUAL_HOSTNAME</em>
+     </p></li></ul></div><div class="verbatim-wrap highlight xml"><pre class="screen">&lt;sap-inst&gt;
+  &lt;products config:type="list"&gt;
+    &lt;product&gt;
+      &lt;media config:type="list"&gt;
+        &lt;medium&gt;
+          &lt;url&gt;<em class="replaceable ">nfs://SERVER/PATH1</em>&lt;/url&gt;
+          &lt;type&gt;sap&lt;/type&gt;
+        &lt;/medium&gt;
+        &lt;medium&gt;
+          &lt;url&gt;<em class="replaceable ">nfs://SERVER/PATH2</em>&lt;/url&gt;
+          &lt;type&gt;sap&lt;/type&gt;
+        &lt;/medium&gt;
+        &lt;medium&gt;
+          &lt;url&gt;<em class="replaceable ">nfs://SERVER/PATH3</em>&lt;/url&gt;
+          &lt;type&gt;supplement&lt;/type&gt;
+        &lt;/medium&gt;
+      &lt;/media&gt;
+      &lt;productID&gt;NW_ABAP_ASCS:NW750.ADA.ABAP&lt;/productID&gt;
+      &lt;iniFile&gt;
+        &lt;![CDATA[
+# Password for the Diagnostics Agent specific &lt;dasid&gt;adm user. Provided value
+# may be encoded.
+DiagnosticsAgent.dasidAdmPassword =
+
+# Windows domain in which the Diagnostics Agent users must be created.
+# The property is Microsoft Windows only. This is an optional property.
+DiagnosticsAgent.domain =
+
+# Password for the Diagnostics Agent specific SAPService&lt;DASID&gt; user.
+# Provided value may be encoded.
+# The property is Microsoft Windows only.
+DiagnosticsAgent.sapServiceDASIDPassword =
+
+NW_GetMasterPassword.masterPwd = <em class="replaceable ">MASTER_PASSWORD</em>
+
+# Human readable form of the Default Login language - valid names are stored
+# in a table of the subcomponent NW_languagesInLoadChecks. Used when freshly
+# installing an ABAP stack for the machine that performs an ABAP load (in the
+# case of a distributed system, that is the database, otherwise it is used by
+# the normal installer). The available languages must be declared in the
+# LANGUAGES_IN_LOAD parameter of the product.xml . In this file, the one
+# character representation of the languages is used. Check the same table in
+# the subcomponent mentioned above.
+NW_GetSidNoProfiles.SAP_GUI_DEFAULT_LANGUAGE =
+
+# The drive to use (Windows only)
+NW_GetSidNoProfiles.sapdrive =
+
+# The /sapmnt path (Unix only)
+NW_GetSidNoProfiles.sapmnt = /sapmnt
+
+# The SAP System ID of the system to install
+NW_GetSidNoProfiles.sid = <em class="replaceable ">SID</em>
+
+# Will this system be unicode system?
+NW_GetSidNoProfiles.unicode = true
+
+NW_SAPCrypto.SAPCryptoFile = /data/SAP_CDs/745-UKERNEL-SAP-Unicode-Kernel-745/DBINDEP/SAPEXE.SAR
+
+NW_SCS_Instance.ascsInstanceNumber =
+
+NW_SCS_Instance.ascsVirtualHostname = <em class="replaceable ">ASCS_VIRTUAL_HOSTNAME</em>
+
+NW_SCS_Instance.instanceNumber = <em class="replaceable ">INSTANCE_NUMBER</em>
+
+NW_SCS_Instance.scsInstanceNumber =
+
+NW_SCS_Instance.scsMSPort =
+
+NW_SCS_Instance.scsVirtualHostname = <em class="replaceable ">SCS_VIRTUAL_HOSTNAME</em>
+
+NW_System.installSAPHostAgent = true
+
+NW_Unpack.igsExeSar =
+
+NW_Unpack.igsHelperSar =
+
+NW_Unpack.sapExeDbSar =
+
+NW_Unpack.sapExeSar =
+
+NW_Unpack.sapJvmSar =
+
+NW_Unpack.xs2Sar =
+
+NW_adaptProfile.templateFiles =
+
+# The FQDN of the system.
+NW_getFQDN.FQDN =
+
+# Do we want to set the FQDN for the system?
+NW_getFQDN.setFQDN = false
+
+# The path to the JCE policy archive to install into the Java home directory
+# if it is not already installed.
+NW_getJavaHome.jcePolicyArchive =
+
+hostAgent.domain =
+
+# Password for the SAP Host Agent specific sapadm user. Provided value may be
+# encoded.
+hostAgent.sapAdmPassword = <em class="replaceable ">MASTER_PASSWORD</em>
+
+nwUsers.sapDomain =
+
+nwUsers.sapServiceSIDPassword =
+
+nwUsers.sidadmPassword =
+            ]]&gt;
+      &lt;/iniFile&gt;
+    &lt;/product&gt;
+  &lt;/products&gt;
+&lt;/sap-inst&gt;</pre></div></div></div></div></div><div class="page-bottom"><div id="_bottom-navigation"><a class="nav-link" href="cha-s4s-upgrade-sap-hana-cluster.html"><span class="next-icon">→</span><span class="nav-label"><span class="number">Chapter 5 </span>Upgrading an SAP HANA Cluster</span></a><a class="nav-link" href="cha-s4s-install.html"><span class="prev-icon">←</span><span class="nav-label"><span class="number">Chapter 3 </span>Installing the Operating System</span></a></div><div class="_share-print"><div class="online-contents share"><strong>Share this page: </strong><span class="share-buttons"><span class="_share-fb bottom-button">Facebook</span><span class="spacer"> • </span><span class="_share-in bottom-button">LinkedIn</span><span class="spacer"> • </span><span class="_share-tw bottom-button">Twitter</span><span class="spacer"> • </span><span class="_share-mail bottom-button">E-Mail</span></span></div><div class="print"><span class="_print-button bottom-button">Print this page</span></div><div class="clearme"></div></div></div></div><div id="_inward"></div></div><div id="_footer-wrap"><div id="_footer"><p>©
+        2021 
+        SUSE</p><ul><li><a href="https://jobs.suse.com/" target="_top">Careers</a></li><li><a href="https://www.suse.com/company/legal/" target="_top">Legal</a></li><li><a href="https://www.suse.com/company/about/" target="_top">About</a></li><li><a href="https://www.suse.com/contact/" target="_top">Contact Us</a></li></ul></div></div></body></html>
