@@ -24,8 +24,8 @@ hljs.configure({
    This section lists minimum hardware requirements for the installation of
    SUSE Linux Enterprise Server for SAP Applications and gives basic guidance on the expected hardware requirements of
    certain SAP software. For the most up-to-date information about the
-   hardware requirements of SAP software, see the official sizing
-   guidelines at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>.
+   hardware requirements of SAP software, see the official sizing guidelines
+   at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>.
   </p><div class="variablelist "><dl class="variablelist"><dt id="id-1.5.3.3.1"><span class="term ">Supported CPU</span></dt><dd><p>
       Intel 64/AMD64
      </p><p>
@@ -34,12 +34,11 @@ hljs.configure({
       IBM POWER 9 (with PowerVM)
      </p></dd><dt id="id-1.5.3.3.2"><span class="term ">Hard disk</span></dt><dd><p>
       SUSE Linux Enterprise Server for SAP Applications requires at least 41 GB (without swap) of hard disk space for the
-      system volume.
-      In addition to that, reserve an appropriate amount of hard disk space
-      for the swap partition.
+      system volume. In addition to that, reserve an appropriate amount of hard
+      disk space for the swap partition.
      </p><p>
-      To install an SAP application such as SAP NetWeaver, you need at least 200 GB of
-      free disk space in addition to the required space for the operating
+      To install an SAP application such as SAP NetWeaver, you need at least 200 GB
+      of free disk space in addition to the required space for the operating
       system for the application's <code class="filename">/data</code> partition.
      </p><p>
       To install SAP HANA, you need either:
@@ -74,36 +73,34 @@ hljs.configure({
      </p></dd></dl></div><p>
    For more information about configuring hardware for SAP HANA, see
    <em class="citetitle ">SAP Note 1944415: Hardware Configuration Guide and Software
-   Installation Guide for SUSE Linux Enterprise Server with SAP HANA and
-   SAP Business One</em>
-   (<a class="link" href="https://launchpad.support.sap.com/#/notes/1944415" target="_blank">https://launchpad.support.sap.com/#/notes/1944415</a>).
+   Installation Guide for SUSE Linux Enterprise Server with SAP HANA and SAP
+   Business One</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1944415" target="_blank">https://launchpad.support.sap.com/#/notes/1944415</a>).
   </p><p>
    For more information about partitioning, see
    <a class="xref" href="cha-plan.html#sec-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
   </p></div><div class="sect1 " id="sec-download"><div class="titlepage"><div><div><h2 class="title"><span class="number">2.2 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Installation image</span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-download">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_planning.xml</li><li><span class="ds-label">ID: </span>sec-download</li></ul></div></div></div></div><p>
-   Unlike previous SLE products, the entire SLE 15 SP3
-   product line can be installed from a single installation medium:
-   <code class="literal">SLE 15 SP3 Online media 1</code>. To
-   install without network access or registration, download the
-   <code class="literal">SLE 15 SP3 Full media 1</code> image. Both ISO images
-   are available from <a class="link" href="https://download.suse.com/" target="_blank">https://download.suse.com/</a>.
+   Unlike previous SLE products, the entire SLE 15 SP3 product
+   line can be installed from a single installation medium:
+   <code class="literal">SLE 15 SP3 Online media 1</code>. To install
+   without network access or registration, download the
+   <code class="literal">SLE 15 SP3 Full media 1</code> image. Both ISO
+   images are available from <a class="link" href="https://download.suse.com/" target="_blank">https://download.suse.com/</a>.
   </p><p>
    Burn the image onto a physical DVD or copy it to a removable flash disk.
    Make sure the size of the disk is sufficient for the desired image.
-   Alternatively, use a virtual DVD-ROM device for installation
-   in a virtual machine.
-  </p><div id="id-1.5.4.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: 
-    Copying the Installation Media Image to a Removable Flash Disk
-   </h6><p>
-    Use the following command to copy the contents of the installation image
-    to a removable flash disk.
+   Alternatively, use a virtual DVD-ROM device for installation in a virtual
+   machine.
+  </p><div id="id-1.5.4.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Copying the installation media image to a removable flash disk</h6><p>
+    Use the following command to copy the contents of the installation image to
+    a removable flash disk.
    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">tux &gt; </code><code class="command">sudo</code> dd if=<em class="replaceable ">IMAGE</em> of=<em class="replaceable ">FLASH_DISK</em> bs=4M &amp;&amp; sync</pre></div><p>
-    Replace <em class="replaceable ">IMAGE</em> with the path to the
-    installation media image file and <em class="replaceable ">FLASH_DISK</em>
-    with the flash device.
+    Replace <em class="replaceable ">IMAGE</em> with the path to the installation
+    media image file and <em class="replaceable ">FLASH_DISK</em> with the flash
+    device.
    </p></div></div><div class="sect1 " id="sec-migration"><div class="titlepage"><div><div><h2 class="title"><span class="number">2.3 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Offline migration</span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-migration">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_planning.xml</li><li><span class="ds-label">ID: </span>sec-migration</li></ul></div></div></div></div><p>
-   The migration paths for SUSE Linux Enterprise Server are identical to those for SUSE Linux Enterprise Server for SAP Applications.
-   Find detailed information in the <span class="emphasis"><em>Upgrade Guide</em></span> at <a class="link" href="https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html" target="_blank">https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html</a>.
+   The migration paths for SUSE Linux Enterprise Server are identical to those for SUSE Linux Enterprise Server for SAP Applications. Find
+   detailed information in the <span class="emphasis"><em>Upgrade Guide</em></span> at
+   <a class="link" href="https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html" target="_blank">https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html</a>.
   </p></div><div class="sect1 " id="sec-how-install"><div class="titlepage"><div><div><h2 class="title"><span class="number">2.4 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Installation methods</span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-how-install">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_planning.xml</li><li><span class="ds-label">ID: </span>sec-how-install</li></ul></div></div></div></div><p>
    There are multiple ways of installing SUSE Linux Enterprise Server for SAP Applications:
   </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
@@ -117,41 +114,42 @@ hljs.configure({
      Installation of the operating system (SUSE Linux Enterprise Server). See
      <a class="xref" href="cha-install.html#sec-install-workflow" title="3.1. Using the installation workflow">Section 3.1, “Using the installation workflow”</a>.
     </p></li><li class="listitem "><p>
-     SAP Installation Wizard, part 1: Copying all required SAP media to the
-     local disk or selecting a shared storage medium to use.
-     See <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
+     SAP Installation Wizard, part 1: Copying all required SAP media to the local disk or
+     selecting a shared storage medium to use. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
      <a class="xref" href="cha-install-sap.html#st-copy-master" title="Step 1">Step 1</a>.
     </p></li><li class="listitem "><p>
-     SAP Installation Wizard, part 2: Collecting all parameters for the
-     actual installation by querying the user interactively.
-     See <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
+     SAP Installation Wizard, part 2: Collecting all parameters for the actual installation by
+     querying the user interactively. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
      <a class="xref" href="cha-install-sap.html#st-collect-parameter" title="Step 10">Step 10</a>.
     </p></li><li class="listitem "><p>
-     SAP Installation Wizard, part 3: Running the SAP Installer.
-     See <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
+     SAP Installation Wizard, part 3: Running the SAP Installer. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.3. Using the SAP Installation Wizard">Section 4.3, “Using the SAP Installation Wizard”</a>, in particular
      <a class="xref" href="cha-install-sap.html#st-sapinst" title="Step 13">Step 13</a>.
     </p></li></ol></div><p>
-   Most of these steps do not need to be run immediately after each other, which
-   allows for flexibility in how you install systems.
-   This means that you can prepare a single installation
-   as a first step and then continue from there. For example:
+   Most of these steps do not need to be run immediately after each other,
+   which allows for flexibility in how you install systems. This means that you
+   can prepare a single installation as a first step and then continue from
+   there. For example:
   </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
      Install the operating system (SUSE Linux Enterprise Server) only.
     </p><p>
      <span class="emphasis"><em>or</em></span>
     </p></li><li class="listitem "><p>
-     Install the operating system (SUSE Linux Enterprise Server), copy SAP media, and collect
-     SAP installation parameters.
+     Install the operating system (SUSE Linux Enterprise Server), copy SAP media, and collect SAP
+     installation parameters.
     </p></li></ul></div><p>
    Then, create disk images, copy them to other systems, and adjust SAP
    installation parameters. Finally, finish the installation on each machine
    individually.
   </p></div><div class="sect1 " id="sec-data"><div class="titlepage"><div><div><h2 class="title"><span class="number">2.6 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Required data for installing</span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-data">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_planning.xml</li><li><span class="ds-label">ID: </span>sec-data</li></ul></div></div></div></div><div class="variablelist "><dl class="variablelist"><dt id="id-1.5.8.2.1"><span class="term ">Operating system</span></dt><dd><p>
-      The SUSE Linux Enterprise Server installation requires the following data for every
-      physical server:
+      The SUSE Linux Enterprise Server installation requires the following data for every physical
+      server:
      </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
-        Network configuration parameters, such as host name, domain, IP address,
-        subnet mask, domain search list (DNS), IP for name server, IP for gateway
+        Network configuration parameters, such as host name, domain, IP
+        address, subnet mask, domain search list (DNS), IP for name server, IP
+        for gateway
        </p></li><li class="listitem "><p>
         Administrator (<code class="systemitem">root</code>) password for the SUSE Linux Enterprise Server
         installation
@@ -164,8 +162,9 @@ hljs.configure({
        </p></li><li class="listitem "><p>
         A password for the SAP application
        </p></li></ul></div><p>
-      Depending on the SAP application you are installing, more parameters may be
-      necessary, such as T-Shirt Sizing or parameters for virtual networking.
+      Depending on the SAP application you are installing, more parameters
+      may be necessary, such as T-Shirt Sizing or parameters for virtual
+      networking.
      </p></dd><dt id="id-1.5.8.2.3"><span class="term ">SAP HANA database</span></dt><dd><p>
       The installation of SAP HANA requires specifying:
      </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
@@ -173,10 +172,10 @@ hljs.configure({
        </p></li><li class="listitem "><p>
         SAP Instance Number
        </p></li><li class="listitem "><p>
-        Whether to enable Multitenant Database Containers (MDC).
-        The multi-tenant support of SAP HANA allows having multiple
-        databases that run as one SAP HANA installation.
-        (To use SAP HANA MDC, you need SAP HANA Life Cycle Manager.)
+        Whether to enable Multitenant Database Containers (MDC). The
+        multi-tenant support of SAP HANA allows having multiple databases that
+        run as one SAP HANA installation. (To use SAP HANA MDC, you need SAP HANA
+        Life Cycle Manager.)
        </p><p>
         For a single-tenant installation, choose <span class="guimenu ">No</span>.
        </p><p>
@@ -184,8 +183,8 @@ hljs.configure({
         <code class="systemitem"><em class="replaceable ">SID</em>adm</code>
         user, choose <span class="guimenu ">Yes with low isolation</span>.
        </p><p>
-        For a multi-tenant instance administrated in which each database
-        has its own
+        For a multi-tenant instance administrated in which each database has
+        its own
         <code class="systemitem"><em class="replaceable ">SID</em>adm</code>
         user, choose <span class="guimenu ">Yes with high isolation</span>.
        </p></li><li class="listitem "><p>
