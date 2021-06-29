@@ -770,7 +770,7 @@ Directory /sys/fs/cgroup/SAP.slice:
 2020-06-16T18:41:28.319423+02:00 server-03 sapwmp-capture: Successful capture into SAP.slice/wmp-r07a27e12d7f2491f8ccb9aeb0e080aaa.scope
 2020-06-16T18:41:28.319672+02:00 server-03 systemd[1]: Started wmp-r07a27e12d7f2491f8ccb9aeb0e080aaa.scope.
 ...</pre></div></li></ol></div></div><p>
-                To verify the correct setup, run <code class="command">wmp_check</code>.
+                To verify the correct setup, run <code class="command">wmp-check</code>.
                 The script checks the setup of Workload Memory Protection:
             </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
                         Correct setup of cgroup2.
@@ -893,7 +893,7 @@ ha0adm    3134 0::/SAP.slice/wmp-r73c594e050904c9c922a312dd9a28fd4.scope    en.s
 ha0adm    3327 0::/SAP.slice/wmp-ra42489517eb846c282c57681e627a496.scope    sapstart pf=/usr/sap/HA0/ERS10/profile/HA0_ERS10_sapha0er
 ...</pre></div><p>All instance processes except <code class="systemitem">sapstartsrv</code> have to be in a scope below
             <code class="systemitem">0::/SAP.slice/</code>.</p><p>
-            To verify the correct setup, use the <code class="command">wmp_check</code> tool.
+            To verify the correct setup, use the <code class="command">wmp-check</code> tool.
             See <a class="xref" href="cha-tune.html#sec-memory-protection-reboot-and-verification" title="8.5.3.2. Reboot and verification">Section 8.5.3.2, “Reboot and verification”</a> for more details.
         </p></div><div class="sect2 " id="sec-memory-protection-deinstallation"><div class="titlepage"><div><div><h3 class="title"><span class="number">8.5.8 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Deinstalling Workload Memory Protection</span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-memory-protection-deinstallation">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune_wmp.xml" title="Edit the source file for this section">Edit source</a></h3><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_tune_wmp.xml</li><li><span class="ds-label">ID: </span>sec-memory-protection-deinstallation</li></ul></div></div></div></div><div class="procedure "><div class="procedure-contents"><ol class="procedure" type="1"><li class="step "><p>Stop the SAP system completely. The <code class="systemitem">sapinit.service</code> has
                     to be stopped, but can stay enabled. All SAP processes have
