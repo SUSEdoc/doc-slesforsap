@@ -3,11 +3,8 @@
 <script type="text/javascript">
 
 if ( window.location.protocol.toLowerCase() != 'file:' ) {
-  document.write('<link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css"></link>');
-}
-else {
-  document.write('<link rel="stylesheet" type="text/css" href="static/css/fonts-onlylocal.css"></link>');
-}
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
 
 </script><noscript><link rel="stylesheet" type="text/css" href="https://static.opensuse.org/fonts/fonts.css" /></noscript><script src="static/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="static/js/script.js" type="text/javascript"></script><script src="static/js/highlight.min.js" type="text/javascript"></script><script>
 
@@ -20,7 +17,7 @@ hljs.configure({
   useBR: false
 });
 
-</script></head><body class="draft single offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a></div><div id="_outer-wrap"><div id="_white-bg" style="background-color: #E11;"><div id="_header"><div id="_logo"><img src="static/images/logo.png" alt="Logo" /></div><div class="crumbs inactive"><a class="single-crumb" href="#book-s4s" accesskey="c"><span class="single-contents-icon"></span>Guide</a><div class="bubble-corner active-contents"></div></div><div class="clearme"></div></div></div><div id="_fixed-header-wrap" style="background-color: #E11;" class="inactive"><div id="_fixed-header"><div class="crumbs inactive"><a class="single-crumb" href="#book-s4s" accesskey="c"><span class="single-contents-icon"></span>Show Contents: Guide</a></div><div class="buttons"><a class="top-button button" href="#">Top</a><div class="clearme"></div></div><div class="clearme"></div></div><div class="active-contents bubble"><div class="bubble-container"><div id="_bubble-toc"><ol><li class="inactive"><a href="#pre-s4s"><span class="number"> </span><span class="name">About This Guide</span></a></li><li class="inactive"><a href="#cha-s4s-about"><span class="number">1 </span><span class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li class="inactive"><a href="#cha-s4s-plan"><span class="number">2 </span><span class="name">Planning the Installation</span></a></li><li class="inactive"><a href="#cha-s4s-install"><span class="number">3 </span><span class="name">Installing the Operating System</span></a></li><li class="inactive"><a href="#cha-s4s-install-sap"><span class="number">4 </span><span class="name">Installing SAP Applications</span></a></li><li class="inactive"><a href="#cha-s4s-upgrade-sap-hana-cluster"><span class="number">5 </span><span class="name">Upgrading an SAP HANA Cluster</span></a></li><li class="inactive"><a href="#cha-s4s-serve-mediaset"><span class="number">6 </span><span class="name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li class="inactive"><a href="#cha-s4s-cluster"><span class="number">7 </span><span class="name">Setting Up an SAP HANA Cluster</span></a></li><li class="inactive"><a href="#cha-s4s-tune"><span class="number">8 </span><span class="name">Tuning</span></a></li><li class="inactive"><a href="#cha-s4s-access"><span class="number">9 </span><span class="name">Firewalling</span></a></li><li class="inactive"><a href="#cha-s4s-configure-cryptctl"><span class="number">10 </span><span class="name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li class="inactive"><a href="#cha-clamsap"><span class="number">11 </span><span class="name">Protecting Against Malware with ClamSAP</span></a></li><li class="inactive"><a href="#cha-s4s-configure-rdp"><span class="number">12 </span><span class="name">Connecting via RDP</span></a></li><li class="inactive"><a href="#cha-s4s-image"><span class="number">13 </span><span class="name">Creating Operating System Images</span></a></li><li class="inactive"><a href="#cha-s4s-trouble"><span class="number">14 </span><span class="name">Important Log Files</span></a></li><li class="inactive"><a href="#app-s4s-additional-software"><span class="number">A </span><span class="name">Additional Software for SLES-SAP</span></a></li><li class="inactive"><a href="#app-s4s-autoyast-partition"><span class="number">B </span><span class="name">Partitioning for the SAP System Using AutoYaST</span></a></li><li class="inactive"><a href="#app-s4s-component-supplement"><span class="number">C </span><span class="name">Supplementary Media</span></a></li><li class="inactive"><a href="#id-1.21"><span class="number">D </span><span class="name">GNU Licenses</span></a></li></ol></div><div class="clearme"></div></div></div></div><div id="_toc-bubble-wrap"></div><div id="_content" class="draft "><div class="documentation"><div xml:lang="en" class="book" id="book-s4s" lang="en"><div class="titlepage"><div><h6 class="version-info"><span class="productname ">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber ">15</span></h6><div><h1 class="title"><span class="phrase">Guide</span> <a title="Permalink" class="permalink" href="#book-s4s">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/MAIN-SLES4SAP-guide.xml" title="Edit the source file for this section">Edit source</a></h1></div><div class="date"><span class="imprint-label">Publication Date: </span>June 14, 2021
+</script></head><body class="draft single offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a></div><div id="_outer-wrap"><div id="_white-bg" style="background-color: #E11;"><div id="_header"><div id="_logo"><img src="static/images/logo.svg" alt="Logo" /></div><div class="crumbs inactive"><a class="single-crumb" href="#book-s4s" accesskey="c"><span class="single-contents-icon"></span>Guide</a><div class="bubble-corner active-contents"></div></div><div class="clearme"></div></div></div><div id="_fixed-header-wrap" style="background-color: #E11;" class="inactive"><div id="_fixed-header"><div class="crumbs inactive"><a class="single-crumb" href="#book-s4s" accesskey="c"><span class="single-contents-icon"></span>Show Contents: Guide</a></div><div class="buttons"><a class="top-button button" href="#">Top</a><div class="clearme"></div></div><div class="clearme"></div></div><div class="active-contents bubble"><div class="bubble-container"><div id="_bubble-toc"><ol><li class="inactive"><a href="#pre-s4s"><span class="number"> </span><span class="name">About This Guide</span></a></li><li class="inactive"><a href="#cha-s4s-about"><span class="number">1 </span><span class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li class="inactive"><a href="#cha-s4s-plan"><span class="number">2 </span><span class="name">Planning the Installation</span></a></li><li class="inactive"><a href="#cha-s4s-install"><span class="number">3 </span><span class="name">Installing the Operating System</span></a></li><li class="inactive"><a href="#cha-s4s-install-sap"><span class="number">4 </span><span class="name">Installing SAP Applications</span></a></li><li class="inactive"><a href="#cha-s4s-upgrade-sap-hana-cluster"><span class="number">5 </span><span class="name">Upgrading an SAP HANA Cluster</span></a></li><li class="inactive"><a href="#cha-s4s-serve-mediaset"><span class="number">6 </span><span class="name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li class="inactive"><a href="#cha-s4s-cluster"><span class="number">7 </span><span class="name">Setting Up an SAP HANA Cluster</span></a></li><li class="inactive"><a href="#cha-s4s-tune"><span class="number">8 </span><span class="name">Tuning</span></a></li><li class="inactive"><a href="#cha-s4s-access"><span class="number">9 </span><span class="name">Firewalling</span></a></li><li class="inactive"><a href="#cha-s4s-configure-cryptctl"><span class="number">10 </span><span class="name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li class="inactive"><a href="#cha-clamsap"><span class="number">11 </span><span class="name">Protecting Against Malware with ClamSAP</span></a></li><li class="inactive"><a href="#cha-s4s-configure-rdp"><span class="number">12 </span><span class="name">Connecting via RDP</span></a></li><li class="inactive"><a href="#cha-s4s-image"><span class="number">13 </span><span class="name">Creating Operating System Images</span></a></li><li class="inactive"><a href="#cha-s4s-trouble"><span class="number">14 </span><span class="name">Important Log Files</span></a></li><li class="inactive"><a href="#app-s4s-additional-software"><span class="number">A </span><span class="name">Additional Software for SLES-SAP</span></a></li><li class="inactive"><a href="#app-s4s-autoyast-partition"><span class="number">B </span><span class="name">Partitioning for the SAP System Using AutoYaST</span></a></li><li class="inactive"><a href="#app-s4s-component-supplement"><span class="number">C </span><span class="name">Supplementary Media</span></a></li><li class="inactive"><a href="#id-1.21"><span class="number">D </span><span class="name">GNU Licenses</span></a></li></ol></div><div class="clearme"></div></div></div></div><div id="_toc-bubble-wrap"></div><div id="_content" class="draft "><div class="documentation"><div xml:lang="en" class="book" id="book-s4s" lang="en"><div class="titlepage"><div><h6 class="version-info"><span class="productname ">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber ">15</span></h6><div><h1 class="title"><span class="phrase">Guide</span> <a title="Permalink" class="permalink" href="#book-s4s">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/MAIN-SLES4SAP-guide.xml" title="Edit the source file for this section">Edit source</a></h1></div><div class="date"><span class="imprint-label">Publication Date: </span>July 02, 2021
 </div></div></div><div class="toc"><dl><dt><span class="preface"><a href="#pre-s4s"><span class="name">About This Guide</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#id-1.3.4"><span class="name">Overview</span></a></span></dt><dt><span class="sect1"><a href="#id-1.3.5"><span class="name">Available Documentation and Resources</span></a></span></dt><dt><span class="sect1"><a href="#id-1.3.6"><span class="name">Giving Feedback</span></a></span></dt><dt><span class="sect1"><a href="#id-1.3.7"><span class="name">Documentation Conventions</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-about"><span class="number">1 </span><span class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-component"><span class="number">1.1 </span><span class="name">Software Components</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-repository"><span class="number">1.2 </span><span class="name">Software Repository Setup</span></a></span></dt><dt><span class="sect1"><a href="#id-1.4.9"><span class="number">1.3 </span><span class="name">Product Life Cycle and Support</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-plan"><span class="number">2 </span><span class="name">Planning the Installation</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-hardware"><span class="number">2.1 </span><span class="name">Hardware Requirements</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-download"><span class="number">2.2 </span><span class="name">Downloading the Installation Image</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-migration"><span class="number">2.3 </span><span class="name">Offline Migration</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-how-install"><span class="number">2.4 </span><span class="name">Installation Methods</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-workflow-overview"><span class="number">2.5 </span><span class="name">Overview of the Installation Workflow</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-data"><span class="number">2.6 </span><span class="name">Required Data for Installing</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-partition"><span class="number">2.7 </span><span class="name">Partitioning</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-install"><span class="number">3 </span><span class="name">Installing the Operating System</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-install-workflow"><span class="number">3.1 </span><span class="name">Using the Installation Workflow</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-install-network"><span class="number">3.2 </span><span class="name">Using SLES-SAP Media from the Network</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-autoyast"><span class="number">3.3 </span><span class="name">Using an External AutoYaST Profile</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-convert-sles"><span class="number">3.4 </span><span class="name">Converting an SLES Installation to an SLES-SAP Installation</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-install-sap"><span class="number">4 </span><span class="name">Installing SAP Applications</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-install-sap-list"><span class="number">4.1 </span><span class="name">Products That Can Be Installed Using SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-install-sap-welcome"><span class="number">4.2 </span><span class="name">First Steps</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-install-sap-product"><span class="number">4.3 </span><span class="name">Using the SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-install-continue"><span class="number">4.4 </span><span class="name">Continuing an Installation Using an Installation Profile</span></a></span></dt><dt><span class="sect1"><a href="#sec-partition-command"><span class="number">4.5 </span><span class="name">Partitioning for an SAP Application without the SAP Installation Wizard</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-install-sap-autoyast"><span class="number">4.6 </span><span class="name">Automated Installation of SAP Applications with AutoYaST</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-upgrade-sap-hana-cluster"><span class="number">5 </span><span class="name">Upgrading an SAP HANA Cluster</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-preparing"><span class="number">5.1 </span><span class="name">Preparing the Upgrade</span></a></span></dt><dt><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-upgrading"><span class="number">5.2 </span><span class="name">Upgrading your SAP HANA Cluster</span></a></span></dt><dt><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-finishing"><span class="number">5.3 </span><span class="name">Finishing the Upgrade Task</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-serve-mediaset"><span class="number">6 </span><span class="name">Setting Up an Installation Server for SAP Media Sets</span></a></span></dt><dt><span class="chapter"><a href="#cha-s4s-cluster"><span class="number">7 </span><span class="name">Setting Up an SAP HANA Cluster</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-hana-cluster-prerequisite"><span class="number">7.1 </span><span class="name">Prerequisites</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-hana-cluster-wizard"><span class="number">7.2 </span><span class="name">Setup</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-hawk"><span class="number">7.3 </span><span class="name">Using Hawk</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-tune"><span class="number">8 </span><span class="name">Tuning</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-sapconf-4"><span class="number">8.1 </span><span class="name">Tuning Systems with <code class="literal">sapconf</code> 4</span></a></span></dt><dt><span class="sect1"><a href="#sec-sapconf-5"><span class="number">8.2 </span><span class="name">Tuning Systems with <code class="literal">sapconf</code> 5</span></a></span></dt><dt><span class="sect1"><a href="#sec-saptune"><span class="number">8.3 </span><span class="name">Tuning Systems with <code class="command">saptune</code></span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-sysctl"><span class="number">8.4 </span><span class="name">Tuning Kernel Parameters Manually Using <code class="command">sysctl</code></span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-memory-protection"><span class="number">8.5 </span><span class="name">Tuning Workload Memory Protection</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-access"><span class="number">9 </span><span class="name">Firewalling</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-configure-firewall"><span class="number">9.1 </span><span class="name">Configuring <code class="systemitem">firewalld</code></span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-firewall-hana"><span class="number">9.2 </span><span class="name">Configuring HANA-Firewall</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-saprouter"><span class="number">9.3 </span><span class="name">SAProuter Integration</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-configure-cryptctl"><span class="number">10 </span><span class="name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-server"><span class="number">10.1 </span><span class="name">Setting Up a <code class="command">cryptctl</code> Server</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-client"><span class="number">10.2 </span><span class="name">Setting Up a <code class="command">cryptctl</code> Client</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-status"><span class="number">10.3 </span><span class="name">Checking Partition Unlock Status Using Server-side Commands</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-unlock"><span class="number">10.4 </span><span class="name">Unlocking Encrypted Partitions Manually</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-lock"><span class="number">10.5 </span><span class="name">Maintenance Downtime Procedure</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-cryptctl-more"><span class="number">10.6 </span><span class="name">For More Information</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-clamsap"><span class="number">11 </span><span class="name">Protecting Against Malware with ClamSAP</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-clamsap-install"><span class="number">11.1 </span><span class="name">Installing ClamSAP</span></a></span></dt><dt><span class="sect1"><a href="#sec-clamsap-scannergroup"><span class="number">11.2 </span><span class="name">Creating a Virus Scanner Group in SAP NetWeaver</span></a></span></dt><dt><span class="sect1"><a href="#sec-clamsap-library"><span class="number">11.3 </span><span class="name">Setting Up the ClamSAP Library in SAP NetWeaver</span></a></span></dt><dt><span class="sect1"><a href="#sec-clamsap-changedir"><span class="number">11.4 </span><span class="name">Configuring the default location of virus definitions</span></a></span></dt><dt><span class="sect1"><a href="#sec-clamsap-engage"><span class="number">11.5 </span><span class="name">Engaging ClamSAP</span></a></span></dt><dt><span class="sect1"><a href="#sec-clamsap-more"><span class="number">11.6 </span><span class="name">For More Information</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-configure-rdp"><span class="number">12 </span><span class="name">Connecting via RDP</span></a></span></dt><dt><span class="chapter"><a href="#cha-s4s-image"><span class="number">13 </span><span class="name">Creating Operating System Images</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-configure-kiwi"><span class="number">13.1 </span><span class="name">Creating Images with KIWI</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-configure-scrub-instance"><span class="number">13.2 </span><span class="name">Cleaning Up an Instance Before Using It as a Master Image</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#cha-s4s-trouble"><span class="number">14 </span><span class="name">Important Log Files</span></a></span></dt><dt><span class="appendix"><a href="#app-s4s-additional-software"><span class="number">A </span><span class="name">Additional Software for SLES-SAP</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#id-1.18.4"><span class="number">A.1 </span><span class="name">Identifying a Base Product for SUSE Linux Enterprise Server for SAP Applications</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-suseconnectprogram"><span class="number">A.2 </span><span class="name">SUSE Connect Program</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-packagehub"><span class="number">A.3 </span><span class="name">PackageHub</span></a></span></dt></dl></dd><dt><span class="appendix"><a href="#app-s4s-autoyast-partition"><span class="number">B </span><span class="name">Partitioning for the SAP System Using AutoYaST</span></a></span></dt><dt><span class="appendix"><a href="#app-s4s-component-supplement"><span class="number">C </span><span class="name">Supplementary Media</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#sec-s4s-component-supplement-productxml"><span class="number">C.1 </span><span class="name"><code class="filename">product.xml</code></span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-component-supplement-ask"><span class="number">C.2 </span><span class="name">Own AutoYaST Ask Dialogs</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-component-supplement-rpm"><span class="number">C.3 </span><span class="name">Installing Additional Packages</span></a></span></dt><dt><span class="sect1"><a href="#sec-s4s-supplement-directory"><span class="number">C.4 </span><span class="name">Example Directory for Supplementary Media</span></a></span></dt></dl></dd><dt><span class="appendix"><a href="#id-1.21"><span class="number">D </span><span class="name">GNU Licenses</span></a></span></dt><dd><dl><dt><span class="sect1"><a href="#id-1.21.4"><span class="number">D.1 </span><span class="name">GNU Free Documentation License</span></a></span></dt></dl></dd></dl></div><div class="list-of-figures"><div class="toc-title">List of Figures</div><dl><dt><span class="figure"><a href="#fig-s4s-offering"><span class="number">1.1 </span><span class="name">Offerings of SUSE Linux Enterprise Server for SAP Applications</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-dvd-bootmenu"><span class="number">3.1 </span><span class="name">DVD Boot Menu</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-install-license"><span class="number">3.2 </span><span class="name">Language, Keyboard and Product Selection</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-install-reg-dialog"><span class="number">3.3 </span><span class="name">Registration</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-install-type"><span class="number">3.4 </span><span class="name">System Role</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-install-partition"><span class="number">3.5 </span><span class="name">Suggested Partitioning</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-install-overview"><span class="number">3.6 </span><span class="name">Installation Settings</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-sap-wizard-source"><span class="number">4.1 </span><span class="name">Location of SAP Installation Master</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-sap-wizard-sapmedia"><span class="number">4.2 </span><span class="name">SAP Installation Wizard: Additional Installation Media</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-sap-wizard-mode-db"><span class="number">4.3 </span><span class="name">SAP Installation Wizard: Installation Type and Database</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-sap-wizard-avail-products"><span class="number">4.4 </span><span class="name">SAP Installation Wizard: Choose a Product</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-product-parameter"><span class="number">4.5 </span><span class="name">Product Parameters</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-sapinst-param"><span class="number">4.6 </span><span class="name">SAP Installer: Defining Parameters</span></a></span></dt><dt><span class="figure"><a href="#id-1.10.8.2.11.4"><span class="number">7.1 </span><span class="name">SAP HANA Options (Cost-Optimized Scenario)</span></a></span></dt><dt><span class="figure"><a href="#fig-s4s-cryptctl-retrieve"><span class="number">10.1 </span><span class="name">Key Retrieval with <code class="command">cryptctl</code> (Model Without Connection to KMIP Server)</span></a></span></dt><dt><span class="figure"><a href="#fig-clamsap-add-entry"><span class="number">11.1 </span><span class="name"></span></a></span></dt><dt><span class="figure"><a href="#fig-clamsap-add-value"><span class="number">11.2 </span><span class="name"></span></a></span></dt><dt><span class="figure"><a href="#fig-clamsap-scanner-change"><span class="number">11.3 </span><span class="name">Change View <span class="quote">“<span class="quote ">Virus Scan Provider Definition</span>”</span></span></a></span></dt><dt><span class="figure"><a href="#fig-clamsap-summary"><span class="number">11.4 </span><span class="name">Summary of ClamSAP Data</span></a></span></dt></dl></div><div class="list-of-tables"><div class="toc-title">List of Tables</div><dl><dt><span class="table"><a href="#tab-s4s-repository"><span class="number">1.1 </span><span class="name">Standard Repositories</span></a></span></dt><dt><span class="table"><a href="#tab-sap-media-source"><span class="number">4.1 </span><span class="name">Media Source Path</span></a></span></dt></dl></div><div class="list-of-examples"><div class="toc-title">List of Examples</div><dl><dt><span class="example"><a href="#ex-sapconf-change-parameter"><span class="number">8.1 </span><span class="name">Checking Parameters</span></a></span></dt><dt><span class="example"><a href="#ex-sapconf-change-parameter-5"><span class="number">8.2 </span><span class="name">Checking Parameters</span></a></span></dt></dl></div><div><div xml:lang="en" class="legalnotice" id="id-1.2.6" lang="en"><p>
   Copyright © 2010–2021
 
@@ -165,23 +162,23 @@ hljs.configure({
     Commands that can be run by non-privileged users.
    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">tux &gt; </code><code class="command">command</code></pre></div></li><li class="listitem "><p>
     Notices
-   </p><div id="id-1.3.7.4.13.2" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: Warning Notice</h6><p>
+   </p><div id="id-1.3.7.4.13.2" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg" /><h6>Warning: Warning Notice</h6><p>
      Vital information you must be aware of before proceeding. Warns you about
      security issues, potential loss of data, damage to hardware, or physical
      hazards.
-    </p></div><div id="id-1.3.7.4.13.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Important Notice</h6><p>
+    </p></div><div id="id-1.3.7.4.13.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Important Notice</h6><p>
      Important information you should be aware of before proceeding.
-    </p></div><div id="id-1.3.7.4.13.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Note Notice</h6><p>
+    </p></div><div id="id-1.3.7.4.13.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Note Notice</h6><p>
      Additional information, for example about differences in software
      versions.
-    </p></div><div id="id-1.3.7.4.13.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Tip Notice</h6><p>
+    </p></div><div id="id-1.3.7.4.13.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Tip Notice</h6><p>
      Helpful information, like a guideline or a piece of practical advice.
     </p></div></li><li class="listitem "><p>
     Compact Notices
-   </p><div id="id-1.3.7.4.14.2" class="admonition note compact"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><p>
+   </p><div id="id-1.3.7.4.14.2" class="admonition note compact"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><p>
      Additional information, for example about differences in software
      versions.
-    </p></div><div id="id-1.3.7.4.14.3" class="admonition tip compact"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><p>
+    </p></div><div id="id-1.3.7.4.14.3" class="admonition tip compact"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><p>
      Helpful information, like a guideline or a piece of practical advice.
     </p></div></li></ul></div></div></div><div class="chapter " id="cha-s4s-about"><div class="titlepage"><div><div><h1 class="title"><span class="number">1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">What Is SUSE Linux Enterprise Server for SAP Applications?</span> <a title="Permalink" class="permalink" href="#cha-s4s-about">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_about.xml" title="Edit the source file for this section">Edit source</a></h1><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_about.xml</li><li><span class="ds-label">ID: </span>cha-s4s-about</li></ul></div></div><div><div class="abstract"><p>
    SUSE® Linux Enterprise Server for SAP Applications is a bundle of software and services that addresses the
@@ -391,7 +388,7 @@ hljs.configure({
       <span class="guimenu ">SAP HANA Server Base</span>
      </p></li><li class="listitem "><p>
       <span class="guimenu ">SAP NetWeaver Server Base</span>
-     </p></li></ul></div><div id="id-1.4.7.9.5.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: 
+     </p></li></ul></div><div id="id-1.4.7.9.5.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: 
      Packages May Be Missing from Patterns
     </h6><p>
      The selection of packages of the software patterns is defined while a
@@ -497,7 +494,7 @@ hljs.configure({
   </p><p>
    Because there are own repositories for SUSE Linux Enterprise Server for SAP Applications, SUSE can ship
    packages and patches that are specific to SUSE Linux Enterprise Server for SAP Applications.
-  </p><div id="id-1.4.8.10" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: ESPOS Updates Shipped Directly in Update Repositories</h6><p>
+  </p><div id="id-1.4.8.10" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: ESPOS Updates Shipped Directly in Update Repositories</h6><p>
     Unlike in SUSE Linux Enterprise Server for SAP Applications 11, updates related to Extended Service Pack
     Overlay Support (ESPOS) are shipped directly from the
     <code class="literal">Update</code> repositories. This means there is no separate
@@ -556,7 +553,7 @@ hljs.configure({
     </p><p>
      For more information, see <em class="citetitle ">SAP Note 1056161: SUSE
      Priority Support for SAP Applications</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>).
-    </p></dd></dl></div><div id="id-1.4.9.3.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Life Cycle and Support for Modules and Extensions</h6><p>
+    </p></dd></dl></div><div id="id-1.4.9.3.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Life Cycle and Support for Modules and Extensions</h6><p>
    Modules and extensions have a different life cycle than SLES-SAP and SUSE
    provides different support offerings for them:
   </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
@@ -891,7 +888,7 @@ hljs.configure({
   </p><p>
    This section guides you through the installation of the SUSE Linux Enterprise Server for SAP Applications
    operating system.
-  </p><div id="id-1.6.3.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Installing Oracle Databases</h6><p>
+  </p><div id="id-1.6.3.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Installing Oracle Databases</h6><p>
     To be able to install an Oracle database later, install
     SUSE Linux Enterprise Server first and then convert your installation to SUSE Linux Enterprise Server for SAP Applications.
    </p><p>
@@ -950,7 +947,7 @@ hljs.configure({
     </p><p>
      When you are finished configuring networking, proceed with
      <span class="guimenu ">Next</span>.
-    </p><div id="id-1.6.3.7.7.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
+    </p><div id="id-1.6.3.7.7.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
       Make sure to configure the network connection as recommended in the
       documentation provided to you by SAP.
      </p></div><p>
@@ -966,7 +963,7 @@ hljs.configure({
      the entitlement to technical support.
     </p><p>
      Proceed with <span class="guimenu ">Next</span>.
-    </p><div id="id-1.6.3.7.8.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Register at This Step</h6><p>
+    </p><div id="id-1.6.3.7.8.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Register at This Step</h6><p>
       Make sure to register your system at this step in the installation.
       Otherwise, you can only install a minimal SLE system and will not
       receive updates.
@@ -987,7 +984,7 @@ hljs.configure({
      activate its entry.
     </p><p>
      Proceed with <span class="guimenu ">Next</span>.
-    </p><div id="id-1.6.3.7.10.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Release Notes</h6><p>
+    </p><div id="id-1.6.3.7.10.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Release Notes</h6><p>
       From this point on, the Release Notes can be viewed from any screen during
       the installation process by selecting <span class="guimenu ">Release Notes</span>.
      </p></div><p>
@@ -1092,7 +1089,7 @@ hljs.configure({
      (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
     </p><p>
      Proceed with <span class="guimenu ">Next</span>.
-    </p><div id="id-1.6.3.8.5.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Do Not Forget the <code class="systemitem">root</code> Password</h6><p>
+    </p><div id="id-1.6.3.8.5.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Do Not Forget the <code class="systemitem">root</code> Password</h6><p>
       The user <code class="systemitem">root</code> has the
       permission to carry out all administrative tasks. Without this password,
       you cannot log in to the system as
@@ -1104,7 +1101,7 @@ hljs.configure({
      Each setting is shown alongside its current configuration.
      To change parts of the configuration, click the appropriate headline or
      other underlined items.
-    </p><div id="id-1.6.3.8.6.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Firewall Configuration</h6><p>
+    </p><div id="id-1.6.3.8.6.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Firewall Configuration</h6><p>
       The software firewall of SLES-SAP is enabled by default.
       However, often, the ports your SAP product requires to be open
       are not opened automatically.
@@ -1119,7 +1116,7 @@ hljs.configure({
      Depending on your software selection, you may need to agree to further
      license agreements before you are asked to confirm that you want to start
      the installation process.
-    </p><div id="id-1.6.3.8.7.3" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: Deletion of Data</h6><p>
+    </p><div id="id-1.6.3.8.7.3" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg" /><h6>Warning: Deletion of Data</h6><p>
       The installation process fully or partially overwrites existing
       data on the disk.
      </p></div><p>
@@ -1194,7 +1191,7 @@ hljs.configure({
    To use it, follow the instructions on the linked page. Make sure to use
    the version of this script that is appropriate for your operating system
    version.
-  </p><div id="id-1.6.6.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Script Does Not Install Default SLES-SAP Packages</h6><p>
+  </p><div id="id-1.6.6.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Script Does Not Install Default SLES-SAP Packages</h6><p>
     The script does not install all packages that are included with a default
     SLES-SAP installation. However, you can install these yourself manually.
     To install the default package selection, use:
@@ -1211,7 +1208,7 @@ hljs.configure({
    Using the SAP Installation Wizard, you can install stand-alone SAP HANA database instances.
    Additionally, the following SAP products (along with a database) can be
    installed using the SAP Installation Wizard:
-  </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>SAP S/4HANA, on-premise edition 1511</p></li><li class="listitem "><p>SAP NetWeaver 7.5</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 2</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 1</p></li><li class="listitem "><p>SAP NetWeaver 7.4</p></li><li class="listitem "><p>SAP Enhancement Package 1 for SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.2</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP EHP1 SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP Business Suite powered by SAP HANA</p></li><li class="listitem "><p>SAP Business Suite 7i 2016</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 2</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 1</p></li><li class="listitem "><p>SAP Business Suite 7i 2011 Java</p></li><li class="listitem "><p>SAP Business Suite 7i 2010 Java</p></li><li class="listitem "><p>SAP Business Suite 7 Support Release 1 Java</p></li><li class="listitem "><p>SAP Solution Manager 7.2 Support Release 1</p></li><li class="listitem "><p>SAP Solution Manager 7.1 powered by SAP HANA</p></li><li class="listitem "><p>SAP NetWeaver AS ABAP 7.4, OEM version 1.0</p></li></ul></div><div id="id-1.7.4.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Installation of Oracle Databases Not Possible</h6><p>
+  </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>SAP S/4HANA, on-premise edition 1511</p></li><li class="listitem "><p>SAP NetWeaver 7.5</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 2</p></li><li class="listitem "><p>SAP NetWeaver 7.4 Support Release 1</p></li><li class="listitem "><p>SAP NetWeaver 7.4</p></li><li class="listitem "><p>SAP Enhancement Package 1 for SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver 7.3</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.2</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP NetWeaver Composition Environment (CE) 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP EHP1 SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP EHP1 for SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP NetWeaver Mobile/Banking 7.1</p></li><li class="listitem "><p>SAP NetWeaver Process Integration 7.1</p></li><li class="listitem "><p>SAP NetWeaver Adaptive Computing Controller 7.1</p></li><li class="listitem "><p>SAP Business Suite powered by SAP HANA</p></li><li class="listitem "><p>SAP Business Suite 7i 2016</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 2</p></li><li class="listitem "><p>SAP Business Suite 7i 2013 Support Release 1</p></li><li class="listitem "><p>SAP Business Suite 7i 2011 Java</p></li><li class="listitem "><p>SAP Business Suite 7i 2010 Java</p></li><li class="listitem "><p>SAP Business Suite 7 Support Release 1 Java</p></li><li class="listitem "><p>SAP Solution Manager 7.2 Support Release 1</p></li><li class="listitem "><p>SAP Solution Manager 7.1 powered by SAP HANA</p></li><li class="listitem "><p>SAP NetWeaver AS ABAP 7.4, OEM version 1.0</p></li></ul></div><div id="id-1.7.4.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Installation of Oracle Databases Not Possible</h6><p>
      The SAP Installation Wizard does not allow installing products together with Oracle
      databases. To install an Oracle database, install the base product SUSE Linux Enterprise Server
      first, then install the Oracle database and later convert your
@@ -1233,7 +1230,7 @@ hljs.configure({
     </p><p>
      When you are finished configuring networking, proceed with
      <span class="guimenu ">Next</span>.
-    </p><div id="id-1.7.5.3.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
+    </p><div id="id-1.7.5.3.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Configure Networking as Recommended by SAP</h6><p>
       Make sure to configure the network connection according to the
       documentation of your SAP application.
      </p></div><p>
@@ -1260,7 +1257,7 @@ hljs.configure({
        now</span>
       </span></dt><dd><p>
         Create an SAP HANA file system on SAP BusinessOne-certified hardware.
-       </p><div id="id-1.7.5.3.3.2.2.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Hardware Requirements</h6><p>
+       </p><div id="id-1.7.5.3.3.2.2.2.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Hardware Requirements</h6><p>
          Make sure your machine fulfills the hardware requirements for SAP HANA
          detailed in <a class="xref" href="#sec-s4s-hardware" title="2.1. Hardware Requirements">Section 2.1, “Hardware Requirements”</a>.
          Otherwise, this option will not create a new file system and the
@@ -1279,7 +1276,7 @@ hljs.configure({
    To install other SAP applications or to create a more advanced SAP HANA
    setup, directly use one of the installation methods provided by SAP instead
    of this wizard.
-  </p><div id="id-1.7.6.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Installing an SAP Application in a Fully Installed System</h6><p>
+  </p><div id="id-1.7.6.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Installing an SAP Application in a Fully Installed System</h6><p>
     This process is documented as it appears during the installation workflow.
     However, it also applies to the YaST module <span class="guimenu ">SAP Installation Wizard</span>
     which is available in the installed system.
@@ -1288,7 +1285,7 @@ hljs.configure({
     <span class="guimenu ">Applications</span> › <span class="guimenu ">System</span> › <span class="guimenu ">YaST</span>, continue in the YaST control center
     by choosing
     <span class="guimenu ">Miscellaneous</span> › <span class="guimenu ">SAP Installation Wizard</span>.
-   </p></div><div id="id-1.7.6.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: SAP Installation Wizard Configuration</h6><p>
+   </p></div><div id="id-1.7.6.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: SAP Installation Wizard Configuration</h6><p>
     The SAP Installation Wizard configuration is specified and
     documented in
     <code class="filename">/etc/sysconfig/sap-installation-wizard</code>. You can
@@ -1394,7 +1391,7 @@ hljs.configure({
          <p>
           <code class="filename">[<em class="replaceable ">user_name</em>:<em class="replaceable ">password</em>@]<em class="replaceable ">server_name</em>/<em class="replaceable ">/path/to/dir/on/server</em>[?workgroup=<em class="replaceable ">workgroup_name</em>]</code>
          </p>
-        </td></tr></tbody></table></div></div><div id="id-1.7.6.6.1.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Remote Location Specification</h6><p>
+        </td></tr></tbody></table></div></div><div id="id-1.7.6.6.1.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Remote Location Specification</h6><p>
       To install from an NFS source, specify the name of
       the server and the complete path to the media data. For
       information about setting up a remote installation server, see
@@ -1509,7 +1506,7 @@ hljs.configure({
      <a class="xref" href="#st-s4s-copy-media" title="Step 3">Step 3</a>.
     </p><p>
      Otherwise, click <span class="guimenu ">No</span>.
-    </p><div id="id-1.7.6.6.8.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Difference Between Supplementary Media/Third-Party Media and Additional Software Repositories</h6><p>
+    </p><div id="id-1.7.6.6.8.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Difference Between Supplementary Media/Third-Party Media and Additional Software Repositories</h6><p>
       Both types of delivery mechanisms allow installing software
       that is neither part of the SUSE Linux Enterprise Server for SAP Applications media nor part of your Media Set
       from SAP. However, the delivery mechanism is different:
@@ -1535,7 +1532,7 @@ hljs.configure({
      (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
     </p><p>
      Proceed with <span class="guimenu ">Next</span>.
-    </p><div id="id-1.7.6.6.9.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Location of Copied SAP Media</h6><p>
+    </p><div id="id-1.7.6.6.9.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Location of Copied SAP Media</h6><p>
       At this point, all data required for the SAP installation has been
       copied to <code class="filename">/data/SAP_CDs</code> (unless you chose to skip
       the process of copying).
@@ -1591,7 +1588,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
       </p><p>
        Follow the SAP Installer as described in the documentation provided
        by SAP. Most configuration parameters are correctly filled already.
-      </p></li></ul></div><div class="figure" id="fig-s4s-sapinst-param"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sapinst_param.png" target="_blank"><img src="images/s4s_sapinst_param.png" width="" alt="SAP Installer: Defining Parameters" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.6: </span><span class="name">SAP Installer: Defining Parameters </span><a title="Permalink" class="permalink" href="#fig-s4s-sapinst-param">#</a></h6></div></div><div id="id-1.7.6.6.13.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Installation Log Files</h6><p>
+      </p></li></ul></div><div class="figure" id="fig-s4s-sapinst-param"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/s4s_sapinst_param.png" target="_blank"><img src="images/s4s_sapinst_param.png" width="" alt="SAP Installer: Defining Parameters" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 4.6: </span><span class="name">SAP Installer: Defining Parameters </span><a title="Permalink" class="permalink" href="#fig-s4s-sapinst-param">#</a></h6></div></div><div id="id-1.7.6.6.13.4" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Installation Log Files</h6><p>
       If the installation of the SAP application fails, refer to the
       installation log files. They are located in
       <code class="filename">/var/adm/autoinstall</code>. Failed installations are
@@ -1858,7 +1855,7 @@ nwUsers.sidadmPassword =
     </p><p>
      Point to the location where the SAP medium is located. If
      wanted, check the <span class="guimenu ">Mount an update medium on all hosts</span>
-     and provide the NFS share and path. </p><div id="id-1.8.7.2.5.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Differences between SAP HANA Version 1.0 and 2.0</h6><p> If you are upgrading from SAP HANA version 1.0 to
+     and provide the NFS share and path. </p><div id="id-1.8.7.2.5.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Differences between SAP HANA Version 1.0 and 2.0</h6><p> If you are upgrading from SAP HANA version 1.0 to
       version 2.0, make sure to check <span class="guimenu ">This is a HANA 1.0 to HANA
        2.0 upgrade</span>. </p><p> The YaST module will copy the <span class="emphasis"><em>PKI SSFS keys</em></span>
       from the former secondary node to the former primary node. More information
@@ -1882,7 +1879,7 @@ nwUsers.sidadmPassword =
     replication to its original state, click the <span class="guimenu ">Reverse</span>
     button.
    </p></li><li class="step "><p>Review the update summary.</p><p>You can review the original and current SAP HANA versions and the
-    cluster state.</p><div id="id-1.8.9.3.3.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Dealing with Intermediate Cluster State</h6><p>
+    cluster state.</p><div id="id-1.8.9.3.3.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Dealing with Intermediate Cluster State</h6><p>
       If the wizard is faster than the status update of the cluster resources,
       the summary shows an intermediate cluster state. The cluster state is
       <code class="literal">UNDEFINIED</code> or <code class="literal">DEMOTED</code>.
@@ -1907,7 +1904,7 @@ nwUsers.sidadmPassword =
     <code class="filename">/srv/www/htdocs/sap_repo</code>.
    </p></li><li class="step "><p>
     Open the file <code class="filename">/etc/exports</code> and add the following:
-   </p><div class="verbatim-wrap"><pre class="screen">/srv/www/htdocs/sap_repo *(ro,no_root_squash,sync,no_subtree_check,insecure)</pre></div><div id="id-1.9.4.3.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Executable Rights Must Be Visible</h6><p>
+   </p><div class="verbatim-wrap"><pre class="screen">/srv/www/htdocs/sap_repo *(ro,no_root_squash,sync,no_subtree_check,insecure)</pre></div><div id="id-1.9.4.3.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Executable Rights Must Be Visible</h6><p>
      Clients must be able to see which files are executable. Otherwise,
      SUSE's SAP Installation Wizard will not be able to execute the SAP Installer.
     </p></div></li><li class="step "><p>
@@ -1919,7 +1916,7 @@ nwUsers.sidadmPassword =
    </p></li><li class="step "><p>
     Copy the contents of each SAP medium to the corresponding directory
     with <code class="command">cp -a</code>.
-   </p><div id="id-1.9.4.5.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Avoid Using Windows* Operating Systems for Copying</h6><p>
+   </p><div id="id-1.9.4.5.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Avoid Using Windows* Operating Systems for Copying</h6><p>
      Using a Windows operating system for copying from/to Windows
      file systems like NTFS can break permission settings and capitalization
      of files and directories.
@@ -1955,7 +1952,7 @@ nwUsers.sidadmPassword =
     </p></li><li class="listitem "><p><span class="formalpara-title">Cost-optimized scenario: </span>
      <em class="citetitle ">Setting up a SAP HANA SR Cost Optimized
      Infrastructure</em>
-    </p></li></ul></div><div id="id-1.10.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Wizard Can Only Be Used for Initial Configuration</h6><p>
+    </p></li></ul></div><div id="id-1.10.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Wizard Can Only Be Used for Initial Configuration</h6><p>
    The YaST wizard described in the following can only be used for the
    initial cluster configuration.
   </p><p>
@@ -1965,7 +1962,7 @@ nwUsers.sidadmPassword =
    For more information about its usage, see <em class="citetitle "><em class="citetitle ">Administration Guide</em>, Part
    <span class="quote">“<span class="quote ">Installation, Setup and Upgrade</span>”</span>, Chapter <span class="quote">“<span class="quote ">Using the
    YaST Cluster Module</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
-  </p></div><div id="id-1.10.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Not Suitable for Cloud Deployments</h6><p>
+  </p></div><div id="id-1.10.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Not Suitable for Cloud Deployments</h6><p>
    The instructions in the following sections are suitable for deployments
    on physical machines. They are not intended for cloud-based
    deployments.
@@ -2147,7 +2144,7 @@ nwUsers.sidadmPassword =
      The disk must not use host-based RAID, cLVM2 or reside on
      a DRBD instance. The device can have a small size, for example,
      100 MB.
-    </p><div id="id-1.10.8.2.9.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: Data on Device Will Be Lost</h6><p>
+    </p><div id="id-1.10.8.2.9.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg" /><h6>Warning: Data on Device Will Be Lost</h6><p>
       All data on the chosen SBD device or devices will be deleted.
      </p></div><p>
      To define a device to use, click <span class="guimenu ">Add</span>, then choose an
@@ -2268,7 +2265,7 @@ nwUsers.sidadmPassword =
           hook script. When you are done, click <span class="guimenu ">OK</span> to save
           the hook script at
           <code class="filename">/hana/shared/<em class="replaceable ">SID</em>/srHook</code>.
-         </p><div id="id-1.10.8.2.11.2.2.2.1.2.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: Passwords Stored in Plain Text</h6><p>
+         </p><div id="id-1.10.8.2.11.2.2.2.1.2.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg" /><h6>Warning: Passwords Stored in Plain Text</h6><p>
            By default, the hook script stores all credentials in plain text.
            To improve security, modify the script yourself.
           </p></div></li></ul></div></dd></dl></div><p>
@@ -2310,7 +2307,7 @@ nwUsers.sidadmPassword =
      <span class="guimenu ">Username</span>: <code class="systemitem">hacluster</code>
     </p></li><li class="listitem "><p>
      <span class="guimenu ">Password</span>: <code class="literal">linux</code>
-    </p></li></ul></div><div id="id-1.10.9.7" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Secure Password</h6><p>
+    </p></li></ul></div><div id="id-1.10.9.7" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Secure Password</h6><p>
     Replace the default password with a secure one as soon as possible:
    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">passwd hacluster</code></pre></div></div><p>
    For more information about Hawk, see <em class="citetitle "><em class="citetitle ">Administration Guide</em>,
@@ -2324,7 +2321,7 @@ nwUsers.sidadmPassword =
    On SUSE Linux Enterprise Server for SAP Applications you have the choice between <code class="command">sapconf</code> and
    <code class="command">saptune</code>. However, <code class="command">saptune</code> is
    the more elaborate tool that offers more features.
-  </p><div id="id-1.11.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: The <code class="command">sapconf</code> Command Has Been Removed</h6><p>
+  </p><div id="id-1.11.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: The <code class="command">sapconf</code> Command Has Been Removed</h6><p>
     In SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 11 and 12, the <code class="command">sapconf</code> command
     was included in the package with the same name.
   </p><p>
@@ -2355,7 +2352,7 @@ nwUsers.sidadmPassword =
    To use <code class="literal">sapconf</code>, make sure
    that the packages <span class="package ">tuned</span> and
    <span class="package ">sapconf</span> are installed on your system.
-  </p><div id="id-1.11.5.9" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Unified Profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15</h6><p>
+  </p><div id="id-1.11.5.9" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Unified Profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15</h6><p>
     In SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15 and above, only a single <code class="systemitem">tuned</code> profile,
     <code class="literal">sapconf</code>, is shipped. It is equivalent to the profiles
     <code class="literal">sap-hana</code>/<code class="literal">sap-netweaver</code> shipped in
@@ -2408,7 +2405,7 @@ nwUsers.sidadmPassword =
      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">tuned-adm active</code></pre></div><p>
       If this command does not return the name of the currently active profile
       as <code class="literal">sapconf</code>, enable that profile:
-     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">tuned-adm profile sapconf</code></pre></div></li></ul></div><div id="id-1.11.5.10.8" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Additional Services that <code class="literal">sapconf</code> Relies On</h6><p>
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">tuned-adm profile sapconf</code></pre></div></li></ul></div><div id="id-1.11.5.10.8" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Additional Services that <code class="literal">sapconf</code> Relies On</h6><p>
      In addition to the <code class="literal">sapconf</code> service itself and the <code class="systemitem">tuned</code> service,
      <code class="literal">sapconf</code> also relies on the following two services:
     </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
@@ -2547,7 +2544,7 @@ nwUsers.sidadmPassword =
   </p><p>
    To use <code class="literal">sapconf</code>, make sure
    that the package <span class="package ">sapconf</span> is installed on your system.
-  </p><div id="id-1.11.6.8" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: No Profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15</h6><p>
+  </p><div id="id-1.11.6.8" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: No Profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15</h6><p>
     In SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15, <code class="literal">sapconf</code> no longer supports profiles.
    </p></div><div class="sect2 " id="sec-sapconf-5-verify"><div class="titlepage"><div><div><h3 class="title"><span class="number">8.2.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Verifying <code class="literal">sapconf</code> setup</span> <a title="Permalink" class="permalink" href="#sec-sapconf-5-verify">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_tune.xml" title="Edit the source file for this section">Edit source</a></h3><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_tune.xml</li><li><span class="ds-label">ID: </span>sec-sapconf-5-verify</li></ul></div></div></div></div><p>
     With <code class="literal">sapconf</code> 5.0.2 onwards the check tool <code class="command">sapconf_check</code> is available,
@@ -2599,7 +2596,7 @@ Sapconf will not work properly!</pre></div><p>
       If you have not specifically enabled any of the services that <code class="literal">sapconf</code>
       depends on yourself, this will also disable most tuning parameters and
       all services used by <code class="literal">sapconf</code>.
-     </p></li></ul></div><div id="id-1.11.6.10.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Additional Services that <code class="literal">sapconf</code> Relies On</h6><p>
+     </p></li></ul></div><div id="id-1.11.6.10.5" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Additional Services that <code class="literal">sapconf</code> Relies On</h6><p>
      In addition to the <code class="literal">sapconf</code> service it also relies on the following two services:
     </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p>
        <code class="systemitem">sysstat</code> which collects data on
@@ -2683,7 +2680,7 @@ Sapconf will not work properly!</pre></div><p>
     can be used independently.
     <code class="literal">sapconf</code> will print a warning in it's log if <code class="command">tuned</code> service
     is started.
-   </p><div id="id-1.11.6.14.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Important: Using <code class="command">tuned</code> and <code class="literal">sapconf</code> together</h6><p>
+   </p><div id="id-1.11.6.14.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Important: Using <code class="command">tuned</code> and <code class="literal">sapconf</code> together</h6><p>
      If you are going to use <code class="command">tuned</code> and <code class="literal">sapconf</code> simultaneously,
      be very careful, that bot tools do not configure the same system parameters.
     </p></div></div></div><div class="sect1 " id="sec-saptune"><div class="titlepage"><div><div><h2 class="title"><span class="number">8.3 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Tuning Systems with <code class="command">saptune</code></span> <a title="Permalink" class="permalink" href="#sec-saptune">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_tune.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_tune.xml</li><li><span class="ds-label">ID: </span>sec-saptune</li></ul></div></div></div></div><p>
@@ -2694,7 +2691,7 @@ Sapconf will not work properly!</pre></div><p>
    To use <code class="command">saptune</code>, make sure
    that the packages <span class="package ">tuned</span> and
    <span class="package ">saptune</span> are installed on your system.
-  </p><div id="id-1.11.7.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: <code class="systemitem">tuned</code> Daemon</h6><p>
+  </p><div id="id-1.11.7.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: <code class="systemitem">tuned</code> Daemon</h6><p>
     <code class="literal">sapconf</code> (only version 4) and <code class="command">saptune</code> both rely on the daemon <code class="systemitem">tuned</code> to set tuning
     configuration but they use different (though very similar) tuning
     profiles. Therefore, only one of <code class="literal">sapconf</code> or <code class="command">saptune</code> can be enabled at
@@ -2741,7 +2738,7 @@ Sapconf will not work properly!</pre></div><p>
       </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">saptune solution apply <em class="replaceable ">SOLUTION</em></code></pre></div></li><li class="listitem "><p>
        To set up <code class="command">saptune</code> for the recommendations of a specific
        SAP Note, use:
-      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">saptune note apply <em class="replaceable ">NOTE</em></code></pre></div></li></ul></div><div id="id-1.11.7.5.2.2.2" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Combining Optimizations</h6><p>
+      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">saptune note apply <em class="replaceable ">NOTE</em></code></pre></div></li></ul></div><div id="id-1.11.7.5.2.2.2" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Combining Optimizations</h6><p>
       You can freely combine <span class="quote">“<span class="quote ">solutions</span>”</span> and
       <span class="quote">“<span class="quote ">notes.</span>”</span> Combining multiple optimizations will never create
       conflicts.
@@ -2809,7 +2806,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
    <code class="command">sysctl</code> do not persist across reboots by default. To
    make them persist across reboots, add them to one of the configuration
    files read by <code class="command">sysctl</code>.
-  </p><div id="id-1.11.8.3" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: <code class="command">sysctl</code> and <code class="command">saptune</code></h6><p>
+  </p><div id="id-1.11.8.3" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: <code class="command">sysctl</code> and <code class="command">saptune</code></h6><p>
     If you plan to configure <code class="command">sysctl</code> parameters for your
     SAP system,
     consider using <code class="command">saptune</code> as the central tool for
@@ -2837,7 +2834,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
  </p><div class="sect1 " id="sec-s4s-configure-firewall"><div class="titlepage"><div><div><h2 class="title"><span class="number">9.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Configuring <code class="systemitem">firewalld</code></span> <a title="Permalink" class="permalink" href="#sec-s4s-configure-firewall">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_access.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_access.xml</li><li><span class="ds-label">ID: </span>sec-s4s-configure-firewall</li></ul></div></div></div></div><p>
    By default, the installation workflow of SUSE Linux Enterprise Server for SAP Applications enables
    <code class="systemitem">firewalld</code>.
-  </p><div id="id-1.12.3.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: <code class="systemitem">firewalld</code> Replaces SuSEfirewall2</h6><p>
+  </p><div id="id-1.12.3.3" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: <code class="systemitem">firewalld</code> Replaces SuSEfirewall2</h6><p>
     SUSE Linux Enterprise Server for SAP Applications 15 GA introduces <code class="systemitem">firewalld</code> as the new default
     software firewall, replacing SuSEfirewall2.
     SuSEfirewall2 has not been removed from SUSE Linux Enterprise Server for SAP Applications 15 GA
@@ -2877,7 +2874,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
      instead of using YaST.
     </p></li><li class="listitem "><p><span class="formalpara-title">Service <code class="systemitem">hana-firewall</code>. </span>
       Ensures that configured firewall rules for SAP HANA are kept.
-     </p></li></ul></div><div id="id-1.12.4.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: SAP HANA MDC Databases</h6><p>
+     </p></li></ul></div><div id="id-1.12.4.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: SAP HANA MDC Databases</h6><p>
     For multi-tenant SAP HANA (MDC) databases, determining the port numbers that
     need to be opened is not yet possible automatically.
     If you are working with a multi-tenant SAP HANA database system, before you
@@ -2892,7 +2889,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
    </p><p>
     The script will ask several questions: Importantly, it will ask for
     TCP and UDP port ranges that need to be opened.
-   </p></div><div id="id-1.12.4.6" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Install HANA-Firewall Packages</h6><p>
+   </p></div><div id="id-1.12.4.6" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Install HANA-Firewall Packages</h6><p>
     Before continuing, make sure that the packages
     <span class="package ">HANA-Firewall</span> and
     <span class="package ">yast2-hana-firewall</span> are installed.
@@ -2908,7 +2905,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
     </p><p>
      Choose whether you want to accept the proposal using
      <span class="guimenu ">Yes</span> or <span class="guimenu ">No</span>.
-    </p><div id="id-1.12.4.7.4.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Narrow Down Settings from Proposal</h6><p>
+    </p><div id="id-1.12.4.7.4.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Narrow Down Settings from Proposal</h6><p>
       The proposed settings allow all detected SAP HANA instances on all
       detected network interfaces. Narrow down the proposal to secure the
       system further.
@@ -2944,7 +2941,7 @@ Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y<
      Finally, check whether HANA-Firewall was enabled
      correctly:
     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">hana-firewall status</code>
-HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.png" /><h6>Tip: Checking Which Firewall Rules Are Enabled</h6><p>
+HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg" /><h6>Tip: Checking Which Firewall Rules Are Enabled</h6><p>
       Gaining an overview of which firewall rules are enabled in the current
       configuration of the script is possible using the command line:
      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root">root # </code><code class="command">hana-firewall dry-run</code></pre></div></div></li></ol></div></div><p>
@@ -3001,7 +2998,7 @@ HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3"
      <code class="command">cryptctl</code> server will not store the encryption keys of
      clients and is dependent upon the KMIP-compatible server to provide
      these.
-    </p></li></ul></div><div id="id-1.13.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.png" /><h6>Warning: <code class="command">cryptctl</code> Server Maintenance</h6><p>
+    </p></li></ul></div><div id="id-1.13.4" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg" /><h6>Warning: <code class="command">cryptctl</code> Server Maintenance</h6><p>
     Since the <code class="command">cryptctl</code> server manages timeouts for the
     encrypted disks and, depending on the configuration, can also hold
     encryption keys, it
@@ -3014,7 +3011,7 @@ HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3"
    To handle encryption, <code class="command">cryptctl</code> uses LUKS with
    aes-xts-256 encryption and 512-bit keys. Encryption keys are transferred
    using TLS with certificate verification.
-  </p><div class="figure" id="fig-s4s-cryptctl-retrieve"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/cryptctl-keyretrieval.png" target="_blank"><img src="images/cryptctl-keyretrieval.png" width="" alt="The client asks the server for the disk decryption key, the server responds" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 10.1: </span><span class="name">Key Retrieval with <code class="command">cryptctl</code> (Model Without Connection to KMIP Server) </span><a title="Permalink" class="permalink" href="#fig-s4s-cryptctl-retrieve">#</a></h6></div></div><div id="id-1.13.7" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Install <code class="command">cryptctl</code></h6><p>
+  </p><div class="figure" id="fig-s4s-cryptctl-retrieve"><div class="figure-contents"><div class="mediaobject"><a xmlns="" href="images/cryptctl-keyretrieval.png" target="_blank"><img src="images/cryptctl-keyretrieval.png" width="" alt="The client asks the server for the disk decryption key, the server responds" /></a></div></div><div class="figure-title-wrap"><h6 class="figure-title"><span class="number">Figure 10.1: </span><span class="name">Key Retrieval with <code class="command">cryptctl</code> (Model Without Connection to KMIP Server) </span><a title="Permalink" class="permalink" href="#fig-s4s-cryptctl-retrieve">#</a></h6></div></div><div id="id-1.13.7" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Install <code class="command">cryptctl</code></h6><p>
     Before continuing, make sure the package <span class="package ">cryptctl</span> is
     installed on all machines you intend to set up as servers or clients.
    </p></div><div class="sect1 " id="sec-s4s-configure-cryptctl-server"><div class="titlepage"><div><div><h2 class="title"><span class="number">10.1 </span><span xmlns:dm="urn:x-suse:ns:docmanager" class="name">Setting Up a <code class="command">cryptctl</code> Server</span> <a title="Permalink" class="permalink" href="#sec-s4s-configure-cryptctl-server">#</a><a class="report-bug" target="_blank" href="https://github.com/SUSE/doc-slesforsap/blob/develop/xml/s4s_encrypt.xml" title="Edit the source file for this section">Edit source</a></h2><div class="doc-status"><ul><li><span class="ds-label">File Name: </span>s4s_encrypt.xml</li><li><span class="ds-label">ID: </span>sec-s4s-configure-cryptctl-server</li></ul></div></div></div></div><p>
@@ -3077,7 +3074,7 @@ HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3"
         Additionally, provide a user name, password, a CA certificate for the
         KMIP server, and a client identity certificate for the
         <code class="command">cryptctl</code> server.
-       </p><div id="id-1.13.8.5.2.2.7.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: No Easy Reconfiguration of KMIP Setting</h6><p>
+       </p><div id="id-1.13.8.5.2.2.7.3" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: No Easy Reconfiguration of KMIP Setting</h6><p>
          The setting to use a KMIP server cannot easily be changed later. To
          change this setting, both the <code class="command">cryptctl</code> server and
          its clients need to be configured afresh.
@@ -3085,7 +3082,7 @@ HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3"
         Finally, configure an SMTP server for e-mail notifications for
         encryption and decryption requests or leave the prompt empty to skip
         setting up e-mail notifications.
-       </p><div id="id-1.13.8.5.2.2.8.2" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: Password-Protected Servers</h6><p>
+       </p><div id="id-1.13.8.5.2.2.8.2" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: Password-Protected Servers</h6><p>
          <code class="command">cryptctl</code> currently cannot send e-mail using
          authentication-protected SMTP servers. If that is necessary, set up
          a local SMTP proxy.
@@ -3167,7 +3164,7 @@ HANA firewall is active. Everything is OK.</pre></div><div id="id-1.12.4.7.10.3"
         be able to unlock its partitions again. That means this timeout
         should be set to a time slightly shorter than the reboot time of the
         client.
-       </p><div id="id-1.13.9.5.2.2.6.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Timeout Length</h6><p>
+       </p><div id="id-1.13.9.5.2.2.6.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Timeout Length</h6><p>
          If the time is set too long, the machine cannot decrypt
          encrypted partitions on the first try. <code class="command">cryptctl</code> will
          then continue to periodically check whether the encryption key has
@@ -3214,7 +3211,7 @@ Used By      When                  UUID  Max.Users  Num.Users  Mount Point
       For more
       safety, overwrite the content of the files before deleting them, for
       example, using <code class="command">shred -u</code>.
-     </p><div id="id-1.13.9.5.5.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: <code class="command">shred</code> Does Not Guarantee That Data Is Completely Erased</h6><p>
+     </p><div id="id-1.13.9.5.5.2" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: <code class="command">shred</code> Does Not Guarantee That Data Is Completely Erased</h6><p>
        Depending on the type of storage media, using
        <code class="command">shred</code> is not a guarantee that all data is
        completely removed. In particular, SSDs usually employ wear leveling
@@ -3403,7 +3400,7 @@ Active: active (running) since Tue 2017-04-11 10:33:03 UTC; 24h ago
       Remmina (available in openSUSE)
      </p></li><li class="listitem "><p><span class="formalpara-title">Windows: </span>
       Remote Desktop Connection
-     </p></li></ul></div><div id="id-1.15.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Connection Parameters</h6><p>
+     </p></li></ul></div><div id="id-1.15.5" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Connection Parameters</h6><p>
     Make sure to set up the connection with the following parameters:
    </p><div class="itemizedlist "><ul class="itemizedlist"><li class="listitem "><p><span class="formalpara-title">Port: </span>
        3389
@@ -3635,7 +3632,7 @@ sle-ha</pre></div></div><div class="sect1 " id="sec-s4s-suseconnectprogram"><div
    All software enabled by SUSE Connect Program originates from third
    parties. For support, contact the vendor in question. SUSE does not
    provide support for these offerings.
-  </p><div id="id-1.18.5.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: <code class="command">SUSEConnect</code> command-line tool</h6><p>
+  </p><div id="id-1.18.5.4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: <code class="command">SUSEConnect</code> command-line tool</h6><p>
     The <code class="command">SUSEConnect</code> command-line tool is a separate tool
     with a different purpose: It allows you to register installations of
     SUSE products.
@@ -3676,7 +3673,7 @@ sle-ha</pre></div></div><div class="sect1 " id="sec-s4s-suseconnectprogram"><div
   no partitioning is needed. In this case,
   <code class="sgmltag-element">partitioning</code> is set to <code class="literal">NO</code> and
   the file <code class="filename">base_partitioning.xml</code> is used.
- </p><div id="id-1.19.6" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.png" /><h6>Note: 
+ </p><div id="id-1.19.6" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg" /><h6>Note: 
    <code class="filename">autoinst.xml</code> Cannot Be Used Here
   </h6><p>
    <code class="filename">autoinst.xml</code> is only used for the installation
@@ -3718,7 +3715,7 @@ sle-ha</pre></div></div><div class="sect1 " id="sec-s4s-suseconnectprogram"><div
     include your custom file.
     In the <code class="sgmltag-element">listitem</code> for <code class="literal">TREX</code>, insert the
     following line:
-   </p><div class="verbatim-wrap"><pre class="screen">&lt;partitioning&gt;TREX_partitioning&lt;/partitioning&gt;</pre></div></li></ol></div></div><div id="id-1.19.10" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.png" /><h6>Important: Do Not Edit <code class="filename">base_partitioning.xml</code></h6><p>
+   </p><div class="verbatim-wrap"><pre class="screen">&lt;partitioning&gt;TREX_partitioning&lt;/partitioning&gt;</pre></div></li></ol></div></div><div id="id-1.19.10" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg" /><h6>Important: Do Not Edit <code class="filename">base_partitioning.xml</code></h6><p>
    Do not edit <code class="filename">base_partitioning.xml</code> directly. With
    the next update, this file will be overwritten.
   </p></div><p>
