@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP4 | Guide | Tuning systems with sapconf5</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Tuning systems with sapconf5 | SLES for SAP 12 SP4"/>
+<meta name="description" content="The package sapconf is available in SUSE Linux Enterpr…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP4"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 8. Tuning systems with sapconf5"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP4"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Tuning systems with sapconf5 | SLES for SAP 12 SP4"/>
+<meta property="og:description" content="The package sapconf is available in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications. It s…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tuning systems with sapconf5 | SLES for SAP 12 SP4"/>
+<meta name="twitter:description" content="The package sapconf is available in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications. It s…"/>
+<link rel="prev" href="cha-s4s-upgrade-sap-hana-cluster.html" title="Chapter 7. Upgrading a SAP HANA Cluster"/><link rel="next" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-tune-sapconf.html">Tuning systems with sapconf5</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">Upgrading a SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" you-are-here"><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" "><span class="title-number">10 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" "><span class="title-number">11 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="app-s4s-docupdate.html" class=" "><span class="title-number">D </span><span class="title-name">Documentation Updates</span></a></li><li><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU Licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-tune-sapconf" data-id-title="Tuning systems with sapconf5"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP4</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The package <code class="systemitem">sapconf</code> is available in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications.
+   It sets recommended parameters for the following types of SAP applications:
+   SAP NetWeaver, SAP HANA and SAP HANA-based applications.
+  </p><div id="id-1.11.3" data-id-title="The sapconf command has been removed in SUSE Linux Enterprise Server for SAP Applications 15" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: The <code class="command">sapconf</code> command has been removed in SUSE Linux Enterprise Server for SAP Applications 15</div><p>
+    In SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 11 and 12, the <code class="command">sapconf</code> command
+    was included in the package with the same name.
+  </p><p>
+    For SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15 this has been changed:
+    the command <code class="command">sapconf</code> have been removed from the
+    <span class="package">sapconf</span> package. The package contains a <code class="systemitem">systemd</code> service
+    only. There is no <code class="literal">sapconf</code> command line tool anymore, no <code class="literal">sapconf</code>/<code class="systemitem">tuned</code> profiles,
+    and no <code class="systemitem">tuned</code>.
+   </p><p>
+   Find more information about <code class="command">saptune</code> at <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>.
+  </p></div><section class="sect1" id="sec-sapconf-5-overview" data-id-title="Overview of sapconf5"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.1 </span><span class="title-name">Overview of <code class="literal">sapconf</code>5</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Overview of <code class="literal">sapconf</code>5 in SUSE® Linux Enterprise Server 12 </span></span><a title="Permalink" class="permalink" href="cha-tune-sapconf.html#id-1.11.4.3">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.11.4.3.2"><span class="term"><code class="literal">sapconf</code>5 (without <code class="systemitem">tuned</code>)</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><code class="systemitem">sapconf-netweaver</code> (<code class="literal">sapconf</code> profile as a replacement for <code class="systemitem">tuned</code> profile)</p></li><li class="listitem"><p><code class="systemitem">sapconf-hana</code> (<code class="literal">sapconf</code> profile as a replacement for <code class="systemitem">tuned</code> profile)</p></li><li class="listitem"><p><code class="systemitem">sapconf-bobj</code> (<code class="literal">sapconf</code> profile as a replacement for <code class="systemitem">tuned</code> profile)</p></li><li class="listitem"><p><code class="systemitem">sapconf-ase</code> (<code class="literal">sapconf</code> profile as a replacement for <code class="systemitem">tuned</code> profile)</p></li></ul></div></dd></dl></div><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Overview of <code class="literal">sapconf</code>5 in SUSE® Linux Enterprise Server 15 </span></span><a title="Permalink" class="permalink" href="cha-tune-sapconf.html#id-1.11.4.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.11.4.4.2"><span class="term"><code class="literal">sapconf</code>5 (without <code class="systemitem">tuned</code>)</span></dt><dd><p>no profiles anymore</p></dd></dl></div><p>
+   Note that if you previously made changes to the system tuning, those
+   changes may be overwritten by <code class="literal">sapconf</code>.
+  </p><p>
+   <code class="literal">sapconf</code> 5 ships a <code class="systemitem">systemd</code> service which applies the tuning and ensures that
+   related services are running.
+  </p><p>
+   To use <code class="literal">sapconf</code>, make sure
+   that the package <span class="package">sapconf</span> is installed on your system.
+  </p><div id="id-1.11.4.8" data-id-title="No profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 12 SP4" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: No profiles in SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 12 SP4</div><p>
+    In SUSE Linux Enterprise Server and SUSE Linux Enterprise Server for SAP Applications 15, <code class="literal">sapconf</code> no longer supports profiles.
+   </p></div></section><section class="sect1" id="sec-sapconf-5-verify" data-id-title="Verifying sapconf setup"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.2 </span><span class="title-name">Verifying <code class="literal">sapconf</code> setup</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-verify">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    With <code class="literal">sapconf</code> 5.0.2 onwards the check tool <code class="command">sapconf_check</code> is available,
+    which verifies the correct setup of <code class="literal">sapconf</code>. For example:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">sapconf_check</code>
+This is sapconf_check v1.0.
+It verifies if sapconf is set up correctly and will give advice to do so.
+Please keep in mind:
+- This tool does not check, if the tuning itself works correctly.
+- Follow the hints from top to down to minimize side effects.
+Checking sapconf
+================
+[ OK ] sapconf package has version 5.0.2
+[ OK ] saptune.service is inactive
+[ OK ] saptune.service is disabled
+[WARN] tuned.service is enabled/active with profile 'virtual-guest -&gt; Sapconf does not require tuned! Run 'systemctl stop tuned.service', if not needed otherwise.
+[FAIL] sapconf.service is inactive -&gt; Run 'systemctl start sapconf.service' to activate the tuning now.
+[FAIL] sapconf.service is disabled -&gt; Run 'systemctl enable sapconf.service' to activate sapconf at boot.1 warning(s) have been found.
+2 error(s) have been found.
+Sapconf will not work properly!</pre></div><p>
+    If <code class="command">sapconf_check</code> finds problems, it will give hints how to resolve the issue.
+    The tool will not verify if the system has been tuned correctly. It only checks that <code class="literal">sapconf</code>
+    is setup correctly and has been started.
+   </p></section><section class="sect1" id="sec-sapconf-5-enable" data-id-title="Enabling and disabling sapconf and viewing its status"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.3 </span><span class="title-name">Enabling and disabling <code class="literal">sapconf</code> and viewing its status</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-enable">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    After the installation of <code class="literal">sapconf</code>, the <code class="literal">sapconf</code> service is enabled.
+   </p><p>
+    You can inspect or change the status of <code class="literal">sapconf</code> as described in the
+    following:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      To see the status of the service
+      <code class="systemitem">sapconf</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl status sapconf</code></pre></div><p>
+      The service should be displayed as <span class="emphasis"><em>active (exited)</em></span>.
+     </p></li><li class="listitem"><p>
+      To start the service
+      <code class="systemitem">sapconf</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl start sapconf</code></pre></div></li><li class="listitem"><p>
+      Should <code class="systemitem">sapconf</code> be disabled,
+      enable and start it with:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl enable --now sapconf</code></pre></div></li><li class="listitem"><p>
+      To stop the service
+      <code class="systemitem">sapconf</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl stop sapconf</code></pre></div><p>
+      This command will disable the vast majority of optimizations immediately. The only
+      exceptions from this rule are options that require a system reboot to enable/disable.
+     </p></li><li class="listitem"><p>
+      To disable <code class="systemitem">sapconf</code>, use:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl disable sapconf</code></pre></div><p>
+      If you have not specifically enabled any of the services that <code class="literal">sapconf</code>
+      depends on yourself, this will also disable most tuning parameters and
+      all services used by <code class="literal">sapconf</code>.
+     </p></li></ul></div><div id="id-1.11.6.5" data-id-title="Additional services that sapconf relies on" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: Additional services that <code class="literal">sapconf</code> relies on</div><p>
+     In addition to the <code class="literal">sapconf</code> service it also relies on the following two services:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       <code class="systemitem">sysstat</code> which collects data on
+       system activity.
+      </p></li><li class="listitem"><p>
+       <code class="systemitem">uuidd</code> which generates time-based
+       UUIDs that are guaranteed to be unique even in settings where many
+       processor cores are involved. This is necessary for SAP applications.
+      </p></li></ul></div></div></section><section class="sect1" id="sec-sapconf-5-configure" data-id-title="Configuring sapconf5"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.4 </span><span class="title-name">Configuring <code class="literal">sapconf</code>5</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-configure">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    In general, the default configuration of <code class="literal">sapconf</code> already uses the
+    parameter values recommended by SAP. However, if you have special
+    needs, you can configure the tool to better suit those.
+   </p><p>
+    All parameters of <code class="literal">sapconf</code> can be found in the file
+    <code class="filename">/etc/sysconfig/sapconf</code>.
+    The file can be edited directly. All parameters in this file are
+    explained by means of comments and references to SAP Notes which can
+    be viewed at <a class="link" href="https://launchpad.support.sap.com/" target="_blank">https://launchpad.support.sap.com/</a>.
+   </p><p>
+    When <code class="literal">sapconf</code> is updated, all customized parameters from this file will
+    be preserved as much as possible. However, sometimes parameters cannot
+    be transferred cleanly to the new configuration file. Therefore, after
+    updating it is advisable to check the difference between the previous
+    custom configuration which during the update is moved to
+    <code class="filename">/etc/sysconfig/sapconf.rpmsave</code>
+    and the new version at <code class="filename">/etc/sysconfig/sapconf</code>.
+   </p><p>
+    Log messages related to this file are written to
+    <code class="filename">/var/log/sapconf.log</code>.
+   </p><p>
+    When editing either of these files, you will find that some values are
+    commented by means of a <code class="literal">#</code> character at the beginning of
+    the line. This means that while the parameter is relevant for tuning, there
+    is no suitable default for it.
+   </p><p>
+    Conversely, you can add <code class="literal">#</code> characters to the beginning of
+    the line to comment specific parameters. However, you should avoid this
+    practice, as it can lead to <code class="literal">sapconf</code> not properly applying the profile.
+   </p><p>
+    To apply edited configuration, restart <code class="literal">sapconf</code>:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl restart sapconf</code></pre></div><p>
+    Confirming that a certain parameter value was applied correctly works
+    differently for different parameters. Hence, the following serves as an
+    example only:
+   </p><div class="complex-example"><div class="example" id="ex-sapconf-change-parameter-5" data-id-title="Checking parameters"><div class="title-container"><div class="example-title-wrap"><div class="example-title"><span class="title-number-name"><span class="title-number">Example 8.1: </span><span class="title-name">Checking parameters </span></span><a title="Permalink" class="permalink" href="cha-tune-sapconf.html#ex-sapconf-change-parameter-5">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div><div class="example-contents"><p>
+     To confirm that the setting for <code class="literal">TCP_SLOW_START</code> was
+     applied, do the following:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       View the log file of <code class="literal">sapconf</code> to see whether it applied the value.
+       Within <code class="filename">/var/log/sapconf.log</code>, check for a line
+       containing this text:
+      </p><div class="verbatim-wrap"><pre class="screen">Change net.ipv4.tcp_slow_start_after_idle from 1 to 0</pre></div><p>
+       Alternatively, the parameter may have already been set correctly
+       before <code class="literal">sapconf</code> was started. In this case, <code class="literal">sapconf</code> will not change
+       its value:
+      </p><div class="verbatim-wrap"><pre class="screen">Leaving net.ipv4.tcp_slow_start_after_idle unchanged at 1</pre></div></li><li class="listitem"><p>
+       The underlying option behind <code class="literal">TCP_SLOW_START</code> can be
+       manually configured at
+       <code class="filename">/proc/sys/net.ipv4.tcp_slow_start_after_idle</code>.
+       To check its actual current value, use:
+      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">sysctl net.ipv4.tcp_slow_start_after_idle</code></pre></div></li></ul></div></div></div></div></section><section class="sect1" id="sec-sapconf-5-remove" data-id-title="Removing sapconf"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.5 </span><span class="title-name">Removing <code class="literal">sapconf</code></span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-remove">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To remove <code class="literal">sapconf</code> from a system, uninstall its package with:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">zypper rm sapconf</code></pre></div><p>
+    Note that when doing this, dependencies of <code class="literal">sapconf</code> will remain installed.
+    However, the service <code class="systemitem">sysstat</code> will
+    go into a disabled state. If it is still relevant to you, make sure to
+    enable it again.
+   </p></section><section class="sect1" id="sec-sapconf-5-tuned" data-id-title="Using tuned together with sapconf"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.6 </span><span class="title-name">Using <code class="command">tuned</code> together with  <code class="literal">sapconf</code></span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-tuned">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    With version 5 <code class="literal">sapconf</code> does not rely on <code class="systemitem">tuned</code> anymore. This means both tools
+    can be used independently.
+    <code class="literal">sapconf</code> will print a warning in it's log if <code class="command">tuned</code> service
+    is started.
+   </p><div id="id-1.11.9.3" data-id-title="Important: using tuned and sapconf together" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Important: using <code class="command">tuned</code> and <code class="literal">sapconf</code> together</div><p>
+     If you are going to use <code class="command">tuned</code> and <code class="literal">sapconf</code> simultaneously,
+     be very careful, that bot tools do not configure the same system parameters.
+    </p></div></section><section class="sect1" id="sec-sapconf-5-more" data-id-title="For more information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.7 </span><span class="title-name">For more information</span></span> <a title="Permalink" class="permalink" href="cha-tune-sapconf.html#sec-sapconf-5-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_tune_sapconf.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The following man pages provide additional information about <code class="literal">sapconf</code>:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     Detailed description of all tuning parameters set by <code class="literal">sapconf</code>:
+     <code class="command">man 5 sapconf</code>
+    </p></li><li class="listitem"><p>
+     Information about configuring and customizing the <code class="literal">sapconf</code> profile:
+     <code class="command">man 7 sapconf</code>
+    </p></li></ul></div><p>
+    Also see the blog series detailing the updated version of <code class="literal">sapconf</code> at:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">A new sapconf is available: </span><a class="link" href="https://www.suse.com/c/a-new-sapconf-is-available/" target="_blank">https://www.suse.com/c/a-new-sapconf-is-available/</a></p></li><li class="listitem"><p><span class="formalpara-title">A way to prepare a SLES system for SAP workload - Part 1: </span><a class="link" href="https://www.suse.com/c/sapconf-a-way-to-prepare-a-sles-system-for-sap-workload-part-1/" target="_blank">https://www.suse.com/c/sapconf-a-way-to-prepare-a-sles-system-for-sap-workload-part-1/</a></p></li></ul></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-s4s-upgrade-sap-hana-cluster.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 7 </span>Upgrading a SAP HANA Cluster</span></a> </div><div><a class="pagination-link next" href="cha-tune.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 9 </span>Tuning systems with <code class="command">saptune</code></span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-overview"><span class="title-number">8.1 </span><span class="title-name">Overview of <code class="literal">sapconf</code>5</span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-verify"><span class="title-number">8.2 </span><span class="title-name">Verifying <code class="literal">sapconf</code> setup</span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-enable"><span class="title-number">8.3 </span><span class="title-name">Enabling and disabling <code class="literal">sapconf</code> and viewing its status</span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-configure"><span class="title-number">8.4 </span><span class="title-name">Configuring <code class="literal">sapconf</code>5</span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-remove"><span class="title-number">8.5 </span><span class="title-name">Removing <code class="literal">sapconf</code></span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-tuned"><span class="title-number">8.6 </span><span class="title-name">Using <code class="command">tuned</code> together with  <code class="literal">sapconf</code></span></a></span></li><li><span class="sect1"><a href="cha-tune-sapconf.html#sec-sapconf-5-more"><span class="title-number">8.7 </span><span class="title-name">For more information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>

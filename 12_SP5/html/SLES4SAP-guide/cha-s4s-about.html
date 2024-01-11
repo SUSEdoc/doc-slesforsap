@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP5 | Guide | What Is SUSE Linux Enterprise Server for SAP Applications?</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="What Is SUSE Linux Enterprise Server for SAP Applications? …"/>
+<meta name="description" content="SUSE® Linux Enterprise Server for SAP Applications is …"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP5"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 1. What Is SUSE Linux Enterprise Server for SAP Applications?"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP5"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="What Is SUSE Linux Enterprise Server for SAP Applicati…"/>
+<meta property="og:description" content="SUSE® Linux Enterprise Server for SAP Applications is a bundle of software and services that addresses the specific needs of…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="What Is SUSE Linux Enterprise Server for SAP Applicati…"/>
+<meta name="twitter:description" content="SUSE® Linux Enterprise Server for SAP Applications is a bundle of software and services that addresses the specific needs of…"/>
+<link rel="prev" href="pre-s4s.html" title="About This Guide"/><link rel="next" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-s4s-about.html">What Is SUSE Linux Enterprise Server for SAP Applications?</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" you-are-here"><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">7 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" "><span class="title-number">9 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" "><span class="title-number">10 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">11 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">13 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-s4s-about" data-id-title="What Is SUSE Linux Enterprise Server for SAP Applications?"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP5</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div><div><div class="abstract"><p>
+   SUSE® Linux Enterprise Server for SAP Applications is a bundle of software and services that addresses the
+   specific needs of SAP users. It is the only operating system that is
+   optimized for all SAP software solutions.
+  </p></div></div></div></div><p>
+  Target use cases include:
+ </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+    Unix to Linux migrations and replatforming
+   </p></li><li class="listitem"><p>
+    SAP appliances
+   </p></li><li class="listitem"><p>
+    SAP cloud deployments
+   </p></li></ul></div><p>
+  SUSE Linux Enterprise Server for SAP Applications consists of software components and service offerings which are
+  described in the following sections. The figure
+  <a class="xref" href="cha-s4s-about.html#fig-s4s-offering" title="Offerings of SUSE Linux Enterprise Server for SAP Applications">Offerings of SUSE Linux Enterprise Server for SAP Applications</a> shows which
+  software components and services
+  are also available with other products from SUSE (green) and which ones are
+  exclusively available with SUSE Linux Enterprise Server for SAP Applications (blue).
+ </p><div class="figure" id="fig-s4s-offering"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_overview.png"><img src="images/s4s_overview.png" width="85%" alt="Offerings of SUSE Linux Enterprise Server for SAP Applications" title="Offerings of SUSE Linux Enterprise Server for SAP Applications"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 1.1: </span><span class="title-name">Offerings of SUSE Linux Enterprise Server for SAP Applications </span></span><a title="Permalink" class="permalink" href="cha-s4s-about.html#fig-s4s-offering">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div><section class="sect1" id="sec-s4s-component" data-id-title="Software Components"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.1 </span><span class="title-name">Software Components</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  As depicted in <a class="xref" href="cha-s4s-about.html#fig-s4s-offering" title="Offerings of SUSE Linux Enterprise Server for SAP Applications">Figure 1.1, “Offerings of SUSE Linux Enterprise Server for SAP Applications”</a>,
+  SUSE Linux Enterprise Server for SAP Applications is based on SUSE Linux Enterprise Server. Additionally, it contains
+  software components such as SUSE Linux Enterprise High Availability,
+  the kernel page-cache limit feature, and the installation
+  workflow. These software components are briefly explained in the
+  following sections.
+ </p><section class="sect2" id="sec-s4s-component-sles" data-id-title="SUSE Linux Enterprise Server"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.1 </span><span class="title-name">SUSE Linux Enterprise Server</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-sles">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The current release is based on SUSE Linux Enterprise Server 12 SP5. SUSE Linux Enterprise Server
+   is the most interoperable platform for mission-critical computing,
+   both physical and virtual.
+  </p></section><section class="sect2" id="sec-s4s-component-sleha" data-id-title="SUSE Linux Enterprise High Availability"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.2 </span><span class="title-name">SUSE Linux Enterprise High Availability</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-sleha">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   This component consists of:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     Flexible, policy-driven clustering
+    </p></li><li class="listitem"><p>
+     Cluster-aware file system and volume management
+    </p></li><li class="listitem"><p>
+     Continuous data replication
+    </p></li><li class="listitem"><p>
+     Setup and installation
+    </p></li><li class="listitem"><p>
+     Management and administration tools
+    </p></li><li class="listitem"><p>
+     Resource agents, also for SAP
+    </p></li><li class="listitem"><p>
+     Virtualization-aware
+    </p></li></ul></div><p>
+   SUSE Linux Enterprise High Availability provides two resource agents specifically for working with
+   SAP applications:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="systemitem">SAPInstance</code> which allows starting
+     and stopping instances of SAP products.
+    </p></li><li class="listitem"><p>
+     <code class="systemitem">SAPDatabase</code> which allows starting
+     and stopping all databases supported by SAP applications (SAP HANA,
+     SAP MaxDB, SAP ASE, Oracle, Sybase, IBM DB2).
+    </p></li></ul></div><p>
+   For more information about SUSE Linux Enterprise High Availability, see the Administration Guide, available from <a class="link" href="https://documentation.suse.com/sle-ha-12" target="_blank">https://documentation.suse.com/sle-ha-12</a>.
+   Additional White Papers and Best Practice Guides are available in the
+   SUSE Linux Enterprise Server for SAP Applications Resource Library (<a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>).
+  </p></section><section class="sect2" id="sec-s4s-hana-replicate" data-id-title="Simplified SAP HANA System Replication Setup"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.3 </span><span class="title-name">Simplified SAP HANA System Replication Setup</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-hana-replicate">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP Applications supports SAP HANA System Replication by using components of SUSE Linux Enterprise High Availability
+   and two additional resource agents (RA). Additionally, SUSE Linux Enterprise Server for SAP Applications ships with
+   a YaST wizard that simplifies the cluster setup.
+  </p><section class="sect3" id="sec-s4s-hana-ra" data-id-title="SAPHana Resource Agent"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.3.1 </span><span class="title-name"><code class="systemitem">SAPHana</code> Resource Agent</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-hana-ra">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    This resource agent from SUSE supports scale-up scenarios by checking the
+    SAP HANA database instances for whether a takeover needs to happen.
+    Unlike with the pure SAP solution, takeovers can be automated.
+   </p><p>
+    It is configured as a parent/child resource: The parent assumes
+    responsibility for the SAP HANA databases running in primary mode, whereas
+    the child is responsible for instances that are operated in synchronous
+    (secondary) status. In case of a takeover, the secondary (child resource
+    instance) can automatically be promoted to become the new primary (parent
+    resource instance).
+   </p><p>
+    This resource agent supports system replication for the following in
+    scale-up scenarios:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Performance-Optimized Scenario. </span>
+       Two servers (A and B) in the same SUSE Linux Enterprise High Availability cluster, one primary (A)
+       and one secondary (B). The SAP HANA instance from the primary server (A) is
+       replicated synchronously to the secondary server (B).
+      </p></li><li class="listitem"><p><span class="formalpara-title">Cost-Optimized Scenario. </span>
+       The basic setup of A and B is the same as in the
+       <span class="emphasis"><em>Performance-Optimized Scenario</em></span>.
+       However, the secondary server (B) is also used for non-productive
+       purposes, such as for an additional SAP HANA database for development or
+       QA. The production
+       database is only kept on permanent memory, such as a hard disk.
+       If a takeover needs to occur, the non-productive server will be stopped
+       before the takeover is processed. The system resources for the
+       productive database are then increased as quickly as possible via an
+       SAP hook call-out script.
+      </p></li><li class="listitem"><p><span class="formalpara-title">Chain/Multi-Tier Scenario. </span>
+       Three servers (A, B, and C), of which two are located in the
+       same SUSE Linux Enterprise High Availability cluster (A and B). The third server (C) is located
+       externally. The SAP HANA system on the primary server (A) is replicated
+       synchronously to the secondary server (B). The secondary server (B) is
+       replicated asynchronously to the external server (C).
+      </p><p>
+      If a takeover from A to B occurs, the connection between B and C remains
+      untouched. However, B is not allowed to be the source for two servers
+      (A and C). This would be a <span class="quote">“<span class="quote">star</span>”</span> topology which
+      is not supported with current SAP HANA versions (such as SPS11).
+     </p><p>
+      Using SAP HANA commands, you can then manually decide what to do:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        The connection between B and C can be broken, so that B can
+        connect to A.
+       </p></li><li class="listitem"><p>
+        If replication to the external site (C) is more important than
+        local system replication, the connection between B and C can be kept.
+       </p></li></ul></div></li></ul></div><p>
+    For all of the scenarios, SUSE Linux Enterprise Server for SAP Applications supports both single-tenant and
+    multi-tenant (MDC) SAP HANA databases. That is, you can use SAP HANA databases that
+    serve multiple SAP applications.
+   </p></section><section class="sect3" id="sec-s4s-topology-ra" data-id-title="SAPHanaTopology Resource Agent"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.3.2 </span><span class="title-name"><code class="systemitem">SAPHanaTopology</code> Resource Agent</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-topology-ra">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To make configuring the cluster as simple as possible, SUSE has
+    developed the <code class="systemitem">SAPHanaTopology</code> resource agent.
+    This agent runs on all
+    nodes of a SUSE Linux Enterprise High Availability cluster. It gathers information about the status and
+    configurations of SAP HANA system replications. It is designed as a
+    normal (stateless) clone.
+   </p></section><section class="sect3" id="sec-s4s-hana-replicate-wizard" data-id-title="YaST Wizard to Set Up SAP HANA Clusters"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.3.3 </span><span class="title-name">YaST Wizard to Set Up SAP HANA Clusters</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-hana-replicate-wizard">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    SUSE Linux Enterprise Server for SAP Applications now additionally ships a YaST wizard that manages the
+    initial setup of such clusters according to best practices.
+    The wizard is part of the package <span class="package">yast2-sap-ha</span> and can
+    be started using YaST, via <span class="guimenu">HA Setup for SAP Products</span>.
+   </p><p>
+    For more information, see <a class="xref" href="cha-s4s-cluster.html" title="Chapter 6. Setting Up an SAP HANA Cluster">Chapter 6, <em>Setting Up an SAP HANA Cluster</em></a>.
+   </p></section><section class="sect3" id="sec-s4s-hana-replicate-more" data-id-title="For More Information"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.3.4 </span><span class="title-name">For More Information</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-hana-replicate-more">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    For more information, see:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      The Administration Guide at <a class="link" href="https://documentation.suse.com/sles-12" target="_blank">https://documentation.suse.com/sles-12</a>.
+     </p></li><li class="listitem"><p>
+      The <span class="emphasis"><em>Best Practices</em></span> in the Resource Library
+      at <a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>.
+      In particular, see <em class="citetitle">Setting up a SAP HANA SR performance
+      optimized infrastructure</em> and <em class="citetitle">Setting up a SAP
+      HANA SR cost optimized infrastructure</em>.
+     </p></li></ul></div></section></section><section class="sect2" id="sec-s4s-component-install" data-id-title="Installation Workflow"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.4 </span><span class="title-name">Installation Workflow</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-install">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The installation workflow offers a guided installation path for both the
+   SUSE Linux Enterprise Server operating system and the SAP application.
+   
+   For more information, see <a class="xref" href="cha-s4s-plan.html#sec-s4s-workflow-overview" title="2.5. Overview of the Installation Workflow">Section 2.5, “Overview of the Installation Workflow”</a>.
+  </p><p>
+   Additionally, the installation workflow can be extended by
+   third-party vendors or customers using Supplementary Media. For more information about
+   creating Supplementary Media, see <a class="xref" href="app-s4s-component-supplement.html" title="Appendix C. Supplementary Media">Appendix C, <em>Supplementary Media</em></a>.
+  </p></section><section class="sect2" id="sec-s4s-component-page-cache" data-id-title="Page-Cache Limit"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.5 </span><span class="title-name">Page-Cache Limit</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-page-cache">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   You can limit the kernel file system cache size to influence swapping
+   behavior. With this feature, you can often gain better performance by
+   allocating memory to an application.
+  </p></section><section class="sect2" id="sec-s4s-component-clamsap" data-id-title="Malware Protection with ClamSAP"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.6 </span><span class="title-name">Malware Protection with ClamSAP</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-clamsap">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   ClamSAP integrates the ClamAV anti-malware toolkit into SAP NetWeaver and
+   SAP Mobile Platform applications to enable cross-platform threat
+   detection. For example, you can use ClamSAP to allow an SAP
+   application to scan for malicious uploads in HTTP uploads.
+  </p><p>
+   For more information, see <a class="xref" href="cha-clamsap.html" title="Chapter 11. Protecting Against Malware With ClamSAP">Chapter 11, <em>Protecting Against Malware With ClamSAP</em></a>.
+  </p></section><section class="sect2" id="sec-s4s-component-hana-secure" data-id-title="SAP HANA Security"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.7 </span><span class="title-name">SAP HANA Security</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-hana-secure">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP Applications contains additional features to help set up well-secured SAP HANA
+   installations.
+  </p><section class="sect3" id="sec-s4s-component-firewall-hana" data-id-title="Firewall for SAP HANA"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.7.1 </span><span class="title-name">Firewall for SAP HANA</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-firewall-hana">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    Securing SAP HANA can require many additional firewall rules. To simplify
+    firewall setups for SAP HANA, SUSE Linux Enterprise Server for SAP Applications
+    contains the package <span class="package">HANA-Firewall</span>. It
+    provides preconfigured rules and integrates with SuSEfirewall2.
+   </p><p>
+    For more information, see <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-firewall-hana" title="9.2. Configuring HANA-Firewall">Section 9.2, “Configuring HANA-Firewall”</a>.
+   </p></section><section class="sect3" id="sec-s4s-component-harden" data-id-title="Hardening Guide for SAP HANA"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.7.2 </span><span class="title-name">Hardening Guide for SAP HANA</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-harden">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    For information on hardening the underlying operating system, see the
+    SUSE Linux Enterprise Server for SAP Applications resource library: <a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>. There, find the document
+    <em class="citetitle">OS Security Hardening for SAP HANA</em>.
+   </p></section></section><section class="sect2" id="sec-s4s-component-manage-operation" data-id-title="Simplified Operations Management"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">1.1.8 </span><span class="title-name">Simplified Operations Management</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-manage-operation">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    SUSE Linux Enterprise Server for SAP Applications combines several features that enable simplified operations
+    management.
+  </p><section class="sect3" id="sec-s4s-component-sapconf" data-id-title="System Tuning with sapconf"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.8.1 </span><span class="title-name">System Tuning with <code class="literal">sapconf</code></span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-sapconf">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The system tuning application <code class="literal">sapconf</code> allows you to
+    automatically and comprehensively tune your system as recommended by
+    SAP for use with SAP S/4HANA, SAP NetWeaver, or SAP HANA/SAP BusinessOne. This allow
+    tuning several kernel parameters, depending on the hardware components
+    you are using, such as the amount of available RAM.
+   </p><p>
+    For more information, see <a class="xref" href="cha-tune-sapconf.html" title="Chapter 7. Tuning systems with sapconf5">Chapter 7, <em>Tuning systems with <code class="literal">sapconf</code>5</em></a>.
+   </p></section><section class="sect3" id="sec-s4s-component-cryptctl" data-id-title="Storage Encryption for Hosted Applications with cryptctl"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.8.2 </span><span class="title-name">Storage Encryption for Hosted Applications with <code class="command">cryptctl</code></span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-cryptctl">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    Today, databases and similar applications are often hosted on external
+    servers that are serviced by third-party staff. Certain data center
+    maintenance tasks require third-party staff to directly access affected
+    systems. In such cases, privacy requirements necessitate disk encryption.
+   </p><p>
+    <code class="command">cryptctl</code> allows encrypting sensitive directories using
+    LUKS and offers the following additional features:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Encryption keys are located on a central server which can be located on
+      customer premises.
+     </p></li><li class="listitem"><p>
+      Encrypted partitions are automatically remounted after an unplanned
+      reboot.
+     </p></li></ul></div><p>
+    For more information, see <a class="xref" href="cha-s4s-configure-cryptctl.html" title="Chapter 10. Encrypting Directories Using cryptctl">Chapter 10, <em>Encrypting Directories Using <code class="command">cryptctl</code></em></a>.
+   </p></section><section class="sect3" id="sec-s4s-component-pattern" data-id-title="Patterns Providing Dependencies of SAP Applications"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.8.3 </span><span class="title-name">Patterns Providing Dependencies of SAP Applications</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-pattern">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To simplify working with software dependencies of SAP applications, SUSE
+    has created patterns that combine relevant dependency RPM packages for
+    specific applications:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      <span class="guimenu">SAP BusinessOne Server Base</span>
+     </p></li><li class="listitem"><p>
+      <span class="guimenu">SAP HANA Server Base</span>
+     </p></li><li class="listitem"><p>
+      <span class="guimenu">SAP NetWeaver Server Base</span>
+     </p></li></ul></div><div id="id-1.4.7.10.5.4" data-id-title="Packages May Be Missing from Patterns" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: 
+     Packages May Be Missing from Patterns
+    </div><p>
+     The selection of packages of the software patterns are defined while a
+     specific release (Service Pack or major version) of SUSE Linux Enterprise Server for SAP Applications is
+     developed. This package selection is stable over the lifetime of this
+     particular release. When working with SAP applications that have been
+     released more recently than your SUSE Linux Enterprise Server for SAP Applications version,
+     dependencies can be missing from the patterns.
+    </p><p>
+     For definitive information about the dependencies of your SAP application,
+     see the documentation provided to you by SAP.
+    </p></div></section><section class="sect3" id="sec-s4s-component-clustertool" data-id-title="ClusterTools2"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">1.1.8.4 </span><span class="title-name"><code class="systemitem">ClusterTools2</code></span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-component-clustertool">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_components.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    <code class="systemitem">ClusterTools2</code> provides tools that help set up
+    and manage a Corosync/<code class="systemitem">pacemaker</code> cluster. Among
+    them are the command <code class="systemitem">wow</code> which helps create
+    highly available system resources, and
+    <code class="systemitem">ClusterService</code> which allows managing a cluster.
+   </p><p>
+    Additionally, <code class="systemitem">ClusterTools2</code> provides scripts that
+    automate common cluster tasks:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Scripts that perform checks. For example, to find out whether a system is
+      set up correctly for creating a <code class="systemitem">pacemaker</code>
+      cluster.
+     </p></li><li class="listitem"><p>
+      Scripts that simplify configuration. For example, to create a Corosync
+      configuration.
+     </p></li><li class="listitem"><p>
+      Scripts that monitor the system and scripts that show or collect
+      system information. For example, to find known error patterns in
+      log files.
+     </p></li></ul></div><p>
+    For more information, see the man page of the respective tool,
+    included with the package <span class="package">ClusterTools2</span>. Also see the
+    project home page at
+    <a class="link" href="https://github.com/fmherschel/ClusterTools2" target="_blank">https://github.com/fmherschel/ClusterTools2</a>.
+   </p></section></section></section><section class="sect1" id="sec-s4s-repository" data-id-title="Software Repository Setup"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.2 </span><span class="title-name">Software Repository Setup</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-repository">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Software included with operating systems based on SUSE Linux Enterprise is delivered as
+   RPM packages, a form of installation package that can have dependencies on
+   other packages. On a server or an installation medium, these packages are
+   stored in software repositories (sometimes also called
+   <span class="quote">“<span class="quote">channels</span>”</span>).
+  </p><p>
+   By default, computers running SUSE Linux Enterprise Server for SAP Applications are set up to receive
+   packages from multiple repositories. Of each of the standard repositories,
+   there is a <span class="quote">“<span class="quote">Pool</span>”</span> variant that represents the state of the
+   software when it was first shipped. There is also an <span class="quote">“<span class="quote">Update</span>”</span>
+   variant that includes the newest maintenance updates for the software
+   in the <span class="quote">“<span class="quote">Pool</span>”</span> variant.
+  </p><p>
+   If you registered your system during installation, your repository
+   setup should include the following:
+  </p><div class="table" id="tab-s4s-repository" data-id-title="Standard Repositories"><div class="title-container"><div class="table-title-wrap"><div class="table-title"><span class="title-number-name"><span class="title-number">Table 1.1: </span><span class="title-name">Standard Repositories </span></span><a title="Permalink" class="permalink" href="cha-s4s-about.html#tab-s4s-repository">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div><div class="table-contents"><table style="border-collapse: collapse; border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col class="type"/><col class="base"/><col class="update"/></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Content</p>
+          </th><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Base repository (<span class="quote">“<span class="quote">Pool</span>”</span>)</p>
+          </th><th style="border-bottom: 1px solid ; ">
+            <p>Update repository</p>
+          </th></tr></thead><tbody><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Base packages of SUSE Linux Enterprise Server
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLES12-SPSP5-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLES12-SPSP5-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Packages specific to SUSE Linux Enterprise Server for SAP Applications
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              <code class="literal">SLE12-SPSP5-SAP-Pool</code>
+            </p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-12-SPSP5-SAP-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; ">
+            <p>
+              Packages specific to SUSE Linux Enterprise High Availability
+            </p>
+          </td><td style="border-right: 1px solid ; ">
+            <p><code class="literal">SLE-HA12-SPSP5-Pool</code></p>
+          </td><td>
+            <p><code class="literal">SLE-HA12-SPSP5-Updates</code></p>
+          </td></tr></tbody></table></div></div><p>
+   The tables in this section do not show <span class="emphasis"><em>Debuginfo</em></span> and
+   <span class="emphasis"><em>Source</em></span> repositories which are also set up but
+   disabled by default. The <span class="emphasis"><em>Debuginfo</em></span> repositories
+   contain packages that can be used for debugging regular packages. The
+   <span class="emphasis"><em>Source</em></span> repositories contain source code for packages.
+  </p><p>
+   Depending on your installation method, you may also see
+   <code class="literal">SLE-12-SPSP5-SAP-12.SP5-0</code>
+   which is the installation medium.
+   It contains packages from all of the base software repositories listed
+   above.
+  </p><p>
+   Because there are own repositories for SUSE Linux Enterprise Server for SAP Applications, SUSE can ship
+   packages and patches that are specific to SUSE Linux Enterprise Server for SAP Applications.
+  </p><div id="id-1.4.8.10" data-id-title="ESPOS Updates Shipped Directly in Update Repositories" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: ESPOS Updates Shipped Directly in Update Repositories</div><p>
+    Unlike in SUSE Linux Enterprise Server for SAP Applications 11, updates related to Extended Service Pack
+    Overlay Support (ESPOS) are shipped directly from the
+    <code class="literal">Update</code> repositories. This means there is no separate
+    ESPOS repository to set up.
+   </p></div><p>
+   In addition to the standard repositories, you can enable the following
+   SLE Modules and SLE Extensions (either during the installation or from
+   the running system by using YaST or the command
+   <code class="command">SUSEConnect</code>).
+  </p><div class="table" id="tab-s4s-repository-module" data-id-title="Module Repositories"><div class="title-container"><div class="table-title-wrap"><div class="table-title"><span class="title-number-name"><span class="title-number">Table 1.2: </span><span class="title-name">Module Repositories </span></span><a title="Permalink" class="permalink" href="cha-s4s-about.html#tab-s4s-repository-module">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div><div class="table-contents"><table style="border-collapse: collapse; border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col class="type"/><col class="base"/><col class="update"/></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Content</p>
+          </th><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Base repository (<span class="quote">“<span class="quote">Pool</span>”</span>)</p>
+          </th><th style="border-bottom: 1px solid ; ">
+            <p>Update repository</p>
+          </th></tr></thead><tbody><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Advanced Systems Management Module: CFEngine, Puppet and the
+              Machinery tool
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Adv-Systems-Management12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Adv-Systems-Management12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Containers Module: Docker, tools, prepackaged images
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Containers12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Containers12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              HPC Module: tools and libraries related to High Performance
+              Computing
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-HPC12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-HPC12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Legacy Module: Sendmail, old IMAP stack, old Java, …
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Legacy12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Legacy12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Public Cloud Module: public cloud initialization code and tools
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Public-Cloud12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Public-Cloud12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              Toolchain Module: GNU Compiler Collection (GCC)
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Toolchain12-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Toolchain12-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; ">
+            <p>
+              Web and Scripting Module: PHP, Python, Ruby on Rails
+            </p>
+          </td><td style="border-right: 1px solid ; ">
+            <p><code class="literal">SLE-Module-Web-Scripting12-Pool</code></p>
+          </td><td>
+            <p><code class="literal">SLE-Module-Web-Scripting12-Updates</code></p>
+          </td></tr></tbody></table></div></div><div class="table" id="tab-s4s-repository-extension" data-id-title="Extension Repositories"><div class="title-container"><div class="table-title-wrap"><div class="table-title"><span class="title-number-name"><span class="title-number">Table 1.3: </span><span class="title-name">Extension Repositories </span></span><a title="Permalink" class="permalink" href="cha-s4s-about.html#tab-s4s-repository-extension">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div><div class="table-contents"><table style="border-collapse: collapse; border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col class="type"/><col class="base"/><col class="update"/></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Content</p>
+          </th><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>Base repository (<span class="quote">“<span class="quote">Pool</span>”</span>)</p>
+          </th><th style="border-bottom: 1px solid ; ">
+            <p>Update repository</p>
+          </th></tr></thead><tbody><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p>
+              SLE SDK
+            </p>
+          </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-SDK12-SPSP5-Pool</code></p>
+          </td><td style="border-bottom: 1px solid ; ">
+            <p><code class="literal">SLE-SDK12-SPSP5-Updates</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; ">
+            <p>
+              SUSE Package Hub
+            </p>
+          </td><td style="border-right: 1px solid ; ">
+            <p><code class="literal">SUSE-PackageHub-12-SPSP5-Pool</code></p>
+          </td><td>
+            <p><code class="literal">SUSE-PackageHub-12-SPSP5-Updates</code></p>
+          </td></tr></tbody></table></div></div><p>
+   For more information about SUSE Package Hub, see <a class="xref" href="app-s4s-additional-software.html#sec-s4s-packagehub" title="A.3. SUSE Package Hub">Section A.3, “SUSE Package Hub”</a>.
+   For information about life cycle and support of modules and extensions, see
+   <a class="xref" href="cha-s4s-about.html#sec-s4s-service" title="1.3. Included Services">Section 1.3, “Included Services”</a>.
+  </p></section><section class="sect1" id="sec-s4s-service" data-id-title="Included Services"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.3 </span><span class="title-name">Included Services</span></span> <a title="Permalink" class="permalink" href="cha-s4s-about.html#sec-s4s-service">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.9.2.1"><span class="term"><span class="emphasis"><em>Extended Service Pack Overlap Support (ESPOS)</em></span>
+    </span></dt><dd><p>
+      Subscriptions for SUSE Linux Enterprise Server for SAP Applications include Extended Service Pack Overlap Support
+      (ESPOS). It extends the overlap between the support periods of two
+      consecutive service packs by three years. During this period, you receive
+      support and all relevant maintenance updates under the terms of Long Term
+      Service Pack Support (LTSS).
+     </p><p>
+        Extended Service Pack Overlap Support allows you to perform service pack
+        migrations within three and a half years instead of only six months.
+        This enables you to schedule migrations more easily and perform testing
+        before a migration under less restrictive time constraints. At an
+        additional cost, SUSE also offers LTSS. With LTSS, you receive support
+        for a particular service pack after the ESPOS period ends. SUSE Linux Enterprise Server for SAP Applications
+        includes one and a half years of general support and three years of
+        ESPOS for each service pack.
+     </p><p>
+        The last service pack in each SLE family does not have ESPOS. Instead
+        of ESPOS, it includes a longer general support period. Because of that,
+        LTSS is available only for the last service pack. All other service
+        packs already include three years of ESPOS, which equals LTSS.
+     </p><p>
+      For more information, refer to the following resources:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        Product Lifecycle Support Policies: <a class="link" href="https://www.suse.com/support/policy-products/#sap" target="_blank">https://www.suse.com/support/policy-products/#sap</a>
+       </p></li><li class="listitem"><p>
+        Lifecycle Dates by Product: <a class="link" href="https://www.suse.com/lifecycle/" target="_blank">https://www.suse.com/lifecycle/</a>
+       </p></li><li class="listitem"><p>
+        Long Term Service Pack Support: <a class="link" href="https://www.suse.com/products/long-term-service-pack-support/" target="_blank">https://www.suse.com/products/long-term-service-pack-support/</a>
+       </p></li></ul></div></dd><dt id="id-1.4.9.2.2"><span class="term"><span class="emphasis"><em>SUSE Linux Enterprise Server Priority Support for SAP Applications</em></span>
+    </span></dt><dd><p>
+      Subscriptions for SUSE Linux Enterprise Server for SAP Applications include SUSE Linux Enterprise Server
+      Priority Support for SAP Applications. It offers technical support for
+      SUSE Linux Enterprise Server for SAP Applications directly from SAP. The joint support infrastructure is
+      provided by support engineers from SUSE Technical Support and SAP. It is
+      based upon SAP Resolve and offers seamless communication
+      with both SAP and SUSE. This <span class="quote">“<span class="quote">One Face to the Customer</span>”</span>
+      support model reduces complexity and lowers the total cost of ownership.
+     </p><p>
+      For more information, see <em class="citetitle">SAP Note 1056161: SUSE
+       Priority Support for SAP Applications</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>).
+     </p></dd></dl></div><div id="id-1.4.9.3" data-id-title="Lifecycle and Support for Modules and Extensions" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Lifecycle and Support for Modules and Extensions</div><p>
+    Modules and extensions have a different lifecycle than SLES for SAP and SUSE
+    provides different support offerings for them:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Modules:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Lifecycle. </span>
+         Varies depending on the module.
+        </p></li><li class="listitem"><p><span class="formalpara-title">Support. </span>
+         Only up-to-date packages are supported. Support is included with
+         your subscription for SUSE Linux Enterprise Server for SAP Applications. You do not need an additional
+         registration key.
+        </p></li></ul></div></li><li class="listitem"><p>
+      Extensions
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Lifecycle. </span>
+         Releases are usually coordinated with SUSE Linux Enterprise Server for SAP Applications.
+        </p></li><li class="listitem"><p><span class="formalpara-title">Support. </span>
+         Support is available but not included with your subscription for
+         SUSE Linux Enterprise Server for SAP Applications. You need an additional
+         registration key.
+        </p></li></ul></div></li><li class="listitem"><p>
+      Unsupported Extensions (SUSE Package Hub and SUSE Software Development Kit)
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Lifecycle. </span>
+         Releases are usually coordinated with SUSE Linux Enterprise Server for SAP Applications.
+        </p></li><li class="listitem"><p><span class="formalpara-title">Support. </span>
+         There is no support beyond fixes for security and packaging issues.
+         You do not need an additional registration key.
+        </p></li></ul></div></li></ul></div></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="pre-s4s.html"><span class="pagination-relation">Previous</span><span class="pagination-label">About This Guide</span></a> </div><div><a class="pagination-link next" href="cha-s4s-plan.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 2 </span>Planning the Installation</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-s4s-about.html#sec-s4s-component"><span class="title-number">1.1 </span><span class="title-name">Software Components</span></a></span></li><li><span class="sect1"><a href="cha-s4s-about.html#sec-s4s-repository"><span class="title-number">1.2 </span><span class="title-name">Software Repository Setup</span></a></span></li><li><span class="sect1"><a href="cha-s4s-about.html#sec-s4s-service"><span class="title-number">1.3 </span><span class="title-name">Included Services</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>

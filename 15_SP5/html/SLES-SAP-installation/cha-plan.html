@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP5 | Installation Quick Start | Planning the installation</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Planning the installation | SLES for SAP 15 SP5"/>
+<meta name="description" content="Read this chapter carefully, as it helps you plan the …"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP5"/>
+<meta name="book-title" content="Installation Quick Start"/>
+<meta name="chapter-title" content="Chapter 2. Planning the installation"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP5"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Planning the installation | SLES for SAP 15 SP5"/>
+<meta property="og:description" content="Read this chapter carefully, as it helps you plan the installation: It lists requirements and helps you collect data about y…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Planning the installation | SLES for SAP 15 SP5"/>
+<meta name="twitter:description" content="Read this chapter carefully, as it helps you plan the installation: It lists requirements and helps you collect data about y…"/>
+<link rel="prev" href="cha-about.html" title="Chapter 1. What is SUSE Linux Enterprise Server for SAP Applications?"/><link rel="next" href="cha-install.html" title="Chapter 3. Installing the operating system"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Installation Quick Start</a><span> / </span><a class="crumb" href="cha-plan.html">Planning the installation</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Installation Quick Start</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">Preface</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" you-are-here"><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li><a href="apa.html" class=" "><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-plan" data-id-title="Planning the installation"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP5</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">2 </span><span class="title-name">Planning the installation</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  Read this chapter carefully, as it helps you plan the installation: It lists
+  requirements and helps you collect data about your system.
+ </p><section class="sect1" id="sec-hardware" data-id-title="Hardware requirements"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.1 </span><span class="title-name">Hardware requirements</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-hardware">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   This section lists minimum hardware requirements for the installation of
+   SUSE Linux Enterprise Server for SAP Applications and gives basic guidance on the expected hardware requirements of
+   certain SAP software. For the most up-to-date information about the
+   hardware requirements of SAP software, see the official sizing guidelines
+   at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.4.3.1"><span class="term">Supported CPU</span></dt><dd><p>
+      Intel 64
+     </p><p>
+      IBM POWER 8 (with PowerVM)
+     </p><p>
+      IBM POWER 9 (with PowerVM)
+     </p></dd><dt id="id-1.5.4.3.2"><span class="term">Hard disk</span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP Applications requires at least 41 GB (without swap) of hard disk space for the
+      system volume. In addition to that, reserve an appropriate amount of hard
+      disk space for the swap partition.
+     </p><p>
+      To install an SAP application such as SAP NetWeaver, you need at least 200 GB
+      of free disk space in addition to the required space for the operating
+      system for the application's <code class="filename">/data</code> partition.
+     </p><p>
+      To install SAP HANA, you need either:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        An SAP BusinessOne-certified machine
+       </p></li><li class="listitem"><p>
+        A compatible machine that meets the requirements for SAP HANA TDI
+        (Tailored Datacenter Integration). That is, you need the following
+        amounts of free disk space in addition to the required space for the
+        operating system:
+       </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          52 GB of free disk space for the partition
+          <code class="filename">/usr/sap</code>
+         </p></li><li class="listitem"><p>
+          Space for three partitions for SAP HANA data:
+          <code class="filename">/hana/data</code> (same size as RAM),
+          <code class="filename">/hana/log</code> (same size as RAM up to a maximum of
+          512 GB), and <code class="filename">/hana/shared</code> (same size as RAM up
+          to a maximum of 1 TB).
+         </p></li></ul></div></li></ul></div><p>
+      For more information about SAP HANA refer to <a class="link" href="https://help.sap.com/docs/SAP_HANA_PLATFORM" target="_blank">https://help.sap.com/docs/SAP_HANA_PLATFORM</a> (the section <span class="guimenu">Implement</span> › <span class="guimenu">SAP HANA Master Guide</span> › <span class="guimenu">SAP HANA Deployment Options </span> › <span class="guimenu">On-Premise Deployments</span>).
+     </p></dd><dt id="id-1.5.4.3.3"><span class="term">RAM</span></dt><dd><p>
+      The SUSE Linux Enterprise Server operating system itself requires a minimum of 1024 MB of total
+      RAM or a minimum of 512 MB of RAM per CPU core (choose whichever is
+      higher).
+     </p><p>
+      Any SAP software you install will require additional RAM.
+     </p><p>
+      To install SAP HANA, your machine needs a minimum of 24 GB of RAM.
+     </p></dd></dl></div><p>
+   For more information about configuring hardware for SAP HANA, see
+   <em class="citetitle">SAP Note 1944415: Hardware Configuration Guide and Software
+   Installation Guide for SUSE Linux Enterprise Server with SAP HANA and SAP
+   Business One</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1944415" target="_blank">https://launchpad.support.sap.com/#/notes/1944415</a>).
+  </p><p>
+   For more information about partitioning, see
+   <a class="xref" href="cha-plan.html#sec-partition" title="2.6. Partitioning">Section 2.6, “Partitioning”</a>.
+  </p></section><section class="sect1" id="sec-download" data-id-title="Installation image"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.2 </span><span class="title-name">Installation image</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-download">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Unlike previous SLE products, the entire SLE 15 SP5 product
+   line can be installed from a single installation medium:
+   <code class="literal">SLE 15 SP5 Online media 1</code>. To install
+   without network access or registration, download the
+   <code class="literal">SLE 15 SP5 Full media 1</code> image. Both ISO
+   images are available from <a class="link" href="https://download.suse.com/" target="_blank">https://download.suse.com/</a>.
+  </p><p>
+   Burn the image onto a physical DVD or copy it to a removable flash disk.
+   Make sure the size of the disk is sufficient for the desired image.
+   Alternatively, use a virtual DVD-ROM device for installation in a virtual
+   machine.
+  </p><div id="id-1.5.5.4" data-id-title="Copying the installation media image to a removable flash disk" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: Copying the installation media image to a removable flash disk</div><p>
+    Use the following command to copy the contents of the installation image to
+    a removable flash disk.
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> dd if=<em class="replaceable">IMAGE</em> of=<em class="replaceable">FLASH_DISK</em> bs=4M &amp;&amp; sync</pre></div><p>
+    Replace <em class="replaceable">IMAGE</em> with the path to the installation
+    media image file and <em class="replaceable">FLASH_DISK</em> with the flash
+    device.
+   </p></div></section><section class="sect1" id="sec-migration" data-id-title="Offline migration"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.3 </span><span class="title-name">Offline migration</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-migration">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The migration paths for SUSE Linux Enterprise Server for SAP Applications are identical to those for SUSE Linux Enterprise Server with
+   <span class="productname">Enhanced Service Pack Overlay Support</span> (ESPOS).
+   Find detailed information in the <em class="citetitle">SUSE Linux Enterprise Server</em>
+   Upgrade Guide at
+   <a class="link" href="https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html" target="_blank">https://documentation.suse.com/sles/html/SLES-all/cha-upgrade-paths.html</a>.
+  </p></section><section class="sect1" id="sec-workflow-overview" data-id-title="Overview of the installation workflow"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.4 </span><span class="title-name">Overview of the installation workflow</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-workflow-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The installation workflow of SUSE Linux Enterprise Server for SAP Applications consists of the following steps:
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+     Installation of the operating system (SUSE Linux Enterprise Server). See
+     <a class="xref" href="cha-install.html#sec-install-workflow" title="3.1. Installation workflow">Section 3.1, “Installation workflow”</a>.
+    </p></li><li class="listitem"><p>
+     SAP Installation Wizard, part 1: Copying all required SAP media to the local disk or
+     selecting a shared storage medium to use. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. Using the SAP Installation Wizard">Section 4.2, “Using the SAP Installation Wizard”</a>, in particular
+     <a class="xref" href="cha-install-sap.html#st-copy-master" title="Step 1">Step 1</a>.
+    </p></li><li class="listitem"><p>
+     SAP Installation Wizard, part 2: Collecting all parameters for the actual installation by
+     querying the user interactively. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. Using the SAP Installation Wizard">Section 4.2, “Using the SAP Installation Wizard”</a>, in particular
+     <a class="xref" href="cha-install-sap.html#st-collect-parameter" title="Step 10">Step 10</a>.
+    </p></li><li class="listitem"><p>
+     SAP Installation Wizard, part 3: Running the SAP Installer. See
+     <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. Using the SAP Installation Wizard">Section 4.2, “Using the SAP Installation Wizard”</a>, in particular
+     <a class="xref" href="cha-install-sap.html#st-sapinst" title="Step 13">Step 13</a>.
+    </p></li></ol></div><p>
+   Most of these steps do not need to be run immediately after each other,
+   which allows for flexibility in how you install systems. This means that you
+   can prepare a single installation as a first step and then continue from
+   there. For example:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     Install the operating system (SUSE Linux Enterprise Server) only.
+    </p><p>
+     <span class="emphasis"><em>or</em></span>
+    </p></li><li class="listitem"><p>
+     Install the operating system (SUSE Linux Enterprise Server), copy SAP media, and collect SAP
+     installation parameters.
+    </p></li></ul></div><p>
+   Then, create disk images, copy them to other systems, and adjust SAP
+   installation parameters. Finally, finish the installation on each machine
+   individually.
+  </p></section><section class="sect1" id="sec-data" data-id-title="Required data for installing"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.5 </span><span class="title-name">Required data for installing</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-data">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_planning.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.8.2.1"><span class="term">Operating system</span></dt><dd><p>
+      The SUSE Linux Enterprise Server installation requires the following data for every physical
+      server:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        Network configuration parameters, such as host name, domain, IP
+        address, subnet mask, domain search list (DNS), IP for name server, IP
+        for gateway
+       </p></li><li class="listitem"><p>
+        Administrator (<code class="systemitem">root</code>) password for the SUSE Linux Enterprise Server
+        installation
+       </p></li></ul></div></dd><dt id="id-1.5.8.2.2"><span class="term">SAP application</span></dt><dd><p>
+      The installation of an SAP application generally requires specifying:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAP Instance Number
+       </p></li><li class="listitem"><p>
+        A password for the SAP application
+       </p></li></ul></div><p>
+      Depending on the SAP application you are installing, more parameters
+      may be necessary, such as T-Shirt Sizing or parameters for virtual
+      networking.
+     </p></dd><dt id="id-1.5.8.2.3"><span class="term">SAP HANA database</span></dt><dd><p>
+      The installation of SAP HANA requires specifying:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAP Instance Number
+       </p></li><li class="listitem"><p>
+        Whether to enable Multitenant Database Containers (MDC). The
+        multi-tenant support of SAP HANA allows having multiple databases that
+        run as one SAP HANA installation. (To use SAP HANA MDC, you need SAP HANA
+        Life Cycle Manager.)
+       </p><p>
+        For a single-tenant installation, choose <span class="guimenu">No</span>.
+       </p><p>
+        For a multi-tenant instance administrated by one
+        <code class="systemitem"><em class="replaceable">SID</em>adm</code>
+        user, choose <span class="guimenu">Yes with low isolation</span>.
+       </p><p>
+        For a multi-tenant instance administrated in which each database has
+        its own
+        <code class="systemitem"><em class="replaceable">SID</em>adm</code>
+        user, choose <span class="guimenu">Yes with high isolation</span>.
+       </p></li><li class="listitem"><p>
+        A password for the SAP HANA database
+       </p></li></ul></div></dd></dl></div><p>
+   For more information about installing SAP software, see the SAP
+   documentation at <a class="link" href="https://help.sap.com" target="_blank">https://help.sap.com</a> and
+   <a class="link" href="https://support.sap.com" target="_blank">https://support.sap.com</a>.
+  </p></section><section class="sect1" id="sec-partition" data-id-title="Partitioning"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.6 </span><span class="title-name">Partitioning</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_partitioning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  SUSE Linux Enterprise Server for SAP Applications creates the partitioning table in two stages:
+ </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+    <a class="xref" href="cha-plan.html#sec-partition-os" title="2.6.1. Partitioning for the operating system (stage 1)">Partitioning for the operating system (stage 1)</a> (during
+    the installation of the operating system)
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="cha-plan.html#sec-partition-sap" title="2.6.2. Partitioning for the SAP system (stage 2)">Partitioning for the SAP system (stage 2)</a> (during
+    the installation of the SAP product)
+   </p></li></ol></div><section class="sect2" id="sec-partition-os" data-id-title="Partitioning for the operating system (stage 1)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.1 </span><span class="title-name">Partitioning for the operating system (stage 1)</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition-os">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_partitioning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   During the installation of the operating system, partitions for the
+   operating system are created.
+  </p><p>
+   A logical volume group (LVG) named <code class="literal">/dev/system</code> will be
+   created. This LVG contains two logical volumes (LVs):
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="filename">/dev/system/root</code>: by default 60 GB to account for
+     the operating system and SAP media
+    </p></li><li class="listitem"><p>
+     <code class="filename">/dev/system/swap</code>: by default 2 GB, avoid setting a
+     smaller size.  See also <em class="citetitle">SAP Note 2578899: SUSE Linux Enterprise
+     Server 15: Installation notes</em>
+     (<a class="link" href="https://launchpad.support.sap.com/#/notes/2578899" target="_blank">https://launchpad.support.sap.com/#/notes/2578899</a>).
+    </p></li></ul></div><p>
+   Additionally, a <code class="filename">boot</code> or UEFI partition will be created
+   as necessary.
+  </p></section><section class="sect2" id="sec-partition-sap" data-id-title="Partitioning for the SAP system (stage 2)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.2 </span><span class="title-name">Partitioning for the SAP system (stage 2)</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition-sap">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_partitioning.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   This part of the partitioning can only be created after the operating
+   system has been installed. That means the partitions are created either in
+   the installation workflow after the reboot or in the running system.
+  </p><p>
+   Depending on the product you are installing and your particular use case,
+   the amount of hard disk space necessary can vary.
+  </p></section></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-about.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 1 </span>What is SUSE Linux Enterprise Server for SAP Applications?</span></a> </div><div><a class="pagination-link next" href="cha-install.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 3 </span>Installing the operating system</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-plan.html#sec-hardware"><span class="title-number">2.1 </span><span class="title-name">Hardware requirements</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-download"><span class="title-number">2.2 </span><span class="title-name">Installation image</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-migration"><span class="title-number">2.3 </span><span class="title-name">Offline migration</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-workflow-overview"><span class="title-number">2.4 </span><span class="title-name">Overview of the installation workflow</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-data"><span class="title-number">2.5 </span><span class="title-name">Required data for installing</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-partition"><span class="title-number">2.6 </span><span class="title-name">Partitioning</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

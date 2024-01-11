@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><title>SLES for SAP 15 SP4 | SAP Monitoring</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="SAP Monitoring | SLES for SAP 15 SP4"/>
+<meta name="description" content="This article shows monitoring solutions for SAP admini…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP4"/>
+<meta name="book-title" content="SAP Monitoring"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP4"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="SAP Monitoring | SLES for SAP 15 SP4"/>
+<meta property="og:description" content="This article shows monitoring solutions for SAP administrators to efficiently monitor their SAP systems. The solutions that …"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP Monitoring | SLES for SAP 15 SP4"/>
+<meta name="twitter:description" content="This article shows monitoring solutions for SAP administrators to efficiently monitor their SAP systems. The solutions that …"/>
+<script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml"/></head><body class="draft single normal offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="#article-sap-monitoring">SAP Monitoring</a></div></div><main id="_content"><nav class="side-toc placebo" id="_side-toc-overall"> </nav><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section xml:lang="en" class="article" id="article-sap-monitoring" data-id-title="SAP Monitoring"><div class="titlepage"><div><div class="big-version-info"><span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP4</span></div><div><div class="title-container"><h1 class="title">SAP Monitoring <a title="Permalink" class="permalink" href="#article-sap-monitoring">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div><div><h3 class="subtitle"><em>SUSE® Linux Enterprise Server for SAP Applications · SUSE Linux Enterprise High Availability</em></h3></div><div class="date"><span class="imprint-label">Publication Date: </span>January 11, 2024
+</div><div><div class="abstract"><p>
+    This article shows monitoring solutions for SAP administrators to
+    efficiently monitor their SAP systems. The solutions that is described
+    here works for SUSE® Linux Enterprise Server 12 SP3 to 15 SP2.
+   </p></div></div></div></div><section class="sect1" id="sec-sol-monit-concept-overview" data-id-title="Conceptual overview"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1 </span><span class="title-name">Conceptual overview</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-concept-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Starting from the idea of improving user experience, SUSE engineering
+   worked on how to monitor High Availability clusters that manage SAP workloads (SAP HANA
+   and SAP NetWeaver).
+  </p><p>
+   The exporters shown here export their metrics which can be combined and
+   integrated with Prometheus and Grafana to produce complex dashboards.
+  </p><p>
+   SUSE supports Prometheus and Grafana through SUSE Manager 4.0. Some Grafana
+   dashboards for SAP HANA, SAP S/4HANA, SAP NetWeaver, and the cluster monitoring are
+   provided by SUSE via Grafana community dashboards.
+  </p></section><section class="sect1" id="sec-sol-monit-terms" data-id-title="Terminology"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2 </span><span class="title-name">Terminology</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-terms">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.5.2.1"><span class="term">Grafana</span></dt><dd><p>
+      An interactive visualization and analytics Web application. It provides
+      methods to visualize, explore, and query your metrics, and trigger
+      alerts.
+     </p></dd><dt id="id-1.4.5.2.2"><span class="term">Prometheus</span></dt><dd><p>
+      A systems monitoring and alerting toolkit. It collects and evaluates
+      metrics, displays the result, and triggers possible alerts when an
+      observed condition is true. Metrics can be collected from different
+      targets at given intervals.
+     </p></dd></dl></div></section><section class="sect1" id="sec-sol-autom-install-exporters" data-id-title="Installing exporters"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3 </span><span class="title-name">Installing exporters</span></span> <a title="Permalink" class="permalink" href="#sec-sol-autom-install-exporters">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Installation of an exporter follows always the same pattern. Execute the
+   following steps:
+  </p><div class="procedure" id="id-1.4.6.3" data-id-title="General way"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 1: </span><span class="title-name">General way </span></span><a title="Permalink" class="permalink" href="#id-1.4.6.3">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     Install the package. All package are available in SUSE Linux Enterprise Server for SAP Applications.
+    </p></li><li class="step"><p><span class="step-optional">(Optional)</span> 
+     Copy the configuration file to
+     <code class="filename">/etc/<em class="replaceable">EXPORTER_DIR</em></code>. The
+     exact folder name is different for each exporter. This step depends on the
+     exporter. If you skip this step, the default configuration is used.
+    </p></li><li class="step"><p>
+     Start the daemon:
+    </p><div class="verbatim-wrap"><pre class="screen">systemctl start <em class="replaceable">NAME_OF_DAEMON</em></pre></div></li></ol></div></div><p>
+   The above procedure is automatically done by each of the Salt formulas
+   described in <span class="intraxref">Article “SAP Automation”</span>.
+  </p></section><section class="sect1" id="sec-sol-monit-hana-db-exp" data-id-title="SAP HANA database exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4 </span><span class="title-name">SAP HANA database exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    SAP HANA database exporter makes it possible to export SAP HANA database
+    metrics. The tool can export metrics from more than one
+    database and tenant if the <code class="literal">multi_tenant</code> option is
+    enabled in the configuration file (enabled by default).
+  </p><p>
+    The labels <code class="literal">sid</code> (system identifier),
+    <code class="literal">insnr</code> (instance number),
+    <code class="literal">database_name</code> (database name) and
+    <code class="literal">host</code> (machine hostname) are exported for all the metrics.
+  </p><section class="sect2" id="sec-sol-monit-hana-db-expprerequisites" data-id-title="Prerequisites"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.1 </span><span class="title-name">Prerequisites</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-expprerequisites">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          A running and reachable SAP HANA database (single or multi-container). It is recommended to run the exporter on the same machine
+          with the SAP HANA database. Ideally, each database should be monitored
+          by one exporter.
+        </p></li><li class="listitem"><p>
+          One of the following SAP HANA connectors:
+        </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+            <a class="link" href="https://help.sap.com/viewer/1efad1691c1f496b8b580064a6536c2d/Cloud/en-US/39eca89d94ca464ca52385ad50fc7dea.html" target="_blank"><code class="literal">dbapi</code>
+            (official SAP connector)</a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="https://github.com/SAP/PyHDB" target="_blank"><code class="literal">pyhdb</code>
+            (unofficial/open source)</a>
+          </p></li></ul></div></li><li class="listitem"><p>
+          Certain metrics are collected in the SAP HANA monitoring views by
+          the
+          <a class="link" href="https://help.sap.com/saphelp_nwpi711/helpdata/en/21/98c443122744efae67c0352033691d/frameset.htm" target="_blank">SAP
+          Host agent</a>. To have access to all the monitoring metrics, make
+          sure that the SAP Host agent is installed and running.
+        </p></li></ul></div></section><section class="sect2" id="sec-sol-monit-hana-db-metrics-file" data-id-title="Metrics file"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.2 </span><span class="title-name">Metrics file</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-metrics-file">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      The exporter relies on a metrics file to determine what metrics to export. When the metrics file uses the JSON format, you can use the options listed below.
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      <code class="literal">enabled</code> (boolean, optional). Determines whether the query is executed or not. If set to <code class="option">false</code>, the metrics for this query are not executed.
+    </p></li><li class="listitem"><p>
+      <code class="literal">hana_version_range</code> (list, optional). The SAP HANA database versions range where the query is available (<code class="literal">[1.0.0]</code> by default). If the current database version is not within the specified range, the query is not executed. If the list has only one element, all versions beyond the specified value (including the defined one) are queried.
+    </p></li><li class="listitem"><p>
+      <code class="literal">metrics</code> (list) A list of metrics for the query.
+    </p></li><li class="listitem"><p>
+      <code class="literal">name</code> (string) A name for the exported metrics.
+    </p></li><li class="listitem"><p>
+      <code class="literal">description</code> (string) A description of the metrics.
+    </p></li><li class="listitem"><p>
+      <code class="literal">labels</code> (list) A list of labels used to split the
+      records.
+    </p></li><li class="listitem"><p>
+      <code class="literal">value</code> (string) A name of the column for the exported value (must match with one of the columns of the query).
+    </p></li><li class="listitem"><p>
+      <code class="literal">unit</code> (string) Used unit for the exported value (`mb` for example).
+    </p></li><li class="listitem"><p>
+      <code class="literal">type</code> (enum{gauge}) Defines the type of the exported metric (<code class="literal">gauge</code> is the only available option).
+    </p></li></ul></div><p>
+    Below is an example of a metrics file:
+  </p><div class="verbatim-wrap"><pre class="screen">{
+  "SELECT TOP 10 host, LPAD(port, 5) port, SUBSTRING(REPLACE_REGEXPR('\n' IN statement_string WITH ' ' OCCURRENCE ALL), 1,30) sql_string, statement_hash sql_hash, execution_count, total_execution_time + total_preparation_time total_elapsed_time FROM sys.m_sql_plan_cache ORDER BY total_elapsed_time, execution_count DESC;":
+  {
+    "enabled": true,
+    "hana_version_range": ["1.0"]
+    "metrics": [
+      {
+        "name": "hanadb_sql_top_time_consumers",
+        "description": "Top statements time consumers. Sum of the time consumed in all executions in Microseconds",
+        "labels": ["HOST", "PORT", "SQL_STRING", "SQL_HASH"],
+        "value": "TOTAL_ELAPSED_TIME",
+        "unit": "mu",
+        "type": "gauge"
+      },
+      {
+        "name": "hanadb_sql_top_time_consumers",
+        "description": "Top statements time consumers. Number of total executions of the SQL Statement",
+        "labels": ["HOST", "PORT", "SQL_STRING", "SQL_HASH"],
+        "value": "EXECUTION_COUNT",
+        "unit": "count",
+        "type": "gauge"
+      }
+    ]
+  }
+}</pre></div></section><section class="sect2" id="sec-sol-monit-hana-db-install" data-id-title="Installing the SAP HANA database exporter"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.3 </span><span class="title-name">Installing the SAP HANA database exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-install">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+        Use the <code class="command">zypper install prometheus-hanadb_exporter</code> command to install the exporter.
+      </p><p>
+        You can find the latest development repositories at
+        <a class="link" href="https://build.opensuse.org/package/show/network:ha-clustering:sap-deployments:devel/prometheus-hanadb_exporter" target="_blank">SUSE's
+        Open Build Service</a>.
+      </p><p>
+        To install the exporter from the source code, make sure you have Git and Python 3 installed on your system. Run the following commands to install the exporter with the PyHDB SAP HANA connector:
+      </p><div class="verbatim-wrap"><pre class="screen">git clone https://github.com/SUSE/hanadb_exporter
+cd hanadb_exporter # project root folder
+virtualenv virt
+source virt/bin/activate
+pip install pyhdb
+pip install .</pre></div></section><section class="sect2" id="sec-sol-monit-hana-db-config" data-id-title="Configuring the exporter"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.4 </span><span class="title-name">Configuring the exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-config">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Use the following example of the <code class="filename">config.json</code> configuration file as a starting point.
+    </p><div class="verbatim-wrap"><pre class="screen">{
+  "listen_address": "0.0.0.0",
+  "exposition_port": 9668,
+  "multi_tenant": true,
+  "timeout": 30,
+  "hana": {
+    "host": "localhost",
+    "port": 30013,
+    "user": "SYSTEM",
+    "password": "PASSWORD",
+    "ssl": false,
+    "ssl_validate_cert": false
+  },
+  "logging": {
+    "config_file": "./logging_config.ini",
+    "log_file": "hanadb_exporter.log"
+  }
+}</pre></div><p>
+Below is a list of key configuration options.
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          <code class="literal">listen_address</code> IP address of the Prometheus exporter (0.0.0.0 by default).
+        </p></li><li class="listitem"><p>
+          <code class="literal">exposition_port</code> Port through which the
+          Prometheus exporter is accessible (9968 by default).
+        </p></li><li class="listitem"><p>
+          <code class="literal">multi_tenant</code> Export the metrics from
+          other tenants. This requires a connection to the system database (port 30013).
+        </p></li><li class="listitem"><p>
+          <code class="literal">timeout</code> Timeout to connect to the database. The
+          app fails if connection is not established within the specified time
+          (even in daemon mode).
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.host</code> Address of the SAP HANA database.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.port</code> Port through which  the SAP HANA
+          database is accessible.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.userkey</code> Stored user key (see <a class="xref" href="#sec-sol-monit-hana-db-stored-key" title="4.5. Using the stored user key">Section 4.5, “Using the stored user key”</a>). Use this option if you do not
+          want to store the password in the configuration file. The
+          <code class="literal">userkey</code> and
+          <code class="literal">user/password</code> are mutually exclusive. If both are
+          set, <code class="literal">hana.userkey</code> takes priority.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.user</code> Existing user with access
+          right to the SAP HANA database.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.password</code> Password of an existing
+          user.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.ssl</code> Enable SSL connection (<code class="option">false</code> by default). Only available for the <code class="literal">dbapi</code>
+          connector.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.ssl_validate_cert</code> Enable SSL
+          certification validation. This option is required by SAP HANA
+          cloud. Only available for the <code class="literal">dbapi</code> connector.
+        </p></li><li class="listitem"><p>
+          <code class="literal">hana.aws_secret_name</code> Secret name containing the
+          username and password (see <a class="xref" href="#sec-sol-monit-hana-db-aws-secret" title="4.6. Using AWS Secrets Manager">Section 4.6, “Using AWS Secrets Manager”</a>. Use this option when SAP HANA database is
+          stored on AWS. <code class="literal">aws_secret_name</code> and
+          <code class="literal">user/password</code> are mutually exclusive. If both are
+          set, <code class="literal">aws_secret_name</code> takes priority.
+        </p></li><li class="listitem"><p>
+          <code class="literal">logging.config_file</code> Python logging
+          system configuration file (by default, WARN and ERROR level
+          messages are sent to the syslog).
+        </p></li><li class="listitem"><p>
+          <code class="literal">logging.log_file</code> Logging file
+          (<code class="filename">/var/log/hanadb_exporter.log</code> by default)
+        </p></li></ul></div><p>
+      The logging configuration file follows the
+      <a class="link" href="https://docs.python.org/3/library/logging.config.html" target="_blank">Python standard
+      logging system style</a>.
+    </p><p>
+      Using the default
+      <a class="link" href="./logging_config.ini" target="_blank">configuration
+      file</a>, redirects the logs to the file assigned in
+      the <a class="link" href="./config.json.example" target="_blank">json configuration
+      file</a> and to the syslog (only logging level up to
+      WARNING).
+    </p></section><section class="sect2" id="sec-sol-monit-hana-db-stored-key" data-id-title="Using the stored user key"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.5 </span><span class="title-name">Using the stored user key</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-stored-key">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+        Use this option to keep the database
+        secure (you can use
+        <code class="literal">user/password</code> with the
+        <code class="literal">SYSTEM</code> user for development, as it is faster to set
+        up). To use the <code class="literal">userkey</code> option, the
+        <code class="literal">dbapi</code> must be installed (normally stored in
+        <code class="filename">/hana/shared/<em class="replaceable">SID</em>/hdbclient/hdbcli-N.N.N.tar.gz</code>
+        and installable with <span class="package">pip3</span>). The key is stored in the client itself. To use a different client, you must create a new stored user key for the user running Python. To do that, use the following command (note that the
+        <code class="literal">hdbclient</code> is the same as the
+        <code class="literal">dbapi</code> Python package):
+        </p><div class="verbatim-wrap"><pre class="screen">/hana/shared/PRD/hdbclient/hdbuserstore set <em class="replaceable">USER_KEY</em> host:30013@SYSTEMDB hanadb_exporter pass</pre></div></section><section class="sect2" id="sec-sol-monit-hana-db-aws-secret" data-id-title="Using AWS Secrets Manager"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.6 </span><span class="title-name">Using AWS Secrets Manager</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-hana-db-aws-secret">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+        Use the AWS Secrets Manager to store the login credentials outside the configuration file when the SAP HANA database is stored on AWS EC2 instance.
+      </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+            Create a JSON
+            <a class="link" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_create-basic-secret.html" target="_blank">secret</a> file that contains two key-value pairs. The first pair contains the
+            <code class="literal">username</code> key and the actual database user as the value. The second pair has the <code class="literal">password</code> key and the actual password as the value. For example:
+          </p><div class="verbatim-wrap"><pre class="screen">{
+"""username": "<em class="replaceable">DATABASE_USER</em>",
+"password": "<em class="replaceable">DATABASE_PASSWORD</em>"
+}</pre></div><p>
+Use the actual secret as the secret name, and pass it in the configuration file
+as a value for the <code class="literal">aws_secret_name</code> entry.
+</p></li><li class="listitem"><p>
+            Configure read-only access from EC2 IAM role to the secret by
+            attaching a
+            <a class="link" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html" target="_blank">resource-based
+            policy</a> to the secret. For example:
+          </p><div class="verbatim-wrap"><pre class="screen">{
+"Version" : "2012-10-17",
+"Statement" : [
+  {
+    "Effect": "Allow",
+    "Principal": {"AWS": "arn:aws:iam::123456789012:role/EC2RoleToAccessSecrets"},
+    "Action": "secretsmanager:GetSecretValue",
+    "Resource": "*",
+  }
+]
+}</pre></div></li></ul></div><p>
+        Tips and recommendations:
+      </p><div class="itemizedlist"><ul class="itemizedlist compact"><li class="listitem"><p>
+            Set <code class="literal">SYSTEMDB</code> as the default database for the exporter to get the tenants data.
+          </p></li><li class="listitem"><p>
+            Do not use the stored user key created for the backup, because the key is created using the <code class="literal">sidadm</code> user.
+          </p></li><li class="listitem"><p>
+          Instead of the <code class="literal">SYSTEM</code> user, use an account limited
+          to accessing  the monitoring tables only.
+          </p></li><li class="listitem"><p>
+          In case you use a user account with the monitoring role, this user must exist in all the databases (<code class="literal">SYSTEMDB</code> and tenants).
+          </p></li></ul></div></section><section class="sect2" id="create-a-new-user-with-monitoring-role" data-id-title="Create a new user with the monitoring role"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.7 </span><span class="title-name">Create a new user with the monitoring role</span></span> <a title="Permalink" class="permalink" href="#create-a-new-user-with-monitoring-role">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+        Run the following commands to create a user with the monitoring roles
+        (the commands must be executed in all the databases):
+      </p><div class="verbatim-wrap"><pre class="screen">su - prdadm
+hdbsql -u SYSTEM -p pass -d SYSTEMDB #(PRD for the tenant in this example)
+CREATE USER HANADB_EXPORTER_USER PASSWORD MyExporterPassword NO FORCE_FIRST_PASSWORD_CHANGE;
+CREATE ROLE HANADB_EXPORTER_ROLE;
+GRANT MONITORING TO HANADB_EXPORTER_ROLE;
+GRANT HANADB_EXPORTER_ROLE TO HANADB_EXPORTER_USER;</pre></div></section><section class="sect2" id="running-the-exporter" data-id-title="Running the exporter"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.8 </span><span class="title-name">Running the exporter</span></span> <a title="Permalink" class="permalink" href="#running-the-exporter">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Start the exporter with the <code class="command">hanadb_exporter -c config.json -m metrics.json</code> command.</p><p>
+      If the <code class="filename">config.json</code> configuration file is stored
+      in the <code class="literal">/etc/hanadb_exporter</code> directory, the exporter can be started with the following command (note that the identifier matches with the <code class="filename">config.json</code> file without extension):
+    </p><div class="verbatim-wrap"><pre class="programlisting">hanadb_exporter --identifier config</pre></div></section><section class="sect2" id="running-as-a-daemon" data-id-title="Running as a service"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">4.9 </span><span class="title-name">Running as a service</span></span> <a title="Permalink" class="permalink" href="#running-as-a-daemon">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+        To run the hanadb_exporter as 
+        <code class="literal">systemd</code> service, install the exporter using the RPM
+        package as described in
+        <a class="xref" href="#sec-sol-monit-hana-db-install" title="4.3. Installing the SAP HANA database exporter">Section 4.3, “Installing the SAP HANA database exporter”</a>.
+      </p><p>
+        Next, create the configuration file as
+        <code class="filename">/etc/hanadb_exporter/my-exporter.json</code>. You can use the example file above as a starting point (the example file is also available in the
+        <code class="filename">/usr/etc/hanadb_exporter</code> directory).
+      </p><p>
+        You can use the example <code class="filename">/usr/etc/hanadb_exporter/metrics.json</code> metrics file.
+      </p><p>
+        Adjust the default logging configuration file <code class="filename">/usr/etc/hanadb_exporter/logging_config.ini</code>.
+      </p><p>
+        Start the exporter as a daemon. Because there are
+        multiple hanadb_exporter instances running
+        on one machine, you need to specify the name of the created configuration file, for example:
+      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code>systemctl start prometheus-hanadb_exporter@my-exporter
+<code class="prompt root"># </code>systemctl status prometheus-hanadb_exporter@my-exporter
+<code class="prompt root"># </code>systemctl enable prometheus-hanadb_exporter@my-exporter</pre></div><div id="note-prometheus-server-config" data-id-title="Configure the Prometheus server" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Configure the Prometheus server</div><p>
+The exporter only exposes a port, without pushing the data to the Prometheus server. This means that the Prometheus server must be configured to periodically pull the data from the exporter. This is done by either adding the <code class="literal">hanadb_exporter</code> job to the Prometheus server configuration, or by adding <code class="literal">hanadb_exporter</code> to an existing job. For example:
+</p><div class="verbatim-wrap"><pre class="screen">- job_name: hana_db
+    static_configs:
+            - targets:
+              - "<em class="replaceable">HOSTNAME</em>:<em class="replaceable">PORT</em>"</pre></div></div><div id="note-firewall-config" data-id-title="Configure firewall" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Configure firewall</div><p>
+Use the following command to open the port for <code class="literal">hanadb_exporter</code>.
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code>firewall-cmd --zone=<em class="replaceable">ZONE</em> --add-port=<em class="replaceable">PORT</em>/tcp --permanent
+<code class="prompt root"># </code>firewall-cmd --reload
+<code class="prompt root"># </code>firewall-cmd --list-all --zone=<em class="replaceable">ZONE</em></pre></div><p>
+Replace <em class="replaceable">ZONE</em> with the actual interface used for the exporter, and <em class="replaceable">PORT</em> with the actual port number of <code class="literal">hanadb_exporter</code>(default is 9968).
+</p></div></section></section><section class="sect1" id="sec-sol-monit-ha-cluster-exp" data-id-title="High Availability cluster exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5 </span><span class="title-name">High Availability cluster exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Enables monitoring of Pacemaker, Corosync, SBD, DRBD and other components
+   of High Availability clusters. Collects metrics to easily monitor cluster status and
+   health.
+  </p><p><span class="formalpara-title">Link:</span>
+    <a class="link" href="https://github.com/ClusterLabs/ha_cluster_exporter" target="_blank">https://github.com/ClusterLabs/ha_cluster_exporter</a>.
+   </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Export metrics in the prometheus format </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+     Pacemaker cluster summary, nodes and resources stats
+    </p></li><li class="listitem"><p>
+     Corosync ring errors and quorum votes
+    </p></li><li class="listitem"><p>
+     Health status of SBD devices.
+    </p></li><li class="listitem"><p>
+     DRBD resources and connections status.
+    </p></li></ul></div><section class="sect2" id="sec-sol-monit-ha-cluster-exp-install" data-id-title="Installation"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">5.1 </span><span class="title-name">Installation</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-install">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To install the High Availability cluster exporter on SUSE Linux Enterprise, run the <code class="command">zypper
+    install prometheus-ha_cluster_exporter</code> command.
+   </p><section class="sect3" id="sec-sol-monit-ha-cluster-exp-systemd" data-id-title="Enabling systemd service"><div class="titlepage"><div><div><div class="title-container"><h4 class="title"><span class="title-number-name"><span class="title-number">5.1.1 </span><span class="title-name">Enabling <code class="systemitem">systemd</code> service</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-systemd">#</a></h4><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+     The High Availability cluster exporter RPM packages comes with the
+     <code class="literal">ha_cluster_exporter.service</code> <code class="systemitem">systemd</code> service. To
+     enable and start it, use the following command:
+    </p><div class="verbatim-wrap"><pre class="screen">systemctl --now enable prometheus-ha_cluster_exporter</pre></div></section></section><section class="sect2" id="sec-sol-monit-ha-cluster-exp-use" data-id-title="Using High Availability cluster exporter"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">5.2 </span><span class="title-name">Using High Availability cluster exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-use">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    You can run the exporter on any of the cluster nodes. Although it is not
+    strictly required, it is advisable to run the exporter on all nodes.
+   </p><p>
+    The generated metrics are stored in the <code class="literal">/metrics</code> path.
+    By default, the metrics can be accessed through the web interface on port
+    9664.
+   </p><p>
+    Although the exporter can run outside an High Availability cluster node, it cannot
+    export any metric it is not able to collect. In this case, the exporter
+    displays a warning message.
+   </p></section><section class="sect2" id="sec-sol-monit-ha-cluster-exp-configure" data-id-title="Configuring High Availability cluster exporter"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">5.3 </span><span class="title-name">Configuring High Availability cluster exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-configure">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Before you proceed, make sure that the Prometheus server and the firewall are configured as described in <a class="xref" href="#note-prometheus-server-config" title="Important: Configure the Prometheus server">Important: Configure the Prometheus server</a> and <a class="xref" href="#note-firewall-config" title="Important: Configure firewall">Important: Configure firewall</a>
+   </p><p>
+    The provided default configuration is designed specifically for the latest
+    version of
+    <span class="phrase">SUSE Linux Enterprise</span>.
+    If necessary, any of the supported parameters can be modified either via
+    command-line flags or via a configuration file. Use the
+    <code class="command">ha_cluster_exporter --help</code> command for more details on
+    configuring parameters from the command line. Refer to the
+    <code class="filename">ha_cluster_exporter.yaml</code> file for an example
+    configuration.
+   </p><p>
+    It is also possible to specify CLI flags via the
+    <code class="filename">/etc/sysconfig/prometheus-ha_cluster_exporter</code> file.
+   </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">General flags </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.7.5">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.7.5.2"><span class="term">web.listen-address</span></dt><dd><p>
+       Address to listen on for web interface and telemetry (default 9664).
+      </p></dd><dt id="id-1.4.8.7.5.3"><span class="term">web.telemetry-path</span></dt><dd><p>
+       Directory for storing metrics data (default
+       <code class="filename">/metrics</code>).
+      </p></dd><dt id="id-1.4.8.7.5.4"><span class="term">web.config.file</span></dt><dd><p>
+       Path to a the web configuration file (default
+       <code class="filename">/etc/ha_cluster_exporter.web.yaml</code>).
+      </p></dd><dt id="id-1.4.8.7.5.5"><span class="term">log.level</span></dt><dd><p>
+       Logging verbosity (default <code class="literal">info</code>).
+      </p></dd><dt id="id-1.4.8.7.5.6"><span class="term">version</span></dt><dd><p>
+       Print version information.
+      </p></dd></dl></div><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Collector flags </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.7.6">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.7.6.2"><span class="term">crm-mon-path</span></dt><dd><p>
+       Path to the <code class="filename">crm_mon</code> executable (default
+       <code class="filename">/usr/sbin/crm_mon</code>).
+      </p></dd><dt id="id-1.4.8.7.6.3"><span class="term">cibadmin-path</span></dt><dd><p>
+       Path to the <code class="filename">cibadmin</code> executable (default
+       <code class="filename">/usr/sbin/cibadmin</code>).
+      </p></dd><dt id="id-1.4.8.7.6.4"><span class="term">corosync-cfgtoolpath-path</span></dt><dd><p>
+       Path to the <code class="filename">corosync-cfgtool</code> executable (default
+       <code class="filename">/usr/sbin/corosync-cfgtool</code>).
+      </p></dd><dt id="id-1.4.8.7.6.5"><span class="term">corosync-quorumtool-path</span></dt><dd><p>
+       Path to the <code class="filename">corosync-quorumtool</code> executable (default
+       <code class="filename">/usr/sbin/corosync-quorumtool</code>).
+      </p></dd><dt id="id-1.4.8.7.6.6"><span class="term">sbd-path</span></dt><dd><p>
+       Path to the <code class="filename">sbd</code> executable (default
+       <code class="filename">/usr/sbin/sbd</code>).
+      </p></dd><dt id="id-1.4.8.7.6.7"><span class="term">sbd-config-path</span></dt><dd><p>
+       Path to the sbd configuration (default
+       <code class="filename">/etc/sysconfig/sbd/</code>).
+      </p></dd><dt id="id-1.4.8.7.6.8"><span class="term">drbdsetup-path</span></dt><dd><p>
+       Path to the <code class="filename">drbdsetup</code> executable (default
+       <code class="filename">/sbin/drbdsetup</code>).
+      </p></dd><dt id="id-1.4.8.7.6.9"><span class="term">drbdsplitbrain-path</span></dt><dd><p>
+       Path to the <code class="filename">drbd splitbrain</code> hooks temporary files
+       (default <code class="filename">/var/run/drbd/splitbrain</code>).
+      </p></dd></dl></div></section><section class="sect2" id="sec-sol-monit-ha-cluster-exp-tls" data-id-title="TLS and basic authentication"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">5.4 </span><span class="title-name">TLS and basic authentication</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-tls">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The High Availability cluster exporter supports TLS and basic authentication. To use TLS
+    or basic authentication, specify a configuration file using the
+    <code class="option">--web.config.file</code> parameter. The format of the file is
+    described in
+    <a class="link" href="https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md" target="_blank">https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md</a>.
+   </p></section><section class="sect2" id="sec-sol-monit-ha-cluster-exp-metrics" data-id-title="Metrics specification"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">5.5 </span><span class="title-name">Metrics specification</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-ha-cluster-exp-metrics">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The following provides an overview of metrics generated by the High Availability cluster
+    exporter.
+   </p><p><span class="formalpara-title">Pacemaker. </span>
+     The Pacemaker subsystem collects an atomic snapshot of the High Availability cluster
+     directly from the XML CIB of Pacemaker using <span class="package">crm_mon</span>.
+    </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Pacemaker </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.9.4.2"><span class="term">ha_cluster_pacemaker_config_last_change</span></dt><dd><p>
+       A Unix timestamp in seconds converted to a floating number, corresponding
+       to the last time Pacemaker configuration changed.
+      </p></dd><dt id="id-1.4.8.9.4.3"><span class="term">ha_cluster_pacemaker_fail_count</span></dt><dd><p>
+       The fail count per node and resource ID.
+      </p></dd><dt id="id-1.4.8.9.4.4"><span class="term">ha_cluster_pacemaker_location_constraints</span></dt><dd><p>
+       Resource location constraints.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.4.4.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">constraint</code> A unique string identifier of the
+         constraint
+        </p></li><li class="listitem"><p>
+         <code class="literal">node</code> The node the constraint applies to
+        </p></li><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the constraint applies to
+        </p></li><li class="listitem"><p>
+         <code class="literal">role</code> The resource role the constraint applies to
+         (if any)
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.4.5"><span class="term">ha_cluster_pacemaker_migration_threshold</span></dt><dd><p>
+       The number of migration threshold for each node and resource ID set by a
+       Pacemaker cluster.
+      </p></dd><dt id="id-1.4.8.9.4.6"><span class="term">ha_cluster_pacemaker_nodes</span></dt><dd><p>
+       The status of each node in the cluster (one line for the status of every
+       node). 1 indicates the node is in the status specified by the status
+       label, 0 means it is not.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.4.6.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">node</code> The name of the node (normally the hostname)
+        </p></li><li class="listitem"><p>
+         <code class="literal">status</code> Possible values: <code class="literal">standby</code>,
+         <code class="literal">standby_onfail</code>, <code class="literal">maintenance</code>,
+         <code class="literal">pending</code>, <code class="literal">unclean</code>,
+         <code class="literal">shutdown</code>, <code class="literal">expected_up</code>,
+         <code class="literal">dc</code>
+        </p></li><li class="listitem"><p>
+         <code class="literal">type</code> Possible values: <code class="literal">member</code>,
+         <code class="literal">ping</code>, <code class="literal">remote</code>
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.4.7"><span class="term">ha_cluster_pacemaker_node_attributes</span></dt><dd><p>
+       This metric exposes in its labels raw, opaque, cluster metadata, called
+       node attributes that often leveraged by Resource Agents. The value of
+       each line is always 1.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.4.7.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">node</code> The name of the node (normally the hostname)
+        </p></li><li class="listitem"><p>
+         <code class="literal">name</code> The name of the attribute
+        </p></li><li class="listitem"><p>
+         <code class="literal">value</code> The value of the attribute
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.4.8"><span class="term">ha_cluster_pacemaker_resources</span></dt><dd><p>
+       The status of each resource in the cluster (one line for the status of each resource). 1 means the resource is in the status
+       specified by the status label, 0 means that it is not.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.4.8.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">agent</code> The name of the resource agent for the
+         resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">clone</code> The name of the clone this resource belongs
+         to (if any)
+        </p></li><li class="listitem"><p>
+         <code class="literal">group</code> The name of the group this resource belongs
+         to, (if any)
+        </p></li><li class="listitem"><p>
+         <code class="literal">managed</code> Can be either <code class="literal">true</code> or
+         <code class="literal">false</code>
+        </p></li><li class="listitem"><p>
+         <code class="literal">node</code> The name of the node hosting the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">resource</code> The unique resource name
+        </p></li><li class="listitem"><p>
+         <code class="literal">role</code> Possible values: <code class="literal">started</code>,
+         <code class="literal">stopped</code>, <code class="literal">master</code>,
+         <code class="literal">slave</code> or one of <code class="literal">starting</code>,
+         <code class="literal">stopping</code>, <code class="literal">migrating</code>,
+         <code class="literal">promoting</code>, <code class="literal">demoting</code>
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.4.9"><span class="term">ha_cluster_pacemaker_stonith_enabled</span></dt><dd><p>
+       Whether or not stonith is enabled in the cluster. The value is either 1
+       or 0.
+      </p></dd></dl></div><p><span class="formalpara-title">Corosync. </span>
+     The Corosync subsystem collects cluster quorum votes and ring status by
+     parsing the output of <span class="package">corosync-quorumtool</span> and
+     <span class="package">corosync-cfgtool</span>.
+    </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Corosync </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.6">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.9.6.2"><span class="term">ha_cluster_corosync_member_votes</span></dt><dd><p>
+       The number of votes each member node has contributed to the current
+       quorum.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.6.2.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">node_id</code> The internal corosync identifier associated
+         with the node
+        </p></li><li class="listitem"><p>
+         <code class="literal">node</code> The name of the node (normally the hostname)
+        </p></li><li class="listitem"><p>
+         <code class="literal">local</code> Indicates whether the node is local
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.6.3"><span class="term">ha_cluster_corosync_quorate</span></dt><dd><p>
+       Indicates whether the cluster is quorate. The value is either 1 or 0
+      </p></dd><dt id="id-1.4.8.9.6.4"><span class="term">ha_cluster_corosync_quorum_votes</span></dt><dd><p>
+       Cluster quorum votes (one line per type).
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.6.4.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">type</code> Possible values:
+         <code class="literal">expected_votes</code>,
+         <code class="literal">highest_expected</code>, <code class="literal">total_votes</code>,
+         <code class="literal">quorum</code>.
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.6.5"><span class="term">ha_cluster_corosync_ring_errors</span></dt><dd><p>
+       The total number of faulty Corosync rings.
+      </p></dd><dt id="id-1.4.8.9.6.6"><span class="term">ha_cluster_corosync_rings</span></dt><dd><p>
+       The status of each Corosync ring. 1 is healthy, 0 is faulty.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.6.6.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">ring_id</code> The internal Corosync ring identifier
+         (normally corresponds to the first member node to join)
+        </p></li><li class="listitem"><p>
+         <code class="literal">node_id</code> The internal Corosync identifier of the
+         local node
+        </p></li><li class="listitem"><p>
+         <code class="literal">number</code> The ring number
+        </p></li><li class="listitem"><p>
+         <code class="literal">address</code> the IP address locally linked to this ring
+        </p></li></ul></div></dd></dl></div><p><span class="formalpara-title">SBD. </span>
+     The SBD subsystems collect statistics of each device by parsing its
+     configuration and the output of <code class="command">sbd --dump</code>.
+    </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">SBD </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.8">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.9.8.2"><span class="term">ha_cluster_sbd_devices</span></dt><dd><p>
+       The SBD devices in the cluster (one line per device). The line is either
+       absent or has the value of 1.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.8.2.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">device</code> The path of the SBD device
+        </p></li><li class="listitem"><p>
+         <code class="literal">status</code> Possible values: <code class="literal">healthy</code>,
+         <code class="literal">unhealthy</code>
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.8.3"><span class="term">ha_cluster_sbd_timeouts</span></dt><dd><p>
+       The SBD timeouts for each SBD device.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.8.3.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">device</code> The path of the SBD device
+        </p></li><li class="listitem"><p>
+         <code class="literal">type</code> Possible values: <code class="literal">watchdog</code>,
+         <code class="literal">msgwait</code>
+        </p></li></ul></div></dd></dl></div><p><span class="formalpara-title">DRBD. </span>
+      The DRDB subsystem runs a special <code class="command">drbdsetup</code> command to
+      get the current status of a DRDB cluster in the JSON format.
+    </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">DRBD </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.9.10.2"><span class="term">ha_cluster_drbd_connections</span></dt><dd><p>
+       The DRBD resource connections (one line per <code class="literal">resource</code>
+       and per
+       <code class="literal">peer_node_id</code>). The line is either absent or has the
+       value of 1.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.2.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the connection is for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_node_id</code> The id of the node this connection is
+         for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_role</code> Possible values:
+         <code class="literal">primary</code>,
+         <code class="literal">secondary</code><code class="literal">unknown</code>
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_disk_state</code> Possible values
+         <code class="literal">attaching</code>, <code class="literal">failed</code>,
+         <code class="literal">negotiating</code>, <code class="literal">inconsistent</code>,
+         <code class="literal">outdated</code>, <code class="literal">unknown</code>,
+         <code class="literal">consistent</code>, <code class="literal">uptodate</code>
+        </p></li></ul></div><p>
+       The total number of lines for this metric is the cardinality of
+       <code class="literal">resource</code> multiplied by the cardinality of
+       <code class="literal">peer_node_id</code>.
+      </p></dd><dt id="id-1.4.8.9.10.3"><span class="term">ha_cluster_drbd_connections_sync</span></dt><dd><p>
+       The DRBD disk connections in sync percentage. Values are floating
+       numbers between 0 and 100.00.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.3.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the connection is for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_node_id</code> The id of the node this connection is
+         for
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.4"><span class="term">ha_cluster_drbd_connections_received</span></dt><dd><p>
+       Volume of net data received from the partner via the network connection
+       in KiB (one line per <code class="literal">resource</code>
+       and per
+       <code class="literal">peer_node_id</code>). The value is an
+       integer greater than or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.4.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the connection is for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_node_id</code> The id of the node this connection is
+         for
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.5"><span class="term">ha_cluster_drbd_connections_pending</span></dt><dd><p>
+       Number of requests sent to the partner that have not yet been received
+       (one line per <code class="literal">resource</code>
+       and per
+       <code class="literal">peer_node_id</code>). The value is an
+       integer greater than or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.5.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the connection is for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_node_id</code> The id of the node this connection is
+         for
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.6"><span class="term">ha_cluster_drbd_connections_unacked</span></dt><dd><p>
+       Number of requests received by the partner but have not yet been
+       acknowledged (one line per <code class="literal">resource</code>
+       and per
+       <code class="literal">peer_node_id</code>). The value is
+       an integer greater than or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.6.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The resource the connection is for
+        </p></li><li class="listitem"><p>
+         <code class="literal">peer_node_id</code> The id of the node this connection is
+         for
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.7"><span class="term">ha_cluster_drbd_resources</span></dt><dd><p>
+       The DRBD resources (one line per name and per volume). The line is either
+       absent or has the value of 1.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.7.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">role</code> Possible values: <code class="literal">primary</code>,
+         <code class="literal">secondary</code>, <code class="literal">unknown</code>
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li><li class="listitem"><p>
+         <code class="literal">disk_state</code> Possible values:
+         <code class="literal">attaching</code>, <code class="literal">failed</code>,
+         <code class="literal">negotiating</code>, <code class="literal">inconsistent</code>,
+         <code class="literal">outdated</code>, <code class="literal">outdated</code>,
+         <code class="literal">unknown</code>, <code class="literal">consistent</code>,
+         <code class="literal">uptodate</code>
+        </p></li></ul></div><p>
+       The total number of lines for the metric is the cardinality of
+       <code class="literal">name</code> multiplied by the cardinality of
+       <code class="literal">volume</code>.
+      </p></dd><dt id="id-1.4.8.9.10.8"><span class="term">ha_cluster_drbd_written</span></dt><dd><p>
+       Amount of data in KiB written to the DRBD resource (one line per
+       resource and per volume) The value is an integer greater than or equal
+       to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.8.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.9"><span class="term">ha_cluster_drbd_read</span></dt><dd><p>
+       Amount of data in KiB read from the DRBD resource (one line per resource
+       and per volume) The value is an integer greater than or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.9.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.10"><span class="term">ha_cluster_drbd_al_writes</span></dt><dd><p>
+       Number of updates of the activity log area of the meta data (one line
+       per resource and per volume). The value is an integer greater than or
+       equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.10.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.11"><span class="term">ha_cluster_drbd_bm_writes</span></dt><dd><p>
+       Number of updates of the bitmap area of the metadata (one line per
+       resource and per volume). The value is an integer greater than or equal
+       to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.11.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.12"><span class="term">ha_cluster_drbd_upper_pending</span></dt><dd><p>
+       Number of block I/O requests forwarded to DRBD but not yet answered by
+       DRBD (one line per resource and per volume). The value is an integer
+       greater than or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.12.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.13"><span class="term">ha_cluster_drbd_lower_pending</span></dt><dd><p>
+       Number of open requests to the local I/O sub-system issued by DRBD (one
+       line per resource and per volume). The value is an integer greater than
+       or equal to 0.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.13.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.14"><span class="term">ha_cluster_drbd_quorum</span></dt><dd><p>
+       Quorum status of the DRBD resource according to the configured quorum
+       policies (one line per resource and per volume). The value is 1 when
+       quorate, or 0 when inquorate.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.14.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd><dt id="id-1.4.8.9.10.15"><span class="term">ha_cluster_drbd_split_brain</span></dt><dd><p>
+       Signals when there is a split brain occurring per resource and volume.
+       The line is either absent or has the value of 1. To make this metric work
+       you must setup a DRBD custom split-brain handler.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.10.15.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">resource</code> The name of the resource
+        </p></li><li class="listitem"><p>
+         <code class="literal">volume</code> The volume number
+        </p></li></ul></div></dd></dl></div><p><span class="formalpara-title">Scrape. </span>
+     The scrape subsystem is a generic namespace dedicated to internal
+     instrumentation of the exporter itself.
+    </p><div class="variablelist"><div class="title-container"><div class="variablelist-title-wrap"><div class="variablelist-title"><span class="title-number-name"><span class="title-name">Scrape </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.12">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><dl class="variablelist"><dt id="id-1.4.8.9.12.2"><span class="term">ha_cluster_scrape_duration_seconds</span></dt><dd><p>
+       The duration of a collector scrape in seconds.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.12.2.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">collector</code> collector names that correspond to the
+         subsystem they collect metrics from
+        </p></li></ul></div><p>
+       Example:
+      </p><div class="verbatim-wrap"><pre class="screen"># TYPE ha_cluster_scrape_duration_seconds gauge
+ha_cluster_scrape_duration_seconds{collector="pacemaker"} 1.234</pre></div></dd><dt id="id-1.4.8.9.12.3"><span class="term">ha_cluster_scrape_success</span></dt><dd><p>
+       Indicates whether a collector succeeded. Collectors can fail gracefully,
+       but that does not prevent them from running. If certain metrics cannot
+       be scraped, the value of this metric is 0. In this case, the exporter
+       logs for more details.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Labels </span></span><a title="Permalink" class="permalink" href="#id-1.4.8.9.12.3.2.2">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+         <code class="literal">collector</code> collector names that correspond to the
+         subsystem they collect metrics from
+        </p><p>
+         Example:
+        </p><div class="verbatim-wrap"><pre class="screen"># TYPE ha_cluster_scrape_success gauge
+ha_cluster_scrape_success{collector="pacemaker"} 1</pre></div></li></ul></div></dd></dl></div></section></section><section class="sect1" id="sec-sol-monit-sap-host-exp" data-id-title="SAP host exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">6 </span><span class="title-name">SAP host exporter</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-sap-host-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Enables the monitoring of SAP NetWeaver, SAP HANA, and other applications. The
+   gathered metrics are the data that can be obtained by running the
+   <code class="command">sapcontrol</code> command.
+  </p><p><span class="formalpara-title">Link:</span>
+    <a class="link" href="https://github.com/SUSE/sap_host_exporter" target="_blank">https://github.com/SUSE/sap_host_exporter</a>.
+   </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Exports metrics (for SAP S/4HANA, SAP NetWeaver, or SAP HANA hosts) in prometheus format </span></span><a title="Permalink" class="permalink" href="#id-1.4.9.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+     SAP start service process list
+    </p></li><li class="listitem"><p>
+     SAP enqueue server metrics
+    </p></li><li class="listitem"><p>
+     SAP application server dispatcher metrics
+    </p></li><li class="listitem"><p>
+     SAP internal alerts
+    </p></li></ul></div></section><section class="sect1" id="sec-sol-monit-more" data-id-title="For more information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7 </span><span class="title-name">For more information</span></span> <a title="Permalink" class="permalink" href="#sec-sol-monit-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/article_sap_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <a class="link" href="https://documentation.suse.com/suma/4.0/" target="_blank">SUSE Manager</a>
+    </p></li><li class="listitem"><p>
+     <a class="link" href="https://grafana.com/grafana/dashboards?orderBy=name&amp;direction=asc" target="_blank">Grafana
+     Dashboards</a>
+    </p></li><li class="listitem"><p>
+     Some <code class="filename">.md</code> files are included in RPM
+     packages. They contain documentation from upstream sources. This can be
+     helpful in isolated data centers without Internet connection.
+    </p></li><li class="listitem"><p>
+     <a class="link" href="https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/suse-amp-microsoft-collaborates-to-provide-sap-monitoring/ba-p/1571926" target="_blank">SUSE
+     &amp; Microsoft collaborates to provide SAP monitoring</a>
+    </p></li></ul></div></section><section class="sect1" id="id-1.4.11" data-id-title="Legal notice"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8 </span><span class="title-name">Legal notice</span></span> <a title="Permalink" class="permalink" href="#id-1.4.11">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/common_copyright_quick.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  Copyright© 2006–
+2024
+
+  SUSE LLC and contributors. All rights reserved.
+ </p><p>
+  Permission is granted to copy, distribute and/or modify this document under
+  the terms of the GNU Free Documentation License, Version 1.2 or (at your
+  option) version 1.3; with the Invariant Section being this copyright notice
+  and license. A copy of the license version 1.2 is included in the section
+  entitled <span class="quote">“<span class="quote">GNU Free Documentation License</span>”</span>.
+ </p><p>
+  For SUSE trademarks, see
+  <a class="link" href="https://www.suse.com/company/legal/" target="_blank">https://www.suse.com/company/legal/</a>. All other
+  third-party trademarks are the property of their respective owners. Trademark
+  symbols (®, ™ etc.) denote trademarks of SUSE and its affiliates.
+  Asterisks (*) denote third-party trademarks.
+ </p><p>
+  All information found in this book has been compiled with utmost attention to
+  detail. However, this does not guarantee complete accuracy. Neither SUSE LLC,
+  its affiliates, the authors, nor the translators shall be held liable for
+  possible errors or the consequences thereof.
+ </p></section><div class="legal-section"><section class="appendix" id="id-1.4.12" data-id-title="GNU licenses"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">A </span><span class="title-name">GNU licenses</span></span> <a title="Permalink" class="permalink" href="#id-1.4.12">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/common_legal.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  This appendix contains the GNU Free Documentation License version 1.2.
+ </p><section class="sect1" id="id-1.4.12.4" data-id-title="GNU Free Documentation License"><div class="titlepage"><div><div><div class="title-container"><h2 class="title legal"><span class="title-number-name"><span class="title-name">GNU Free Documentation License</span></span> <a title="Permalink" class="permalink" href="#id-1.4.12.4">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/common_license_gfdl1.2.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc. 51 Franklin St,
+  Fifth Floor, Boston, MA 02110-1301 USA. Everyone is permitted to copy and
+  distribute verbatim copies of this license document, but changing it is not
+  allowed.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.4"><span class="name">
+    0. PREAMBLE
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.4">#</a></h5></div><p>
+  The purpose of this License is to make a manual, textbook, or other
+  functional and useful document "free" in the sense of freedom: to assure
+  everyone the effective freedom to copy and redistribute it, with or without
+  modifying it, either commercially or non-commercially. Secondarily, this
+  License preserves for the author and publisher a way to get credit for their
+  work, while not being considered responsible for modifications made by
+  others.
+ </p><p>
+  This License is a kind of "copyleft", which means that derivative works of
+  the document must themselves be free in the same sense. It complements the
+  GNU General Public License, which is a copyleft license designed for free
+  software.
+ </p><p>
+  We have designed this License to use it for manuals for free software,
+  because free software needs free documentation: a free program should come
+  with manuals providing the same freedoms that the software does. But this
+  License is not limited to software manuals; it can be used for any textual
+  work, regardless of subject matter or whether it is published as a printed
+  book. We recommend this License principally for works whose purpose is
+  instruction or reference.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.8"><span class="name">
+    1. APPLICABILITY AND DEFINITIONS
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.8">#</a></h5></div><p>
+  This License applies to any manual or other work, in any medium, that
+  contains a notice placed by the copyright holder saying it can be distributed
+  under the terms of this License. Such a notice grants a world-wide,
+  royalty-free license, unlimited in duration, to use that work under the
+  conditions stated herein. The "Document", below, refers to any such manual or
+  work. Any member of the public is a licensee, and is addressed as "you". You
+  accept the license if you copy, modify or distribute the work in a way
+  requiring permission under copyright law.
+ </p><p>
+  A "Modified Version" of the Document means any work containing the Document
+  or a portion of it, either copied verbatim, or with modifications and/or
+  translated into another language.
+ </p><p>
+  A "Secondary Section" is a named appendix or a front-matter section of the
+  Document that deals exclusively with the relationship of the publishers or
+  authors of the Document to the Document's overall subject (or to related
+  matters) and contains nothing that could fall directly within that overall
+  subject. (Thus, if the Document is in part a textbook of mathematics, a
+  Secondary Section may not explain any mathematics.) The relationship could be
+  a matter of historical connection with the subject or with related matters,
+  or of legal, commercial, philosophical, ethical or political position
+  regarding them.
+ </p><p>
+  The "Invariant Sections" are certain Secondary Sections whose titles are
+  designated, as being those of Invariant Sections, in the notice that says
+  that the Document is released under this License. If a section does not fit
+  the above definition of Secondary then it is not allowed to be designated as
+  Invariant. The Document may contain zero Invariant Sections. If the Document
+  does not identify any Invariant Sections then there are none.
+ </p><p>
+  The "Cover Texts" are certain short passages of text that are listed, as
+  Front-Cover Texts or Back-Cover Texts, in the notice that says that the
+  Document is released under this License. A Front-Cover Text may be at most 5
+  words, and a Back-Cover Text may be at most 25 words.
+ </p><p>
+  A "Transparent" copy of the Document means a machine-readable copy,
+  represented in a format whose specification is available to the general
+  public, that is suitable for revising the document straightforwardly with
+  generic text editors or (for images composed of pixels) generic paint
+  programs or (for drawings) some widely available drawing editor, and that is
+  suitable for input to text formatters or for automatic translation to a
+  variety of formats suitable for input to text formatters. A copy made in an
+  otherwise Transparent file format whose markup, or absence of markup, has
+  been arranged to thwart or discourage subsequent modification by readers is
+  not Transparent. An image format is not Transparent if used for any
+  substantial amount of text. A copy that is not "Transparent" is called
+  "Opaque".
+ </p><p>
+  Examples of suitable formats for Transparent copies include plain ASCII
+  without markup, Texinfo input format, LaTeX input format, SGML or XML using a
+  publicly available DTD, and standard-conforming simple HTML, PostScript or
+  PDF designed for human modification. Examples of transparent image formats
+  include PNG, XCF and JPG. Opaque formats include proprietary formats that can
+  be read and edited only by proprietary word processors, SGML or XML for which
+  the DTD and/or processing tools are not generally available, and the
+  machine-generated HTML, PostScript or PDF produced by some word processors
+  for output purposes only.
+ </p><p>
+  The "Title Page" means, for a printed book, the title page itself, plus such
+  following pages as are needed to hold, legibly, the material this License
+  requires to appear in the title page. For works in formats which do not have
+  any title page as such, "Title Page" means the text near the most prominent
+  appearance of the work's title, preceding the beginning of the body of the
+  text.
+ </p><p>
+  A section "Entitled XYZ" means a named subunit of the Document whose title
+  either is precisely XYZ or contains XYZ in parentheses following text that
+  translates XYZ in another language. (Here XYZ stands for a specific section
+  name mentioned below, such as "Acknowledgements", "Dedications",
+  "Endorsements", or "History".) To "Preserve the Title" of such a section when
+  you modify the Document means that it remains a section "Entitled XYZ"
+  according to this definition.
+ </p><p>
+  The Document may include Warranty Disclaimers next to the notice which states
+  that this License applies to the Document. These Warranty Disclaimers are
+  considered to be included by reference in this License, but only as regards
+  disclaiming warranties: any other implication that these Warranty Disclaimers
+  may have is void and has no effect on the meaning of this License.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.19"><span class="name">
+    2. VERBATIM COPYING
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.19">#</a></h5></div><p>
+  You may copy and distribute the Document in any medium, either commercially
+  or non-commercially, provided that this License, the copyright notices, and
+  the license notice saying this License applies to the Document are reproduced
+  in all copies, and that you add no other conditions whatsoever to those of
+  this License. You may not use technical measures to obstruct or control the
+  reading or further copying of the copies you make or distribute. However, you
+  may accept compensation in exchange for copies. If you distribute a large
+  enough number of copies you must also follow the conditions in section 3.
+ </p><p>
+  You may also lend copies, under the same conditions stated above, and you may
+  publicly display copies.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.22"><span class="name">
+    3. COPYING IN QUANTITY
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.22">#</a></h5></div><p>
+  If you publish printed copies (or copies in media that commonly have printed
+  covers) of the Document, numbering more than 100, and the Document's license
+  notice requires Cover Texts, you must enclose the copies in covers that
+  carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the
+  front cover, and Back-Cover Texts on the back cover. Both covers must also
+  clearly and legibly identify you as the publisher of these copies. The front
+  cover must present the full title with all words of the title equally
+  prominent and visible. You may add other material on the covers in addition.
+  Copying with changes limited to the covers, as long as they preserve the
+  title of the Document and satisfy these conditions, can be treated as
+  verbatim copying in other respects.
+ </p><p>
+  If the required texts for either cover are too voluminous to fit legibly, you
+  should put the first ones listed (as many as fit reasonably) on the actual
+  cover, and continue the rest onto adjacent pages.
+ </p><p>
+  If you publish or distribute Opaque copies of the Document numbering more
+  than 100, you must either include a machine-readable Transparent copy along
+  with each Opaque copy, or state in or with each Opaque copy a
+  computer-network location from which the general network-using public has
+  access to download using public-standard network protocols a complete
+  Transparent copy of the Document, free of added material. If you use the
+  latter option, you must take reasonably prudent steps, when you begin
+  distribution of Opaque copies in quantity, to ensure that this Transparent
+  copy will remain thus accessible at the stated location until at least one
+  year after the last time you distribute an Opaque copy (directly or through
+  your agents or retailers) of that edition to the public.
+ </p><p>
+  It is requested, but not required, that you contact the authors of the
+  Document well before redistributing any large number of copies, to give them
+  a chance to provide you with an updated version of the Document.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.27"><span class="name">
+    4. MODIFICATIONS
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.27">#</a></h5></div><p>
+  You may copy and distribute a Modified Version of the Document under the
+  conditions of sections 2 and 3 above, provided that you release the Modified
+  Version under precisely this License, with the Modified Version filling the
+  role of the Document, thus licensing distribution and modification of the
+  Modified Version to whoever possesses a copy of it. In addition, you must do
+  these things in the Modified Version:
+ </p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p>
+    Use in the Title Page (and on the covers, if any) a title distinct from
+    that of the Document, and from those of previous versions (which should, if
+    there were any, be listed in the History section of the Document). You may
+    use the same title as a previous version if the original publisher of that
+    version gives permission.
+   </p></li><li class="listitem"><p>
+    List on the Title Page, as authors, one or more persons or entities
+    responsible for authorship of the modifications in the Modified Version,
+    together with at least five of the principal authors of the Document (all
+    of its principal authors, if it has fewer than five), unless they release
+    you from this requirement.
+   </p></li><li class="listitem"><p>
+    State on the Title page the name of the publisher of the Modified Version,
+    as the publisher.
+   </p></li><li class="listitem"><p>
+    Preserve all the copyright notices of the Document.
+   </p></li><li class="listitem"><p>
+    Add an appropriate copyright notice for your modifications adjacent to the
+    other copyright notices.
+   </p></li><li class="listitem"><p>
+    Include, immediately after the copyright notices, a license notice giving
+    the public permission to use the Modified Version under the terms of this
+    License, in the form shown in the Addendum below.
+   </p></li><li class="listitem"><p>
+    Preserve in that license notice the full lists of Invariant Sections and
+    required Cover Texts given in the Document's license notice.
+   </p></li><li class="listitem"><p>
+    Include an unaltered copy of this License.
+   </p></li><li class="listitem"><p>
+    Preserve the section Entitled "History", Preserve its Title, and add to it
+    an item stating at least the title, year, new authors, and publisher of the
+    Modified Version as given on the Title Page. If there is no section
+    Entitled "History" in the Document, create one stating the title, year,
+    authors, and publisher of the Document as given on its Title Page, then add
+    an item describing the Modified Version as stated in the previous sentence.
+   </p></li><li class="listitem"><p>
+    Preserve the network location, if any, given in the Document for public
+    access to a Transparent copy of the Document, and likewise the network
+    locations given in the Document for previous versions it was based on.
+    These may be placed in the "History" section. You may omit a network
+    location for a work that was published at least four years before the
+    Document itself, or if the original publisher of the version it refers to
+    gives permission.
+   </p></li><li class="listitem"><p>
+    For any section Entitled "Acknowledgements" or "Dedications", Preserve the
+    Title of the section, and preserve in the section all the substance and
+    tone of each of the contributor acknowledgements and/or dedications given
+    therein.
+   </p></li><li class="listitem"><p>
+    Preserve all the Invariant Sections of the Document, unaltered in their
+    text and in their titles. Section numbers or the equivalent are not
+    considered part of the section titles.
+   </p></li><li class="listitem"><p>
+    Delete any section Entitled "Endorsements". Such a section may not be
+    included in the Modified Version.
+   </p></li><li class="listitem"><p>
+    Do not retitle any existing section to be Entitled "Endorsements" or to
+    conflict in title with any Invariant Section.
+   </p></li><li class="listitem"><p>
+    Preserve any Warranty Disclaimers.
+   </p></li></ol></div><p>
+  If the Modified Version includes new front-matter sections or appendices that
+  qualify as Secondary Sections and contain no material copied from the
+  Document, you may at your option designate some or all of these sections as
+  invariant. To do this, add their titles to the list of Invariant Sections in
+  the Modified Version's license notice. These titles must be distinct from any
+  other section titles.
+ </p><p>
+  You may add a section Entitled "Endorsements", provided it contains nothing
+  but endorsements of your Modified Version by various parties--for example,
+  statements of peer review or that the text has been approved by an
+  organization as the authoritative definition of a standard.
+ </p><p>
+  You may add a passage of up to five words as a Front-Cover Text, and a
+  passage of up to 25 words as a Back-Cover Text, to the end of the list of
+  Cover Texts in the Modified Version. Only one passage of Front-Cover Text and
+  one of Back-Cover Text may be added by (or through arrangements made by) any
+  one entity. If the Document already includes a cover text for the same cover,
+  previously added by you or by arrangement made by the same entity you are
+  acting on behalf of, you may not add another; but you may replace the old
+  one, on explicit permission from the previous publisher that added the old
+  one.
+ </p><p>
+  The author(s) and publisher(s) of the Document do not by this License give
+  permission to use their names for publicity for or to assert or imply
+  endorsement of any Modified Version.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.34"><span class="name">
+    5. COMBINING DOCUMENTS
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.34">#</a></h5></div><p>
+  You may combine the Document with other documents released under this
+  License, under the terms defined in section 4 above for modified versions,
+  provided that you include in the combination all of the Invariant Sections of
+  all of the original documents, unmodified, and list them all as Invariant
+  Sections of your combined work in its license notice, and that you preserve
+  all their Warranty Disclaimers.
+ </p><p>
+  The combined work need only contain one copy of this License, and multiple
+  identical Invariant Sections may be replaced with a single copy. If there are
+  multiple Invariant Sections with the same name but different contents, make
+  the title of each such section unique by adding at the end of it, in
+  parentheses, the name of the original author or publisher of that section if
+  known, or else a unique number. Make the same adjustment to the section
+  titles in the list of Invariant Sections in the license notice of the
+  combined work.
+ </p><p>
+  In the combination, you must combine any sections Entitled "History" in the
+  various original documents, forming one section Entitled "History"; likewise
+  combine any sections Entitled "Acknowledgements", and any sections Entitled
+  "Dedications". You must delete all sections Entitled "Endorsements".
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.38"><span class="name">
+    6. COLLECTIONS OF DOCUMENTS
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.38">#</a></h5></div><p>
+  You may make a collection consisting of the Document and other documents
+  released under this License, and replace the individual copies of this
+  License in the various documents with a single copy that is included in the
+  collection, provided that you follow the rules of this License for verbatim
+  copying of each of the documents in all other respects.
+ </p><p>
+  You may extract a single document from such a collection, and distribute it
+  individually under this License, provided you insert a copy of this License
+  into the extracted document, and follow this License in all other respects
+  regarding verbatim copying of that document.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.41"><span class="name">
+    7. AGGREGATION WITH INDEPENDENT WORKS
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.41">#</a></h5></div><p>
+  A compilation of the Document or its derivatives with other separate and
+  independent documents or works, in or on a volume of a storage or
+  distribution medium, is called an "aggregate" if the copyright resulting from
+  the compilation is not used to limit the legal rights of the compilation's
+  users beyond what the individual works permit. When the Document is included
+  in an aggregate, this License does not apply to the other works in the
+  aggregate which are not themselves derivative works of the Document.
+ </p><p>
+  If the Cover Text requirement of section 3 is applicable to these copies of
+  the Document, then if the Document is less than one half of the entire
+  aggregate, the Document's Cover Texts may be placed on covers that bracket
+  the Document within the aggregate, or the electronic equivalent of covers if
+  the Document is in electronic form. Otherwise they must appear on printed
+  covers that bracket the whole aggregate.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.44"><span class="name">
+    8. TRANSLATION
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.44">#</a></h5></div><p>
+  Translation is considered a kind of modification, so you may distribute
+  translations of the Document under the terms of section 4. Replacing
+  Invariant Sections with translations requires special permission from their
+  copyright holders, but you may include translations of some or all Invariant
+  Sections in addition to the original versions of these Invariant Sections.
+  You may include a translation of this License, and all the license notices in
+  the Document, and any Warranty Disclaimers, provided that you also include
+  the original English version of this License and the original versions of
+  those notices and disclaimers. In case of a disagreement between the
+  translation and the original version of this License or a notice or
+  disclaimer, the original version will prevail.
+ </p><p>
+  If a section in the Document is Entitled "Acknowledgements", "Dedications",
+  or "History", the requirement (section 4) to Preserve its Title (section 1)
+  will typically require changing the actual title.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.47"><span class="name">
+    9. TERMINATION
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.47">#</a></h5></div><p>
+  You may not copy, modify, sublicense, or distribute the Document except as
+  expressly provided for under this License. Any other attempt to copy, modify,
+  sublicense or distribute the Document is void, and will automatically
+  terminate your rights under this License. However, parties who have received
+  copies, or rights, from you under this License will not have their licenses
+  terminated so long as such parties remain in full compliance.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.49"><span class="name">
+    10. FUTURE REVISIONS OF THIS LICENSE
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.49">#</a></h5></div><p>
+  The Free Software Foundation may publish new, revised versions of the GNU
+  Free Documentation License from time to time. Such new versions will be
+  similar in spirit to the present version, but may differ in detail to address
+  new problems or concerns. See
+  <a class="link" href="https://www.gnu.org/copyleft/" target="_blank">https://www.gnu.org/copyleft/</a>.
+ </p><p>
+  Each version of the License is given a distinguishing version number. If the
+  Document specifies that a particular numbered version of this License "or any
+  later version" applies to it, you have the option of following the terms and
+  conditions either of that specified version or of any later version that has
+  been published (not as a draft) by the Free Software Foundation. If the
+  Document does not specify a version number of this License, you may choose
+  any version ever published (not as a draft) by the Free Software Foundation.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.4.12.4.52"><span class="name">
+    ADDENDUM: How to use this License for your documents
+  </span><a title="Permalink" class="permalink" href="#id-1.4.12.4.52">#</a></h5></div><div class="verbatim-wrap"><pre class="screen">Copyright (c) YEAR YOUR NAME.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled “GNU
+Free Documentation License”.</pre></div><p>
+  If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+  replace the “with...Texts.” line with this:
+ </p><div class="verbatim-wrap"><pre class="screen">with the Invariant Sections being LIST THEIR TITLES, with the
+Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</pre></div><p>
+  If you have Invariant Sections without Cover Texts, or some other combination
+  of the three, merge those two alternatives to suit the situation.
+ </p><p>
+  If your document contains nontrivial examples of program code, we recommend
+  releasing these examples in parallel under your choice of free software
+  license, such as the GNU General Public License, to permit their use in free
+  software.
+ </p></section></section></div></section></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="#sec-sol-monit-concept-overview"><span class="title-number">1 </span><span class="title-name">Conceptual overview</span></a></span></li><li><span class="sect1"><a href="#sec-sol-monit-terms"><span class="title-number">2 </span><span class="title-name">Terminology</span></a></span></li><li><span class="sect1"><a href="#sec-sol-autom-install-exporters"><span class="title-number">3 </span><span class="title-name">Installing exporters</span></a></span></li><li><span class="sect1"><a href="#sec-sol-monit-hana-db-exp"><span class="title-number">4 </span><span class="title-name">SAP HANA database exporter</span></a></span></li><li><span class="sect1"><a href="#sec-sol-monit-ha-cluster-exp"><span class="title-number">5 </span><span class="title-name">High Availability cluster exporter</span></a></span></li><li><span class="sect1"><a href="#sec-sol-monit-sap-host-exp"><span class="title-number">6 </span><span class="title-name">SAP host exporter</span></a></span></li><li><span class="sect1"><a href="#sec-sol-monit-more"><span class="title-number">7 </span><span class="title-name">For more information</span></a></span></li><li><span class="sect1"><a href="#id-1.4.11"><span class="title-number">8 </span><span class="title-name">Legal notice</span></a></span></li><li><span class="appendix"><a href="#id-1.4.12"><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></span><ul><li><span class="sect1"><a href="#id-1.4.12.4"><span class="title-number">A.1 </span><span class="title-name">GNU Free Documentation License</span></a></span></li></ul></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

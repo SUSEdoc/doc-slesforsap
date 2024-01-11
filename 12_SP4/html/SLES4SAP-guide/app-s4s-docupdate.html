@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP4 | Guide | Documentation Updates</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Documentation Updates | SLES for SAP 12 SP4"/>
+<meta name="description" content="This section contains information about documentation …"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP4"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Appendix D. Documentation Updates"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP4"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Documentation Updates | SLES for SAP 12 SP4"/>
+<meta property="og:description" content="This section contains information about documentation content changes made to the SUSE Linux Enterprise Server for SAP Appli…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentation Updates | SLES for SAP 12 SP4"/>
+<meta name="twitter:description" content="This section contains information about documentation content changes made to the SUSE Linux Enterprise Server for SAP Appli…"/>
+<link rel="prev" href="app-s4s-component-supplement.html" title="Appendix C. Supplementary Media"/><link rel="next" href="ape.html" title="Appendix E. GNU Licenses"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="app-s4s-docupdate.html">Documentation Updates</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">Upgrading a SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" "><span class="title-number">10 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" "><span class="title-number">11 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="app-s4s-docupdate.html" class=" you-are-here"><span class="title-number">D </span><span class="title-name">Documentation Updates</span></a></li><li><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU Licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="appendix" id="app-s4s-docupdate" data-id-title="Documentation Updates"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP4</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">D </span><span class="title-name">Documentation Updates</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  This section contains information about documentation content changes made
+  to the <em class="citetitle">SUSE Linux Enterprise Server for SAP Applications Guide</em>.
+ </p><p>
+  This document was updated on the following dates:
+ </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2020-08-13" title="D.1. August 2020—SLES for SAP 12 SP4 Maintenance Release">Section D.1, “August 2020—SLES for SAP 12 SP4 Maintenance Release”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2019-05-06" title="D.2. May 06, 2019—SLES for SAP 12 SP4 FCS Documentation Release">Section D.2, “May 06, 2019—SLES for SAP 12 SP4 FCS Documentation Release”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-12-12" title="D.3. October 25, 2018—SLES for SAP 12 SP4 FCS Documentation Release">Section D.3, “October 25, 2018—SLES for SAP 12 SP4 FCS Documentation Release”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-10-25" title="D.4. October 25, 2018—SLES for SAP 12 SP4 Initial Documentation Release">Section D.4, “October 25, 2018—SLES for SAP 12 SP4 Initial Documentation Release”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-04-25" title="D.5. April 25, 2018—SLES for SAP 12 SP3 Documentation Update">Section D.5, “April 25, 2018—SLES for SAP 12 SP3 Documentation Update”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-11-01" title="D.6. November 1, 2017—SLES for SAP 12 SP3 Documentation Update">Section D.6, “November 1, 2017—SLES for SAP 12 SP3 Documentation Update”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-09-07" title="D.7. September 7, 2017—SLES for SAP 12 SP3 FCS">Section D.7, “September 7, 2017—SLES for SAP 12 SP3 FCS”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-05-10" title="D.8. May 10, 2017—SLES for SAP 12 SP2 Documentation Update">Section D.8, “May 10, 2017—SLES for SAP 12 SP2 Documentation Update”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-12-07" title="D.9. December 07, 2016—SLES for SAP 12 SP2 Documentation Update">Section D.9, “December 07, 2016—SLES for SAP 12 SP2 Documentation Update”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-11-07" title="D.10. November 07, 2016—SLES for SAP 12 SP2 FCS">Section D.10, “November 07, 2016—SLES for SAP 12 SP2 FCS”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-03-23" title="D.11. March 23, 2016">Section D.11, “March 23, 2016”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-29" title="D.12. February 29, 2016">Section D.12, “February 29, 2016”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-15" title="D.13. February 15, 2016">Section D.13, “February 15, 2016”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2015-05-29" title="D.14. May 29, 2015">Section D.14, “May 29, 2015”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2015-04-29" title="D.15. April 29, 2015">Section D.15, “April 29, 2015”</a>
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="app-s4s-docupdate.html#app-s4s-docupdate-2013-10-28" title="D.16. October 28, 2013">Section D.16, “October 28, 2013”</a>
+   </p></li></ul></div><section class="sect1" id="app-s4s-docupdate-2020-08-13" data-id-title="August 2020—SLES for SAP 12 SP4 Maintenance Release"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.1 </span><span class="title-name">August 2020—SLES for SAP 12 SP4 Maintenance Release</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2020-08-13">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.5.3.1"><span class="term"><a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a></span></dt><dd><p>
+      Mention changes in the <span class="package">sapconf</span> package, revise
+      notes, and mention SUSE Linux Enterprise Server in conjuction to SUSE Linux Enterprise Server for SAP Applications.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2019-05-06" data-id-title="May 06, 2019—SLES for SAP 12 SP4 FCS Documentation Release"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.2 </span><span class="title-name">May 06, 2019—SLES for SAP 12 SP4 FCS Documentation Release</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2019-05-06">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.6.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-service" title="1.3. Included Services">Section 1.3, “Included Services”</a>
+    </span></dt><dd><p>
+      Updated information about ESPOS.
+     </p></dd><dt id="id-1.22.6.3.2"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Removed sentence discouraging use of <code class="command">saptune</code>.
+     </p></dd><dt id="id-1.22.6.3.3"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Fixed erroneous uses of the profile name <code class="literal">sapconf</code> that
+      should have read <code class="literal">sap-netweaver</code>.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2018-12-12" data-id-title="October 25, 2018—SLES for SAP 12 SP4 FCS Documentation Release"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.3 </span><span class="title-name">October 25, 2018—SLES for SAP 12 SP4 FCS Documentation Release</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-12-12">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.7.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-plan.html#sec-s4s-hardware" title="2.1. Hardware Requirements">Section 2.1, “Hardware Requirements”</a>
+    </span></dt><dd><p>
+      Corrected hard disk and RAM requirements (bsc#1116907).
+     </p></dd><dt id="id-1.22.7.3.2"><span class="term">
+     <a class="xref" href="cha-s4s-cluster.html#sec-s4s-hana-cluster-unattended" title="5.3. Unattended Installation of Cluster Servers">Section 5.3, “Unattended Installation of Cluster Servers”</a>
+    </span></dt><dd><p>
+      Added section about unattended installation of HANA-SR cluster
+      (FATE#325957).
+     </p></dd><dt id="id-1.22.7.3.3"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Further added to <code class="literal">sapconf</code> section (FATE#325785).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2018-10-25" data-id-title="October 25, 2018—SLES for SAP 12 SP4 Initial Documentation Release"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.4 </span><span class="title-name">October 25, 2018—SLES for SAP 12 SP4 Initial Documentation Release</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-10-25">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.8.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-service" title="1.3. Included Services">Section 1.3, “Included Services”</a>
+    </span></dt><dd><p>
+      Fixed typo (bsc#1088879).
+     </p></dd><dt id="id-1.22.8.3.2"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Amended for <code class="literal">sapconf</code> 4.1.11 and up (FATE#325785).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2018-04-25" data-id-title="April 25, 2018—SLES for SAP 12 SP3 Documentation Update"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.5 </span><span class="title-name">April 25, 2018—SLES for SAP 12 SP3 Documentation Update</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2018-04-25">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.9.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-service" title="1.3. Included Services">Section 1.3, “Included Services”</a>
+    </span></dt><dd><p>
+      Fixed typo (bsc#1088879).
+     </p></dd><dt id="id-1.22.9.3.2"><span class="term">
+     <a class="xref" href="cha-s4s-cluster.html#sec-s4s-hana-cluster-wizard" title="5.2. Setup">Section 5.2, “Setup”</a>
+    </span></dt><dd><p>
+      Fixed misleading content: Other fencing types supported but not in YaST
+      (bsc#1086628).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2017-11-01" data-id-title="November 1, 2017—SLES for SAP 12 SP3 Documentation Update"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.6 </span><span class="title-name">November 1, 2017—SLES for SAP 12 SP3 Documentation Update</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-11-01">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.10.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-repository" title="1.2. Software Repository Setup">Section 1.2, “Software Repository Setup”</a>
+    </span></dt><dd><p>
+      Added note about ESPOS updates via regular update repositories
+      (bsc#1062335).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2017-09-07" data-id-title="September 7, 2017—SLES for SAP 12 SP3 FCS"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.7 </span><span class="title-name">September 7, 2017—SLES for SAP 12 SP3 FCS</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-09-07">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.11.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>
+    </span></dt><dd><p>
+      Added link to SAP help and support portals (documentation comment
+      #33499).
+     </p></dd><dt id="id-1.22.11.3.2"><span class="term">
+     <a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>,
+     <a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>
+    </span></dt><dd><p>
+      Updated chapters with information about support for SAP HANA MDC and
+      SAP HANA TDI (FATE#322281, FATE#320408).
+     </p></dd><dt id="id-1.22.11.3.3"><span class="term">
+     <a class="xref" href="cha-s4s-install.html#sec-s4s-install-workflow" title="3.1. Using the Installation Workflow">Section 3.1, “Using the Installation Workflow”</a>
+    </span></dt><dd><p>
+      Updated section with reference to description of installation on
+      POWER in SLES documentation (FATE#320639).
+     </p></dd><dt id="id-1.22.11.3.4"><span class="term">
+     <a class="xref" href="cha-s4s-configure-cryptctl.html" title="Chapter 11. Encrypting Directories Using cryptctl">Chapter 11, <em>Encrypting Directories Using <code class="command">cryptctl</code></em></a>
+    </span></dt><dd><p>
+      Updated chapter with information about support client certificates and
+      KMIP (FATE#322293, FATE#322979).
+     </p></dd><dt id="id-1.22.11.3.5"><span class="term">
+     <a class="xref" href="cha-s4s-install.html#sec-s4s-convert-sles" title="3.4. Converting a SLES Installation to a SLES for SAP Installation">Section 3.4, “Converting a SLES Installation to a SLES for SAP Installation”</a>
+    </span></dt><dd><p>
+      Added section about converting from SLES to SLES for SAP (FATE#320636,
+      FATE#320568).
+     </p></dd><dt id="id-1.22.11.3.6"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Updated list of profiles integrated into <code class="command">saptune</code> and <code class="literal">sapconf</code>
+      (FATE#320359). Created own section for <code class="literal">sapconf</code>.
+     </p></dd><dt id="id-1.22.11.3.7"><span class="term">
+     <a class="xref" href="cha-s4s-image.html#sec-s4s-configure-scrub-instance" title="14.2. Cleaning Up an Instance Before Using It as a Master Image">Section 14.2, “Cleaning Up an Instance Before Using It as a Master Image”</a>
+    </span></dt><dd><p>
+      Clarified usage of <code class="command">clone-master-clean-up</code> (DocComment#32698). Added information about
+      new configuration options (FATE#322066).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2017-05-10" data-id-title="May 10, 2017—SLES for SAP 12 SP2 Documentation Update"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.8 </span><span class="title-name">May 10, 2017—SLES for SAP 12 SP2 Documentation Update</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2017-05-10">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.12.3.1"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-component" title="1.1. Software Components">Section 1.1, “Software Components”</a>
+    </span></dt><dd><p>
+      Added links to project Web sites (FATE#323178).
+     </p></dd><dt id="id-1.22.12.3.2"><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-repository" title="1.2. Software Repository Setup">Section 1.2, “Software Repository Setup”</a>
+    , </span><span class="term">
+     <a class="xref" href="cha-s4s-about.html#sec-s4s-service" title="1.3. Included Services">Section 1.3, “Included Services”</a>
+    </span></dt><dd><p>
+      Added information about repositories and support for extensions and
+      modules (bsc#1022275).
+     </p></dd><dt id="id-1.22.12.3.3"><span class="term">
+     <a class="xref" href="cha-s4s-cluster.html#sec-s4s-hana-cluster-wizard" title="5.2. Setup">Section 5.2, “Setup”</a>
+    </span></dt><dd><p>
+      <code class="systemitem">softdog</code> is supported but not recommended
+      (bsc#1022511).
+     </p></dd><dt id="id-1.22.12.3.4"><span class="term">
+     <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Documented disabling
+      <code class="command">saptune</code>/<code class="command">sapconf</code> (FATE#322069).
+     </p></dd><dt id="id-1.22.12.3.5"><span class="term">
+     <a class="xref" href="cha-clamsap.html" title="Chapter 12. Protecting Against Malware With ClamSAP">Chapter 12, <em>Protecting Against Malware With ClamSAP</em></a>
+    </span></dt><dd><p>
+      Added new chapter (FATE#322612).
+     </p></dd><dt id="id-1.22.12.3.6"><span class="term">
+     <a class="xref" href="app-s4s-additional-software.html#sec-s4s-packagehub" title="A.3. SUSE Package Hub">Section A.3, “SUSE Package Hub”</a>
+    </span></dt><dd><p>
+      Added link to official usage instructions on the Web.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2016-12-07" data-id-title="December 07, 2016—SLES for SAP 12 SP2 Documentation Update"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.9 </span><span class="title-name">December 07, 2016—SLES for SAP 12 SP2 Documentation Update</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-12-07">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.13.3.1"><span class="term">
+      <a class="xref" href="cha-s4s-plan.html#sec-s4s-hardware" title="2.1. Hardware Requirements">Section 2.1, “Hardware Requirements”</a>
+    </span></dt><dd><p>
+      Clarified RAM requirements.
+     </p></dd><dt id="id-1.22.13.3.2"><span class="term">
+      <a class="xref" href="cha-s4s-cluster.html" title="Chapter 5. Setting Up an SAP HANA Cluster">Chapter 5, <em>Setting Up an SAP HANA Cluster</em></a>
+    </span></dt><dd><p>
+      Added new chapter (FATE#319068).
+     </p></dd><dt id="id-1.22.13.3.3"><span class="term">
+      <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-firewall-hana" title="10.2. Configuring HANA-Firewall">Section 10.2, “Configuring HANA-Firewall”</a>
+    </span></dt><dd><p>
+      Updated UI description (FATE#320376, FATE#320564).
+     </p></dd><dt id="id-1.22.13.3.4"><span class="term">
+      <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-saprouter" title="10.3. SAProuter Integration">Section 10.3, “SAProuter Integration”</a>
+    </span></dt><dd><p>
+      Added new section (FATE#320566).
+     </p></dd><dt id="id-1.22.13.3.5"><span class="term">
+      <a class="xref" href="app-s4s-additional-software.html" title="Appendix A. Additional Software for SLES for SAP">Appendix A, <em>Additional Software for SLES for SAP</em></a>
+    </span></dt><dd><p>
+      Added new appendix (FATE#320373).
+     </p></dd><dt id="id-1.22.13.3.6"><span class="term">
+      <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    , </span><span class="term">
+      <a class="xref" href="cha-s4s-configure-cryptctl.html" title="Chapter 11. Encrypting Directories Using cryptctl">Chapter 11, <em>Encrypting Directories Using <code class="command">cryptctl</code></em></a>
+    </span></dt><dd><p>
+      Clarifications.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2016-11-07" data-id-title="November 07, 2016—SLES for SAP 12 SP2 FCS"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.10 </span><span class="title-name">November 07, 2016—SLES for SAP 12 SP2 FCS</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-11-07">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.14.3.1"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-component" title="1.1. Software Components">Section 1.1, “Software Components”</a>
+    </span></dt><dd><p>
+      Updated list of components.
+     </p></dd><dt id="id-1.22.14.3.2"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-repository" title="1.2. Software Repository Setup">Section 1.2, “Software Repository Setup”</a>
+    </span></dt><dd><p>
+      Added section (bsc#320632).
+     </p></dd><dt id="id-1.22.14.3.3"><span class="term">
+      <a class="xref" href="cha-s4s-install.html" title="Chapter 3. Installing the Operating System">Chapter 3, <em>Installing the Operating System</em></a>,
+      <a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>
+    </span></dt><dd><p>
+      Updated chapters to match new installation wizards.
+      Added list of supported SAP products (FATE#320454).
+     </p></dd><dt id="id-1.22.14.3.4"><span class="term">
+      <a class="xref" href="cha-s4s-install-sap.html#sec-partition-command" title="4.5. Partitioning for an SAP Application Without the SAP Installation Wizard">Section 4.5, “Partitioning for an SAP Application Without the SAP Installation Wizard”</a>
+    </span></dt><dd><p>
+      Added section (bsc#929623).
+     </p></dd><dt id="id-1.22.14.3.5"><span class="term">
+      <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>,
+      <a class="xref" href="cha-s4s-access.html" title="Chapter 10. Firewalling">Chapter 10, <em>Firewalling</em></a>,
+      <a class="xref" href="cha-s4s-image.html" title="Chapter 14. Creating Operating System Images">Chapter 14, <em>Creating Operating System Images</em></a>,
+      <a class="xref" href="cha-s4s-trouble.html" title="Chapter 15. Important Log Files">Chapter 15, <em>Important Log Files</em></a>
+    </span></dt><dd><p>
+      Separated former chapter <em class="citetitle">Configuration</em> into
+      smaller chapters.
+     </p></dd><dt id="id-1.22.14.3.6"><span class="term">
+      <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Updated section to refer to
+      <code class="systemitem">saptune</code>
+      (FATE#320361, FATE#320362, FATE#320633).
+     </p></dd><dt id="id-1.22.14.3.7"><span class="term">
+      <a class="xref" href="cha-s4s-configure-cryptctl.html" title="Chapter 11. Encrypting Directories Using cryptctl">Chapter 11, <em>Encrypting Directories Using <code class="command">cryptctl</code></em></a>
+    </span></dt><dd><p>
+      Added section (FATE#320367).
+     </p></dd><dt id="id-1.22.14.3.8"><span class="term">
+      <a class="xref" href="cha-s4s-configure-rdp.html" title="Chapter 13. Connecting via RDP">Chapter 13, <em>Connecting via RDP</em></a>
+    </span></dt><dd><p>
+      Added section (FATE#320363).
+     </p></dd><dt id="id-1.22.14.3.9"><span class="term">
+      <a class="xref" href="app-s4s-autoyast-partition.html" title="Appendix B. Partitioning for the SAP System Using AutoYaST">Appendix B, <em>Partitioning for the SAP System Using AutoYaST</em></a>
+    </span></dt><dd><p>
+      Moved parts of <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition-sap" title="2.7.2. Partitioning for the SAP System (stage 2)">Section 2.7.2, “Partitioning for the SAP System (stage 2)”</a> that related to
+      AutoYaST only to a new section.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2016-03-23" data-id-title="March 23, 2016"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.11 </span><span class="title-name">March 23, 2016</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-03-23">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.15.3.1"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-hana-ra" title="1.1.3.1. SAPHana Resource Agent">Section 1.1.3.1, “<code class="systemitem">SAPHana</code> Resource Agent”</a>
+    </span></dt><dd><p>
+      Clarify wording.
+     </p></dd><dt id="id-1.22.15.3.2"><span class="term">
+      <a class="xref" href="cha-s4s-install.html#sec-s4s-autoyast" title="3.3. Using an External AutoYaST Profile">Section 3.3, “Using an External AutoYaST Profile”</a>
+    </span></dt><dd><p>
+      Clarify support status of AutoYaST
+      (<a class="link" href="https://bugzilla.suse.com/show_bug.cgi?id=969341" target="_blank">https://bugzilla.suse.com/show_bug.cgi?id=969341</a>).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2016-02-29" data-id-title="February 29, 2016"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.12 </span><span class="title-name">February 29, 2016</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-29">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.16.3.1"><span class="term">
+      <a class="xref" href="cha-s4s-image.html#sec-s4s-configure-scrub-instance" title="14.2. Cleaning Up an Instance Before Using It as a Master Image">Section 14.2, “Cleaning Up an Instance Before Using It as a Master Image”</a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd><dt id="id-1.22.16.3.2"><span class="term">
+      <a class="xref" href="cha-s4s-image.html#sec-s4s-configure-kiwi" title="14.1. Creating Images with KIWI NG">Section 14.1, “Creating Images with KIWI NG”</a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd><dt id="id-1.22.16.3.3"><span class="term">
+      <a class="xref" href="cha-s4s-plan.html#sec-s4s-download" title="2.2. Downloading the Installation Image">Section 2.2, “Downloading the Installation Image”</a>
+    </span></dt><dd><p>
+      Clarify that only DVD 1 is necessary for installation
+      (doccomment#30069).
+     </p></dd><dt id="id-1.22.16.3.4"><span class="term">
+      Other updates
+    </span></dt><dd><p>
+      Other corrections and small language updates.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2016-02-15" data-id-title="February 15, 2016"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.13 </span><span class="title-name">February 15, 2016</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-15">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.17.3.1"><span class="term">Updates to the Structure of the Guide
+    </span></dt><dd><p>
+      Improve organization of the guide by updating its structure.
+      <a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>,
+      <a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>,
+      <em class="citetitle">Configuring SUSE Linux Enterprise Server for SAP Applications</em>, and
+      <a class="xref" href="cha-s4s-serve-mediaset.html" title="Chapter 6. Setting Up an Installation Server for SAP Media Sets">Chapter 6, <em>Setting Up an Installation Server for SAP Media Sets</em></a> are now
+      chapters instead of sections.
+     </p><p>
+      <a class="xref" href="app-s4s-component-supplement.html" title="Appendix C. Supplementary Media">Appendix C, <em>Supplementary Media</em></a>
+      is now an appendix instead of section.
+     </p><p>
+      <a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>
+      is now a section within
+      <a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>
+      instead of a chapter.
+     </p><p>
+      Merge <a class="xref" href="cha-s4s-about.html#sec-s4s-component" title="1.1. Software Components">Section 1.1, “Software Components”</a>
+      and <em class="citetitle">Chapter 5, <span class="quote">“<span class="quote">SUSE Linux Enterprise Server for SAP Applications Components</span>”</span></em>.
+     </p><p>
+      Move <a class="xref" href="cha-s4s-install.html#sec-s4s-install-network" title="3.2. Using SLES for SAP media from the Network">Section 3.2, “Using SLES for SAP media from the Network”</a>
+      from <em class="citetitle">Chapter 3,
+      <span class="quote">“<span class="quote">Remote Installation from a Network Server</span>”</span></em>
+      to <a class="xref" href="cha-s4s-install.html" title="Chapter 3. Installing the Operating System">Chapter 3, <em>Installing the Operating System</em></a>.
+     </p><p>
+      Move <a class="xref" href="cha-s4s-plan.html#sec-s4s-data" title="2.6. Required Data for Installing">Section 2.6, “Required Data for Installing”</a>
+      from <a class="xref" href="cha-s4s-install.html" title="Chapter 3. Installing the Operating System">Chapter 3, <em>Installing the Operating System</em></a> to
+      <a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>.
+     </p><p>
+      Move certain information from
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-component-install" title="1.1.4. Installation Workflow">Section 1.1.4, “Installation Workflow”</a> to
+      <a class="xref" href="cha-s4s-plan.html#sec-s4s-workflow-overview" title="2.5. Overview of the Installation Workflow">Section 2.5, “Overview of the Installation Workflow”</a>.
+     </p></dd><dt id="id-1.22.17.3.2"><span class="term"><a class="xref" href="cha-s4s-about.html" title="Chapter 1. What Is SUSE Linux Enterprise Server for SAP Applications?">Chapter 1, <em>What Is SUSE Linux Enterprise Server for SAP Applications?</em></a></span></dt><dd><p>
+      Add figure.
+     </p></dd><dt id="id-1.22.17.3.3"><span class="term"><a class="xref" href="cha-s4s-about.html#sec-s4s-hana-replicate" title="1.1.3. Simplified SAP HANA System Replication Setup">Section 1.1.3, “Simplified SAP HANA System Replication Setup”</a>
+    </span></dt><dd><p>
+      Add information on supported scenarios.
+     </p></dd><dt id="id-1.22.17.3.4"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-component-clamsap" title="1.1.6. Malware Protection with ClamSAP">Section 1.1.6, “Malware Protection with ClamSAP”</a>
+    </span></dt><dd><p>
+      Mention added support for NW-VSI 2.0.
+     </p></dd><dt id="id-1.22.17.3.5"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-component-hana-secure" title="1.1.7. SAP HANA Security">Section 1.1.7, “SAP HANA Security”</a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd><dt id="id-1.22.17.3.6"><span class="term">
+      <a class="xref" href="cha-s4s-about.html#sec-s4s-component-manage-operation" title="1.1.8. Simplified Operations Management">Section 1.1.8, “Simplified Operations Management”</a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd><dt id="id-1.22.17.3.7"><span class="term">
+      <a class="xref" href="cha-s4s-install.html#sec-s4s-install-workflow" title="3.1. Using the Installation Workflow">Section 3.1, “Using the Installation Workflow”</a>
+    </span></dt><dd><p>
+      Remove outdated installation options. Update Installation Workflow.
+     </p></dd><dt id="id-1.22.17.3.8"><span class="term">
+      <a class="xref" href="cha-s4s-install.html#sec-s4s-autoyast" title="3.3. Using an External AutoYaST Profile">Section 3.3, “Using an External AutoYaST Profile”</a>
+    </span></dt><dd><p>
+      Remove information that duplicated.
+     </p></dd><dt id="id-1.22.17.3.9"><span class="term">
+      <a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>
+    </span></dt><dd><p>
+      Update Installation Workflow.
+     </p></dd><dt id="id-1.22.17.3.10"><span class="term">
+      <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-firewall-hana" title="10.2. Configuring HANA-Firewall">Section 10.2, “Configuring HANA-Firewall”</a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd><dt id="id-1.22.17.3.11"><span class="term">
+      <a class="xref" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune">Chapter 9, <em>Tuning systems with <code class="command">saptune</code></em></a>
+    </span></dt><dd><p>
+      Add new section.
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2015-05-29" data-id-title="May 29, 2015"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.14 </span><span class="title-name">May 29, 2015</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2015-05-29">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.18.3.1"><span class="term"><a class="xref" href="cha-s4s-about.html#sec-s4s-component" title="1.1. Software Components">Section 1.1, “Software Components”</a>
+    </span></dt><dd><p>
+      Add more information on SUSE Linux Enterprise High Availability.
+     </p><p>
+      There are also White Papers about SUSE Linux Enterprise High Availability and
+      SUSE Linux Enterprise Server for SAP Applications.
+     </p></dd><dt id="id-1.22.18.3.2"><span class="term"><a class="xref" href="cha-s4s-plan.html" title="Chapter 2. Planning the Installation">Chapter 2, <em>Planning the Installation</em></a>
+    </span></dt><dd><p>
+      Provide ISO image download URL.
+     </p></dd><dt id="id-1.22.18.3.3"><span class="term">
+      <em class="citetitle">Section 2.2, <span class="quote">“<span class="quote">Booting the Installation Medium</span>”</span></em>
+    </span></dt><dd><p>
+      The package scope of the <span class="guimenu">SLES for SAP Applications —
+      Installation</span> is identical to a default SUSE Linux Enterprise Server
+      installation.
+     </p></dd><dt id="id-1.22.18.3.4"><span class="term">
+      <em class="citetitle">Section 2.3, <span class="quote">“<span class="quote">SLES for SAP — Installation</span>”</span></em>
+    </span></dt><dd><p>
+      Add note about pre-selected packages in case of registration at this
+      stage of the installation.
+     </p></dd><dt id="id-1.22.18.3.5"><span class="term">
+      <em class="citetitle">Section 2.4.3.5, <span class="quote">“<span class="quote">Registration</span>”</span></em>
+    </span></dt><dd><p>
+      Add note about pre-selected packages in case of registration at this
+      stage of the installation.
+     </p></dd><dt id="id-1.22.18.3.6"><span class="term"><a class="xref" href="cha-s4s-install-sap.html" title="Chapter 4. Installing SAP Applications">Chapter 4, <em>Installing SAP Applications</em></a>
+    </span></dt><dd><p>
+      Rewrite remote location specification.
+     </p></dd><dt id="id-1.22.18.3.7"><span class="term"><a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>
+    </span></dt><dd><p>
+      SAP HANA requires 2 GB of swap.
+     </p></dd><dt id="id-1.22.18.3.8"><span class="term"><a class="xref" href="cha-s4s-about.html#sec-s4s-hana-replicate" title="1.1.3. Simplified SAP HANA System Replication Setup">Section 1.1.3, “Simplified SAP HANA System Replication Setup”</a>
+    </span></dt><dd><p>
+      Address SAP HANA System Replication
+      (<a class="link" href="https://bugzilla.suse.com/show_bug.cgi?id=929626" target="_blank">https://bugzilla.suse.com/show_bug.cgi?id=929626</a>).
+     </p></dd><dt id="id-1.22.18.3.9"><span class="term"><a class="xref" href="cha-s4s-about.html#sec-s4s-component-harden" title="1.1.7.2. Hardening Guide for SAP HANA">Section 1.1.7.2, “Hardening Guide for SAP HANA”</a>
+    </span></dt><dd><p>
+      New section
+      (<a class="link" href="https://bugzilla.suse.com/show_bug.cgi?id=929625" target="_blank">https://bugzilla.suse.com/show_bug.cgi?id=929625</a>).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2015-04-29" data-id-title="April 29, 2015"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.15 </span><span class="title-name">April 29, 2015</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2015-04-29">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.19.3.1"><span class="term">General</span></dt><dd><p>
+      Replace SUSE Linux Enterprise Server 11 references with SUSE Linux Enterprise Server 12 everywhere, and
+      adjust the text according to the new installation flow.
+     </p></dd><dt id="id-1.22.19.3.2"><span class="term"><a class="xref" href="pre-s4s.html" title="About This Guide">About This Guide</a>
+    </span></dt><dd><p>
+      Update feedback information.
+     </p></dd><dt id="id-1.22.19.3.3"><span class="term"><a class="xref" href="cha-s4s-install.html#sec-s4s-autoyast" title="3.3. Using an External AutoYaST Profile">Section 3.3, “Using an External AutoYaST Profile”</a>
+    </span></dt><dd><p>
+      Add note about loading an external profile via HTTP
+      (<a class="link" href="https://bugzilla.suse.com/show_bug.cgi?id=925747" target="_blank">https://bugzilla.suse.com/show_bug.cgi?id=925747</a>).
+     </p></dd></dl></div></section><section class="sect1" id="app-s4s-docupdate-2013-10-28" data-id-title="October 28, 2013"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">D.16 </span><span class="title-name">October 28, 2013</span></span> <a title="Permalink" class="permalink" href="app-s4s-docupdate.html#app-s4s-docupdate-2013-10-28">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_appendix_docupdates.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Updates were made to the following sections. The changes are explained
+   below.
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.22.20.3.1"><span class="term"><a class="xref" href="cha-s4s-install.html" title="Chapter 3. Installing the Operating System">Chapter 3, <em>Installing the Operating System</em></a>
+    </span></dt><dd><p>
+      Update <span class="quote">“<span class="quote">Hardware Requirements</span>”</span>, <span class="quote">“<span class="quote">Hard Disk</span>”</span>
+      space, and adjust the following text accordingly.
+     </p></dd><dt id="id-1.22.20.3.2"><span class="term"><a class="xref" href="cha-s4s-plan.html#sec-s4s-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>
+    </span></dt><dd><p>
+      New chapter.
+     </p></dd><dt id="id-1.22.20.3.3"><span class="term"><a class="xref" href="app-s4s-docupdate.html" title="Appendix D. Documentation Updates">Appendix D, <em>Documentation Updates</em></a>
+    </span></dt><dd><p>
+      New appendix.
+     </p></dd></dl></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="app-s4s-component-supplement.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Appendix C </span>Supplementary Media</span></a> </div><div><a class="pagination-link next" href="ape.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Appendix E </span>GNU Licenses</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2020-08-13"><span class="title-number">D.1 </span><span class="title-name">August 2020—SLES for SAP 12 SP4 Maintenance Release</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2019-05-06"><span class="title-number">D.2 </span><span class="title-name">May 06, 2019—SLES for SAP 12 SP4 FCS Documentation Release</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2018-12-12"><span class="title-number">D.3 </span><span class="title-name">October 25, 2018—SLES for SAP 12 SP4 FCS Documentation Release</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2018-10-25"><span class="title-number">D.4 </span><span class="title-name">October 25, 2018—SLES for SAP 12 SP4 Initial Documentation Release</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2018-04-25"><span class="title-number">D.5 </span><span class="title-name">April 25, 2018—SLES for SAP 12 SP3 Documentation Update</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2017-11-01"><span class="title-number">D.6 </span><span class="title-name">November 1, 2017—SLES for SAP 12 SP3 Documentation Update</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2017-09-07"><span class="title-number">D.7 </span><span class="title-name">September 7, 2017—SLES for SAP 12 SP3 FCS</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2017-05-10"><span class="title-number">D.8 </span><span class="title-name">May 10, 2017—SLES for SAP 12 SP2 Documentation Update</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2016-12-07"><span class="title-number">D.9 </span><span class="title-name">December 07, 2016—SLES for SAP 12 SP2 Documentation Update</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2016-11-07"><span class="title-number">D.10 </span><span class="title-name">November 07, 2016—SLES for SAP 12 SP2 FCS</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2016-03-23"><span class="title-number">D.11 </span><span class="title-name">March 23, 2016</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-29"><span class="title-number">D.12 </span><span class="title-name">February 29, 2016</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2016-02-15"><span class="title-number">D.13 </span><span class="title-name">February 15, 2016</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2015-05-29"><span class="title-number">D.14 </span><span class="title-name">May 29, 2015</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2015-04-29"><span class="title-number">D.15 </span><span class="title-name">April 29, 2015</span></a></span></li><li><span class="sect1"><a href="app-s4s-docupdate.html#app-s4s-docupdate-2013-10-28"><span class="title-number">D.16 </span><span class="title-name">October 28, 2013</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>

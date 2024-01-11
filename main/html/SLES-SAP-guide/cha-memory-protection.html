@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP6 | Guide | Tuning Workload Memory Protection</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Tuning Workload Memory Protection | SLES for SAP 15 SP6"/>
+<meta name="description" content="Keeping SAP applications in physical memory is essenti…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP6"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 9. Tuning Workload Memory Protection"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP6"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Tuning Workload Memory Protection | SLES for SAP 15 SP6"/>
+<meta property="og:description" content="Keeping SAP applications in physical memory is essential for their performance. In older product versions, the Page Cache Li…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tuning Workload Memory Protection | SLES for SAP 15 SP6"/>
+<meta name="twitter:description" content="Keeping SAP applications in physical memory is essential for their performance. In older product versions, the Page Cache Li…"/>
+<link rel="prev" href="cha-tune.html" title="Chapter 8. Tuning systems with saptune"/><link rel="next" href="cha-access.html" title="Chapter 10. Configuring a firewall"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-memory-protection.html">Tuning Workload Memory Protection</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Guide</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">Preface</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting up an installation server for SAP media sets</span></a></li><li><a href="cha-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-memory-protection.html" class=" you-are-here"><span class="title-number">9 </span><span class="title-name">Tuning Workload Memory Protection</span></a></li><li><a href="cha-access.html" class=" "><span class="title-number">10 </span><span class="title-name">Configuring a firewall</span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">11 </span><span class="title-name">Protecting against malware with ClamSAP</span></a></li><li><a href="cha-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-image.html" class=" "><span class="title-number">13 </span><span class="title-name">Creating operating system images</span></a></li><li><a href="cha-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">Important log files</span></a></li><li><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional software for SLES for SAP</span></a></li><li><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP system using AutoYaST</span></a></li><li><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="win-cheatsheet.html" class=" "><span class="title-number">D </span><span class="title-name">Cheat sheet for Windows administrators
+  </span></a></li><li><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-memory-protection" data-id-title="Tuning Workload Memory Protection"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP6</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">9 </span><span class="title-name">Tuning Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  Keeping SAP applications in physical memory is essential for their
+  performance. In older product versions, the Page Cache Limit prevented a swap
+  out to disk by a growing page cache (in SUSE Linux Enterprise Server for SAP Applications 11 SP1 onwards and in
+  SUSE Linux Enterprise Server for SAP Applications 12). In SUSE Linux Enterprise Server for SAP Applications 15, the Page Cache Limit has been
+  replaced by the more advanced Workload Memory Protection.
+ </p><p>
+  Workload Memory Protection puts SAP instances into a dedicated cgroup (v2) and tells the kernel,
+  by the <code class="varname">memory.low</code> parameter, the amount of memory to keep
+  in physical memory. This protects the processes in this cgroup against any
+  form of memory pressure outside that cgroup, including a growing page cache.
+  Workload Memory Protection cannot protect against memory pressure inside this cgroup. It covers
+  the memory of <span class="emphasis"><em>all</em></span> instances together on one host.
+ </p><p>
+  The value for <code class="varname">memory.low</code> depends on the kind of SAP
+  instance and the workload and needs to be configured manually. If the system
+  is under extreme pressure, the Linux kernel will ignore the
+  <code class="varname">memory.low</code> value and try to stabilize the whole system,
+  even by swapping or invoking the OOM killer.
+ </p><p>
+  For more information about cgroups, see
+  <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-tuning-cgroups.html" target="_blank">https://documentation.suse.com/sles-15/html/SLES-all/cha-tuning-cgroups.html</a>.
+ </p><section class="sect1" id="sec-memory-protection-architecture" data-id-title="Architecture"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.1 </span><span class="title-name">Architecture</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-architecture">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Workload Memory Protection relies on two components:
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.12.7.3.1"><span class="term">cgroup2 memory controller (Linux kernel)</span></dt><dd><p>
+      The cgroup2 memory controller parameter <em class="parameter">memory.low</em>
+      allows defining an amount of memory, which the Linux kernel will keep in
+      physical memory. This amount of memory will be excluded from the
+      reclaiming process unless the entire system is in a critical memory
+      situation.
+     </p><p>
+      Workload Memory Protection uses <em class="parameter">memory.low</em> to prevent memory from SAP
+      processes from being paged or swapped out to disk. Apart from the memory
+      controller, cgroup1 controllers are still available, but are not mounted
+      any more.
+     </p></dd><dt id="id-1.12.7.3.2"><span class="term"><code class="systemitem">systemd</code></span></dt><dd><p>
+      <code class="systemitem">systemd</code> provides the infrastructure to create and maintain the cgroup
+      hierarchy and allows the configuration of cgroup parameters.
+     </p></dd></dl></div></section><section class="sect1" id="sec-memory-protection-support" data-id-title="Support for Workload Memory Protection"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.2 </span><span class="title-name">Support for Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-support">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Workload Memory Protection is supported for SUSE Linux Enterprise Server for SAP Applications 15 SP6 on AMD64/Intel 64 and POWER
+   for one or multiple SAP systems on one host, such as App Server (SAP NetWeaver, SAP S/4HANA). SUSE High Availability cluster solutions are supported.
+  </p><p>
+   Workload Memory Protection does not cover databases other than SAP HANA. Depending on their start
+   method, the processes might run inside or outside the dedicated cgroup. If
+   they run inside, the memory consumption needs to be taken into account when
+   determining <code class="varname">memory.low</code>.
+  </p><div id="id-1.12.8.4" data-id-title="Restrictions of Workload Memory Protection" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Restrictions of Workload Memory Protection</div><p>
+    Using Workload Memory Protection comes with benefits, but you should be aware of certain
+    restrictions:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Workload Memory Protection cannot protect against memory pressure inside the dedicated cgroup.
+     </p></li><li class="listitem"><p>
+      Workload Memory Protection cannot protect SAP systems or their instances from each other. All
+      SAP processes share the same memory limit. If you have multiple SAP
+      systems (for example, SAP NetWeaver and SAP S/4HANA), Workload Memory Protection cannot shield one SAP
+      application from the other.
+     </p></li></ul></div></div><p>
+    To use Workload Memory Protection, the SAP system must use <code class="systemitem">systemd</code>.
+    Details about the <code class="systemitem">systemd</code> integration can be found in <a class="link" href="https://launchpad.support.sap.com/%3Cmark%3E/notes/3139184" target="_blank">SAP
+    Notes: 139184 - Linux: systemd integration for sapstartsrv</a> and <a class="link" href="https://launchpad.support.sap.com/%3C/mark%3E/notes/3189534" target="_blank">SAP
+    Host Agent and 3189534 - Linux: systemd integration for sapstartsrv and SAP
+    HANA</a>.
+  </p><div id="id-1.12.8.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important</div><p>
+    Starting with SUSE Linux Enterprise Server for SAP Applications 15 SP5, the package <span class="package">sapwmp</span> is
+    deprecated. For infomation about migration, see <a class="xref" href="cha-memory-protection.html#sec-sapwmp-migrate" title="9.5. Migration from Workload Memory Protection using sapwmp (SLES for SUSE Linux Enterprise Server for SAP Applications 15 SP4 and earlier)">Section 9.5, “Migration from Workload Memory Protection using <span class="package">sapwmp</span> (SLES for SUSE Linux Enterprise Server for SAP Applications 15 SP4 and
+  earlier)”</a>.
+  </p></div></section><section class="sect1" id="sec-memory-protection-setup" data-id-title="Setting up Workload Memory Protection"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.3 </span><span class="title-name">Setting up Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-setup">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><section class="sect2" id="sec-memory-protection-setup-preparation" data-id-title="Preparing for Workload Memory Protection"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.3.1 </span><span class="title-name">Preparing for Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-setup-preparation">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The SAP Start Service puts SAP instances into the dedicated
+    <code class="literal">SAP.slice</code> cgroup. To use Workload Memory Protection, switch to the unified cgroup2 hierarchy and set <code class="varname">MemoryLow=</code> correctly.
+   </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      Stop all SAP instances and the SAP Host Agent.
+     </p><p>
+      The service can be enabled, but all SAP processes need to be
+      terminated.
+     </p></li><li class="step"><p>
+      Add <code class="varname">systemd.unified_cgroup_hierarchy=true</code> to the
+      kernel command line by adding it to
+      <code class="varname">GRUB_CMDLINE_LINUX_DEFAULT</code> in
+      <code class="filename">/etc/default/grub</code> like:
+     </p><div class="verbatim-wrap"><pre class="screen">GRUB_CMDLINE_LINUX_DEFAULT="... systemd.unified_cgroup_hierarchy=true swapaccount=1"</pre></div><p>
+      With this change, only cgroup2 controllers are be mounted on
+      <code class="filename">/sys/fs/cgroup</code>. Cgroup1 controllers, except the
+      memory controller, are still available and can be used though. Tools
+      using cgroup1 may not work out of the box any more and may need
+      reconfiguration. Also, the required mount structure for cgroup1 needs to
+      be provided.
+     </p><p>
+      The parameter <code class="varname">swapaccount=1</code> is not needed for Workload Memory Protection to
+      work, but it aids the analysis in support cases to show the amount of
+      swapped out memory for each cgroup.
+     </p></li><li class="step"><p>
+      Rewrite the GRUB2 configuration:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> <code class="command">grub2-mkconfig</code> -o /boot/grub2/grub.cfg</pre></div><p>
+      After reboot (which is performed later), the cgroup hierarchy is switched to v2
+      (unified hierarchy) only.
+     </p></li><li class="step" id="st-conf-memorylow-sap-slice"><p>
+      Configure <code class="varname">MemoryLow</code> for the
+      <code class="systemitem">SAP.slice</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> <code class="command">systemctl</code> set-property SAP.slice MemoryLow=...</pre></div><p>
+      This command creates a drop-in in
+      <code class="filename">/etc/systemd/system.control/SAP.slice.d/</code> to set
+      <code class="varname">MemoryLow</code>.
+     </p><p>
+      <code class="systemitem">SAP.slice</code> is the name of the cgroup that
+      contains the SAP processes. <code class="varname">MemoryLow</code> is the <code class="systemitem">systemd</code>
+      equivalent of the cgroup parameter
+      <code class="varname">memory.low</code> mentioned in the introduction. The value
+      for <code class="varname">MemoryLow</code> depends on the type of the SAP
+      application and the workload.
+     </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.12.9.3.3.4.5.1"><span class="term">For SAP HANA</span></dt><dd><p>
+         Since SAP HANA has a Global Allocation Limit, its value can be used
+         directly.
+        </p></dd><dt id="id-1.12.9.3.3.4.5.2"><span class="term">SAP Application Server (SAP NetWeaver, SAP S/4HANA)</span></dt><dd><p>
+         For the Application Server, the sizing for the workload should
+         indicate the value for <code class="varname">MemoryLow</code>.
+        </p></dd></dl></div><p>
+      Keep in mind the following.
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        All SAP instances on one host are inside the
+        <code class="systemitem">SAP.slice</code>. <code class="varname">MemoryLow</code> must
+        cover the amount of memory of <span class="emphasis"><em>all</em></span> instances
+        together on that host. You cannot protect SAP systems or their
+        instances from each other.
+       </p></li><li class="listitem"><p>
+        If you are using a database other than SAP HANA, some database processes
+        can be part of <code class="systemitem">SAP.slice</code>. Their memory
+        consumption needs to be taken into account when determining the
+        <code class="varname">MemoryLow</code> value.
+       </p></li><li class="listitem"><p>
+        Never choose a value for <code class="varname">MemoryLow</code> very close to or
+        larger than your physical memory. System services and additional
+        installed software require memory too. If they are forced to use swap
+        too extensively, at the expense of the SAP application, your system
+        can become unresponsive.
+       </p></li></ul></div><div id="id-1.12.9.3.3.4.8" data-id-title="Correctly calculate MemoryLow value" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Correctly calculate <code class="varname">MemoryLow</code> value</div><p>
+       <code class="varname">MemoryLow</code> takes the memory size in bytes. If the
+       value is suffixed with K, M, G, or T, the specified memory size is
+       parsed as Kibibytes, Mebibytes, Gibibytes, or Tebibytes (with the base
+       1024 instead of 1000, see
+       <a class="link" href="https://en.wikipedia.org/wiki/Binary_prefix" target="_blank">https://en.wikipedia.org/wiki/Binary_prefix</a>),
+       respectively. Alternatively, a percentage value may be specified, which
+       is taken relative to the installed physical memory on the system.
+      </p><p>
+       The underlying cgroup memory controller rounds up the value to a
+       multiple of the page size. To avoid confusion, set the value for
+       <code class="varname">MemoryLow</code> to a multiple of the page size.
+      </p></div></li></ol></div></div><p>
+    Now the system is ready for a reboot.
+   </p></section><section class="sect2" id="sec-memory-protection-reboot-and-verification" data-id-title="Reboot and verification"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.3.2 </span><span class="title-name">Reboot and verification</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-reboot-and-verification">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      Reboot the system.
+     </p></li><li class="step"><p>
+      After rebooting, verify that cgroups v2 has indeed been used:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">grep</code>  cgroup /proc/mounts
+cgroup /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime 0 0</pre></div></li><li class="step"><p>
+      Verify that the low memory value has been set:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">systemctl</code> show -p MemoryLow SAP.slice
+MemoryLow=18487889920    &lt;- Should be your chosen value (always in bytes)!
+
+# cat /sys/fs/cgroup/SAP.slice/memory.low
+18487889920    &lt;- Should be your chosen value!</pre></div><p>
+      The variable <code class="varname">MemoryLow</code> can be set to any value, but
+      the content of the variable is always a multiple of the page size. Keep
+      this in mind if you notice a slight difference between the values.
+     </p></li></ol></div></div></section></section><section class="sect1" id="sec-memory-protection-operation-change-the-value-of-memorylow" data-id-title="Changing the value of MemoryLow"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.4 </span><span class="title-name">Changing the value of MemoryLow</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-operation-change-the-value-of-memorylow">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To change the value of <code class="varname">MemoryLow</code> run:
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl</code> set-property SAP.slice MemoryLow=...</pre></div><p>
+   The changes takes effect immediately.
+  </p><p>
+   The underlying cgroup memory controller rounds up the value to a
+   multiple of the page size. To avoid confusion, set the value of
+   <code class="varname">MemoryLow</code> to a multiple of the page size.
+  </p><div id="id-1.12.10.6" data-id-title="Value of MemoryLow" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Value of <code class="varname">MemoryLow</code></div><p>
+    Never set <code class="varname">MemoryLow</code> to a value lower than the memory
+    already accounted in <code class="systemitem">SAP.slice</code>. To check, run:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl</code> show -p MemoryCurrent SAP.slice</pre></div></div></section><section class="sect1" id="sec-sapwmp-migrate" data-id-title="Migration from Workload Memory Protection using sapwmp (SLES for SUSE Linux Enterprise Server for SAP Applications 15 SP4 and earlier)"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.5 </span><span class="title-name">Migration from Workload Memory Protection using <span class="package">sapwmp</span> (SLES for SUSE Linux Enterprise Server for SAP Applications 15 SP4 and
+  earlier)</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-sapwmp-migrate">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    It is necessary to perform a migration when you are upgrading from a Service Pack SP4 or earlier, and you have not yet switched to <code class="systemitem">systemd</code>-enabled instances.
+    </p><div class="procedure" id="id-1.12.11.3" data-id-title="Migration procedure"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 9.1: </span><span class="title-name">Migration procedure </span></span><a title="Permalink" class="permalink" href="cha-memory-protection.html#id-1.12.11.3">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      Switch to a <code class="systemitem">systemd</code>-enabled SAP system. For more info, refer to <a class="link" href="https://launchpad.support.sap.com/%3C/mark%3E/notes/3189534" target="_blank">139184
+      - Linux: systemd integration for sapstartsrv and SAP Host Agent and
+      3189534 - Linux: systemd integration for sapstartsrv and SAP HANA</a>.
+    </p></li><li class="step"><p>
+      Remove the lines calling <code class="option">sapwmp-capture</code> from all instance profiles (for example: <code class="command">Execute_20 = local /usr/lib/sapwmp/sapwmp-capture -a</code>. All SAP services require a restart after the change.
+    </p></li><li class="step"><p>
+      Monitor and readjust <code class="option">MemoryLow=</code>. A <code class="systemitem">systemd</code>-enabled SAP Host Agent now has a cgroup (<code class="systemitem">saphostagent.service</code>) below <code class="systemitem">SAP.slice</code>, and it is accounted for protection.
+    </p><div id="id-1.12.11.3.4.2" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note</div><p>
+      It is not necessary to set <code class="option">MemoryLow=infinity</code> for each SAP service or the SAP Host Agent service, if the <code class="systemitem">cgroup2</code> mount has the option <code class="option">memory_recursiveprot</code> set (it is set by default). To check that, run the following command:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code> mount | grep cgroup2
+      cgroup2 on /sys/fs/cgroup type cgroup2
+      (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)</pre></div></div></li></ol></div></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-tune.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 8 </span>Tuning systems with <code class="command">saptune</code></span></a> </div><div><a class="pagination-link next" href="cha-access.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 10 </span>Configuring a firewall</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-memory-protection.html#sec-memory-protection-architecture"><span class="title-number">9.1 </span><span class="title-name">Architecture</span></a></span></li><li><span class="sect1"><a href="cha-memory-protection.html#sec-memory-protection-support"><span class="title-number">9.2 </span><span class="title-name">Support for Workload Memory Protection</span></a></span></li><li><span class="sect1"><a href="cha-memory-protection.html#sec-memory-protection-setup"><span class="title-number">9.3 </span><span class="title-name">Setting up Workload Memory Protection</span></a></span></li><li><span class="sect1"><a href="cha-memory-protection.html#sec-memory-protection-operation-change-the-value-of-memorylow"><span class="title-number">9.4 </span><span class="title-name">Changing the value of MemoryLow</span></a></span></li><li><span class="sect1"><a href="cha-memory-protection.html#sec-sapwmp-migrate"><span class="title-number">9.5 </span><span class="title-name">Migration from Workload Memory Protection using <span class="package">sapwmp</span> (SLES for SUSE Linux Enterprise Server for SAP Applications 15 SP4 and
+  earlier)</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

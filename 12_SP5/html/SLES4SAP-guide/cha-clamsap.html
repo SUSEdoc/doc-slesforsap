@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP5 | Guide | Protecting Against Malware With ClamSAP</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Protecting Against Malware With ClamSAP | SLES for SAP 12 S…"/>
+<meta name="description" content="ClamSAP integrates the ClamAV anti-malware toolkit int…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP5"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 11. Protecting Against Malware With ClamSAP"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP5"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Protecting Against Malware With ClamSAP | SLES for SAP…"/>
+<meta property="og:description" content="ClamSAP integrates the ClamAV anti-malware toolkit into SAP NetWeaver and SAP Mobile Platform applications. ClamSAP is a sha…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Protecting Against Malware With ClamSAP | SLES for SAP…"/>
+<meta name="twitter:description" content="ClamSAP integrates the ClamAV anti-malware toolkit into SAP NetWeaver and SAP Mobile Platform applications. ClamSAP is a sha…"/>
+<link rel="prev" href="cha-s4s-configure-cryptctl.html" title="Chapter 10. Encrypting Directories Using cryptctl"/><link rel="next" href="cha-s4s-configure-rdp.html" title="Chapter 12. Connecting via RDP"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-clamsap.html">Protecting Against Malware With ClamSAP</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">7 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" "><span class="title-number">9 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" "><span class="title-number">10 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" you-are-here"><span class="title-number">11 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">13 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section xml:lang="en" class="chapter" id="cha-clamsap" data-id-title="Protecting Against Malware With ClamSAP"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP5</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">11 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   ClamSAP integrates the ClamAV anti-malware toolkit into SAP NetWeaver and
+   SAP Mobile Platform applications. ClamSAP is a shared library that
+   links between ClamAV and the SAP NetWeaver Virus Scan Interface (NW-VSI).
+   The version of ClamSAP shipped with SUSE Linux Enterprise Server for SAP Applications
+   12 SP5 supports NW-VSI version 2.0.
+  </p><div id="id-1.14.3" data-id-title="Avoid false positive reports for large files exeeding maximum file size" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Avoid false positive reports for large files exeeding maximum file size</div><p> By default, ClamAV is not scanning files exeeding various limits like
+   file sizes, nesting level, or scan time. Such files are reported as "OK". The
+   current default settings for the ClamAV virus scan engine in the
+    <code class="command">clamscan</code> commandline tool and the <code class="systemitem">clamd</code> scan daemon are set in a way that: </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Files and archives are scanned, but only up to the configured or default limits
+     for size, nesting level, scan time, etc.</p></li><li class="listitem"><p>
+     The scan engine reports these files as being "OK".
+    </p></li><li class="listitem"><p>
+     This could potentially allow attackers to bypass the virus scanning.
+    </p></li></ul></div><p> Alerts can be enabled to set the
+    <code class="option">--alert-exceeds-max=yes</code> option on the
+    <code class="command">clamscan</code> commandline or via <code class="option">AlertExceedsMax
+    TRUE</code> in <code class="filename">clamd.conf</code> for daemon based scans.
+   Settings these options will cause a "FOUND" report of status type
+    <code class="literal">Heuristics.Limits.Exceeded</code>. You need to handle such
+   files differently in front-ends or processing of reports.
+  </p><p>
+   Before enabling the alert, ensure that front-ends will not suddenly
+   quarantine or remove those files.
+  </p></div><section class="sect1" id="sec-clamsap-install" data-id-title="Installing ClamSAP"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.1 </span><span class="title-name">Installing ClamSAP</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-install">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     On the application host, install the packages for ClamAV and
+     ClamSAP. To do so, use the command:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo zypper install clamav clamsap</code></pre></div></li><li class="step"><p>
+     Before you can enable the daemon
+     <code class="systemitem">clamd</code>, initialize the malware
+     database:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo freshclam</code></pre></div></li><li class="step"><p>
+     Start the service <code class="systemitem">clamd</code>:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo systemctl start clamd</code></pre></div></li><li class="step"><p>
+     Check the status of the service
+     <code class="systemitem">clamd</code> with:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">systemctl status clamd</code>
+● clamd.service - ClamAV Antivirus Daemon
+Loaded: loaded (/usr/lib/systemd/system/clamd.service; enabled; vendor preset: disabled)
+Active: active (running) since Tue 2017-04-11 10:33:03 UTC; 24h ago
+[...]</pre></div></li></ol></div></div></section><section class="sect1" id="sec-clamsap-scannergroup" data-id-title="Creating a Virus Scanner Group in SAP NetWeaver"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.2 </span><span class="title-name">Creating a Virus Scanner Group in SAP NetWeaver</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-scannergroup">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     Log in to the SAP NetWeaver installation through the GUI. Do not log in as
+     a <code class="systemitem">DDIC</code> or
+     <code class="systemitem">SAP*</code> user, because the virus
+     scanner needs to be configured cross-client.
+    </p></li><li class="step"><p>
+     Create a Virus Scanner Group using the transaction
+     <span class="guimenu">VSCANGROUP</span>.
+    </p><div class="informalfigure"><div class="mediaobject"><a href="images/sap-nw-scanner-group-display.jpg"><img src="images/sap-nw-scanner-group-display.jpg" alt="Edit View Scanner Group with editable table" title="Edit View Scanner Group with editable table"/></a></div></div></li><li class="step"><p>
+     To switch from view mode to change mode, click the button <span class="guimenu">Change View</span>
+     (<span class="inlinemediaobject"><a href="images/sap-nw-viewmode-icon.png"><img src="images/sap-nw-viewmode-icon.png" width="13" alt="Change View" title="Change View"/></a></span>).
+    </p><p>
+      Confirm the message <span class="guimenu">This table is cross-client</span> by
+      clicking the check mark. The table is now editable.
+    </p></li><li class="step"><p>
+     Select the first empty row. In the text box
+     <span class="guimenu">Scanner Group</span>, specify
+     <code class="literal">CLAMSAPVSI</code>. Under
+     <span class="guimenu">Group Text</span>, specify <code class="literal">CLAMSAP</code>.
+    </p><p>
+     Make sure that <span class="guimenu">Business Add-in</span> is not checked.
+    </p><div class="informalfigure"><div class="mediaobject"><a href="images/sap-nw-scanner-group-change.jpg"><img src="images/sap-nw-scanner-group-change.jpg" alt="Edit View Scanner Group with editable table" title="Edit View Scanner Group with editable table"/></a></div></div></li><li class="step"><p>
+     To save the form, click the button <span class="guimenu">Save</span>
+     (<span class="inlinemediaobject"><a href="images/sap-nw-save-icon.png"><img src="images/sap-nw-save-icon.png" width="13" alt="Save" title="Save"/></a></span>).
+    </p></li></ol></div></div></section><section class="sect1" id="sec-clamsap-library" data-id-title="Setting Up the ClamSAP Library in SAP NetWeaver"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.3 </span><span class="title-name">Setting Up the ClamSAP Library in SAP NetWeaver</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-library">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     In the SAP NetWeaver GUI, call the transaction <span class="guimenu">VSCAN</span>.
+     
+    </p></li><li class="step"><p>
+     To switch from view mode to change mode, click the button
+     <span class="guimenu">Change View</span>
+     (<span class="inlinemediaobject"><a href="images/sap-nw-viewmode-icon.png"><img src="images/sap-nw-viewmode-icon.png" width="13" alt="Change View" title="Change View"/></a></span>).
+    </p><p>
+      Confirm the message <span class="guimenu">This table is cross-client</span> by
+      clicking the check mark. The table is now editable.
+    </p></li><li class="step"><p>
+     Click <span class="guimenu">New entries</span>.
+    </p></li><li class="step"><p>
+     Fill in the form accordingly:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       <span class="guimenu">Provider Type</span>: <code class="literal">Adapter (Virus Scan Adapter)</code>
+      </p></li><li class="listitem"><p>
+       <span class="guimenu">Provider Name</span>: <code class="literal">VSA_<em class="replaceable">HOSTNAME</em></code>
+       (for example: <code class="literal">VSA_SAPSERVER</code>)
+      </p></li><li class="listitem"><p>
+       <code class="literal">Scanner Group</code>: The name of the scanner group that
+       you set up in <a class="xref" href="cha-clamsap.html#sec-clamsap-scannergroup" title="11.2. Creating a Virus Scanner Group in SAP NetWeaver">Section 11.2, “Creating a Virus Scanner Group in SAP NetWeaver”</a> (for example:
+       <code class="literal">CLAMSAPVSI</code>)
+      </p></li><li class="listitem"><p>
+       <span class="guimenu">Server</span>:
+       <code class="literal"><em class="replaceable">HOSTNAME</em>_<em class="replaceable">SID</em>_<em class="replaceable">INSTANCE_NUMBER</em></code>
+       (for example: <code class="literal">SAPSERVER_P04_00</code>)
+      </p></li><li class="listitem"><p>
+       <span class="guimenu">Adapter Path</span>: <code class="filename">libclamdsap.so</code>
+      </p></li></ul></div><div class="informalfigure"><div class="mediaobject"><a href="images/sap-nw-scanner-definition-add.jpg"><img src="images/sap-nw-scanner-definition-add.jpg" alt="Form New Entries: Details of Added Entries" title="Form New Entries: Details of Added Entries"/></a></div></div></li><li class="step"><p>
+     To save the form, click the button
+     <span class="inlinemediaobject"><a href="images/sap-nw-save-icon.png"><img src="images/sap-nw-save-icon.png" width="13" alt="Save" title="Save"/></a></span>.
+    </p></li></ol></div></div></section><section class="sect1" id="sec-clamsap-engage" data-id-title="Engaging ClamSAP"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.4 </span><span class="title-name">Engaging ClamSAP</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-engage">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To run ClamSAP, go to the transaction <span class="guimenu">VSCAN</span>. Then
+   click <span class="emphasis"><em>Start</em></span>.
+  </p><div class="figure" id="fig-clamsap-scanner-change"><div class="figure-contents"><div class="mediaobject"><a href="images/sap-nw-scanner-definition-change.jpg"><img src="images/sap-nw-scanner-definition-change.jpg" alt="Change View “Virus Scan Provider Definition”" title="Change View “Virus Scan Provider Definition”"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 11.1: </span><span class="title-name">Change View <span class="quote">“<span class="quote">Virus Scan Provider Definition</span>”</span> </span></span><a title="Permalink" class="permalink" href="cha-clamsap.html#fig-clamsap-scanner-change">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div><p>
+   Afterward, a summary will be displayed, including details of the ClamSAP
+   and ClamAV (shown in <a class="xref" href="cha-clamsap.html#fig-clamsap-summary" title="Summary of ClamSAP Data">Figure 11.2, “Summary of ClamSAP Data”</a>).
+  </p><div class="figure" id="fig-clamsap-summary"><div class="figure-contents"><div class="mediaobject"><a href="images/sap-nw-scanner-summary.jpg"><img src="images/sap-nw-scanner-summary.jpg" alt="Summary of ClamSAP Data" title="Summary of ClamSAP Data"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 11.2: </span><span class="title-name">Summary of ClamSAP Data </span></span><a title="Permalink" class="permalink" href="cha-clamsap.html#fig-clamsap-summary">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></section><section class="sect1" id="sec-clamsap-more" data-id-title="For More Information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.5 </span><span class="title-name">For More Information</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   For more information, also see the project home page
+   <a class="link" href="https://sourceforge.net/projects/clamsap/" target="_blank">https://sourceforge.net/projects/clamsap/</a>.
+  </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-s4s-configure-cryptctl.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 10 </span>Encrypting Directories Using <code class="command">cryptctl</code></span></a> </div><div><a class="pagination-link next" href="cha-s4s-configure-rdp.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 12 </span>Connecting via RDP</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-clamsap.html#sec-clamsap-install"><span class="title-number">11.1 </span><span class="title-name">Installing ClamSAP</span></a></span></li><li><span class="sect1"><a href="cha-clamsap.html#sec-clamsap-scannergroup"><span class="title-number">11.2 </span><span class="title-name">Creating a Virus Scanner Group in SAP NetWeaver</span></a></span></li><li><span class="sect1"><a href="cha-clamsap.html#sec-clamsap-library"><span class="title-number">11.3 </span><span class="title-name">Setting Up the ClamSAP Library in SAP NetWeaver</span></a></span></li><li><span class="sect1"><a href="cha-clamsap.html#sec-clamsap-engage"><span class="title-number">11.4 </span><span class="title-name">Engaging ClamSAP</span></a></span></li><li><span class="sect1"><a href="cha-clamsap.html#sec-clamsap-more"><span class="title-number">11.5 </span><span class="title-name">For More Information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>

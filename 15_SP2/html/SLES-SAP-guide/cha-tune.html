@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP2 | Guide | Tuning systems with saptune</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Tuning systems with saptune | SLES for SAP 15 SP2"/>
+<meta name="description" content="This chapter presents information about tuning SUSE Li…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP2"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 9. Tuning systems with saptune"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP2"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Tuning systems with saptune | SLES for SAP 15 SP2"/>
+<meta property="og:description" content="This chapter presents information about tuning SUSE Linux Enterprise Server for SAP Applications to work optimally with SAP …"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tuning systems with saptune | SLES for SAP 15 SP2"/>
+<meta name="twitter:description" content="This chapter presents information about tuning SUSE Linux Enterprise Server for SAP Applications to work optimally with SAP …"/>
+<link rel="prev" href="cha-tune-sapconf.html" title="Chapter 8. Tuning systems with sapconf"/><link rel="next" href="cha-memory-protection.html" title="Chapter 10. Tuning Workload Memory Protection"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-tune.html">Tuning systems with saptune</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Guide</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About this guide</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting up an installation server for SAP media sets</span></a></li><li><a href="cha-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code></span></a></li><li><a href="cha-tune.html" class=" you-are-here"><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-memory-protection.html" class=" "><span class="title-number">10 </span><span class="title-name">Tuning Workload Memory Protection</span></a></li><li><a href="cha-access.html" class=" "><span class="title-number">11 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting against malware with ClamSAP</span></a></li><li><a href="cha-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating operating system images</span></a></li><li><a href="cha-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important log files</span></a></li><li><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional software for SLES for SAP</span></a></li><li><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP system using AutoYaST</span></a></li><li><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="apd.html" class=" "><span class="title-number">D </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-tune" data-id-title="Tuning systems with saptune"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></span> <a title="Permalink" class="permalink" href="cha-tune.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  This chapter presents information about tuning SUSE Linux Enterprise Server for SAP Applications to work
+  optimally with SAP applications.
+ </p><p>
+   Using <code class="command">saptune</code>, you can tune a system for SAP NetWeaver, SAP HANA/SAP BusinessObjects, and
+   SAP S/4HANA applications.
+ </p><div id="id-1.12.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important</div><p>
+    This chapter describes <code class="command">saptune</code> version 3 which does not use
+    <code class="systemitem">tuned</code> anymore.
+   </p></div><section class="sect1" id="sec-saptune-enable" data-id-title="Enabling saptune"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.1 </span><span class="title-name">Enabling <code class="command">saptune</code></span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-enable">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To enable <code class="command">saptune</code> to tune an SAP application, use the following
+   procedure:
+   </p><div class="procedure" id="pro-tune"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      To tune a system, first find a tuning solution. To find the appropriate
+      solution, use:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">saptune solution list</code></pre></div><p>
+      <code class="command">saptune</code> recognizes the following tuning solutions (groups of SAP Notes):
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title"><code class="literal">BOBJ</code>. </span>
+         Solution for running SAP BusinessObjects.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">HANA</code>. </span>
+         Solution for running an SAP HANA database.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">MAXDB</code>. </span>
+         Solution for running an SAP MaxDB database.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">NETWEAVER</code>. </span>
+         Solution for running SAP NetWeaver application servers.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">S4HANA-APPSERVER</code>. </span>
+         Solution for running SAP S/4HANA application servers.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">S4HANA-APP+DB</code>. </span>
+         Solution for running both SAP S/4HANA application servers and SAP HANA on the
+         same host.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">S4HANA-DBSERVER</code>. </span>
+         Solution for running the SAP HANA database of an SAP S/4HANA installation.
+
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">SAP-ASE</code>. </span>
+         Solution for running an SAP Adaptive Server Enterprise database.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">NETWEAVER+HANA</code>. </span>
+         Solution for running both SAP application servers and SAP HANA on the
+         same host.
+        </p></li><li class="listitem"><p><span class="formalpara-title"><code class="literal">NETWEAVER+MAXDB</code>. </span>
+          Solution for running both SAP application servers and MAXDB on the same host.
+         </p></li></ul></div><p>
+      Alternatively, you can tune the computer according to recommendations
+      from specific SAP Notes. A list of notes that you can tune for is
+      available via:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note list</code></pre></div></li><li class="step"><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        To set up <code class="command">saptune</code> with a preconfigured solution, use:
+       </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution apply <em class="replaceable">SOLUTION</em></code></pre></div></li><li class="listitem"><p>
+        To set up <code class="command">saptune</code> for the recommendations of a specific SAP Note,
+        use:
+       </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note apply <em class="replaceable">NOTE</em></code></pre></div></li></ul></div></li><li class="step"><p>
+      To start <code class="command">saptune</code> and enable it at boot, make sure to run the following
+      command:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune service enablestart</code></pre></div><p>
+      To make sure that <code class="literal">sapconf</code> and <code class="systemitem">tuned</code> gets stopped and disabled too,
+      run instead:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune service takeover</code></pre></div></li></ol></div></div><div id="id-1.12.5.4" data-id-title="Combining optimizations" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Combining optimizations</div><p>
+      It is possible to combine solutions and notes. However, only one solution can be active at a time. In rare cases, notes can have conflicting options or parameters. Arrange your notes carefully to avoid conflicts. The last note always takes priority over conflicting options or parameters of previous notes.
+    </p></div></section><section class="sect1" id="sec-saptune-disable" data-id-title="Disabling saptune"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.2 </span><span class="title-name">Disabling <code class="command">saptune</code></span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-disable">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To disable and stop <code class="command">saptune</code>, run:
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune service disablestop</code></pre></div></section><section class="sect1" id="sec-saptune-update" data-id-title="Updating saptune"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.3 </span><span class="title-name">Updating <code class="command">saptune</code></span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-update">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To update saptune to a new version, just update the package.</p><p>
+   Since a package update can contain updates of SAP Notes and SAP Solutions,
+   restart <code class="command">saptune</code> with <code class="command">saptune service restart</code> to re-apply
+   the tuning. Check afterwards with <code class="command">saptune note verify</code>
+   if all recommendations are still met.
+  </p><div id="id-1.12.7.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important</div><p>
+    The <code class="command">saptune</code> tool does not rely on <code class="systemitem">tuned</code> anymore.
+    Configuring <code class="systemitem">tuned</code> to set up <code class="command">saptune</code> 3 will not work.
+    To start and enable <code class="command">saptune</code> 3 use one of the following methods:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><div class="verbatim-wrap"><pre class="screen">saptune service enablestart</pre></div><p>
+      Enables and starts the <code class="systemitem">saptune.service</code>.
+     </p></li><li class="listitem"><div class="verbatim-wrap"><pre class="screen">saptune service takeover</pre></div><p>
+      Enables and starts the <code class="systemitem">saptune.service</code> and also
+      disables <code class="literal">sapconf</code> as well as <code class="systemitem">tuned</code>.
+     </p></li><li class="listitem"><div class="verbatim-wrap"><pre class="screen">saptune daemon start</pre></div><p>Deprecated. Gets redirected to <code class="command">saptune</code> service takeover.</p></li></ul></div></div></section><section class="sect1" id="sec-saptune-sapnotes" data-id-title="Managing SAP Notes"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.4 </span><span class="title-name">Managing SAP Notes</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-sapnotes">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   In the following sections you will learn how to create, delete, and rename
+   SAP Notes and much more.
+  </p><section class="sect2" id="sec-saptune-customize" data-id-title="Customizing an SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.1 </span><span class="title-name">Customizing an SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-customize">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    Every SAP Note can be configured freely with:
+    
+    
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note customise <em class="replaceable">NOTE</em></code></pre></div><p>
+    The command includes changing a value or disabling a parameter.
+   </p></section><section class="sect2" id="sec-saptune-create" data-id-title="Creating a new SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.2 </span><span class="title-name">Creating a new SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-create">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    It is possible to create a new SAP Note with:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note create <em class="replaceable">NOTE</em></code></pre></div><p>
+    All features of <code class="command">saptune</code> are available.
+   </p></section><section class="sect2" id="sec-saptune-delete" data-id-title="Deleting an SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.3 </span><span class="title-name">Deleting an SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-delete">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The following command deletes a created note, including the corresponding
+    override file, if available:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note delete test</code>
+Note to delete is a customer/vendor specific Note.
+Do you really want to delete this Note (test2)? [y/n]: y</pre></div><p>
+    The note may not be applied at the time. Keep in mind the following points:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      A confirmation is needed to finish the action.
+     </p></li><li class="listitem"><p>
+      Internal SAP Notes shipped by <code class="command">saptune</code> cannot be deleted. Instead, the
+      override file is removed when available.
+     </p></li><li class="listitem"><p>
+      If the note is already applied, the command is terminated with the
+      information that the note first needs to be reverted before it can be deleted.
+     </p></li></ul></div></section><section class="sect2" id="sec-saptune-rename" data-id-title="Renaming an SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.4 </span><span class="title-name">Renaming an SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-rename">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    This command allows renaming a created note to a new name. If a
+    corresponding override file is available, this file is renamed, too:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note rename test test2</code>
+Note to rename is a customer/vendor specific Note.
+Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y</pre></div><p>
+    The note may not be applied at the time. Keep in mind the following points:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      A confirmation is needed to finish the action.
+     </p></li><li class="listitem"><p>
+      Internal SAP Notes shipped by <code class="command">saptune</code> cannot be renamed.
+     </p></li><li class="listitem"><p>
+      If the note is already applied, the command is terminated with the
+      information that the note first needs to be reverted before it can be deleted.
+     </p></li></ul></div></section><section class="sect2" id="sec-saptune-show" data-id-title="Showing the configuration of an SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.5 </span><span class="title-name">Showing the configuration of an SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-show">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The shipped configuration of a note can be listed with:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note show <em class="replaceable">NOTE</em></code></pre></div></section><section class="sect2" id="sec-saptune-verify" data-id-title="Verifying an SAP Note or an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.6 </span><span class="title-name">Verifying an SAP Note or an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-verify">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The commands <code class="command">saptune note verify
+    <em class="replaceable">NOTE</em></code> and <code class="command">saptune solution
+    verify <em class="replaceable">SOLUTION</em></code> list the following
+    data for each active or requested note:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      The parameter name
+     </p></li><li class="listitem"><p>
+      The expected value (default)
+     </p></li><li class="listitem"><p>
+      A configured override (created using <code class="command">saptune
+      customise</code>)
+     </p></li><li class="listitem"><p>
+      The current system value
+     </p></li><li class="listitem"><p>
+      Whether the current state follows the SAP recommendation
+     </p></li></ul></div></section><section class="sect2" id="sec-saptune-simulate" data-id-title="Simulating the application of an SAP Note or an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.7 </span><span class="title-name">Simulating the application of an SAP Note or an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-simulate">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To show each parameter of a <code class="literal">note</code>, use the following command:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note simulate</code></pre></div><p>
+    The command to show each parameter of a <code class="literal">solution</code> is as follows:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution simulate</code></pre></div><p>
+    The command lists the current system value and the expected values (default
+    and override).
+   </p></section><section class="sect2" id="sec-saptune-revert" data-id-title="Reverting an SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.8 </span><span class="title-name">Reverting an SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-revert">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To revert an SAP Note, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note revert <em class="replaceable">NOTE</em></code></pre></div><p>This restores all parameters of the SAP Note to their values at the time of application.</p><p>To revert everything, use the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note revert all</code></pre></div></section><section class="sect2" id="sec-saptune-edit" data-id-title="Editing a SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.9 </span><span class="title-name">Editing a SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-edit">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>Each custom SAP Note can be edited by:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note edit <em class="replaceable">NOTE</em></code></pre></div></section><section class="sect2" id="sec-saptune-list" data-id-title="Listing all enabled or applied SAP Notes"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.4.10 </span><span class="title-name">Listing all enabled or applied SAP Notes</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-list">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To list all enabled SAP Notes, run:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note enabled</code></pre></div><p>To list all applied SAP Notes, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note applied</code></pre></div></section></section><section class="sect1" id="sec-saptune-sapsolution" data-id-title="Managing SAP Solutions"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.5 </span><span class="title-name">Managing SAP Solutions</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-sapsolution">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   This chapter explains how to work with SAP Solutions.
+  </p><section class="sect2" id="sec-saptune-create-solution" data-id-title="Creating a new SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.1 </span><span class="title-name">Creating a new SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-create-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To create a new SAP Solution, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution create <em class="replaceable">SOLUTION</em></code></pre></div></section><section class="sect2" id="sec-saptune-delete-solution" data-id-title="Deleting SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.2 </span><span class="title-name">Deleting  SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-delete-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To delete an SAP Solution, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution delete myHANA</code>
+
+Solution to delete is a customer/vendor specific Solution.
+Do you really want to delete this Solution 'myHANA'? [y/n]: y</pre></div><p>
+   The SAP Solution may not be applied at the time. Keep in mind the following points:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     A confirmation is required to finish the action.
+    </p></li><li class="listitem"><p>
+      SAP Solutions shipped by <code class="command">saptune</code> cannot be deleted.
+    </p></li><li class="listitem"><p>
+      If the SAP Solution is already applied, the command is terminated
+      with the information that the SAP Solution first needs to be reverted
+      before it can be deleted.
+    </p></li></ul></div></section><section class="sect2" id="sec-saptune-rename-solution" data-id-title="Renaming an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.3 </span><span class="title-name">Renaming an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-rename-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To rename an SAP Solution, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution rename myHANA myHANA2</code>
+
+Solution to rename is a customer/vendor specific Solution.
+Do you really want to rename this Solution 'myHANA' to the new name 'myHANA2'? [y/n]:</pre></div><p>
+   The SAP Solution may not be applied at the time. Keep in mind the following points:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     A confirmation is needed to finish the action.
+    </p></li><li class="listitem"><p>
+      SAP Solutions shipped by <code class="command">saptune</code> cannot be renamed.
+    </p></li><li class="listitem"><p>
+      If the SAP Solution is already applied, the command will be terminated
+      with the information, that the SAP Solution first needs to be reverted
+      before it can be renamed.
+    </p></li></ul></div></section><section class="sect2" id="sec-saptune-show-solution" data-id-title="Showing the configuration of an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.4 </span><span class="title-name">Showing the configuration of an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-show-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To list the configuration of an SAP Solution, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution show <em class="replaceable">SOLUTION</em></code></pre></div></section><section class="sect2" id="sec-saptune-switch-solution" data-id-title="Switching to another SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.5 </span><span class="title-name">Switching to another SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-switch-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Starting with <code class="command">saptune</code> version 3.1, it is easier to switch to a different solution using the <code class="command">saptune solution change <em class="replaceable">SOLUTION</em></code> command.
+    </p><p>
+      Keep in mind that internally the current solution is reverted first, and then the new solution is applied. If you have additional notes configured, the order is not preserved.
+    </p><p>
+      If the same solution is already applied, no action is taken. Otherwise the current solution gets reverted and the new one applied. The command prompts for confirmation before making the change. This can be disabled by adding the <code class="option">--force</code> option.
+    </p></section><section class="sect2" id="sec-saptune-revert-solution" data-id-title="Reverting an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.6 </span><span class="title-name">Reverting an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-revert-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To revert an SAP Solution, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution revert <em class="replaceable">SOLUTION</em></code></pre></div><p>
+     The SAP Solution must be applied. This reverts all SAP Notes parts of the SAP Solution that are still applied.
+    </p></section><section class="sect2" id="sec-saptune-edit-custom-solution" data-id-title="Editing a custom SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.7 </span><span class="title-name">Editing a custom SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-edit-custom-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To edit a custom SAP Solution, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution edit <em class="replaceable">SOLUTION</em></code></pre></div></section><section class="sect2" id="sec-saptune-list-solution" data-id-title="Listing enabled/applied SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.5.8 </span><span class="title-name">Listing enabled/applied SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-list-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To list enabled SAP Solution, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution enabled</code></pre></div><p>To list applied SAP Solution, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution applied</code></pre></div><p>
+    If SAP Notes from an applied SAP Solution have been reverted, the string <code class="literal">(partial)</code>
+    has been added to the solution name.
+   </p></section></section><section class="sect1" id="sec-saptune-verify-and-troubleshooting" data-id-title="Verification and troubleshooting"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.6 </span><span class="title-name">Verification and troubleshooting</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-verify-and-troubleshooting">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>To see the current status of <code class="command">saptune</code>, run the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune status</code></pre></div><p>The output contains the following:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>status of the <code class="command">saptune</code>, <code class="literal">sapconf</code>, and <code class="systemitem">tuned</code> service</p></li><li class="listitem"><p>version of package and running <code class="command">saptune</code></p></li><li class="listitem"><p>details about configured SAP Solution and SAP Notes</p></li><li class="listitem"><p>details about staging</p></li><li class="listitem"><p>status of systemd system state</p></li><li class="listitem"><p>virtualization environment (new in <code class="command">saptune</code> version 3.1)</p></li><li class="listitem"><p>tuning compliance (new in <code class="command">saptune</code> version 3.1)</p></li></ul></div><p>
+    If a problem occurs, use the <code class="command">saptune_check</code> command (in version 3.1, you can also use the command <code class="command">saptune check</code>) that runs checks, reports problems and offers advice on how to solve them.
+   </p></section><section class="sect1" id="sec-saptune-machine-readable-output" data-id-title="Machine-readable output"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.7 </span><span class="title-name">Machine-readable output</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-machine-readable-output">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Starting with version 3.1, <code class="command">saptune</code> supports machine-readable output (JSON) for the following commands:
+      </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+            <code class="command">saptune [daemon|service] status</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune note list|verify|enabled|applied</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune solution list|verify|enabled|applied</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune status</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune version</code>
+          </p></li></ul></div><p>
+      The machine-readable output makes it possible to integrate <code class="command">saptune</code> into scripts and configuration management solutions.
+    </p><p>
+      To generate JSON output, add <code class="option">--format json</code> as the first option, for example:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code>saptune --format json note applied | jq
+{
+"$schema": "file:///usr/share/saptune/schemas/1.0/saptune_note_applied.schema.json",
+"publish time": "2023-08-29 17:05:45.627",
+"argv": "saptune --format json note applied",
+"pid": 1538,
+"command": "note applied",
+"exit code": 0,
+"result": {
+    "Notes applied": [
+    "941735",
+    "1771258",
+    "1980196",
+    "2578899",
+    "2684254",
+    "2382421",
+    "2534844",
+    "2993054",
+    "1656250"
+    ]
+},
+"messages": []
+}</pre></div><p>
+  If a command does not yet support JSON output, the command fails with the <code class="literal">result</code> block set to <code class="literal">"implemented": false</code>:
+</p><div class="verbatim-wrap"><pre class="screen">[+]
+<code class="prompt user">&gt; </code>saptune --format json staging status | jq
+{
+"$schema": "file:///usr/share/saptune/schemas/1.0/saptune_staging_status.schema.json",
+"publish time": "2023-08-29 17:08:16.708",
+"argv": "saptune --format json staging status",
+"pid": 1653,
+"command": "staging status",
+"exit code": 1,
+"result": {
+    "implemented": false
+},
+"messages": []
+}</pre></div></section><section class="sect1" id="sec-saptune-staging" data-id-title="Staging"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.8 </span><span class="title-name">Staging</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-staging">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    It is possible that a new <code class="command">saptune</code> package can contain both binary changes
+    (for example, bug fixes) and new or altered SAP Notes and SAP Solutions. In certain situations, it is preferable to deploy bug fixes and new features while leaving modifications to the system configuration out.
+   </p><p>
+    With staging enabled, SAP Note and SAP Solution changes in a package update are
+    <span class="emphasis"><em>not</em></span> activated immediately. They are placed in a staging
+    area, which can be reviewed and released later.
+   </p><div id="id-1.12.12.4" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important</div><p>With the current implementation, a package update overwrites the
+    staging if staging is enabled.</p></div><p>Staging is disabled by default, and it can be enabled with the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging enable</code></pre></div><p>From that point, SAP Note and SAP Solution changes shipped by a <code class="command">saptune</code>
+   package are put in the staging area. To view the staging area, run:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging list</code></pre></div><p>You can print a tabular overview of the differences of the SAP Note
+   and SAP Solution in the staging and working area with the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging diff [NOTE...|SOLUTION...|all]</code></pre></div><p>
+    After reviewing the differences, you can perform an analysis to see if a
+    release has potential issues or requires additional steps. To do
+    this, run the following command:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging analysis [NOTE...|SOLUTION...|all]</code></pre></div><p>
+    To release an SAP Note or an SAP Solution from the staging area, use the command as follows:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging [--force|--dry-run] [NOTE..|SOLUTION...|all]</code></pre></div><p>
+    The command presents an analysis (see <code class="command">saptune staging
+    analysis</code>) and carries out the release after asking for
+    confirmation.
+   </p></section><section class="sect1" id="sec-sysctl" data-id-title="Tuning kernel parameters manually using sysctl"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.9 </span><span class="title-name">Tuning kernel parameters manually using <code class="command">sysctl</code></span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-sysctl">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   In addition to or instead of tuning kernel parameters using <code class="command">saptune</code>, you
+   can also use <code class="command">sysctl</code> to make manual adjustments to kernel
+   parameters. However, such changes using <code class="command">sysctl</code> do not
+   persist across reboots by default. To make them persist across reboots, add
+   them to one of the configuration files read by <code class="command">sysctl</code>.
+  </p><div id="id-1.12.13.3" data-id-title="sysctl and saptune" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: <code class="command">sysctl</code> and <code class="command">saptune</code></div><p>
+    If you plan to configure <code class="command">sysctl</code> parameters for your
+    SAP system, consider using <code class="command">saptune</code> as the central tool for managing
+    such configurations.
+   </p></div><p>
+
+   For more information about <code class="command">sysctl</code>, see the man pages
+   <code class="literal">sysctl(8)</code>, <code class="literal">sysctl.conf(5)</code>, and
+   <code class="literal">sysctl.d(5)</code>.
+  </p></section><section class="sect1" id="sec-saptune-more" data-id-title="For more information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.10 </span><span class="title-name">For more information</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   See the following man pages:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="command">man 8 saptune</code>
+    </p></li><li class="listitem"><p>
+     <code class="command">man 8 saptune-migrate</code>
+    </p></li><li class="listitem"><p>
+     <code class="command">man 8 saptune-note</code>
+    </p></li></ul></div><p>
+   Also see the project home page
+   <a class="link" href="https://github.com/SUSE/saptune/" target="_blank">https://github.com/SUSE/saptune/</a>.
+  </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-tune-sapconf.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 8 </span>Tuning systems with <code class="literal">sapconf</code></span></a> </div><div><a class="pagination-link next" href="cha-memory-protection.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 10 </span>Tuning Workload Memory Protection</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-tune.html#sec-saptune-enable"><span class="title-number">9.1 </span><span class="title-name">Enabling <code class="command">saptune</code></span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-disable"><span class="title-number">9.2 </span><span class="title-name">Disabling <code class="command">saptune</code></span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-update"><span class="title-number">9.3 </span><span class="title-name">Updating <code class="command">saptune</code></span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-sapnotes"><span class="title-number">9.4 </span><span class="title-name">Managing SAP Notes</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-sapsolution"><span class="title-number">9.5 </span><span class="title-name">Managing SAP Solutions</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-verify-and-troubleshooting"><span class="title-number">9.6 </span><span class="title-name">Verification and troubleshooting</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-machine-readable-output"><span class="title-number">9.7 </span><span class="title-name">Machine-readable output</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-staging"><span class="title-number">9.8 </span><span class="title-name">Staging</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-sysctl"><span class="title-number">9.9 </span><span class="title-name">Tuning kernel parameters manually using <code class="command">sysctl</code></span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-more"><span class="title-number">9.10 </span><span class="title-name">For more information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

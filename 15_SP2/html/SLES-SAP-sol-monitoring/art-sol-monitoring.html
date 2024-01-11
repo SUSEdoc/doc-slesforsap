@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP2 | SAP Monitoring</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="SAP Monitoring | SLES for SAP 15 SP2"/>
+<meta name="description" content="This article shows monitoring solutions for SAP admini…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP2"/>
+<meta name="book-title" content="SAP Monitoring"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP2"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="SAP Monitoring | SLES for SAP 15 SP2"/>
+<meta property="og:description" content="This article shows monitoring solutions for SAP administrators to efficiently monitor their SAP systems. The solutions that …"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAP Monitoring | SLES for SAP 15 SP2"/>
+<meta name="twitter:description" content="This article shows monitoring solutions for SAP administrators to efficiently monitor their SAP systems. The solutions that …"/>
+<link rel="prev" href="apa.html" title="A. GNU licenses"/><link rel="next" href="apb.html" title="A. GNU licenses"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">SAP Monitoring</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">SAP Monitoring</div> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section xml:lang="en" class="article" id="art-sol-monitoring" data-id-title="SAP Monitoring"><div class="titlepage"><div><div class="big-version-info"><span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div><div class="title-container"><h1 class="title">SAP Monitoring <a title="Permalink" class="permalink" href="art-sol-monitoring.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div><div><h3 class="subtitle"><em>SUSE® Linux Enterprise Server for SAP Applications · SUSE Linux Enterprise High Availability</em></h3></div><div class="date"><span class="imprint-label">Publication Date: </span>January 11, 2024
+</div><div><div class="abstract"><p>
+         This article shows monitoring solutions for SAP administrators
+         to efficiently monitor their SAP systems.
+         The solutions that is described here works for SUSE® Linux Enterprise Server 12
+         SP3 to 15 SP2.
+       </p></div></div></div></div><section class="sect1" id="sec-sol-monit-concept-overview" data-id-title="Conceptual overview"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1 </span><span class="title-name">Conceptual overview</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-concept-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Starting from the idea of improving user experience, SUSE engineering worked
+      on how to monitor High Availability clusters that manage SAP workloads (SAP HANA and SAP NetWeaver).
+    </p><p>
+      The exporters shown here export their metrics which can be combined and
+      integrated with Prometheus and Grafana to produce complex dashboards.
+    </p><p>
+      SUSE supports Prometheus and Grafana through SUSE Manager 4.0. Some Grafana
+      dashboards for SAP HANA, SAP S/4HANA, SAP NetWeaver, and the cluster monitoring
+      are provided by SUSE via Grafana community dashboards.
+    </p></section><section class="sect1" id="sec-sol-monit-terms" data-id-title="Terminology"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2 </span><span class="title-name">Terminology</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-terms">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.5.2.1"><span class="term">Grafana</span></dt><dd><p>
+            An interactive visualization and analytics Web application.
+            It provides methods to visualize, explore,
+            and query your metrics, and trigger alerts.
+          </p></dd><dt id="id-1.4.5.2.2"><span class="term">Prometheus</span></dt><dd><p>
+            A systems monitoring and alerting toolkit. It collects and evaluates
+            metrics, displays the result, and triggers possible alerts
+            when an observed condition is true.
+            Metrics can be collected from different targets at given intervals.
+          </p></dd></dl></div></section><section class="sect1" id="sec-sol-autom-install-exporters" data-id-title="Installing exporters"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3 </span><span class="title-name">Installing exporters</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-autom-install-exporters">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Installation of an exporter follows always the same pattern.
+      Execute the following steps:
+    </p><div class="procedure" id="id-1.4.6.3" data-id-title="General way"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 1: </span><span class="title-name">General way </span></span><a title="Permalink" class="permalink" href="art-sol-monitoring.html#id-1.4.6.3">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>Install the package. All package are available in SUSE Linux Enterprise Server for SAP Applications.</p></li><li class="step"><p><span class="step-optional">(Optional)</span> 
+          Copy the configuration file to <code class="filename">/etc/<em class="replaceable">EXPORTER_DIR</em></code>.
+          The exact folder name is different for each exporter.
+          This step depends on the exporter. If you skip this step, the default
+          configuration is used.
+        </p></li><li class="step"><p>
+          Start the daemon:
+        </p><div class="verbatim-wrap"><pre class="screen">systemctl start <em class="replaceable">NAME_OF_DAEMON</em></pre></div></li></ol></div></div><p>
+      The above procedure is automatically done by each of the Salt formulas
+      described in <span class="intraxref">Article “SAP Automation”</span>.
+    </p></section><section class="sect1" id="sec-sol-monit-hana-db-exp" data-id-title="SAP HANA database exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4 </span><span class="title-name">SAP HANA database exporter</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-hana-db-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Exports SAP HANA database metrics.
+      The exporter can to export the metrics from more than one database or tenant.
+      This <code class="option">multi_tenant</code> option is enabled by default.
+    </p><p><span class="formalpara-title">Package:</span><span class="package">prometheus-hanadb_exporter</span></p><p><span class="formalpara-title">Link:</span>
+        <a class="link" href="https://github.com/SUSE/hanadb_exporter" target="_blank">https://github.com/SUSE/hanadb_exporter</a>.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Export metrics in prometheus format </span></span><a title="Permalink" class="permalink" href="art-sol-monitoring.html#id-1.4.7.5">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+          Memory metrics
+        </p></li><li class="listitem"><p>
+          CPU metrics
+        </p></li><li class="listitem"><p>
+          Disk usage metrics
+        </p></li><li class="listitem"><p>
+          I/O metrics
+        </p></li><li class="listitem"><p>
+          Network metrics
+        </p></li><li class="listitem"><p>
+          Top queries consuming time and memory
+        </p></li><li class="listitem"><p>
+          System replication metrics
+        </p></li></ul></div><p>
+Find installation instruction in the previous link.
+    </p></section><section class="sect1" id="sec-sol-monit-ha-cluster-exp" data-id-title="High Availability cluster exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5 </span><span class="title-name">High Availability cluster exporter</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-ha-cluster-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Enables monitoring of Pacemaker, Corosync, SBD, DRBD and other components of High Availability clusters.
+      Collects metrics to easily monitor cluster status and health.
+    </p><p><span class="formalpara-title">Link:</span>
+        <a class="link" href="https://github.com/ClusterLabs/ha_cluster_exporter" target="_blank">https://github.com/ClusterLabs/ha_cluster_exporter</a>.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Export metrics in prometheus format </span></span><a title="Permalink" class="permalink" href="art-sol-monitoring.html#id-1.4.8.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+          Pacemaker cluster summary, nodes, and resource status
+        </p></li><li class="listitem"><p>
+          Corosync ring errors and quorum votes.
+          Currently, only Corosync version 2 is supported.
+        </p></li><li class="listitem"><p>
+          Health status of SBD devices.
+        </p></li><li class="listitem"><p>
+          DRBD resources and connections status.
+          Currently, only DRBD version 9 is supported.
+        </p></li></ul></div></section><section class="sect1" id="sec-sol-monit-sap-host-exp" data-id-title="SAP host exporter"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">6 </span><span class="title-name">SAP host exporter</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-sap-host-exp">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+      Enables the monitoring of SAP NetWeaver, SAP HANA, and other applications.
+      The gathered metrics are the data that can be obtained by running the
+      <code class="command">sapcontrol</code> command.
+    </p><p><span class="formalpara-title">Link:</span>
+        <a class="link" href="https://github.com/SUSE/sap_host_exporter" target="_blank">https://github.com/SUSE/sap_host_exporter</a>.
+      </p><div class="itemizedlist"><div class="title-container"><div class="itemizedlist-title-wrap"><div class="itemizedlist-title"><span class="title-number-name"><span class="title-name">Exports metrics (for SAP S/4HANA, SAP NetWeaver, or SAP HANA hosts) in prometheus format </span></span><a title="Permalink" class="permalink" href="art-sol-monitoring.html#id-1.4.9.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div><ul class="itemizedlist"><li class="listitem"><p>
+          SAP start service process list
+        </p></li><li class="listitem"><p>
+          SAP enqueue server metrics
+        </p></li><li class="listitem"><p>
+          SAP application server dispatcher metrics
+        </p></li></ul></div></section><section class="sect1" id="sec-sol-monit-more" data-id-title="For more information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7 </span><span class="title-name">For more information</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#sec-sol-monit-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/art_solution_monitoring.xml" title="Edit source document"> </a></div></div></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          <a class="link" href="https://documentation.suse.com/suma/4.0/" target="_blank">SUSE Manager</a>
+        </p></li><li class="listitem"><p>
+          <a class="link" href="https://grafana.com/grafana/dashboards?orderBy=name&amp;direction=asc" target="_blank">Grafana Dashboards</a>
+        </p></li><li class="listitem"><p>
+          Some <code class="filename">.md</code> files
+          are included in RPM packages. They contain documentation from
+          upstream sources. This can be helpful in isolated data centers without
+          Internet connection.
+        </p></li><li class="listitem"><p><a class="link" href="https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/suse-amp-microsoft-collaborates-to-provide-sap-monitoring/ba-p/1571926" target="_blank">SUSE &amp; Microsoft collaborates to provide SAP monitoring</a>
+        </p></li></ul></div></section><section class="sect1" id="id-1.4.11" data-id-title="Legal notice"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8 </span><span class="title-name">Legal notice</span></span> <a title="Permalink" class="permalink" href="art-sol-monitoring.html#id-1.4.11">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/common_copyright_quick.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  Copyright© 2006–
+2024
+
+  SUSE LLC and contributors. All rights reserved.
+ </p><p>
+  Permission is granted to copy, distribute and/or modify this document under
+  the terms of the GNU Free Documentation License, Version 1.2 or (at your
+  option) version 1.3; with the Invariant Section being this copyright notice
+  and license. A copy of the license version 1.2 is included in the section
+  entitled <span class="quote">“<span class="quote">GNU Free Documentation License</span>”</span>.
+ </p><p>
+  For SUSE trademarks, see
+  <a class="link" href="https://www.suse.com/company/legal/" target="_blank">https://www.suse.com/company/legal/</a>. All other
+  third-party trademarks are the property of their respective owners. Trademark
+  symbols (®, ™ etc.) denote trademarks of SUSE and its affiliates.
+  Asterisks (*) denote third-party trademarks.
+ </p><p>
+  All information found in this book has been compiled with utmost attention to
+  detail. However, this does not guarantee complete accuracy. Neither SUSE LLC,
+  its affiliates, the authors, nor the translators shall be held liable for
+  possible errors or the consequences thereof.
+ </p></section></section><nav class="bottom-pagination"><div> </div><div><a class="pagination-link next" href="apb.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Appendix A </span>GNU licenses</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-concept-overview"><span class="title-number">1 </span><span class="title-name">Conceptual overview</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-terms"><span class="title-number">2 </span><span class="title-name">Terminology</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-autom-install-exporters"><span class="title-number">3 </span><span class="title-name">Installing exporters</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-hana-db-exp"><span class="title-number">4 </span><span class="title-name">SAP HANA database exporter</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-ha-cluster-exp"><span class="title-number">5 </span><span class="title-name">High Availability cluster exporter</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-sap-host-exp"><span class="title-number">6 </span><span class="title-name">SAP host exporter</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#sec-sol-monit-more"><span class="title-number">7 </span><span class="title-name">For more information</span></a></span></li><li><span class="sect1"><a href="art-sol-monitoring.html#id-1.4.11"><span class="title-number">8 </span><span class="title-name">Legal notice</span></a></span></li><li><span class="appendix"><a href="apb.html"><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></span><ul><li><span class="sect1"><a href="apb.html#id-1.4.12.4"><span class="title-number">A.1 </span><span class="title-name">GNU Free Documentation License</span></a></span></li></ul></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

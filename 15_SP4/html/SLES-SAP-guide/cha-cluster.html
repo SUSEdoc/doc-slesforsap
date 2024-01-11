@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP4 | Guide | Setting up an SAP HANA cluster</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Setting up an SAP HANA cluster | SLES for SAP 15 SP4"/>
+<meta name="description" content="You can use a YaST wizard to set up SAP HANA or SAP S/…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP4"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 7. Setting up an SAP HANA cluster"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP4"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Setting up an SAP HANA cluster | SLES for SAP 15 SP4"/>
+<meta property="og:description" content="You can use a YaST wizard to set up SAP HANA or SAP S/4HANA Database Server clusters according to best practices, including …"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting up an SAP HANA cluster | SLES for SAP 15 SP4"/>
+<meta name="twitter:description" content="You can use a YaST wizard to set up SAP HANA or SAP S/4HANA Database Server clusters according to best practices, including …"/>
+<link rel="prev" href="cha-serve-mediaset.html" title="Chapter 6. Setting up an installation server for SAP media sets"/><link rel="next" href="cha-tune.html" title="Chapter 8. Tuning systems with saptune"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-cluster.html">Setting up an SAP HANA cluster</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Guide</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">Preface</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading an SAP HANA cluster</span></a></li><li><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting up an installation server for SAP media sets</span></a></li><li><a href="cha-cluster.html" class=" you-are-here"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-memory-protection.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning Workload Memory Protection</span></a></li><li><a href="cha-access.html" class=" "><span class="title-number">10 </span><span class="title-name">Configuring a firewall</span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">11 </span><span class="title-name">Protecting against malware with ClamSAP</span></a></li><li><a href="cha-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-image.html" class=" "><span class="title-number">13 </span><span class="title-name">Creating operating system images</span></a></li><li><a href="cha-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">Important log files</span></a></li><li><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional software for SLES for SAP</span></a></li><li><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP system using AutoYaST</span></a></li><li><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="win-cheatsheet.html" class=" "><span class="title-number">D </span><span class="title-name">Cheat sheet for Windows administrators
+  </span></a></li><li><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-cluster" data-id-title="Setting up an SAP HANA cluster"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP4</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  You can use a YaST wizard to set up SAP HANA or SAP S/4HANA Database Server clusters according
+  to best practices, including SAP HANA system replication. A summary of the
+  setup options is given in <a class="xref" href="cha-about.html#sec-hana-replicate" title="1.1.3. Simplified SAP HANA system replication setup">Section 1.1.3, “Simplified SAP HANA system replication setup”</a>.
+ </p><p>
+  Administrators can now use the SAP HANA-SR Wizard to run the module unattended,
+  usually for on-premises deployments.
+  Additionally, it is possible to configure the SAP HANA cluster on Azure now.
+  The YaST module identifies automatically when running on Azure and
+  configures an extra resource needed on Pacemaker.
+ </p><p>
+  The following <span class="emphasis"><em>Best Practices</em></span> from the SUSE Linux Enterprise Server for SAP Applications
+  Resource Library (<a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>) contain setup instructions:
+ </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Performance-optimized scenario and multi-tier/chained scenario:</span>
+     <em class="citetitle">Setting up an SAP HANA SR Performance Optimized
+     Infrastructure</em>
+    </p></li><li class="listitem"><p><span class="formalpara-title">Cost-optimized scenario:</span>
+     <em class="citetitle">Setting up an SAP HANA SR Cost Optimized
+     Infrastructure</em>
+    </p></li></ul></div><div id="id-1.10.6" data-id-title="Wizard can only be used for initial configuration" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Wizard can only be used for initial configuration</div><p>
+   The YaST wizard described in the following can only be used for the
+   initial cluster configuration.
+  </p><p>
+   To reconfigure a cluster, use the separate
+   YaST module <span class="guimenu">Cluster</span> (available from package
+   <span class="package">yast2-cluster</span>).
+   For more information about its usage, see <em class="citetitle">Administration Guide, Part
+   <span class="quote">“<span class="quote">Installation, Setup and Upgrade</span>”</span>, Chapter <span class="quote">“<span class="quote">Using the
+   YaST Cluster Module</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+  </p></div><section class="sect1" id="sec-hana-cluster-prerequisite" data-id-title="Prerequisites"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7.1 </span><span class="title-name">Prerequisites</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#sec-hana-cluster-prerequisite">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The following procedure has prerequisites:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     Two machines which both have an SAP HANA installation created by the
+     SAP Installation Wizard or SAP HANA Application Lifecycle Management. Both machines need to be on the same L2 network
+     (subnet).
+    </p><p>
+     In the case of a multi-tier/chained scenario, there must also be a third
+     machine elsewhere.
+    </p></li><li class="listitem"><p>
+     The machines are not yet set up as a high-availability cluster.
+    </p></li><li class="listitem"><p>
+     <span class="productname">openSSH</span> is running on both machines
+     and the nodes can reach each other via SSH. However, if that has not
+     already happened, the wizard will perform the SSH key exchange itself.
+    </p><p>
+     For more information about SSH, see <em class="citetitle">Security and Hardening Guide, Part
+     <span class="quote">“<span class="quote">Network Security</span>”</span>, Chapter <span class="quote">“<span class="quote">SSH: Secure Network
+     Operations</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>.
+    </p></li><li class="listitem"><p>
+     A disk device that is available to both nodes under the same path for
+     SBD. It must not use host-based RAID, cLVM2 or reside on a DRBD
+     instance. The device can have a small size, for example, 100 MB.
+    </p></li><li class="listitem"><p>
+     You have created either:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       A key in the SAP HANA Secure User Store on the primary node
+      </p></li><li class="listitem"><p>
+       An initial SAP HANA backup on the primary node
+      </p></li></ul></div></li><li class="listitem"><p>
+     The package <span class="package">yast2-sap-ha</span> is installed on both
+     the primary and the secondary node.
+    </p></li><li class="listitem"><p>
+     HANA-Firewall is set up on both computers with the rules
+     <code class="option">HANA_HIGH_AVAILABILITY</code> and
+     <code class="option">HANA_SYSTEM_REPLICATION</code> on all relevant network
+     interfaces.
+    </p><p>
+     For information about setting up HANA-Firewall, see
+     <a class="xref" href="cha-access.html#sec-configure-firewall-hana" title="10.2. Configuring HANA-Firewall">Section 10.2, “Configuring HANA-Firewall”</a>.
+    </p></li><li class="listitem"><p>
+     <span class="emphasis"><em>Cost-optimized scenario only:</em></span> The secondary node
+     has a second SAP HANA installation. The database may be running but
+     will be stopped automatically by the wizard.
+    </p></li><li class="listitem"><p>
+     <span class="emphasis"><em>Cost-optimized scenario only:</em></span> For the non-production
+     SAP HANA instance, you have created an SAP HANA Secure User Store key
+     <code class="literal">QASSAPDBCTRL</code> for monitoring purposes. For more
+     information, refer to the <em class="citetitle">SAP HANA System Replication Scale-Up -
+     Cost Optimized Scenario</em> document at <a class="link" href="https://documentation.suse.com/sles-sap/" target="_blank">https://documentation.suse.com/sles-sap/</a>.
+    </p></li></ul></div></section><section class="sect1" id="sec-hana-cluster-wizard" data-id-title="Setup"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7.2 </span><span class="title-name">Setup</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#sec-hana-cluster-wizard">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure" id="pro-hana-cluster"><div class="procedure-contents"><p>
+    The following procedure needs to be executed on the primary node (also
+    called the <span class="quote">“<span class="quote">master</span>”</span>). Before proceeding, make sure the
+    prerequisites listed in
+    <a class="xref" href="cha-cluster.html#sec-hana-cluster-prerequisite" title="7.1. Prerequisites">Section 7.1, “Prerequisites”</a> are fulfilled.
+   </p><ol class="procedure" type="1"><li class="step"><p>
+     Open the YaST control center. In it, click <span class="guimenu">HA Setup for SAP
+     Products</span> in the category
+     <span class="guimenu">High Availability</span>.
+    </p></li><li class="step"><p>
+     If an SAP HANA instance has been detected, you can choose between the
+     scale-up scenarios <span class="guimenu">Performance-optimized</span>,
+     <span class="guimenu">Cost-optimized</span>, or
+     <span class="guimenu">Chained (multi-tier)</span>. For information about
+     these scale-up scenarios, see <a class="xref" href="cha-about.html#sec-hana-replicate" title="1.1.3. Simplified SAP HANA system replication setup">Section 1.1.3, “Simplified SAP HANA system replication setup”</a>.
+    </p><p>
+     Continue with <span class="guimenu">Next</span>.
+    </p><div class="informalfigure"><div class="mediaobject"><a href="images/s4s-cluster-scenario.png"><img src="images/s4s-cluster-scenario.png" alt="Screenshot of replication scenario selection" title="Screenshot of replication scenario selection"/></a></div></div></li><li class="step"><p>
+     This step of the wizard presents a list of prerequisites for the chosen
+     scale-up scenario. These prerequisites are the same as those presented in
+     <a class="xref" href="cha-cluster.html#sec-hana-cluster-prerequisite" title="7.1. Prerequisites">Section 7.1, “Prerequisites”</a>.
+    </p><p>
+     Continue with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     The next step lets you configure the communication layer of your cluster.
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       Provide a name for the cluster.
+      </p></li><li class="listitem"><p>
+       The default transport mode <span class="guimenu">Unicast</span> is usually
+       appropriate.
+      </p></li><li class="listitem"><p>
+       Under <span class="guimenu">Number of rings</span>, a single communication ring
+       usually suffices.
+      </p><p>
+       For redundancy, it is often better to use network interface bonding
+       instead of multiple communication rings. For more information, see
+       <em class="citetitle">Administration Guide, Part <span class="quote">“<span class="quote">Configuration and
+       Administration</span>”</span>, Chapter <span class="quote">“<span class="quote">Network Device
+       Bonding</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+      </p></li><li class="listitem"><p>
+       From the list of communication rings, configure each enabled ring. To
+       do so, click <span class="guimenu">Edit selected</span>, then select a network
+       mask (<span class="guimenu">IP address</span>) and a port
+       (<span class="guimenu">Port number</span>) to communicate over.
+      </p><p>
+       Finish with <span class="guimenu">OK</span>.
+      </p></li><li class="listitem"><p>
+       Additionally, decide whether to enable the configuration
+       synchronization service Csync2 and Corosync secure authentication
+       using HMAC/SHA1.
+      </p><p>
+       For more information about Csync2, see
+       <em class="citetitle">Administration Guide Part <span class="quote">“<span class="quote">Installation, Setup and
+       Upgrade</span>”</span>, Chapter <span class="quote">“<span class="quote">Using the YaST Cluster
+       Module</span>”</span>, Section <span class="quote">“<span class="quote">Transferring the Configuration to All
+       Nodes</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+      </p><p>
+       For more information about
+       Corosync secure authentication, see
+       <em class="citetitle">Administration Guide, Part <span class="quote">“<span class="quote">Installation, Setup and
+       Upgrade</span>”</span>, Chapter <span class="quote">“<span class="quote">Using the YaST Cluster
+       Module</span>”</span>, Section <span class="quote">“<span class="quote">Defining Authentication
+       Settings</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+      </p></li></ul></div><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div class="informalfigure"><div class="mediaobject"><a href="images/s4s-cluster-communication.png"><img src="images/s4s-cluster-communication.png" alt="Screenshot of communication layer configuration" title="Screenshot of communication layer configuration"/></a></div></div></li><li class="step"><p>
+     The wizard will now check whether it can connect to the secondary
+     machine using SSH. If it can, it will ask for the
+     <code class="systemitem">root</code> password to the machine.
+    </p><p>
+     Enter the <code class="systemitem">root</code> password.
+    </p><p>
+     The next time the primary machine needs to connect to the secondary
+     machine, it will connect using an SSH certificate instead of a password.
+    </p></li><li class="step"><p>
+     For both machines, set up the host names and IP address (for each ring).
+    </p><p>
+     Host names chosen here are independent from the virtual host names
+     chosen in SAP HANA. However, to avoid issues with SAP HANA, host names must
+     not include hyphen characters (<code class="literal">-</code>).
+     
+     
+    </p><p>
+     If this has not already been done before, such as during the initial
+     installation of SAP HANA, host names of all cluster servers must now be
+     added to the file <code class="filename">/etc/hosts</code>. For this purpose,
+     activate <span class="guimenu">Append to /etc/hosts</span>.
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     If NTP is not yet set up, do so. This avoids the two machines from running
+     into issues because of time differences.
+    </p><ol type="a" class="substeps"><li class="step"><p>
+        Click <span class="guimenu">Reconfigure</span>.
+      </p></li><li class="step"><p>
+       On the tab <span class="guimenu">General Settings</span>, activate <span class="guimenu">Now and on Boot</span>.
+      </p></li><li class="step"><p>
+       Add a time server by clicking <span class="guimenu">Add</span>. Click
+       <span class="guimenu">Server</span> and <span class="guimenu">Next</span>. Then specify the
+       IP address of a time server outside of the cluster. Test the connection to the
+       server by clicking <span class="guimenu">Test</span>.
+      </p><p>
+       To use a public time server, click
+       <span class="guimenu">Select</span> › <span class="guimenu">Public server</span> and select a time server.
+       Finish with <span class="guimenu">OK</span>.
+      </p><p>
+       Proceed with <span class="guimenu">OK</span>.
+      </p></li><li class="step"><p>
+       On the tab <span class="guimenu">Security Settings</span>, activate
+       <span class="guimenu">Open Port in Firewall</span>.
+      </p></li><li class="step"><p>
+       Proceed with <span class="guimenu">Next</span>.
+      </p></li></ol></li><li class="step"><p>
+     In the next step, choose fencing options. The YaST wizard only
+     supports the fencing mechanism SBD (<span class="emphasis"><em>STONITH block
+     device</em></span>). To avoid split-brain situations, SBD uses a disk
+     device which stores cluster state.
+    </p><p>
+     The chosen disk must be available from all machines in the cluster under
+     the same path. Ideally, use either <span class="guimenu">by-uuid</span> or
+     <span class="guimenu">by-path</span> for identification.
+    </p><p>
+     The disk must not use host-based RAID, cLVM2 or reside on
+     a DRBD instance. The device can have a small size, for example,
+     100 MB.
+    </p><div id="id-1.10.8.2.9.4" data-id-title="Data on device will be lost" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">Warning: Data on device will be lost</div><p>
+      All data on the chosen SBD device or devices will be deleted.
+     </p></div><p>
+     To define a device to use, click <span class="guimenu">Add</span>, then choose an
+     identification method such as <span class="guimenu">by-uuid</span> and select the
+     appropriate device. Click <span class="guimenu">OK</span>.
+    </p><p>
+     To define additional SBD command line parameters, add them to
+     <span class="guimenu">SBD options</span>.
+    </p><p>
+     If your machines reboot particularly fast, activate <span class="guimenu">Delay SBD
+     start</span>.
+    </p><p>
+     For more information about fencing, see the
+     <em class="citetitle">Administration Guide</em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     The following page allows configuring watchdogs which protect against
+     the failure of the SBD daemon itself and force a reboot of the machine
+     in such a case.
+    </p><p>
+     It also lists watchdogs already configured using YaST and watchdogs that
+     are currently loaded (as detected by <code class="command">lsmod</code>).
+    </p><p>
+     To configure a watchdog, use <span class="guimenu">Add</span>. Then choose
+     the correct watchdog for your hardware and leave the dialog with
+     <span class="guimenu">OK</span>.
+    </p><p>
+     For testing, you can use the watchdog
+     <code class="literal">softdog</code>. However, we highly recommend using a
+     hardware watchdog in production environments instead of
+     <code class="literal">softdog</code>. For more information about
+     selecting watchdogs, see <em class="citetitle">Administration Guide, Part <span class="quote">“<span class="quote">Storage and
+     Data Replication</span>”</span>, Chapter
+     <span class="quote">“<span class="quote">Storage Protection</span>”</span>, Section
+     <span class="quote">“<span class="quote">Conceptual Overview</span>”</span>, Section <span class="quote">“<span class="quote">Setting Up
+     Storage-based Protection</span>”</span>, Section <span class="quote">“<span class="quote">Setting up the
+     Watchdog</span>”</span></em> at <a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>.
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     Set up the parameters for your SAP HANA installation or installations. If
+     you have selected the cost-optimized scenario, additionally fill out
+     details related to the non-production SAP HANA instance.
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.10.8.2.11.2.1"><span class="term">Production SAP HANA instance</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          Make sure that the <span class="guimenu">System ID</span> and
+          <span class="guimenu">Instance number</span> match those of your SAP HANA
+          configuration.
+         </p></li><li class="listitem"><p>
+          <span class="guimenu">Replication mode</span> and
+          <span class="guimenu">Operation mode</span> usually do not need to be changed.
+         </p><p>
+          For more information about these parameters, see the
+          <em class="citetitle">HANA Administration Guide</em> provided to you by
+          SAP.
+         </p></li><li class="listitem"><p>
+          Under <span class="guimenu">Virtual IP address</span>, specify a virtual IP
+          address for the primary SAP HANA instance. Under <span class="guimenu">Virtual IP
+          Mask</span>, set the length of the subnetwork mask in CIDR
+          format to be applied to the <span class="guimenu">Virtual IP address</span>.
+         </p></li><li class="listitem"><p>
+          <span class="guimenu">Prefer site takeover</span> defines whether the
+          secondary instance should take over the job of the primary instance
+          automatically (<span class="guimenu">true</span>). Alternatively, the cluster
+          will restart SAP HANA on the primary machine.
+         </p></li><li class="listitem"><p>
+          <span class="guimenu">Automatic registration</span> determines whether primary
+          and secondary machine should switch roles after a takeover.
+         </p></li><li class="listitem"><p>
+          Specify the site names for the production SAP HANA instance on the
+          two nodes in <span class="guimenu">Site name 1</span> and <span class="guimenu">Site name
+          2</span>.
+         </p></li><li class="listitem"><p>
+          Having a backup of the database is a precondition for setting up
+          SAP HANA replication.
+         </p><p>
+          If you have not previously created a backup, activate
+          <span class="guimenu">Create initial backup</span>. Under
+          <span class="guimenu">Backup settings</span>, configure the
+          <span class="guimenu">File name</span> and the <span class="guimenu">Secure store
+          key</span> for the backup. The key in the SAP HANA Secure User
+          Store on the primary node must have been created before starting
+          the wizard.
+         </p><p>
+          For more information, see the documentation provided to you by SAP.
+         </p></li><li class="listitem"><p>
+          <span class="emphasis"><em>Cost-optimized scenario only:</em></span> Within
+          <span class="guimenu">Production system constraints</span>, configure how the
+          production instance of SAP HANA should behave while inactive on the
+          secondary node.
+         </p><p>
+          Setting the <span class="guimenu">Global allocation limit</span> allows
+          directly limiting memory usage. Activating <span class="guimenu">Preload column
+          tables</span> will increase memory usage.
+         </p><p>
+          For information about the necessary global allocation limit, refer to
+          the documentation provided by SAP.
+         </p></li></ul></div></dd><dt id="id-1.10.8.2.11.2.2"><span class="term"><span class="emphasis"><em>Cost-optimized scenario only:</em></span> non-production SAP HANA instance</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          Make sure that the <span class="guimenu">System ID</span> and
+          <span class="guimenu">Instance number</span> match those of your
+          non-production SAP HANA instance.
+         </p><p>
+          These parameters are needed to allow monitoring the status of the
+          non-production SAP HANA instance using the SAPInstance resource agent.
+         </p></li><li class="listitem"><p>
+          Generate a hook script for stopping the non-production instance and
+          starting the production instance and removing the constraints on
+          the production system. The script is written in Python 2 and can
+          be modified as necessary later.
+         </p><p>
+          Click <span class="guimenu">Hook script</span> and then set up the correct
+          user name and password for the database. Then click
+          <span class="guimenu">OK</span>.
+         </p><p>
+          You can now manually verify and change the details of the generated
+          hook script. When you are done, click <span class="guimenu">OK</span> to save
+          the hook script at
+          <code class="filename">/hana/shared/<em class="replaceable">SID</em>/srHook</code>.
+         </p><div id="id-1.10.8.2.11.2.2.2.1.2.4" data-id-title="Passwords stored in plain text" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">Warning: Passwords stored in plain text</div><p>
+           By default, the hook script stores all credentials in plain text.
+           To improve security, modify the script yourself.
+          </p></div></li></ul></div></dd></dl></div><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div class="figure" id="id-1.10.8.2.11.4"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-cluster-hana-option.png"><img src="images/s4s-cluster-hana-option.png" alt="Screenshot of SAP HANA options (cost-optimized scenario)" title="Screenshot of SAP HANA options (cost-optimized scenario)"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 7.1: </span><span class="title-name">SAP HANA options (cost-optimized scenario) </span></span><a title="Permalink" class="permalink" href="cha-cluster.html#id-1.10.8.2.11.4">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
+     On the page <span class="guimenu">High-Availability Configuration
+     Overview</span>, check that the setup is correct.
+    </p><p>
+     To change any of the configuration details, return to the appropriate
+     wizard page by clicking one of the underlined headlines.
+    </p><p>
+     Proceed with <span class="guimenu">Install</span>.
+    </p></li><li class="step"><p>
+     When asked whether to install additional software, confirm with
+     <span class="guimenu">Install</span>.
+    </p></li><li class="step"><p>
+     After the setup is done, there is a screen showing a log of the cluster
+     setup.
+    </p><p>
+     To close the dialog, click <span class="guimenu">Finish</span>.
+    </p></li><li class="step"><p>
+     <span class="emphasis"><em>Multi-tier/chain scenario only:</em></span> Using the
+     administrative user account for the production SAP HANA instance, register
+     the out-of-cluster node for system replication:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user"><em class="replaceable">SID</em>adm &gt; </code><code class="command">hdbnsutil</code> -sr_register --remoteHost=<em class="replaceable">SECONDARY_HOST_NAME</em> \
+--remoteInstance=<em class="replaceable">INSTANCE_NUMBER</em> --replicationMode=async \
+--name=<em class="replaceable">SITE_NAME</em></pre></div></li></ol></div></div></section><section class="sect1" id="sec-hana-cluster-wizard-semiautomatic" data-id-title="Unattended setup using SAP HANA-SR wizard"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7.3 </span><span class="title-name">Unattended setup using SAP HANA-SR wizard</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#sec-hana-cluster-wizard-semiautomatic">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   An unattended setup requires a manual installation of HANA first.
+   The result is saved into a file containing all configuration options that
+   were chosen.
+   If the administrator needs to reproduce the installation, with this file
+   the installation can be run automatically and unattended.
+  </p><p>
+   To use it, perform the following steps on both nodes:
+  </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     On the production machines with SAP HANA installed, create a configuration
+     file by running the <code class="literal">sap_ha</code> YaST module.
+     
+    </p></li><li class="step"><p>
+     On the last screen, click the <span class="guimenu">Save configuration</span> button.
+    </p></li><li class="step"><p>Decide what you want to do:</p><ul class="stepalternatives">
+     <li class="step"><p>
+       To review the configuration, upload and validate the configuration
+       on the primary SAP HANA machine and run:
+      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">yast2 sap_ha readconfig <em class="replaceable">CONFIGURATION_FILE_PATH</em></code></pre></div><p>It is possible to start the installation on the review screen.</p></li>
+     <li class="step"><p>
+       To start the installation based on the provided configuration file
+       unattended, run:
+      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">yast2 sap_ha readconfig <em class="replaceable">CONFIGURATION_FILE_PATH</em> unattended</code></pre></div></li>
+    </ul></li><li class="step"><p>
+     Import, validate, and install the cluster unattended,
+     based on the provided configuration file:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">yast2 sap_ha readconfig <em class="replaceable">CONFIGURATION_FILE_PATH</em> unattended</code></pre></div></li></ol></div></div></section><section class="sect1" id="sec-hawk" data-id-title="Using Hawk"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7.4 </span><span class="title-name">Using Hawk</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#sec-hawk">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   After you have set up the cluster using the wizard, you can open Hawk
+   directly from the last screen of the <span class="guimenu">HA Setup for SAP
+   Products</span> wizard.
+  </p><p>
+   To revisit Hawk, open a browser and as the URL, enter the IP address
+   or host name of any cluster node running the Hawk Web service.
+   Alternatively, enter the virtual IP address you configured in
+   <a class="xref" href="cha-cluster.html#sec-hana-cluster-wizard" title="7.2. Setup">Section 7.2, “Setup”</a>.
+  </p><div class="verbatim-wrap"><pre class="screen">https://<em class="replaceable">HAWKSERVER</em>:7630/</pre></div><p>
+   On the Hawk login screen, use the following login credentials:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <span class="guimenu">Username</span>: <code class="systemitem">hacluster</code>
+    </p></li><li class="listitem"><p>
+     <span class="guimenu">Password</span>: <code class="literal">linux</code>
+    </p></li></ul></div><div id="id-1.10.10.7" data-id-title="Secure password" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Secure password</div><p>
+    Replace the default password with a secure one as soon as possible:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">passwd hacluster</code></pre></div></div></section><section class="sect1" id="sec-moreinfo" data-id-title="For more information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">7.5 </span><span class="title-name">For more information</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#sec-moreinfo">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Hawk. </span>
+      <em class="citetitle">Administration Guide</em>,
+      Part <em class="citetitle">Configuration and Administration</em>,
+      Chapter <em class="citetitle">Configuring and Managing Cluster Resources with
+   Hawk</em> (<a class="link" href="https://documentation.suse.com/sle-ha-15" target="_blank">https://documentation.suse.com/sle-ha-15</a>).
+     </p></li><li class="listitem"><p><span class="formalpara-title">Near zero downtime for SAP HANA system replication. </span><a class="link" href="https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.03/en-US/ee3fd9a0c2e74733a74e4ad140fde60b.html" target="_blank">Use SAP HANA System Replication for Near Zero Downtime Upgrades</a>.
+     </p></li><li class="listitem"><p><span class="formalpara-title">Implementing the Python hook SAPHanaSR. </span><a class="link" href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/" target="_blank">https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/</a></p></li></ul></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-serve-mediaset.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 6 </span>Setting up an installation server for SAP media sets</span></a> </div><div><a class="pagination-link next" href="cha-tune.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 8 </span>Tuning systems with <code class="command">saptune</code></span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-prerequisite"><span class="title-number">7.1 </span><span class="title-name">Prerequisites</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard"><span class="title-number">7.2 </span><span class="title-name">Setup</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard-semiautomatic"><span class="title-number">7.3 </span><span class="title-name">Unattended setup using SAP HANA-SR wizard</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hawk"><span class="title-number">7.4 </span><span class="title-name">Using Hawk</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-moreinfo"><span class="title-number">7.5 </span><span class="title-name">For more information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

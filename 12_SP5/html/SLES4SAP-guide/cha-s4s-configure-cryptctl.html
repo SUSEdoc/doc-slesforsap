@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP5 | Guide | Encrypting Directories Using cryptctl</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Encrypting Directories Using cryptctl | SLES for SAP 12 SP5"/>
+<meta name="description" content="cryptctl consists of two components:"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP5"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 10. Encrypting Directories Using cryptctl"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP5"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Encrypting Directories Using cryptctl | SLES for SAP 1…"/>
+<meta property="og:description" content="cryptctl consists of two components:"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Encrypting Directories Using cryptctl | SLES for SAP 1…"/>
+<meta name="twitter:description" content="cryptctl consists of two components:"/>
+<link rel="prev" href="cha-s4s-access.html" title="Chapter 9. Firewalling"/><link rel="next" href="cha-clamsap.html" title="Chapter 11. Protecting Against Malware With ClamSAP"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-s4s-configure-cryptctl.html">Encrypting Directories Using cryptctl</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">7 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" "><span class="title-number">9 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" you-are-here"><span class="title-number">10 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">11 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">13 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-s4s-configure-cryptctl" data-id-title="Encrypting Directories Using cryptctl"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP5</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">10 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   <code class="command">cryptctl</code> consists of two components:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     A client is a machine that has one or more encrypted partitions but does
+     not permanently store the necessary key to decrypt those partitions.
+     For example, clients can be cloud or otherwise hosted machines.
+    </p></li><li class="listitem"><p>
+     The server holds encryption keys that can be requested by clients to
+     unlock encrypted partitions.
+    </p><p>
+     You can also set up the <code class="command">cryptctl</code> server to store
+     encryption keys on a KMIP 1.3-compatible (Key Management
+     Interoperability Protocol) server. In that case, the
+     <code class="command">cryptctl</code> server will not store the encryption keys of
+     clients and is dependent upon the KMIP-compatible server to provide
+     these.
+    </p></li></ul></div><div id="id-1.13.4" data-id-title="cryptctl Server Maintenance" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">Warning: <code class="command">cryptctl</code> Server Maintenance</div><p>
+    The <code class="command">cryptctl</code> server manages timeouts for the
+    encrypted disks. Depending on the configuration, it can also hold
+    encryption keys. Therefore it
+    should be under your direct control and managed only by trusted
+    personnel.
+   </p><p>
+    Additionally, it should be backed up regularly. Losing the server's data
+    means losing access to encrypted partitions on the clients.
+   </p></div><p>
+   To handle encryption, <code class="command">cryptctl</code> uses LUKS with
+   aes-xts-256 encryption and 512-bit keys. Encryption keys are transferred
+   using TLS with certificate verification.
+  </p><div class="figure" id="fig-s4s-cryptctl-retrieve"><div class="figure-contents"><div class="mediaobject"><a href="images/cryptctl-keyretrieval.png"><img src="images/cryptctl-keyretrieval.png" alt="The client asks the server for the disk decryption key, the server responds" title="The client asks the server for the disk decryption key, the server responds"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 10.1: </span><span class="title-name">Key Retrieval with <code class="command">cryptctl</code> (Model Without Connection to KMIP Server) </span></span><a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#fig-s4s-cryptctl-retrieve">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div><div id="id-1.13.7" data-id-title="Install cryptctl" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Install <code class="command">cryptctl</code></div><p>
+    Before continuing, make sure the package <span class="package">cryptctl</span> is
+    installed on all machines you intend to set up as servers or clients.
+   </p></div><section class="sect1" id="sec-s4s-configure-cryptctl-server" data-id-title="Setting Up a cryptctl Server"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.1 </span><span class="title-name">Setting Up a <code class="command">cryptctl</code> Server</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-server">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    Before you can define machine as a <code class="command">cryptctl</code> client,
+    you need to set up a machine as a <code class="command">cryptctl</code> server.
+   </p><p>
+    Before beginning, choose whether to use a self-signed certificate to
+    secure communication between the server and clients. If not, generate a
+    TLS certificate for the server and have it signed by a certificate
+    authority.
+   </p><p>
+    Additionally, you can have clients authenticate to the server using
+    certificates signed by a certificate authority. To use this extra
+    security measure, make sure to have a CA certificate at hand before
+    starting this procedure.
+   </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      As <code class="systemitem">root</code>, run:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cryptctl init-server</code></pre></div></li><li class="step"><p>
+      Answer each of the following prompts and press <span class="keycap">Enter</span>
+      after every answer. If there is a default answer, it is shown in square
+      brackets at the end of the prompt.
+     </p><ol type="a" class="substeps"><li class="step"><p>
+        Choose a password with at least 10 characters and confirm it. This
+        password assumes the role of a master password, able to unlock all
+        partitions that are registered on the server.
+       </p></li><li class="step"><p>
+        Specify the path to a PEM-encoded TLS certificate or certificate chain
+        file or leave the field empty to create a self-signed certificate. If
+        you specify a path, use an absolute path.
+       </p></li><li class="step"><p>
+        If you want the server to be identified by a host name other than the
+        default shown, specify a host name. <code class="command">cryptctl</code> will
+        then generate certificates which include the host name.
+       </p></li><li class="step"><p>
+        Specify the IP address that belongs to the network interface that you
+        want to listen on for decryption requests from the clients, then set
+        a port number (the default is port 3737).
+       </p><p>
+        The default IP address setting,
+        <code class="systemitem">0.0.0.0</code> means that
+        <code class="command">cryptctl</code> will listen on
+        all network interfaces for client requests using IPv4.
+       </p></li><li class="step"><p>
+        Specify a directory on the server that will hold the decryption keys
+        for clients.
+       </p></li><li class="step"><p>
+        Specify whether clients need to authenticate to the server using a
+        TLS certificate. If you choose <span class="guimenu">No</span>, this means that
+        clients authenticate using disk UUIDs only. (However, communication
+        will be encrypted using the server certificate in any case.)
+       </p><p>
+        If you choose <span class="guimenu">Yes</span>, pick a PEM-encoded certificate
+        authority to use for signing client certificates.
+       </p></li><li class="step"><p>
+        Specify whether to use a KMIP 1.3-compatible server (or multiple such
+        servers) to store encryption keys of clients. If you choose this
+        option, provide the host names and ports for one or multiple
+        KMIP-compatible servers.
+       </p><p>
+        Additionally, provide a user name, password, a CA certificate for the
+        KMIP server, and a client identity certificate for the
+        <code class="command">cryptctl</code> server.
+       </p><div id="id-1.13.8.5.2.2.7.3" data-id-title="No Easy Reconfiguration of KMIP Setting" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: No Easy Reconfiguration of KMIP Setting</div><p>
+         The setting to use a KMIP server cannot easily be changed later. To
+         change this setting, both the <code class="command">cryptctl</code> server and
+         its clients need to be configured afresh.
+        </p></div></li><li class="step"><p>
+        Finally, configure an SMTP server for e-mail notifications for
+        encryption and decryption requests or leave the prompt empty to skip
+        setting up e-mail notifications.
+       </p><div id="id-1.13.8.5.2.2.8.2" data-id-title="Password-Protected Servers" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Password-Protected Servers</div><p>
+         <code class="command">cryptctl</code> currently cannot send e-mail using
+         authentication-protected SMTP servers. If that is necessary, set up
+         a local SMTP proxy.
+        </p></div></li><li class="step"><p>
+        When asked whether to start the <code class="command">cryptctl</code> server,
+        enter <code class="literal">y</code>.
+       </p></li></ol></li><li class="step"><p>
+      To check the status of the service
+      <code class="systemitem">cryptctl-server</code>, use:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl status cryptctl-server</code></pre></div></li></ol></div></div><p>
+    To reconfigure the server later, do either of the following:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Run the command <code class="command">cryptctl init-server</code> again.
+      <code class="command">cryptctl</code> will then propose the existing settings as
+      the defaults, so that you only need to the specify values that you want
+      to change.
+     </p></li><li class="listitem"><p>
+      Make changes directly in the configuration file
+      <code class="filename">/etc/sysconfig/cryptctl-server</code>.
+     </p><p>
+      However, to avoid issues, do not change the settings
+      <code class="option">AUTH_PASSWORD_HASH</code> and
+      <code class="option">AUTH_PASSWORD_SALT</code> manually. The values of these
+      options need to be calculated correctly.
+     </p></li></ul></div></section><section class="sect1" id="sec-s4s-configure-cryptctl-client" data-id-title="Setting Up a cryptctl Client"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.2 </span><span class="title-name">Setting Up a <code class="command">cryptctl</code> Client</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-client">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    The following interactive setup of <code class="command">cryptctl</code> is
+    currently the only setup method.
+   </p><p>
+    Make sure the following preconditions are fulfilled:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      A <code class="command">cryptctl</code> server is available over the network.
+     </p></li><li class="listitem"><p>
+      There is a directory to encrypt.
+     </p></li><li class="listitem"><p>
+      The client machine has an empty partition available that is large
+      enough to fit the directory to encrypt.
+     </p></li><li class="listitem"><p>
+      When using a self-signed certificate, the certificate
+      (<code class="filename">*.crt</code> file) generated on the server is
+      available locally on the client. Otherwise, the certificate authority
+      of the server certificate must be trusted by the client.
+     </p></li><li class="listitem"><p>
+      If you set up the server to require clients to authenticate using a
+      client certificate, prepare a TLS certificate for the client. It must be
+      signed by the CA certificate you chose for the server.
+     </p></li></ul></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+      As <code class="systemitem">root</code>, run:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cryptctl encrypt</code></pre></div></li><li class="step"><p>
+      Answer each of the following prompts and press <span class="keycap">Enter</span>
+      after every answer. If there is a default answer, it is shown in square
+      brackets at the end of the prompt.
+     </p><ol type="a" class="substeps"><li class="step"><p>
+        Specify the host name and port to connect to on the
+        <code class="command">cryptctl</code> server.
+       </p></li><li class="step"><p>
+        If you configured the server to have clients authenticate to it using a
+        TLS certificate, specify a certificate and a key file for the client.
+        The client certificate must be signed by the certificate
+        authority chosen when setting up the server.
+       </p></li><li class="step"><p>
+        Specify the absolute path to the server certificate (the
+        <code class="filename">*.crt</code> file).
+       </p></li><li class="step"><p>
+        Enter the encryption password that you specified when setting up the
+        server.
+       </p></li><li class="step"><p>
+        Specify the path to the directory to encrypt. Specify the path to the
+        empty partition that will contain the encrypted content of the
+        directory.
+       </p></li><li class="step"><p>
+        Specify the number of machines that are allowed to decrypt the
+        partition simultaneously.
+       </p><p>
+        Then specify the timeout in seconds before additional machines are
+        allowed to decrypt the partition after the last vital sign was
+        received from the client or clients.
+       </p><p>
+        When a machine unexpectedly stops working and then reboots, it needs to
+        be able to unlock its partitions again. That means, this timeout
+        should be set to a time slightly shorter than the reboot time of the
+        client.
+       </p><div id="id-1.13.9.5.2.2.6.4" data-id-title="Timeout Length" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Timeout Length</div><p>
+         If the time is set too long, the machine cannot decrypt
+         encrypted partitions on the first try. <code class="command">cryptctl</code> will
+         then continue to periodically check whether the encryption key has
+         become available. However, this will introduce a delay.
+        </p><p>
+         If the timeout is set too short, machines with a copy of
+         the encrypted partition have an increased chance of unlocking the
+         partition first.
+        </p></div></li></ol></li><li class="step"><p>
+      To start encryption, enter <code class="literal">yes</code>.
+     </p><p>
+      <code class="command">cryptctl</code> will now encrypt the specified directory to
+      the previously empty partition and then mount the newly encrypted
+      partition. The file system type will be of the same type as the
+      original unencrypted file system.
+     </p><p>
+      Before creating the encrypted partition,
+      <code class="command">cryptctl</code> moves the unencrypted content of the
+      original directory to a location prefixed with
+      <code class="literal">cryptctl-moved-</code>.
+     </p></li><li class="step"><p>
+      To check that the directory is indeed mounted correctly, use:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">lsblk -o NAME,MOUNTPOINT,UUID</code>
+NAME                        MOUNTPOINT          UUID
+[...]
+sdc
+└─sdc1                                          <em class="replaceable">PARTITION_UUID</em>
+  └─cryptctl-unlocked-sdc1  /secret-partition   <em class="replaceable">UNLOCKED_UUID</em></pre></div><p>
+      <code class="command">cryptctl</code> identifies the encrypted partition by its
+      UUID. For the previous example, that is the UUID displayed next to
+      <code class="literal">sdc1</code>.
+     </p><p>
+      On the server, you can check whether the directory was decrypted using
+      <code class="command">cryptctl</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cryptctl list-keys</code>
+2016/10/10 10:00:00 ReloadDB: successfully loaded database of 1 records
+Total: 1 records (date and time are in zone EDT)
+Used By      When                  UUID  Max.Users  Num.Users  Mount Point
+<em class="replaceable">IP_ADDRESS</em>   2016-10-10 10:00:00   <em class="replaceable">UUID</em>  1          1          /secret-partition</pre></div><p>
+      Verify that the UUID shown is that of the previously encrypted partition.
+     </p></li><li class="step"><p>
+      After verifying that the encrypted partition works, delete the
+      unencrypted content from the client. For example, use <code class="command">rm</code>.
+      For more
+      safety, overwrite the content of the files before deleting them, for
+      example, using <code class="command">shred -u</code>.
+     </p><div id="id-1.13.9.5.5.2" data-id-title="shred Does Not Guarantee That Data Is Completely Erased" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: <code class="command">shred</code> Does Not Guarantee That Data Is Completely Erased</div><p>
+       Depending on the type of storage media, using
+       <code class="command">shred</code> is not a guarantee that all data is
+       completely removed. In particular, SSDs usually employ wear leveling
+       strategies that render <code class="command">shred</code> ineffective.
+      </p></div></li></ol></div></div><p>
+    The configuration for the connection from client to server is stored in
+    <code class="filename">/etc/sysconfig/cryptctl-client</code> and can be edited
+    manually.
+   </p><p>
+    The server stores an encryption key for the client partition in
+    <code class="filename">/var/lib/cryptctl/keydb/<em class="replaceable">PARTITION_UUID</em></code>.
+   </p></section><section class="sect1" id="sec-s4s-configure-cryptctl-status" data-id-title="Checking Partition Unlock Status Using Server-side Commands"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.3 </span><span class="title-name">Checking Partition Unlock Status Using Server-side Commands</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-status">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    When a <code class="command">cryptctl</code> client is active, it will send a
+    <span class="quote">“<span class="quote">heartbeat</span>”</span> to the <code class="command">cryptctl</code> server every
+    10 seconds. If the server does not receive a heartbeat from the client
+    for the length of the timeout configured during the client setup, the
+    server will assume that the client is offline. It will then allow another
+    client to connect (or allow the same client to reconnect after a reboot).
+   </p><p>
+    To see the usage status of all keys, use:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cryptctl list-keys</code></pre></div><p>
+    The information under <code class="literal">Num. Users</code> shows whether the key
+    is currently in use. To see more detail on a single key, use:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cryptctl show-key <em class="replaceable">UUID</em></code></pre></div><p>
+    This command will show information about mount point, mount options,
+    usage options, the last retrieval of the key and the last three
+    heartbeats from clients.
+   </p><p>
+    Additionally, you can use <code class="command">journalctl</code> to find logs of
+    when keys were retrieved.
+   </p></section><section class="sect1" id="sec-s4s-configure-cryptctl-unlock" data-id-title="Unlocking Encrypted Partitions Manually"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.4 </span><span class="title-name">Unlocking Encrypted Partitions Manually</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-unlock">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    There are two ways of unlocking a partition manually, both of which are run
+    on a client:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Online Unlocking. </span>
+       Online unlocking allows circumventing timeout or user limitations.
+       This method can be used when there is a network connection between
+       client and server but the client could not (yet) unlock the partition
+       automatically. This method will unlock all encrypted
+       partitions on a machine.
+      </p><p>
+      To use it, run <code class="command">cryptctl online-unlock</code>. Be prepared to
+      enter the password specified when setting up the server.
+     </p></li><li class="listitem"><p><span class="formalpara-title">Offline Unlocking. </span>
+       This method can be used when a client cannot or must not be brought
+       online to communicate with its server. The encryption key from the
+       server must still be available. This method is meant as a last resort
+       only and can only unlock a single partition at a time.
+      </p><p>
+      To use it, run <code class="command">cryptctl offline-unlock</code>. The
+      server's key file for the requisite partition
+      (<code class="filename">/var/lib/cryptctl/keydb/<em class="replaceable">PARTITION_UUID</em></code>)
+      needs to be available on the client.
+     </p></li></ul></div></section><section class="sect1" id="sec-s4s-configure-cryptctl-lock" data-id-title="Maintenance Downtime Procedure"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.5 </span><span class="title-name">Maintenance Downtime Procedure</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-lock">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+    To ensure that partitions cannot be decrypted during a maintenance
+    downtime, turn off the client and disable the
+    <code class="command">cryptctl</code> server. You can do so by either:
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      Stopping the service
+      <code class="systemitem">cryptctl-server</code>:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">systemctl stop cryptctl-server</code></pre></div></li><li class="listitem"><p>
+      Unplugging the <code class="command">cryptctl</code> server from the network.
+     </p></li></ul></div></section><section class="sect1" id="sec-s4s-configure-cryptctl-more" data-id-title="For More Information"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.6 </span><span class="title-name">For More Information</span></span> <a title="Permalink" class="permalink" href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_encrypt.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   For more information, also see the project home page
+   <a class="link" href="https://github.com/HouzuoGuo/cryptctl/" target="_blank">https://github.com/HouzuoGuo/cryptctl/</a>.
+  </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-s4s-access.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 9 </span>Firewalling</span></a> </div><div><a class="pagination-link next" href="cha-clamsap.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 11 </span>Protecting Against Malware With ClamSAP</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-server"><span class="title-number">10.1 </span><span class="title-name">Setting Up a <code class="command">cryptctl</code> Server</span></a></span></li><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-client"><span class="title-number">10.2 </span><span class="title-name">Setting Up a <code class="command">cryptctl</code> Client</span></a></span></li><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-status"><span class="title-number">10.3 </span><span class="title-name">Checking Partition Unlock Status Using Server-side Commands</span></a></span></li><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-unlock"><span class="title-number">10.4 </span><span class="title-name">Unlocking Encrypted Partitions Manually</span></a></span></li><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-lock"><span class="title-number">10.5 </span><span class="title-name">Maintenance Downtime Procedure</span></a></span></li><li><span class="sect1"><a href="cha-s4s-configure-cryptctl.html#sec-s4s-configure-cryptctl-more"><span class="title-number">10.6 </span><span class="title-name">For More Information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>

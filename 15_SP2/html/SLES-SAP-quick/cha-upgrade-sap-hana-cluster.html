@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP2 | Installation Quick Start | Upgrading a SAP HANA cluster</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Upgrading a SAP HANA cluster | SLES for SAP 15 SP2"/>
+<meta name="description" content="This chapter describes how to upgrade your SAP HANA cl…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP2"/>
+<meta name="book-title" content="Installation Quick Start"/>
+<meta name="chapter-title" content="Chapter 5. Upgrading a SAP HANA cluster"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP2"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Upgrading a SAP HANA cluster | SLES for SAP 15 SP2"/>
+<meta property="og:description" content="This chapter describes how to upgrade your SAP HANA cluster with the YaST module SUSE HANA Cluster Update. This acts as a wi…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Upgrading a SAP HANA cluster | SLES for SAP 15 SP2"/>
+<meta name="twitter:description" content="This chapter describes how to upgrade your SAP HANA cluster with the YaST module SUSE HANA Cluster Update. This acts as a wi…"/>
+<link rel="prev" href="cha-install-sap.html" title="Chapter 4. Installing SAP applications"/><link rel="next" href="apa.html" title="Appendix A. GNU licenses"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Installation Quick Start</a><span> / </span><a class="crumb" href="cha-upgrade-sap-hana-cluster.html">Upgrading a SAP HANA cluster</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Installation Quick Start</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About this guide</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" you-are-here"><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li><a href="apa.html" class=" "><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-upgrade-sap-hana-cluster" data-id-title="Upgrading a SAP HANA cluster"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></span> <a title="Permalink" class="permalink" href="cha-upgrade-sap-hana-cluster.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml" title="Edit source document"> </a></div></div></div><div><div class="abstract"><p>
+    This chapter describes how to upgrade your SAP HANA cluster
+    with the YaST module <span class="guimenu">SUSE HANA Cluster Update</span>.
+    This acts as a wizard and guides you through all the SAP HANA cluster
+    maintenance procedures.
+   </p></div></div></div></div><p>
+   The official SAP HANA documentation describes the so-called <span class="emphasis"><em>Near
+   Zero Downtime Upgrade Process</em></span>. The YaST module is based on
+   this process and handles the part of the procedure related to the SUSE
+   cluster. Not all steps can be done automatically. Some steps need to be
+   performed manually by the SAP HANA administrator. The YaST module will inform
+   you during the process.
+  </p><p>
+   This YaST module is available in the <span class="package">yast2-sap-ha</span>
+   package for SUSE Linux Enterprise Server for SAP Applications 12 SP3 and higher.
+   Currently, the wizard is only prepared to handle the
+   <span class="emphasis"><em>SAP HANA Scale-up Performance Optimized</em></span> scenario.
+  </p><p>The upgrade covers the following tasks:</p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p><a class="xref" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-preparing" title="5.1. Preparing the upgrade">Section 5.1, “Preparing the upgrade”</a></p></li><li class="step"><p><a class="xref" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-upgrading" title="5.2. Upgrading your SAP HANA cluster">Section 5.2, “Upgrading your SAP HANA cluster”</a></p></li><li class="step"><p><a class="xref" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-finishing" title="5.3. Finishing the upgrade task">Section 5.3, “Finishing the upgrade task”</a></p></li></ol></div></div><section class="sect1" id="sec-upgrade-sap-hana-cluster-preparing" data-id-title="Preparing the upgrade"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.1 </span><span class="title-name">Preparing the upgrade</span></span> <a title="Permalink" class="permalink" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-preparing">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><p>
+    Ensure passwordless SSH access between the two nodes (primary and secondary) for <code class="systemitem">root</code>.
+    Keep in mind, some cloud service providers might not have set up SSH access
+    for the <code class="systemitem">root</code> by default.
+   </p><ol class="procedure" type="1"><li class="step"><p>
+     Install the <span class="package">yast2-hana-update</span> package on both nodes:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">zypper</code> install yast2-hana-update</pre></div><p>
+     After the installation, you can find the module <span class="guimenu">SUSE HANA
+     Cluster Update</span> in the <span class="guimenu">YaST Control Center</span>.
+    </p></li><li class="step"><p>
+     On the secondary node, start the <span class="guimenu">YaST Control Center</span> and open the
+     <span class="guimenu">SUSE HANA Cluster Update</span> module.
+    </p></li><li class="step"><p>
+     In the YaST module, review the prerequisites. Make sure to fulfill all
+     of them before continuing with the next step. Keep in mind that the
+     wizard supports only the HANA Scale-up Performance Optimized scenario.
+    </p></li><li class="step"><p>
+     To upgrade the SAP HANA system, select the secondary node.
+    </p></li><li class="step"><p>
+     Select the location of the installation medium.
+    </p><p>
+     Point to the location where the SAP medium is located. If wanted, check
+     <span class="guimenu">Mount an update medium on all hosts</span> and provide the NFS
+     share and path.
+    </p><div id="id-1.8.7.2.6.3" data-id-title="Differences between SAP HANA version 1.0 and 2.0" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Differences between SAP HANA version 1.0 and 2.0</div><p>
+      If you are upgrading from SAP HANA version 1.0 to version 2.0,
+      make sure to check <span class="guimenu">This is a HANA 1.0 to HANA 2.0 upgrade</span>.
+     </p><p>
+      The YaST module will copy the <span class="emphasis"><em>PKI SSFS keys</em></span> from
+      the former secondary node to the former primary node. More information is
+      available through the <span class="guimenu">Help</span> button.
+     </p></div></li></ol></div></div><p>
+   Continue with <a class="xref" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-upgrading" title="5.2. Upgrading your SAP HANA cluster">Section 5.2, “Upgrading your SAP HANA cluster”</a>.
+  </p></section><section class="sect1" id="sec-upgrade-sap-hana-cluster-upgrading" data-id-title="Upgrading your SAP HANA cluster"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.2 </span><span class="title-name">Upgrading your SAP HANA cluster</span></span> <a title="Permalink" class="permalink" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-upgrading">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     Review the update plan generated by the wizard.
+    </p><p>
+     The wizard shows you two steps: automatic and manual. In this automatic
+     step, the wizard puts cluster resources into maintenance mode before it
+     starts with the automatic steps. The manual steps are SAP HANA specific and
+     need to be executed by a SAP HANA administrator. For more information, see
+     the official SAP HANA documentation.
+    </p></li><li class="step"><p>
+     Update the SAP HANA software.
+    </p><p>
+     The wizard executes the automatic actions and waits until the SAP HANA
+     administrator performs the SAP HANA upgrade.
+    </p></li><li class="step"><p>
+     Perform the SAP HANA upgrade.
+    </p></li><li class="step"><p>
+     Review the plan for the primary (remote) node.
+    </p><p>
+     After the SAP HANA upgrade is done, the wizard shows the
+     update plan. When you continue with this step, the wizard turns the
+     primary node into a secondary node to make it ready for the upgrade.
+    </p><p>
+     Keep in mind that this step can take some time.
+    </p></li></ol></div></div><p>
+   Continue with <a class="xref" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-finishing" title="5.3. Finishing the upgrade task">Section 5.3, “Finishing the upgrade task”</a>.
+  </p></section><section class="sect1" id="sec-upgrade-sap-hana-cluster-finishing" data-id-title="Finishing the upgrade task"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.3 </span><span class="title-name">Finishing the upgrade task</span></span> <a title="Permalink" class="permalink" href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-finishing">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+    Update the former primary node.
+   </p><p>
+    Pay special attention to the <code class="option">--hdbupd_server_nostart</code>
+    option in this step.
+   </p></li><li class="step"><p>
+    Restore the previous state of the cluster.
+   </p><p>
+    By default, the wizard registers the former master as now being secondary on
+    the SAP HANA system replication. If you wish to revert the system
+    replication to its original state, click the <span class="guimenu">Reverse</span>
+    button.
+   </p></li><li class="step"><p>
+     Review the update summary.
+    </p><p>
+     You can review the original and current SAP HANA versions and the cluster
+     state.
+    </p><div id="id-1.8.9.3.3.3" data-id-title="Dealing with intermediate cluster state" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Dealing with intermediate cluster state</div><p>
+      If the wizard is faster than the status update of the cluster resources,
+      the summary shows an intermediate cluster state. The cluster state is
+      <code class="literal">UNDEFINED</code> or <code class="literal">DEMOTED</code>.
+     </p><p>
+      To overcome this, check the cluster status again with the command
+      <code class="command">SAPHanaSR-showAttr</code> and make sure the former
+      secondary node is now in the state <code class="literal">PROMOTED</code>.
+     </p></div></li></ol></div></div><p>
+   Refer to the SUSE blog post <a class="link" href="https://www.suse.com/c/how-to-upgrade-your-suse-sap-hana-cluster-in-an-easy-way/" target="_blank">https://www.suse.com/c/how-to-upgrade-your-suse-sap-hana-cluster-in-an-easy-way/</a>
+   for further information.
+  </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-install-sap.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 4 </span>Installing SAP applications</span></a> </div><div><a class="pagination-link next" href="apa.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Appendix A </span>GNU licenses</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-preparing"><span class="title-number">5.1 </span><span class="title-name">Preparing the upgrade</span></a></span></li><li><span class="sect1"><a href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-upgrading"><span class="title-number">5.2 </span><span class="title-name">Upgrading your SAP HANA cluster</span></a></span></li><li><span class="sect1"><a href="cha-upgrade-sap-hana-cluster.html#sec-upgrade-sap-hana-cluster-finishing"><span class="title-number">5.3 </span><span class="title-name">Finishing the upgrade task</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>

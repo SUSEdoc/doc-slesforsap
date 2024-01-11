@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP3 | Installation Quick Start | Installing SAP applications</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Installing SAP applications | SLES for SAP 15 SP3"/>
+<meta name="description" content="This section guides you through the installation of SA…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="15 SP3"/>
+<meta name="book-title" content="Installation Quick Start"/>
+<meta name="chapter-title" content="Chapter 4. Installing SAP applications"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP3"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Installing SAP applications | SLES for SAP 15 SP3"/>
+<meta property="og:description" content="This section guides you through the installation of SAP media sets you received from SAP."/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Installing SAP applications | SLES for SAP 15 SP3"/>
+<meta name="twitter:description" content="This section guides you through the installation of SAP media sets you received from SAP."/>
+<link rel="prev" href="cha-install.html" title="Chapter 3. Installing the operating system"/><link rel="next" href="cha-upgrade-sap-hana-cluster.html" title="Chapter 5. Upgrading an SAP HANA cluster"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Installation Quick Start</a><span> / </span><a class="crumb" href="cha-install-sap.html">Installing SAP applications</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Installation Quick Start</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">Preface</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" you-are-here"><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading an SAP HANA cluster</span></a></li><li><a href="apa.html" class=" "><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-install-sap" data-id-title="Installing SAP applications"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP3</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></span> <a title="Permalink" class="permalink" href="cha-install-sap.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  This section guides you through the installation of SAP media sets you
+  received from SAP.
+ </p><section class="sect1" id="sec-install-sap-welcome" data-id-title="First steps"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4.1 </span><span class="title-name">First steps</span></span> <a title="Permalink" class="permalink" href="cha-install-sap.html#sec-install-sap-welcome">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   These first steps are only relevant during the installation workflow.
+  </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     When the system is booted, it displays the screen
+     <span class="guimenu">Welcome</span>.
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     The screen <span class="guimenu">Network Settings</span> will now open.
+     This gives you an opportunity to change the network settings.
+    </p><p>
+     When you are finished configuring networking, proceed with
+     <span class="guimenu">Next</span>.
+    </p><div id="id-1.7.3.3.2.3" data-id-title="Configure networking as recommended by SAP" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Configure networking as recommended by SAP</div><p>
+      Make sure to configure the network connection according to the
+      documentation of your SAP application.
+     </p></div><p>
+     For information about configuring networking, see
+     <em class="citetitle">
+      Administration Guide, Chapter <span class="quote">“<span class="quote">Basic Networking</span>”</span>,
+      Section <span class="quote">“<span class="quote">Configuring a Network Connection with YaST</span>”</span>
+     </em> (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
+    </p><p>
+      (While the next screen loads, the <span class="guimenu">Welcome</span>
+      screen may appear again for a few seconds.)
+     </p></li><li class="step"><p>
+     Choose one of the following options:
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.3.3.3.2.1"><span class="term">
+       <span class="guimenu">Create SAP file systems and start SAP product
+       installation</span>
+      </span></dt><dd><p>
+        Allows installing an SAP application and setting up the system as a
+        server providing SAP installation routines to other systems.
+       </p><p>
+        Continue with <a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. Using the SAP Installation Wizard">Section 4.2, “Using the SAP Installation Wizard”</a>.
+       </p></dd><dt id="id-1.7.3.3.3.2.2"><span class="term">
+       <span class="guimenu">Only create SAP HANA file systems, do not install SAP products
+       now</span>
+      </span></dt><dd><p>
+        Create an SAP HANA file system on SAP BusinessOne-certified hardware.
+       </p><div id="id-1.7.3.3.3.2.2.2.3" data-id-title="Hardware requirements" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Hardware requirements</div><p>
+         Make sure your machine fulfills the hardware requirements for SAP HANA
+         detailed in <a class="xref" href="cha-plan.html#sec-hardware" title="2.1. Hardware requirements">Section 2.1, “Hardware requirements”</a>.
+         Otherwise, this option will not create a new file system and the
+         installation workflow ends at this point.
+        </p></div></dd><dt id="id-1.7.3.3.3.2.3"><span class="term">
+       <span class="guimenu">Finish wizard and proceed to OS login</span>
+      </span></dt><dd><p>
+        Do not install an SAP application and continue to the login screen of
+        SUSE Linux Enterprise Server for SAP Applications.
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li></ol></div></div></section><section class="sect1" id="sec-install-sap-product" data-id-title="Using the SAP Installation Wizard"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4.2 </span><span class="title-name">Using the SAP Installation Wizard</span></span> <a title="Permalink" class="permalink" href="cha-install-sap.html#sec-install-sap-product">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   Use the SAP Installation Wizard to install an SAP NetWeaver system (including database) or an
+   SAP HANA system.
+  </p><p>
+   To install other SAP applications or to create a more advanced SAP HANA
+   setup, directly use one of the installation methods provided by SAP instead
+   of this wizard.
+  </p><div id="id-1.7.4.4" data-id-title="Installing an SAP application in a fully installed system" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: Installing an SAP application in a fully installed system</div><p>
+    This process is documented as it appears during the installation workflow.
+    However, it also applies to the YaST module <span class="guimenu">SAP Installation Wizard</span>
+    which is available in the installed system.
+   </p><p>
+    To start the SAP Installer, from the desktop, choose
+    <span class="guimenu">Applications</span> › <span class="guimenu">System</span> › <span class="guimenu">YaST</span>, continue in the YaST control center
+    by choosing
+    <span class="guimenu">Miscellaneous</span> › <span class="guimenu">SAP Installation Wizard</span>.
+   </p></div><div id="id-1.7.4.5" data-id-title="SAP Installation Wizard configuration" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: SAP Installation Wizard configuration</div><p>
+    The SAP Installation Wizard configuration is specified and
+    documented in
+    <code class="filename">/etc/sysconfig/sap-installation-wizard</code>. You can
+    change it according to your needs.
+   </p></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step" id="st-copy-master"><p>
+     In the screen <span class="guimenu">SAP Installation Wizard</span>, provide the
+     <span class="guimenu">Location of the SAP Installation Master</span>
+     (<a class="xref" href="cha-install-sap.html#fig-sap-wizard-source" title="Location of SAP installation master">Figure 4.1, “Location of SAP installation master”</a>). The
+     location can either be a local, removable, or remote installation source.
+    </p><div class="figure" id="fig-sap-wizard-source"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_source.png"><img src="images/s4s_sap_wizard_source.png" width="73%" alt="Location of SAP installation master" title="Location of SAP installation master"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.1: </span><span class="title-name">Location of SAP installation master </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-source">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div><p>
+     Select the appropriate option from the drop-down box.
+     In the text box, specify the path to your source according to the format
+     given in the following table.
+    </p><div class="table" id="tab-sap-media-source" data-id-title="Media source path"><div class="title-container"><div class="table-title-wrap"><div class="table-title"><span class="title-number-name"><span class="title-number">Table 4.1: </span><span class="title-name">Media source path </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#tab-sap-media-source">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div><div class="table-contents"><table style="border-collapse: collapse; border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col class="option"/><col class="desc"/><col class="format"/></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          Option
+         </p>
+        </th><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          Description
+         </p>
+        </th><th style="border-bottom: 1px solid ; ">
+         <p>
+          Format of Path
+         </p>
+        </th></tr></thead><tbody><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span class="strong"><strong>Local Sources</strong></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">dir://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          a local directory
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">/path/to/dir/</em></code>
+         </p>
+        </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span class="strong"><strong>Removable Sources</strong></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">device://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          a locally connected hard disk
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">devicename</em><em class="replaceable">/path/to/dir/on/device</em></code>
+         </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">usb://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          a USB mass storage device
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">/path/to/dir/on/USB</em></code>
+         </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">cdrom://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          a CD or DVD
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">//</em></code>
+         </p>
+         
+        </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span class="strong"><strong>Remote Sources</strong></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">nfs://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          an NFS share
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">server_name</em><em class="replaceable">/path/to/dir/on/device</em></code>
+         </p>
+         
+        </td></tr><tr><td style="border-right: 1px solid ; ">
+         <p>
+          <span class="guimenu">smb://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; ">
+         <p>
+          an SMB share
+         </p>
+        </td><td>
+         <p>
+          <code class="filename">[<em class="replaceable">user_name</em>:<em class="replaceable">password</em>@]<em class="replaceable">server_name</em>/<em class="replaceable">/path/to/dir/on/server</em>[?workgroup=<em class="replaceable">workgroup_name</em>]</code>
+         </p>
+        </td></tr></tbody></table></div></div><p>
+     If you have installed an SAP application from an installation server
+     before or set up your
+     system to be an installation server, you can also directly choose
+     that server as the provider of the Installation Master.
+     To do so, use the drop-down box below <span class="guimenu">Choose an installation
+     master</span>.
+    </p></li><li class="step"><p>
+     Under <span class="guimenu">Advanced Options</span>, choose from the following
+     options:
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.4.6.2.2.1"><span class="term">
+       <span class="guimenu">Collect installation profiles for SAP products but do not execute
+        installation</span>
+      </span></dt><dd><p>
+        Use this option to set the installation parameters,
+        but not perform the actual installation. With this option, the
+        SAP Installer (SAPinst) will stop without performing the actual SAP
+        product installation. However, the steps that follow fully apply.
+       </p></dd><dt id="id-1.7.4.6.2.2.2"><span class="term">
+       <span class="guimenu">Serve all installation media (including master) to local
+       network via NFS</span>
+      </span></dt><dd><p>
+        Set up this system as an installation server for other SUSE Linux Enterprise Server for SAP Applications
+        systems.
+        The media copied to this installation server will be offered through
+        NFS and can be discovered via Service Location Protocol (SLP).
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><p>
+     The SAP Installation Wizard will now copy the Installation Master to your local disk.
+     Depending on the type of Installation Master you selected, the installation
+     will continue differently:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       If you are installing an SAP HANA database, skip ahead to
+       <a class="xref" href="cha-install-sap.html#st-supplement" title="Step 8">Step 8</a>.
+      </p></li><li class="listitem"><p>
+       If you are installing an SAP NetWeaver application, continue with the
+       next step.
+      </p></li></ul></div></li><li class="step" id="st-copy-media"><p>
+     On the screen <span class="guimenu">SAP Installation Wizard</span>, provide
+     the location of additional Installation Media you want to install.
+     This can include an SAP kernel, a database, and
+     database exports.
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.4.6.3.2.1"><span class="term"><span class="guimenu">Copy a medium</span></span></dt><dd><p>
+        Specify a path to additional Installation Media. For more information about
+        specifying the path, see <a class="xref" href="cha-install-sap.html#tab-sap-media-source" title="Media source path">Table 4.1, “Media source path”</a>.
+       </p></dd><dt id="id-1.7.4.6.3.2.2"><span class="term"><span class="guimenu">Skip copying of medium</span></span></dt><dd><p>
+        Do not copy additional Installation Media. Choose this option
+        if you do not need additional Installation Media or to install
+        additional Installation Media directly from their source, for example
+        CDs/DVDs or flash disks.
+       </p><p>
+        When choosing this option despite your SAP product requiring additional
+        Installation Media, you will later need to provide the SAP Installer (SAPinst)
+        with the relevant paths.
+       </p></dd></dl></div><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><p>
+     If you chose to copy Installation Media, the SAP Installation Wizard will copy the relevant
+     files to your local hard disk.
+    </p><div class="figure" id="fig-sap-wizard-sapmedia"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_location_sapmedia.png"><img src="images/s4s_sap_wizard_location_sapmedia.png" width="73%" alt="SAP Installation Wizard: additional Installation Media" title="SAP Installation Wizard: additional Installation Media"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.2: </span><span class="title-name">SAP Installation Wizard: additional Installation Media </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-sapmedia">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
+     After copying the Installation Media, you will be asked whether you want to
+     prepare additional Installation Media.
+     To do so, click <span class="guimenu">Yes</span>.
+     Then follow the instructions in
+     <a class="xref" href="cha-install-sap.html#st-copy-media" title="Step 3">Step 3</a>.
+    </p><p>
+     Otherwise, click <span class="guimenu">No</span>.
+    </p></li><li class="step"><p>
+     In the screen <span class="guimenu">What Would You Like to Install</span>,
+     under <span class="guimenu">The SAP product is</span>, choose how you want to
+     install the product:
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.4.6.5.2.1"><span class="term"><span class="guimenu">SAP standard system</span></span></dt><dd><p>
+        Install an SAP application including its database.
+       </p></dd><dt id="id-1.7.4.6.5.2.2"><span class="term"><span class="guimenu">SAP standalone engines</span></span></dt><dd><p>
+        Engines that add functionality to a standard product: SAP TREX,
+        SAP Gateway, and Web Dispatcher.
+       </p></dd><dt id="id-1.7.4.6.5.2.3"><span class="term"><span class="guimenu">Distributed system</span></span></dt><dd><p>
+        An SAP application that is separated onto multiple servers.
+       </p></dd><dt id="id-1.7.4.6.5.2.4"><span class="term"><span class="guimenu">SAP high-availability system</span></span></dt><dd><p>
+        Installation of SAP NetWeaver in a high-availability setup.
+       </p></dd><dt id="id-1.7.4.6.5.2.5"><span class="term"><span class="guimenu">System rename</span></span></dt><dd><p>
+        Allows changing the various system properties such as the SAP system
+        ID, database ID, instance number, or host name. This can be used to
+        install the same product in a very similar configuration on different
+        systems.
+       </p></dd></dl></div><div class="figure" id="fig-sap-wizard-mode-db"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_mode_db.png"><img src="images/s4s_sap_wizard_mode_db.png" width="73%" alt="SAP Installation Wizard: installation type and database" title="SAP Installation Wizard: installation type and database"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.3: </span><span class="title-name">SAP Installation Wizard: installation type and database </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-mode-db">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
+     If you selected <span class="guimenu">SAP Standard System</span>,
+     <span class="guimenu">Distributed System</span>, or
+     <span class="guimenu">SAP High-Availability System</span>,
+     additionally choose a back-end database under
+     <span class="guimenu">Back-end Databases</span>.
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p>
+     You will now see the screen <span class="guimenu">Choose a Product</span>.
+     The products shown depend on the Media Set and Installation Master you received
+     from SAP.
+     From the list, select the product you want to install.
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div class="figure" id="fig-sap-wizard-avail-products"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_available_products.png"><img src="images/s4s_sap_wizard_available_products.png" width="73%" alt="SAP Installation Wizard: choose a product" title="SAP Installation Wizard: choose a product"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.4: </span><span class="title-name">SAP Installation Wizard: choose a product </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-avail-products">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></li><li class="step" id="st-supplement"><p>
+     You will be asked whether to copy Supplementary Media or
+     Third-Party Media.
+     To do so, click <span class="guimenu">Yes</span> and then follow the instructions in
+     <a class="xref" href="cha-install-sap.html#st-copy-media" title="Step 3">Step 3</a>.
+    </p><p>
+     Otherwise, click <span class="guimenu">No</span>.
+    </p><div id="id-1.7.4.6.8.3" data-id-title="Difference between Supplementary Media/Third-Party Media and additional software repositories" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Difference between Supplementary Media/Third-Party Media and additional software repositories</div><p>
+      Both types of delivery mechanisms allow installing software
+      that is neither part of the SUSE Linux Enterprise Server for SAP Applications media nor part of your Media Set
+      from SAP. However, the delivery mechanism is different:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        Supplementary Media/Third-Party Media is installed using an AutoYaST file which allows
+        creating an installation wizard and custom installation scripts.
+       </p></li><li class="listitem"><p>
+        Additional software repositories are RPM package repositories that you will
+        remain subscribed to. This means you receive updates for Third-Party Media
+        along with your regular system updates.
+       </p></li></ul></div></div></li><li class="step"><p>
+     On the screen <span class="guimenu">Additional software repositories for your
+     SAP installation</span>, you can add further software repositories.
+     For example, for add-ons that are packaged
+     as RPM. To do so, click <span class="guimenu">Add new software repositories</span>.
+     For more information about adding repositories, see
+     <em class="citetitle">Deployment Guide,
+     Chapter <span class="quote">“<span class="quote">Installing and Removing Software</span>”</span>,
+     Section <span class="quote">“<span class="quote">Adding Software Repositories</span>”</span></em>
+     (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
+    </p><p>
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div id="id-1.7.4.6.9.3" data-id-title="Location of copied SAP media" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Location of copied SAP media</div><p>
+      At this point, all data required for the SAP installation has been
+      copied to <code class="filename">/data/SAP_CDs</code> (unless you chose to skip
+      the process of copying).
+      Each Installation Medium is copied to a separate directory. You might find
+      the following directory structure, for example:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code>ls /data/SAP_CDs
+742-KERNEL-SAP-Kernel-742
+742-UKERNEL-SAP-Unicode-Kernel-742
+RDBMS-MAX-DB-LINUX_X86_64
+SAP-NetWeaver-740-SR2-Installation-Export-CD-1-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-2-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
+      <code class="filename">/data/SAP_CDs</code> is the default directory as specified
+      in the <code class="filename">/etc/sysconfig/sap-installation-wizard</code>
+      configuration file.
+     </p></div></li><li class="step" id="st-collect-parameter"><p>
+     Depending on the product you are installing, one or more dialogs will
+     prompt you to supply values for several configuration parameters for the
+     SAP application you are installing.
+    </p><p>
+     Supply the values as described in the documentation provided to you by
+     SAP. Help for the configuration parameters is also
+     available on the left side of the dialog. For more information, see
+     <a class="xref" href="cha-plan.html#sec-data" title="2.5. Required data for installing">Section 2.5, “Required data for installing”</a>.
+    </p><p>
+     Fill out the form (or forms), then proceed with <span class="guimenu">OK</span>.
+    </p><div class="figure" id="fig-product-parameter"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_product_param.png"><img src="images/s4s_sap_wizard_product_param.png" alt="Dialog to configure product parameters" title="Dialog to configure product parameters"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.5: </span><span class="title-name">Product parameters </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-product-parameter">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div><p>
+     When you are done, the SAP Installation Wizard will download additional software packages.
+    </p></li><li class="step"><p>
+     You will be asked whether to continue the installation or prepare another
+     SAP product for installation. If you choose to prepare another SAP
+     product, start from the beginning of this procedure.
+    </p></li><li class="step"><p><span class="step-optional">(Optional)</span> 
+     When installing SAP HANA on a system that is not certified for SAP HANA and
+     does not meet the minimum hardware requirements for SAP HANA TDI
+     (Tailored Datacenter Integration), you will be
+     asked whether to continue. If you receive this message unexpectedly,
+     check <a class="xref" href="cha-plan.html#sec-hardware" title="2.1. Hardware requirements">Section 2.1, “Hardware requirements”</a> and the sizing guidelines from
+     SAP at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>
+     (you need your SAP ID to access the information).
+    </p><p>
+     Otherwise, continue with <span class="guimenu">Yes</span>.
+    </p></li><li class="step" id="st-sapinst"><p>
+     The following steps differ depending on the type of
+     SAP application you are installing:
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       When installing an SAP HANA database, SAP HANA will now be installed
+       without further question.
+      </p></li><li class="listitem"><p>
+       When installing an SAP NetWeaver application, the actual installation will
+       be performed using the SAP Installer (SAPinst). After a few seconds, SAP Installer
+       will open automatically.
+      </p><p>
+       Follow the SAP Installer as described in the documentation provided
+       by SAP. Most configuration parameters are correctly filled already.
+      </p></li></ul></div><div class="figure" id="fig-sapinst-param"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sapinst_param.png"><img src="images/s4s_sapinst_param.png" width="73%" alt="SAP Installer: defining parameters" title="SAP Installer: defining parameters"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.6: </span><span class="title-name">SAP Installer: defining parameters </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sapinst-param">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/15_SP3/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div><div id="id-1.7.4.6.13.4" data-id-title="Installation log files" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: Installation log files</div><p>
+      If the installation of the SAP application fails, refer to the
+      installation log files. They are located in
+      <code class="filename">/var/adm/autoinstall</code>. Failed installations are
+      recorded in files with names ending in <code class="filename">.err</code>.
+     </p></div></li><li class="step"><p>
+     The final screen is <span class="guimenu">Installation Completed</span>.
+    </p><p>
+     To create an AutoYaST file for this installation, activate
+     <span class="guimenu">Clone This System for AutoYaST</span>.
+     The AutoYaST file will be placed in <code class="filename">/root/autoinst.xml</code>.
+    </p><p>
+     Click <span class="guimenu">Finish</span>.
+    </p></li></ol></div></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-install.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 3 </span>Installing the operating system</span></a> </div><div><a class="pagination-link next" href="cha-upgrade-sap-hana-cluster.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 5 </span>Upgrading an SAP HANA cluster</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-install-sap.html#sec-install-sap-welcome"><span class="title-number">4.1 </span><span class="title-name">First steps</span></a></span></li><li><span class="sect1"><a href="cha-install-sap.html#sec-install-sap-product"><span class="title-number">4.2 </span><span class="title-name">Using the SAP Installation Wizard</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2024</span></div></div></footer></body></html>
