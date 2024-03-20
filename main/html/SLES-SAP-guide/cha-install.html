@@ -2,7 +2,7 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP6 | Guide | Installing the operating system</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
 <meta name="title" content="Installing the operating system | SLES for SAP 15 SP6"/>
-<meta name="description" content="The following section provides instructions for instal…"/>
+<meta name="description" content="The following section provides instructions for installing the base operating system. Using the installation workflow, you can install either using a…"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
 <meta name="product-number" content="15 SP6"/>
 <meta name="book-title" content="Guide"/>
@@ -13,18 +13,18 @@
 <meta name="tracker-bsc-component" content="Documentation"/>
 <meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP6"/>
 <meta name="publisher" content="SUSE"/><meta property="og:title" content="Installing the operating system | SLES for SAP 15 SP6"/>
-<meta property="og:description" content="The following section provides instructions for installing the base operating system. Using the installation workflow, you c…"/>
+<meta property="og:description" content="The following section provides instructions for installing …"/>
 <meta property="og:type" content="article"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installing the operating system | SLES for SAP 15 SP6"/>
-<meta name="twitter:description" content="The following section provides instructions for installing the base operating system. Using the installation workflow, you c…"/>
+<meta name="twitter:description" content="The following section provides instructions for installing …"/>
 <link rel="prev" href="cha-plan.html" title="Chapter 2. Planning the installation"/><link rel="next" href="cha-install-sap.html" title="Chapter 4. Installing SAP applications"/><script type="text/javascript">
 
 if ( window.location.protocol.toLowerCase() != 'file:' ) {
   document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
 };
 
-</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/script-purejs.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
 
 $(document).ready(function() {
   $('.verbatim-wrap.highlight').each(function(i, block) {
@@ -69,7 +69,7 @@ hljs.configure({
     a SLES for SAP installation.
    </p><p>
     For more information about converting, see
-    <a class="xref" href="cha-install.html#sec-convert-sles" title="3.4. Converting an SLES installation to a SLES for SAP installation">Section 3.4, “Converting an SLES installation to a SLES for SAP installation”</a>.
+    <a class="xref" href="cha-install.html#sec-convert-sles" title="3.4. Converting a SLES installation to a SLES for SAP installation">Section 3.4, “Converting a SLES installation to a SLES for SAP installation”</a>.
    </p></div><div class="procedure" id="pro-workflow-start" data-id-title="Starting the OS installation"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 3.1: </span><span class="title-name">Starting the OS installation </span></span><a title="Permalink" class="permalink" href="cha-install.html#pro-workflow-start">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
        On AMD64/Intel 64, boot from the installation media.
        From the boot menu, select <span class="guimenu">Installation</span>.
@@ -310,7 +310,7 @@ hljs.configure({
      (for example, <code class="literal">example.com</code>), to the directory
      <code class="filename">/srv/www/htdocs/sap_repo</code>.
     </p></li><li class="step"><p>
-     Boot from an SLES installation medium.
+     Boot from a SLES installation medium.
     </p></li><li class="step"><p>
      Select one of the boot menu options using the keys
      <span class="keycap">↓</span>/<span class="keycap">↑</span>.
@@ -329,7 +329,7 @@ hljs.configure({
    <em class="citetitle">Deployment Guide, Chapter <span class="quote">“<span class="quote">Remote Installation</span>”</span></em>
    (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
   </p><p>
-   To avoid having to use an SLES installation medium to initialize the
+   To avoid having to use a SLES installation medium to initialize the
    system, you can boot over the network via PXE.
    For details, see <em class="citetitle">AutoYaST Guide,
    Chapter <span class="quote">“<span class="quote">Booting via PXE over the Network</span>”</span></em>
@@ -348,7 +348,7 @@ hljs.configure({
  </p><p>
    If you plan to deploy SUSE Linux Enterprise Server for SAP Applications from a SUSE Manager server, refer to
    <em class="citetitle">SUSE Manager <span class="quote">“<span class="quote">Reference Manual</span>”</span>, <span class="quote">“<span class="quote">Systems</span>”</span>, <span class="quote">“<span class="quote">Autoinstallation</span>”</span></em> and <em class="citetitle">SUSE Manager <span class="quote">“<span class="quote">Advanced Topics</span>”</span>, Chapter <span class="quote">“<span class="quote">Minimalist AutoYaST Profile for Automated Installations and Useful Enhancements</span>”</span></em> (<a class="link" href="https://documentation.suse.com/suma" target="_blank">https://documentation.suse.com/suma</a>).
- </p></section><section class="sect1" id="sec-convert-sles" data-id-title="Converting an SLES installation to a SLES for SAP installation"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.4 </span><span class="title-name">Converting an SLES installation to a SLES for SAP installation</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-convert-sles">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+ </p></section><section class="sect1" id="sec-convert-sles" data-id-title="Converting a SLES installation to a SLES for SAP installation"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.4 </span><span class="title-name">Converting a SLES installation to a SLES for SAP installation</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-convert-sles">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></div></div><p>
    To convert an installation of SUSE Linux Enterprise Server 15 SP6 or JeOS
    15 SP6 to an installation of SLES for SAP, use the script
    <code class="command">Migrate_SLES_to_SLES-for-SAP.sh</code>. The script will
@@ -387,5 +387,5 @@ hljs.configure({
     </p><p>
       To perform migration, you must follow image migration guidelines with your
       cloud solution provider.
-    </p></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-plan.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 2 </span>Planning the installation</span></a> </div><div><a class="pagination-link next" href="cha-install-sap.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 4 </span>Installing SAP applications</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-install.html#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">Installation workflow</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-install-network"><span class="title-number">3.2 </span><span class="title-name">Using SLES for SAP media from the network</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-autoyast"><span class="title-number">3.3 </span><span class="title-name">Using an external AutoYaST profile</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-convert-sles"><span class="title-number">3.4 </span><span class="title-name">Converting an SLES installation to a SLES for SAP installation</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+    </p></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-plan.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 2 </span>Planning the installation</span></a> </div><div><a class="pagination-link next" href="cha-install-sap.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 4 </span>Installing SAP applications</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-install.html#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">Installation workflow</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-install-network"><span class="title-number">3.2 </span><span class="title-name">Using SLES for SAP media from the network</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-autoyast"><span class="title-number">3.3 </span><span class="title-name">Using an external AutoYaST profile</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-convert-sles"><span class="title-number">3.4 </span><span class="title-name">Converting a SLES installation to a SLES for SAP installation</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
                  2024</span></div></div></footer></body></html>
