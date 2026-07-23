@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 12 SP4 | Guide | Firewalling</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<meta name="title" content="Firewalling | SLES for SAP 12 SP4"/>
+<meta name="description" content="This chapter presents information about restricting ac…"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
+<meta name="product-number" content="12 SP4"/>
+<meta name="book-title" content="Guide"/>
+<meta name="chapter-title" content="Chapter 10. Firewalling"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 12 SP4"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="Firewalling | SLES for SAP 12 SP4"/>
+<meta property="og:description" content="This chapter presents information about restricting access to the system using firewalling and encryption and gives informat…"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Firewalling | SLES for SAP 12 SP4"/>
+<meta name="twitter:description" content="This chapter presents information about restricting access to the system using firewalling and encryption and gives informat…"/>
+<link rel="prev" href="cha-tune.html" title="Chapter 9. Tuning systems with saptune"/><link rel="next" href="cha-s4s-configure-cryptctl.html" title="Chapter 11. Encrypting Directories Using cryptctl"/><script type="text/javascript">
+
+if ( window.location.protocol.toLowerCase() != 'file:' ) {
+  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
+};
+
+</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/jquery-1.12.4.min.js" type="text/javascript"> </script><script src="static/js/script.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
+
+$(document).ready(function() {
+  $('.verbatim-wrap.highlight').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.configure({
+  useBR: false
+});
+
+</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-s4s-access.html">Firewalling</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title">Guide</div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About This Guide</span></a></li><li><a href="cha-s4s-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What Is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-s4s-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the Installation</span></a></li><li><a href="cha-s4s-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the Operating System</span></a></li><li><a href="cha-s4s-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP Applications</span></a></li><li><a href="cha-s4s-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Setting Up an SAP HANA Cluster</span></a></li><li><a href="cha-s4s-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting Up an Installation Server for SAP Media Sets</span></a></li><li><a href="cha-s4s-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">Upgrading a SAP HANA Cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code>5</span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-s4s-access.html" class=" you-are-here"><span class="title-number">10 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-s4s-configure-cryptctl.html" class=" "><span class="title-number">11 </span><span class="title-name">Encrypting Directories Using <code class="command">cryptctl</code></span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting Against Malware With ClamSAP</span></a></li><li><a href="cha-s4s-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-s4s-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating Operating System Images</span></a></li><li><a href="cha-s4s-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important Log Files</span></a></li><li><a href="app-s4s-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional Software for SLES for SAP</span></a></li><li><a href="app-s4s-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP System Using AutoYaST</span></a></li><li><a href="app-s4s-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="app-s4s-docupdate.html" class=" "><span class="title-number">D </span><span class="title-name">Documentation Updates</span></a></li><li><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU Licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-s4s-access" data-id-title="Firewalling"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">12 SP4</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">10 </span><span class="title-name">Firewalling</span></span> <a title="Permalink" class="permalink" href="cha-s4s-access.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  This chapter presents information about restricting access to the system
+  using firewalling and encryption and gives information about connecting to
+  the system remotely.
+ </p><section class="sect1" id="sec-s4s-configure-firewall" data-id-title="Configuring SuSEfirewall2"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.1 </span><span class="title-name">Configuring SuSEfirewall2</span></span> <a title="Permalink" class="permalink" href="cha-s4s-access.html#sec-s4s-configure-firewall">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   By default, the installation workflow of SUSE Linux Enterprise Server for SAP Applications enables
+   SuSEfirewall2. The firewall needs to
+   be manually configured to allow network access for the following:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     SAP application
+    </p></li><li class="listitem"><p>
+     Database (see the documentation of your database vendor; for SAP HANA, see
+     <a class="xref" href="cha-s4s-access.html#sec-s4s-configure-firewall-hana" title="10.2. Configuring HANA-Firewall">Section 10.2, “Configuring HANA-Firewall”</a>)
+    </p></li></ul></div><p>
+   Additionally, open the ports <code class="literal">1128</code> (TCP) and
+   <code class="literal">1129</code> (UDP).
+  </p><p>
+   SAP applications require many open ports and port ranges in the firewall.
+   The exact numbers depend on the selected instance. For more information,
+   see the documentation provided to you by SAP.
+  </p></section><section class="sect1" id="sec-s4s-configure-firewall-hana" data-id-title="Configuring HANA-Firewall"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.2 </span><span class="title-name">Configuring HANA-Firewall</span></span> <a title="Permalink" class="permalink" href="cha-s4s-access.html#sec-s4s-configure-firewall-hana">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To simplify setting up a firewall for SAP HANA, install the package
+   <span class="package">HANA-Firewall</span>. HANA-Firewall adds rule sets to your
+   existing SuSEfirewall2 configuration.
+  </p><p>
+   HANA-Firewall consists of the following parts:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">YaST Module <span class="guimenu">SAP HANA Firewall</span>. </span>
+      Allows configuring, applying, and reverting firewall rules for SAP HANA
+      from a graphical user interface.
+     </p></li><li class="listitem"><p><span class="formalpara-title">Command-Line Utility <code class="systemitem">hana-firewall</code>. </span>
+      Allows applying and reverting the configured firewall rules for SAP HANA.
+     </p><p>
+     If you prefer, you can configure the rule sets using the
+     configuration file at <code class="filename">/etc/sysconfig/hana-firewall</code>
+     instead of using YaST.
+    </p></li><li class="listitem"><p><span class="formalpara-title">Service <code class="systemitem">hana-firewall</code>. </span>
+      Ensures that configured firewall rules for SAP HANA are kept.
+     </p></li></ul></div><div id="id-1.13.4.5" data-id-title="SAP HANA MDC Databases" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: SAP HANA MDC Databases</div><p>
+    For multi-tenant SAP HANA (MDC) databases, determining the port numbers that
+    need to be opened is not yet possible automatically.
+    If you are working with a multi-tenant SAP HANA database system, before you
+    use YaST, run a script on the command line to create a new
+    service definition:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">cd /etc/hana-firewall.d</code>
+<code class="prompt root"># </code><code class="command">./create_new_service</code></pre></div><p>
+    You need to switch to the directory
+    <code class="filename">/etc/hana-firewall.d</code>,
+    otherwise the rule file for the new service will be created in a place
+    where it cannot be used.
+   </p><p>
+    The script will ask several questions: Importantly, it will ask for
+    TCP and UDP port ranges that need to be opened.
+   </p></div><div id="id-1.13.4.6" data-id-title="Install HANA-Firewall Packages" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Install HANA-Firewall Packages</div><p>
+    Before continuing, make sure that the packages
+    <span class="package">HANA-Firewall</span> and
+    <span class="package">yast2-hana-firewall</span> are installed.
+   </p></div><div class="procedure" id="id-1.13.4.7" data-id-title="Using HANA-Firewall"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 10.1: </span><span class="title-name">Using HANA-Firewall </span></span><a title="Permalink" class="permalink" href="cha-s4s-access.html#id-1.13.4.7">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     Make sure the SAP HANA databases for which you want to configure the
+     firewall are correctly installed.
+    </p></li><li class="step"><p>
+     To open the appropriate YaST module, select
+     <span class="guimenu">Applications</span> › <span class="guimenu">YaST</span>, <span class="guimenu">Security and Users</span> › <span class="guimenu">SAP HANA Firewall</span>.
+    </p></li><li class="step"><p>
+     When you open this YaST module, it will create a configuration proposal
+     based on the number of installed SAP HANA instances.
+    </p><p>
+     Choose whether you want to accept the proposal using
+     <span class="guimenu">Yes</span> or <span class="guimenu">No</span>.
+    </p><div id="id-1.13.4.7.4.3" data-id-title="Narrow Down Settings from Proposal" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Narrow Down Settings from Proposal</div><p>
+      The proposed settings allow all detected SAP HANA instances on all
+      detected network interfaces. Narrow down the proposal to secure the
+      system further.
+     </p></div></li><li class="step"><p>
+     Under <span class="guimenu">Global Options</span>, activate
+     <span class="guimenu">Enable Firewall</span>. Additionally, decide whether to
+     <span class="guimenu">Allow Remote Shell Access (SSH)</span>.
+    </p></li><li class="step" id="st-s4s-hana-firewall-network"><p>
+     Choose a network interface under <span class="guimenu">Allowed Services on Network
+     Interface</span>.
+    </p></li><li class="step"><p>
+     Allow network services by selecting them in the list box on the left and
+     clicking <span class="guimenu">→</span>. Remove services by selecting them in the
+     list box on the right and clicking <span class="guimenu">←</span>.
+    </p><p>
+     To add services other than the preconfigured ones, add them using the
+     following notation:
+    </p><div class="verbatim-wrap"><pre class="screen"><em class="replaceable">SERVICE_NAME</em>:<em class="replaceable">CIDR_NOTATION</em></pre></div><p>
+     For more information about the CIDR notation, see
+     <a class="link" href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a>.
+     To find out which services are available on your system, use
+     <code class="command">getent services</code>.
+    </p><div class="informalfigure"><div class="mediaobject"><a href="images/s4s-hana-firewall.png"><img src="images/s4s-hana-firewall.png" alt="HANA-Firewall screenshot" title="HANA-Firewall screenshot"/></a></div></div></li><li class="step"><p>
+     Repeat from <a class="xref" href="cha-s4s-access.html#st-s4s-hana-firewall-network" title="Step 5">Step 5</a> for all
+     network interfaces.
+    </p></li><li class="step"><p>
+     When you are done, click <span class="guimenu">OK</span>.
+    </p><p>
+     The firewall rules from HANA-Firewall will now
+     be compiled and applied. Then, the service
+     <code class="systemitem">hana-firewall</code> will be restarted.
+    </p></li><li class="step"><p>
+     Finally, check whether HANA-Firewall was enabled
+     correctly:
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">hana-firewall status</code>
+HANA firewall is active. Everything is OK.</pre></div><div id="id-1.13.4.7.10.3" data-id-title="Checking Which Firewall Rules Are Enabled" class="admonition tip normal"><img class="symbol" alt="Tip" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">Tip: Checking Which Firewall Rules Are Enabled</div><p>
+      Gaining an overview of which firewall rules are enabled in the current
+      configuration of the script is possible using the command line:
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">hana-firewall dry-run</code></pre></div></div></li></ol></div></div><p>
+   For more information, see the man page of <code class="command">hana-firewall</code>.
+  </p></section><section class="sect1" id="sec-s4s-configure-saprouter" data-id-title="SAProuter Integration"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.3 </span><span class="title-name">SAProuter Integration</span></span> <a title="Permalink" class="permalink" href="cha-s4s-access.html#sec-s4s-configure-saprouter">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP4/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   The SAProuter software from SAP allows proxying network traffic
+   between different SAP
+   systems or between an SAP system and outside networks. SUSE Linux Enterprise Server for SAP Applications now
+   provides integration for SAProuter into
+   <code class="systemitem">systemd</code>. This means, SAProuter
+   will be started and stopped properly with the operating system and can be
+   controlled using <code class="command">systemctl</code>.
+  </p><p>
+   Before you can use this functionality, make sure the following has been
+   installed, in this order:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     An SAP application that includes SAProuter
+    </p></li><li class="listitem"><p>
+     The SAProuter systemd integration, packaged as
+     <span class="package">saprouter-systemd</span>
+    </p></li></ul></div><p>
+   If you got the order of applications to install wrong initially, reinstall
+   <span class="package">saprouter-systemd</span>.
+  </p><p>
+   To control SAProuter with <code class="command">systemctl</code>, use:
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     Enabling the SAProuter Service:
+     <code class="command">systemctl enable saprouter</code>
+    </p></li><li class="listitem"><p>
+     Starting the SAProuter Service:
+     <code class="command">systemctl start saprouter</code>
+    </p></li><li class="listitem"><p>
+     Showing the Status of SAProuter Service:
+     <code class="command">systemctl status saprouter</code>
+    </p></li><li class="listitem"><p>
+     Stopping the SAProuter Service:
+     <code class="command">systemctl stop saprouter</code>
+    </p></li><li class="listitem"><p>
+     Disabling the SAProuter Service:
+     <code class="command">systemctl disable saprouter</code>
+    </p></li></ul></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-tune.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 9 </span>Tuning systems with <code class="command">saptune</code></span></a> </div><div><a class="pagination-link next" href="cha-s4s-configure-cryptctl.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 11 </span>Encrypting Directories Using <code class="command">cryptctl</code></span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-s4s-access.html#sec-s4s-configure-firewall"><span class="title-number">10.1 </span><span class="title-name">Configuring SuSEfirewall2</span></a></span></li><li><span class="sect1"><a href="cha-s4s-access.html#sec-s4s-configure-firewall-hana"><span class="title-number">10.2 </span><span class="title-name">Configuring HANA-Firewall</span></a></span></li><li><span class="sect1"><a href="cha-s4s-access.html#sec-s4s-configure-saprouter"><span class="title-number">10.3 </span><span class="title-name">SAProuter Integration</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
+                 2023</span></div></div></footer></body></html>
