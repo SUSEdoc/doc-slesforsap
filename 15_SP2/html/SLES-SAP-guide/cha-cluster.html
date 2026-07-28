@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><title>SLES for SAP 15 SP2 | Guide | Setting up an SAP HANA cluster</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><title>Setting up an SAP HANA cluster | Guide | SLES for SAP 15 SP2</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2020-06-21"/>
+<meta name="dcterms.modified" content="2020-06-21"/>
+<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
 <meta name="title" content="Setting up an SAP HANA cluster | SLES for SAP 15 SP2"/>
-<meta name="description" content="You can use a YaST wizard to set up SAP HANA or SAP S/4HANA Database Server clusters according to best practices, including SAP HANA system replicati…"/>
+<meta name="description" content="Setting up an SAP HANA cluster"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
 <meta name="product-number" content="15 SP2"/>
 <meta name="book-title" content="Guide"/>
@@ -11,7 +14,7 @@
 <meta name="tracker-type" content="bsc"/>
 <meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
 <meta name="tracker-bsc-component" content="Documentation"/>
-<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP2"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP applications 15 SP2"/>
 <meta name="publisher" content="SUSE"/><meta property="og:title" content="Guide"/>
 <meta property="og:description" content="Install and customize SLES for SAP"/>
 <meta property="og:type" content="article"/>
@@ -19,39 +22,38 @@
 <meta name="twitter:title" content="Guide"/>
 <meta name="twitter:description" content="Install and customize SLES for SAP"/>
 <script type="application/ld+json">{
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": ["TechArticle"],
     "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
-    
-     "isPartOf": {
+    "name": "Setting up an SAP HANA cluster | SLES for SAP 15 SP2",
+    "isPartOf": {
       "@type": "CreativeWorkSeries",
       "name": "Products &amp; Solutions"
     },
-    
     "inLanguage": "en",
-    
-
     "headline": "Setting up an SAP HANA cluster",
-  
     "description": "Setting up an SAP HANA cluster",
-      
     "author": [
       {
         "@type": "Corporation",
         "name": "SUSE Product &amp; Solution Documentation Team",
-        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+        "url": "https://documentation.suse.com"
       }
     ],
-      
+    "dateCreated": "2020-06-21T00:00+02:00",
     "dateModified": "2020-06-21T00:00+02:00",
-      
-    "datePublished": "2020-06-21T00:00+02:00",
-      
-
+    "datePublished": "2026-07-28T06:48+02:00",
     "about": [
-      
+
     ],
-  
+    "mentions": [
+      { "@type": "SoftwareApplication",
+        "name": "SLES for SAP",
+        "softwareVersion": "15 SP2",
+        "applicationCategory": "Operating System",
+        "operatingSystem": "Linux"
+      }
+    ],
     "sameAs": [
           "https://www.facebook.com/SUSEWorldwide/about",
           "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
@@ -68,24 +70,7 @@
       }
     }
   }</script>
-<link rel="prev" href="cha-serve-mediaset.html" title="Chapter 6. Setting up an installation server for SAP media sets"/><link rel="next" href="cha-tune-sapconf.html" title="Chapter 8. Tuning systems with sapconf"/><script type="text/javascript">
-
-if ( window.location.protocol.toLowerCase() != 'file:' ) {
-  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
-};
-
-</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/script-purejs.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
-
-$(document).ready(function() {
-  $('.verbatim-wrap.highlight').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-});
-hljs.configure({
-  useBR: false
-});
-
-</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_setup_cluster.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span> / </span><a class="crumb" href="cha-cluster.html">Setting up an SAP HANA cluster</a></div></div><main id="_content"><nav id="_side-toc-overall" class="side-toc"><div class="side-title"><span class="phrase">Guide</span></div><ol><li><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About this guide</span></a></li><li><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting up an installation server for SAP media sets</span></a></li><li><a href="cha-cluster.html" class=" you-are-here"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></a></li><li><a href="cha-tune-sapconf.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code></span></a></li><li><a href="cha-tune.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li><a href="cha-memory-protection.html" class=" "><span class="title-number">10 </span><span class="title-name">Tuning Workload Memory Protection</span></a></li><li><a href="cha-access.html" class=" "><span class="title-number">11 </span><span class="title-name">Firewalling</span></a></li><li><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting against malware with ClamSAP</span></a></li><li><a href="cha-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li><a href="cha-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating operating system images</span></a></li><li><a href="cha-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important log files</span></a></li><li><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional software for SLES for SAP</span></a></li><li><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP system using AutoYaST</span></a></li><li><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li><a href="apd.html" class=" "><span class="title-number">D </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-cluster" data-id-title="Setting up an SAP HANA cluster"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+<link rel="prev" href="cha-serve-mediaset.html" title="Chapter 6. Setting up an installation server for SAP media sets"/><link rel="next" href="cha-tune-sapconf.html" title="Chapter 8. Tuning systems with sapconf"/><link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_setup_cluster.xml"/></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a><a href="#_bottom-pagination">Jump to page navigation: previous page [access key p]/next page [access key n]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">Guide</a><span class="sep">|</span><a class="crumb" href="cha-cluster.html">Setting up an SAP HANA cluster</a></div></div><main id="_content"><nav id="_side-toc-overall" tabindex="0" class="side-toc"><div class="side-title"><span class="phrase">Guide</span></div><ol role="list"><li role="listitem"><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">About this guide</span></a></li><li role="listitem"><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></li><li role="listitem"><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></li><li role="listitem"><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></li><li role="listitem"><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></li><li role="listitem"><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></li><li role="listitem"><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">Setting up an installation server for SAP media sets</span></a></li><li role="listitem"><a href="cha-cluster.html" class=" you-are-here"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></a></li><li role="listitem"><a href="cha-tune-sapconf.html" class=" "><span class="title-number">8 </span><span class="title-name">Tuning systems with <code class="literal">sapconf</code></span></a></li><li role="listitem"><a href="cha-tune.html" class=" "><span class="title-number">9 </span><span class="title-name">Tuning systems with <code class="command">saptune</code></span></a></li><li role="listitem"><a href="cha-memory-protection.html" class=" "><span class="title-number">10 </span><span class="title-name">Tuning Workload Memory Protection</span></a></li><li role="listitem"><a href="cha-access.html" class=" "><span class="title-number">11 </span><span class="title-name">Firewalling</span></a></li><li role="listitem"><a href="cha-clamsap.html" class=" "><span class="title-number">12 </span><span class="title-name">Protecting against malware with ClamSAP</span></a></li><li role="listitem"><a href="cha-configure-rdp.html" class=" "><span class="title-number">13 </span><span class="title-name">Connecting via RDP</span></a></li><li role="listitem"><a href="cha-image.html" class=" "><span class="title-number">14 </span><span class="title-name">Creating operating system images</span></a></li><li role="listitem"><a href="cha-trouble.html" class=" "><span class="title-number">15 </span><span class="title-name">Important log files</span></a></li><li role="listitem"><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">Additional software for SLES for SAP</span></a></li><li role="listitem"><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">Partitioning for the SAP system using AutoYaST</span></a></li><li role="listitem"><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">Supplementary Media</span></a></li><li role="listitem"><a href="apd.html" class=" "><span class="title-number">D </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="Contents"> </button><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section class="chapter" id="cha-cluster" data-id-title="Setting up an SAP HANA cluster"><div class="titlepage"><div><div class="version-info">Applies to  <span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">7 </span><span class="title-name">Setting up an SAP HANA cluster</span></span> <a title="Permalink" class="permalink" href="cha-cluster.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_setup_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><p>
   You can use a YaST wizard to set up SAP HANA or SAP S/4HANA Database Server clusters according
   to best practices, including SAP HANA system replication. A summary of the
   setup options is given in <a class="xref" href="cha-about.html#sec-hana-replicate" title="1.1.3. Simplified SAP HANA system replication setup">Section 1.1.3, “Simplified SAP HANA system replication setup”</a>.
@@ -96,7 +81,7 @@ hljs.configure({
   The YaST module identifies automatically when running on Azure and
   configures an extra resource needed on Pacemaker.
  </p><p>
-  The following <span class="emphasis"><em>Best Practices</em></span> from the SUSE Linux Enterprise Server for SAP Applications
+  The following <span><em class="emphasis">Best Practices</em></span> from the SUSE Linux Enterprise Server for SAP Applications
   Resource Library (<a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>) contain setup instructions:
  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">Performance-optimized scenario and multi-tier/chained scenario:</span>
      <em class="citetitle">Setting up a SAP HANA SR Performance Optimized
@@ -155,11 +140,11 @@ hljs.configure({
      For information about setting up HANA-Firewall, see
      <a class="xref" href="cha-access.html#sec-configure-firewall-hana" title="11.2. Configuring HANA-Firewall">Section 11.2, “Configuring HANA-Firewall”</a>.
     </p></li><li class="listitem"><p>
-     <span class="emphasis"><em>Cost-optimized scenario only:</em></span> The secondary node
+     <span><em class="emphasis">Cost-optimized scenario only:</em></span> The secondary node
      has a second SAP HANA installation. The database may be running but
      will be stopped automatically by the wizard.
     </p></li><li class="listitem"><p>
-     <span class="emphasis"><em>Cost-optimized scenario only:</em></span> For the
+     <span><em class="emphasis">Cost-optimized scenario only:</em></span> For the
      non-production SAP HANA instance, you have created an SAP HANA Secure User
      Store key <code class="literal">QASSAPDBCTRL</code> for monitoring purposes. For
      more information, see <em class="citetitle">SAP HANA SR Cost Optimized Scenario,
@@ -281,7 +266,7 @@ hljs.configure({
        Proceed with <span class="guimenu">Next</span>.
       </p></li></ol></li><li class="step"><p>
      In the next step, choose fencing options. The YaST wizard only
-     supports the fencing mechanism SBD (<span class="emphasis"><em>STONITH block
+     supports the fencing mechanism SBD (<span><em class="emphasis">STONITH block
      device</em></span>). To avoid split-brain situations, SBD uses a disk
      device which stores cluster state.
     </p><p>
@@ -379,7 +364,7 @@ hljs.configure({
          </p><p>
           For more information, see the documentation provided to you by SAP.
          </p></li><li class="listitem"><p>
-          <span class="emphasis"><em>Cost-optimized scenario only:</em></span> Within
+          <span><em class="emphasis">Cost-optimized scenario only:</em></span> Within
           <span class="guimenu">Production system constraints</span>, configure how the
           production instance of SAP HANA should behave while inactive on the
           secondary node.
@@ -392,7 +377,7 @@ hljs.configure({
           documentation provided to you by SAP such as <em class="citetitle">How to
           Perform System Replication for SAP HANA</em> at
           <a class="link" href="https://archive.sap.com/documents/docs/DOC-47702" target="_blank">https://archive.sap.com/documents/docs/DOC-47702</a>.
-         </p></li></ul></div></dd><dt id="id-1.10.8.2.11.2.2"><span class="term"><span class="emphasis"><em>Cost-optimized scenario only:</em></span> non-production SAP HANA instance</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+         </p></li></ul></div></dd><dt id="id-1.10.8.2.11.2.2"><span class="term"><span><em class="emphasis">Cost-optimized scenario only:</em></span> non-production SAP HANA instance</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
           Make sure that the <span class="guimenu">System ID</span> and
           <span class="guimenu">Instance number</span> match those of your
           non-production SAP HANA instance.
@@ -435,7 +420,7 @@ hljs.configure({
     </p><p>
      To close the dialog, click <span class="guimenu">Finish</span>.
     </p></li><li class="step"><p>
-     <span class="emphasis"><em>Multi-tier/chain scenario only:</em></span> Using the
+     <span><em class="emphasis">Multi-tier/chain scenario only:</em></span> Using the
      administrative user account for the production SAP HANA instance, register
      the out-of-cluster node for system replication:
     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user"><em class="replaceable">SID</em>adm &gt; </code><code class="command">hdbnsutil</code> -sr_register --remoteHost=<em class="replaceable">SECONDARY_HOST_NAME</em> \
@@ -489,5 +474,5 @@ hljs.configure({
       Chapter <em class="citetitle">Configuring and Managing Cluster Resources with
    Hawk</em> (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>).
      </p></li><li class="listitem"><p><span class="formalpara-title">Near zero downtime for SAP HANA system replication. </span><a class="link" href="https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.03/en-US/ee3fd9a0c2e74733a74e4ad140fde60b.html" target="_blank">Use SAP HANA System Replication for Near Zero Downtime Upgrades</a>.
-     </p></li><li class="listitem"><p><span class="formalpara-title">Implementing the Python hook SAPHanaSR. </span><a class="link" href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/" target="_blank">https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/</a></p></li></ul></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-serve-mediaset.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 6 </span>Setting up an installation server for SAP media sets</span></a> </div><div><a class="pagination-link next" href="cha-tune-sapconf.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 8 </span>Tuning systems with <code class="literal">sapconf</code></span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-prerequisite"><span class="title-number">7.1 </span><span class="title-name">Prerequisites</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard"><span class="title-number">7.2 </span><span class="title-name">Setup</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard-semiautomatic"><span class="title-number">7.3 </span><span class="title-name">Unattended setup using SAP HANA-SR wizard</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hawk"><span class="title-number">7.4 </span><span class="title-name">Using Hawk</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-moreinfo"><span class="title-number">7.5 </span><span class="title-name">For more information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
-                 2024</span></div></div></footer></body></html>
+     </p></li><li class="listitem"><p><span class="formalpara-title">Implementing the Python hook SAPHanaSR. </span><a class="link" href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/" target="_blank">https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/</a></p></li></ul></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-serve-mediaset.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 6 </span>Setting up an installation server for SAP media sets</span></a> </div><div><a class="pagination-link next" href="cha-tune-sapconf.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 8 </span>Tuning systems with <code class="literal">sapconf</code></span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-prerequisite"><span class="title-number">7.1 </span><span class="title-name">Prerequisites</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard"><span class="title-number">7.2 </span><span class="title-name">Setup</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hana-cluster-wizard-semiautomatic"><span class="title-number">7.3 </span><span class="title-name">Unattended setup using SAP HANA-SR wizard</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-hawk"><span class="title-number">7.4 </span><span class="title-name">Using Hawk</span></a></span></li><li><span class="sect1"><a href="cha-cluster.html#sec-moreinfo"><span class="title-number">7.5 </span><span class="title-name">For more information</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>

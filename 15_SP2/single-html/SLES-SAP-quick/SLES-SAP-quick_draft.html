@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><title>SLES for SAP 15 SP2 | Installation Quick Start</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><title>Installation Quick Start | SLES for SAP 15 SP2</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2020-06-21"/>
+<meta name="dcterms.modified" content="2020-06-21"/>
+<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
 <meta name="title" content="Installation Quick Start | SLES for SAP 15 SP2"/>
 <meta name="description" content="How to install SUSE Linux Enterprise Server for SAP Applications"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP Applications"/>
@@ -10,7 +13,7 @@
 <meta name="tracker-type" content="bsc"/>
 <meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
 <meta name="tracker-bsc-component" content="Documentation"/>
-<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP2"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP applications 15 SP2"/>
 <meta name="publisher" content="SUSE"/><meta property="og:title" content="Installation Quick Start"/>
 <meta property="og:description" content="Install SLES for SAP"/>
 <meta property="og:type" content="article"/>
@@ -18,35 +21,27 @@
 <meta name="twitter:title" content="Installation Quick Start"/>
 <meta name="twitter:description" content="Install SLES for SAP"/>
 <script type="application/ld+json">{
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": ["TechArticle"],
     "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
-    
-     "isPartOf": {
+    "name": "Installation Quick Start | SLES for SAP 15 SP2",
+    "isPartOf": {
       "@type": "CreativeWorkSeries",
       "name": "Products &amp; Solutions"
     },
-    
     "inLanguage": "en",
-    
-
     "headline": "Installation Quick Start",
-  
     "description": "How to install SUSE Linux Enterprise Server for SAP Applications",
-      
     "author": [
       {
         "@type": "Corporation",
         "name": "SUSE Product &amp; Solution Documentation Team",
-        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+        "url": "https://documentation.suse.com"
       }
     ],
-      
+    "dateCreated": "2020-06-21T00:00+02:00",
     "dateModified": "2020-06-21T00:00+02:00",
-      
-    "datePublished": "2020-06-21T00:00+02:00",
-      
-
+    "datePublished": "2026-07-28T06:49+02:00",
     "about": [
       {
         "@type": "Thing",
@@ -57,18 +52,14 @@
         "name": "Upgrade &amp; Update"
       }
     ],
-  
     "mentions": [
-      
       { "@type": "SoftwareApplication",
-        "name": "SUSE Linux Enterprise Server for SAP Applications",
+        "name": "SLES for SAP",
         "softwareVersion": "15 SP2",
         "applicationCategory": "Operating System",
         "operatingSystem": "Linux"
       }
-      
     ],
-    
     "sameAs": [
           "https://www.facebook.com/SUSEWorldwide/about",
           "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
@@ -85,26 +76,9 @@
       }
     }
   }</script>
-<script type="text/javascript">
-
-if ( window.location.protocol.toLowerCase() != 'file:' ) {
-  document.write('<link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"></link>');
-};
-
-</script><noscript><link rel="stylesheet" type="text/css" href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css"/></noscript><script src="static/js/script-purejs.js" type="text/javascript"> </script><script src="static/js/highlight.min.js" type="text/javascript"> </script><script>
-
-$(document).ready(function() {
-  $('.verbatim-wrap.highlight').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-});
-hljs.configure({
-  useBR: false
-});
-
-</script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml"/></head><body class="draft single normal offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="#book-s4s">Installation Quick Start</a></div></div><main id="_content"><nav class="side-toc placebo" id="_side-toc-overall"> </nav><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section xml:lang="en" class="book" id="book-s4s" data-id-title="Installation Quick Start"><div class="titlepage"><div><div class="big-version-info"><span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div class="title-container"><div class="title-container"><h1 class="title"><span class="phrase">Installation Quick Start</span> <a title="Permalink" class="permalink" href="#book-s4s">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml" title="Edit source document"> </a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml" title="Edit source document"> </a></div></div><div><div class="titlepage-revhistory"><a aria-label="Revision History" hreflang="en" href="rh-book-s4s.html" target="_blank">Revision History: Installation Quick Start</a></div></div><div class="date"><span class="imprint-label">Publication Date: </span>December 06, 2024
-</div></div></div><div class="toc"><ul><li><span class="preface"><a href="#pre-s4s"><span class="title-name">About this guide</span></a></span></li><li><span class="chapter"><a href="#cha-about"><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></span><ul><li><span class="sect1"><a href="#sec-component"><span class="title-number">1.1 </span><span class="title-name">Software components</span></a></span></li><li><span class="sect1"><a href="#sec-s4s-service"><span class="title-number">1.2 </span><span class="title-name">Included Services</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-plan"><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></span><ul><li><span class="sect1"><a href="#sec-hardware"><span class="title-number">2.1 </span><span class="title-name">Hardware requirements</span></a></span></li><li><span class="sect1"><a href="#sec-download"><span class="title-number">2.2 </span><span class="title-name">Installation image</span></a></span></li><li><span class="sect1"><a href="#sec-migration"><span class="title-number">2.3 </span><span class="title-name">Offline migration</span></a></span></li><li><span class="sect1"><a href="#sec-workflow-overview"><span class="title-number">2.4 </span><span class="title-name">Overview of the installation workflow</span></a></span></li><li><span class="sect1"><a href="#sec-data"><span class="title-number">2.5 </span><span class="title-name">Required data for installing</span></a></span></li><li><span class="sect1"><a href="#sec-partition"><span class="title-number">2.6 </span><span class="title-name">Partitioning</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install"><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></span><ul><li><span class="sect1"><a href="#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">Using the installation workflow</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install-sap"><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></span><ul><li><span class="sect1"><a href="#sec-install-sap-welcome"><span class="title-number">4.1 </span><span class="title-name">First steps</span></a></span></li><li><span class="sect1"><a href="#sec-install-sap-product"><span class="title-number">4.2 </span><span class="title-name">Using the SAP Installation Wizard</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-upgrade-sap-hana-cluster"><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></span><ul><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-preparing"><span class="title-number">5.1 </span><span class="title-name">Preparing the upgrade</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-upgrading"><span class="title-number">5.2 </span><span class="title-name">Upgrading your SAP HANA cluster</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-finishing"><span class="title-number">5.3 </span><span class="title-name">Finishing the upgrade task</span></a></span></li></ul></li><li><span class="appendix"><a href="#id-1.9"><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></span><ul><li><span class="sect1"><a href="#id-1.9.4"><span class="title-number">A.1 </span><span class="title-name">GNU Free Documentation License</span></a></span></li></ul></li></ul></div><div class="list-of-figures"><div class="toc-title">List of Figures</div><ul><li><span class="figure"><a href="#fig-offering"><span class="number">1.1 </span><span class="name">Offerings of SUSE Linux Enterprise Server for SAP Applications</span></a></span></li><li><span class="figure"><a href="#fig-install-media-bootmenu"><span class="number">3.1 </span><span class="name">Installation media boot menu</span></a></span></li><li><span class="figure"><a href="#fig-install-license"><span class="number">3.2 </span><span class="name">Language, keyboard and product selection</span></a></span></li><li><span class="figure"><a href="#fig-install-reg-dialog"><span class="number">3.3 </span><span class="name">Registration</span></a></span></li><li><span class="figure"><a href="#fig-install-type"><span class="number">3.4 </span><span class="name">System role</span></a></span></li><li><span class="figure"><a href="#fig-install-partition"><span class="number">3.5 </span><span class="name">Suggested partitioning</span></a></span></li><li><span class="figure"><a href="#fig-install-overview"><span class="number">3.6 </span><span class="name">Installation settings</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-source"><span class="number">4.1 </span><span class="name">Location of SAP installation master</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-sapmedia"><span class="number">4.2 </span><span class="name">SAP Installation Wizard: additional Installation Media</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-mode-db"><span class="number">4.3 </span><span class="name">SAP Installation Wizard: installation type and database</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-avail-products"><span class="number">4.4 </span><span class="name">SAP Installation Wizard: choose a product</span></a></span></li><li><span class="figure"><a href="#fig-product-parameter"><span class="number">4.5 </span><span class="name">Product parameters</span></a></span></li><li><span class="figure"><a href="#fig-sapinst-param"><span class="number">4.6 </span><span class="name">SAP Installer: defining parameters</span></a></span></li></ul></div><div class="list-of-tables"><div class="toc-title">List of Tables</div><ul><li><span class="table"><a href="#tab-sap-media-source"><span class="number">4.1 </span><span class="name">Media source path</span></a></span></li></ul></div><div><div xml:lang="en" class="legalnotice" id="id-1.2.12"><p>
-  Copyright © 2010–2024
+<link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script><meta name="edit-url" content="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml"/></head><body class="draft single normal offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">Jump to content</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="#book-s4s">Installation Quick Start</a></div></div><main id="_content"><nav class="side-toc placebo" id="_side-toc-overall"> </nav><article class="documentation"><button id="_unfold-side-toc-page">On this page</button><section xml:lang="en" class="book" id="book-s4s" data-id-title="Installation Quick Start"><div class="titlepage"><div><div class="big-version-info"><span class="productname">SUSE Linux Enterprise Server for SAP Applications</span> <span class="productnumber">15 SP2</span></div><div class="title-container"><div class="title-container"><h1 class="title"><span class="phrase">Installation Quick Start</span> <a title="Permalink" class="permalink" href="#book-s4s">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml" title="Edit source document"> </a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/MAIN-SLES4SAP-guide.xml" title="Edit source document"> </a></div></div><div><div class="titlepage-revhistory"><a aria-label="Revision History: Installation Quick Start" hreflang="en" href="rh-book-s4s.html" target="_blank">Revision History: Installation Quick Start</a></div></div><div class="date"><span class="imprint-label">Publication Date: </span>July 28, 2026
+</div></div></div><div class="toc"><ul><li><span class="preface"><a href="#pre-s4s"><span class="title-name">About this guide</span></a></span></li><li><span class="chapter"><a href="#cha-about"><span class="title-number">1 </span><span class="title-name">What is SUSE Linux Enterprise Server for SAP Applications?</span></a></span><ul><li><span class="sect1"><a href="#sec-component"><span class="title-number">1.1 </span><span class="title-name">Software components</span></a></span></li><li><span class="sect1"><a href="#sec-s4s-service"><span class="title-number">1.2 </span><span class="title-name">Included Services</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-plan"><span class="title-number">2 </span><span class="title-name">Planning the installation</span></a></span><ul><li><span class="sect1"><a href="#sec-hardware"><span class="title-number">2.1 </span><span class="title-name">Hardware requirements</span></a></span></li><li><span class="sect1"><a href="#sec-download"><span class="title-number">2.2 </span><span class="title-name">Installation image</span></a></span></li><li><span class="sect1"><a href="#sec-migration"><span class="title-number">2.3 </span><span class="title-name">Offline migration</span></a></span></li><li><span class="sect1"><a href="#sec-workflow-overview"><span class="title-number">2.4 </span><span class="title-name">Overview of the installation workflow</span></a></span></li><li><span class="sect1"><a href="#sec-data"><span class="title-number">2.5 </span><span class="title-name">Required data for installing</span></a></span></li><li><span class="sect1"><a href="#sec-partition"><span class="title-number">2.6 </span><span class="title-name">Partitioning</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install"><span class="title-number">3 </span><span class="title-name">Installing the operating system</span></a></span><ul><li><span class="sect1"><a href="#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">Using the installation workflow</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install-sap"><span class="title-number">4 </span><span class="title-name">Installing SAP applications</span></a></span><ul><li><span class="sect1"><a href="#sec-install-sap-welcome"><span class="title-number">4.1 </span><span class="title-name">First steps</span></a></span></li><li><span class="sect1"><a href="#sec-install-sap-product"><span class="title-number">4.2 </span><span class="title-name">Using the SAP Installation Wizard</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-upgrade-sap-hana-cluster"><span class="title-number">5 </span><span class="title-name">Upgrading a SAP HANA cluster</span></a></span><ul><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-preparing"><span class="title-number">5.1 </span><span class="title-name">Preparing the upgrade</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-upgrading"><span class="title-number">5.2 </span><span class="title-name">Upgrading your SAP HANA cluster</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-finishing"><span class="title-number">5.3 </span><span class="title-name">Finishing the upgrade task</span></a></span></li></ul></li><li><span class="appendix"><a href="#id-1.9"><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></span><ul><li><span class="sect1"><a href="#id-1.9.4"><span class="title-number">A1 </span><span class="title-name">GNU Free Documentation License</span></a></span></li></ul></li></ul></div><div class="list-of-figures"><div class="toc-title">List of Figures</div><ul><li><span class="figure"><a href="#fig-offering"><span class="number">1.1 </span><span class="name">Offerings of SUSE Linux Enterprise Server for SAP Applications</span></a></span></li><li><span class="figure"><a href="#fig-install-media-bootmenu"><span class="number">3.1 </span><span class="name">Installation media boot menu</span></a></span></li><li><span class="figure"><a href="#fig-install-license"><span class="number">3.2 </span><span class="name">Language, keyboard and product selection</span></a></span></li><li><span class="figure"><a href="#fig-install-reg-dialog"><span class="number">3.3 </span><span class="name">Registration</span></a></span></li><li><span class="figure"><a href="#fig-install-type"><span class="number">3.4 </span><span class="name">System role</span></a></span></li><li><span class="figure"><a href="#fig-install-partition"><span class="number">3.5 </span><span class="name">Suggested partitioning</span></a></span></li><li><span class="figure"><a href="#fig-install-overview"><span class="number">3.6 </span><span class="name">Installation settings</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-source"><span class="number">4.1 </span><span class="name">Location of SAP installation master</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-sapmedia"><span class="number">4.2 </span><span class="name">SAP Installation Wizard: additional Installation Media</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-mode-db"><span class="number">4.3 </span><span class="name">SAP Installation Wizard: installation type and database</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-avail-products"><span class="number">4.4 </span><span class="name">SAP Installation Wizard: choose a product</span></a></span></li><li><span class="figure"><a href="#fig-product-parameter"><span class="number">4.5 </span><span class="name">Product parameters</span></a></span></li><li><span class="figure"><a href="#fig-sapinst-param"><span class="number">4.6 </span><span class="name">SAP Installer: defining parameters</span></a></span></li></ul></div><div class="list-of-tables"><div class="toc-title">List of Tables</div><ul><li><span class="table"><a href="#tab-sap-media-source"><span class="number">4.1 </span><span class="name">Media source path</span></a></span></li></ul></div><div><div xml:lang="en" class="legalnotice" id="id-1.2.12"><p>
+  Copyright © 2010–2026
 
   SUSE LLC and contributors. All rights reserved.
  </p><p>
@@ -203,7 +177,7 @@ hljs.configure({
     </p><p>
      <code class="systemitem">ClusterTools2</code> provides tools that help set up
      and manage a Corosync/<code class="systemitem">pacemaker</code> cluster.
-    </p></dd></dl></div></section><section class="sect1" id="sec-s4s-service" data-id-title="Included Services"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.2 </span><span class="title-name">Included Services</span></span> <a title="Permalink" class="permalink" href="#sec-s4s-service">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.8.2.1"><span class="term"><span class="emphasis"><em>Extended Service Pack Overlap Support (ESPOS)</em></span>
+    </p></dd></dl></div></section><section class="sect1" id="sec-s4s-service" data-id-title="Included Services"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.2 </span><span class="title-name">Included Services</span></span> <a title="Permalink" class="permalink" href="#sec-s4s-service">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_about.xml" title="Edit source document"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.8.2.1"><span class="term"><span><em class="emphasis">Extended Service Pack Overlap Support (ESPOS)</em></span>
     </span></dt><dd><p>
       Subscriptions for SUSE Linux Enterprise Server for SAP Applications include Extended Service Pack Overlap Support
       (ESPOS). It extends the overlap between the support periods of two
@@ -232,7 +206,7 @@ hljs.configure({
         Product Support Lifecycle Lifecycle Dates by Product: <a class="link" href="https://www.suse.com/lifecycle/" target="_blank">https://www.suse.com/lifecycle/</a>
        </p></li><li class="listitem"><p>
         Long Term Service Pack Support: <a class="link" href="https://www.suse.com/products/long-term-service-pack-support/" target="_blank">https://www.suse.com/products/long-term-service-pack-support/</a>
-       </p></li></ul></div></dd><dt id="id-1.4.8.2.2"><span class="term"><span class="emphasis"><em>SUSE Linux Enterprise Server Priority Support for SAP Applications</em></span>
+       </p></li></ul></div></dd><dt id="id-1.4.8.2.2"><span class="term"><span><em class="emphasis">SUSE Linux Enterprise Server Priority Support for SAP Applications</em></span>
     </span></dt><dd><p>
       Subscriptions for SUSE Linux Enterprise Server for SAP Applications include SUSE Linux Enterprise Server
       Priority Support for SAP Applications. It offers technical support for
@@ -243,7 +217,7 @@ hljs.configure({
       support model reduces complexity and lowers the total cost of ownership.
      </p><p>
       For more information, see <em class="citetitle">SAP Note 1056161: SUSE
-       Priority Support for SAP Applications</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>).
+       Priority Support for SAP applications</em> (<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>).
      </p></dd></dl></div><div id="id-1.4.8.3" data-id-title="Life Cycle and Support for Modules and Extensions" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Life Cycle and Support for Modules and Extensions</div><p>
     Modules and extensions have a different life cycle than SLES for SAP and SUSE
     provides different support offerings for them:
@@ -385,7 +359,7 @@ hljs.configure({
   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
      Install the operating system (SUSE Linux Enterprise Server) only.
     </p><p>
-     <span class="emphasis"><em>or</em></span>
+     <span><em class="emphasis">or</em></span>
     </p></li><li class="listitem"><p>
      Install the operating system (SUSE Linux Enterprise Server), copy SAP media, and collect
      SAP installation parameters.
@@ -606,7 +580,7 @@ hljs.configure({
       </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
          Supports the installation wizard for SUSE Linux Enterprise Server for SAP Applications.
         </p></li><li class="listitem"><p>
-         Enables RDP access (<span class="emphasis"><em>Remote Desktop Protocol</em></span>).
+         Enables RDP access (<span><em class="emphasis">Remote Desktop Protocol</em></span>).
         </p></li><li class="listitem"><p>
          Provides special partitioning recommendations.
         </p></li></ul></div></li><li class="listitem"><p>
@@ -799,7 +773,7 @@ hljs.configure({
           Format of Path
          </p>
         </th></tr></thead><tbody><tr><td style="border-bottom: 1px solid ; " colspan="3">
-         <span class="strong"><strong>Local Sources</strong></span>
+         <span><span class="emphasis"><strong>Local Sources</strong></span></span>
         </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
          <p>
           <span class="guimenu">dir://</span>
@@ -813,7 +787,7 @@ hljs.configure({
           <code class="filename"><em class="replaceable">/path/to/dir/</em></code>
          </p>
         </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
-         <span class="strong"><strong>Removable Sources</strong></span>
+         <span><span class="emphasis"><strong>Removable Sources</strong></span></span>
         </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
          <p>
           <span class="guimenu">device://</span>
@@ -852,7 +826,7 @@ hljs.configure({
          </p>
          
         </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
-         <span class="strong"><strong>Remote Sources</strong></span>
+         <span><span class="emphasis"><strong>Remote Sources</strong></span></span>
         </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
          <p>
           <span class="guimenu">nfs://</span>
@@ -1084,7 +1058,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
     This acts as a wizard and guides you through all the SAP HANA cluster
     maintenance procedures.
    </p></div></div></div></div><p>
-   The official SAP HANA documentation describes the so-called <span class="emphasis"><em>Near
+   The official SAP HANA documentation describes the so-called <span><em class="emphasis">Near
    Zero Downtime Upgrade Process</em></span>. The YaST module is based on
    this process and handles the part of the procedure related to the SUSE
    cluster. Not all steps can be done automatically. Some steps need to be
@@ -1094,7 +1068,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
    This YaST module is available in the <span class="package">yast2-sap-ha</span>
    package for SUSE Linux Enterprise Server for SAP Applications 12 SP3 and higher.
    Currently, the wizard is only prepared to handle the
-   <span class="emphasis"><em>SAP HANA Scale-up Performance Optimized</em></span> scenario.
+   <span><em class="emphasis">SAP HANA Scale-up Performance Optimized</em></span> scenario.
   </p><p>The upgrade covers the following tasks:</p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-preparing" title="5.1. Preparing the upgrade">Section 5.1, “Preparing the upgrade”</a></p></li><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-upgrading" title="5.2. Upgrading your SAP HANA cluster">Section 5.2, “Upgrading your SAP HANA cluster”</a></p></li><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-finishing" title="5.3. Finishing the upgrade task">Section 5.3, “Finishing the upgrade task”</a></p></li></ol></div></div><section class="sect1" id="sec-upgrade-sap-hana-cluster-preparing" data-id-title="Preparing the upgrade"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.1 </span><span class="title-name">Preparing the upgrade</span></span> <a title="Permalink" class="permalink" href="#sec-upgrade-sap-hana-cluster-preparing">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/edit/maintenance/15_SP2/xml/s4s_upgrade_sap_hana_cluster.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><p>
     Ensure passwordless SSH access between the two nodes (primary and secondary) for <code class="systemitem">root</code>.
     Keep in mind, some cloud service providers might not have set up SSH access
@@ -1123,7 +1097,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
       If you are upgrading from SAP HANA version 1.0 to version 2.0,
       make sure to check <span class="guimenu">This is a HANA 1.0 to HANA 2.0 upgrade</span>.
      </p><p>
-      The YaST module will copy the <span class="emphasis"><em>PKI SSFS keys</em></span> from
+      The YaST module will copy the <span><em class="emphasis">PKI SSFS keys</em></span> from
       the former secondary node to the former primary node. More information is
       available through the <span class="guimenu">Help</span> button.
      </p></div></li></ol></div></div><p>
@@ -1552,5 +1526,5 @@ Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</pre></d
   releasing these examples in parallel under your choice of free software
   license, such as the GNU General Public License, to permit their use in free
   software.
- </p></section></section></div></section></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-fb" href="#" title="Facebook"> </a></li><li><a id="_share-in" href="#" title="LinkedIn"> </a></li><li><a id="_share-tw" href="#" title="Twitter/X"> </a></li><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE
-                 2024</span></div></div></footer></body></html>
+ </p></section></section></div></section></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>
