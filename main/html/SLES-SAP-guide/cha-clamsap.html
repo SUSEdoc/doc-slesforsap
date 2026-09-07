@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2026-04-28"/>
 <meta name="dcterms.modified" content="2026-04-28"/>
-<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-07"/>
 <meta name="title" content="Protecting against malware with ClamSAP | SLES for SAP…"/>
 <meta name="description" content="Configure ClamSAP to protect against malware by integrating with ClamAV and the NetWeaver Virus Scan Interface, with settings to avoid false positives"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2026-04-28T00:00+02:00",
     "dateModified": "2026-04-28T00:00+02:00",
-    "datePublished": "2026-07-28T06:41+02:00",
+    "datePublished": "2026-09-07T07:36+02:00",
     "about": [
 
     ],
@@ -77,23 +77,23 @@
    links between ClamAV and the SAP NetWeaver Virus Scan Interface (NW-VSI).
    The version of ClamSAP shipped with SUSE Linux Enterprise Server for SAP applications
    15 SP7 supports NW-VSI version 2.0.
-  </p><div id="id-1.14.4" data-id-title="Avoid false positive reports for large files exceeding maximum file size" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Avoid false positive reports for large files exceeding maximum file size</div><p> By default, ClamAV does not scan files exceeding various limits like
-   file sizes, nesting level, or scan time. Such files are reported as "OK". The
+  </p><div id="id-1.14.4" data-id-title="Avoid false positive reports for large files exceeding maximum file size" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Avoid false positive reports for large files exceeding maximum file size</div><p> By default, ClamAV does not scan files exceeding limits such as
+   file size, nesting level or scan time. Such files are reported as <span class="quote">“<span class="quote">OK</span>”</span>. The
    current default settings for the ClamAV virus scan engine in the
-    <code class="command">clamscan</code> commandline tool and the <code class="systemitem">clamd</code> scan daemon are set in a way that: </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Files and archives are scanned, but only up to the configured or default limits
+    <code class="command">clamscan</code> command-line tool and the <code class="systemitem">clamd</code> scan daemon are set as follows: </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Files and archives are scanned, but only up to the configured or default limits
      for size, nesting level, scan time, etc.</p></li><li class="listitem"><p>
-     The scan engine reports these files as being "OK".
+     The scan engine reports these files as being <span class="quote">“<span class="quote">OK</span>”</span>.
     </p></li><li class="listitem"><p>
      This could potentially allow attackers to bypass the virus scanning.
     </p></li></ul></div><p> Alerts can be enabled to set the
     <code class="option">--alert-exceeds-max=yes</code> option on the
-    <code class="command">clamscan</code> commandline or via <code class="option">AlertExceedsMax
+    <code class="command">clamscan</code> command-line or via <code class="option">AlertExceedsMax
     TRUE</code> in <code class="filename">clamd.conf</code> for daemon based scans.
-   Settings these options will cause a "FOUND" report of status type
+   Settings these options causes a <span class="quote">“<span class="quote">FOUND</span>”</span> report of status type
     <code class="literal">Heuristics.Limits.Exceeded</code>. You need to handle such
    files differently in front-ends or processing of reports.
   </p><p>
-   Before enabling the alert, ensure that front-ends will not suddenly
+   Before enabling the alert, ensure that front-ends do not suddenly
    quarantine or remove those files.
   </p></div><section class="sect1" id="sec-clamsap-install" data-id-title="Installing ClamSAP"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.1 </span><span class="title-name">Installing ClamSAP</span></span> <a title="Permalink" class="permalink" href="cha-clamsap.html#sec-clamsap-install">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_clamsap.xml" title="Edit source document"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
      On the application host, install the packages for ClamAV and
