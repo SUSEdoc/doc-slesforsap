@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2019-12-09"/>
 <meta name="dcterms.modified" content="2019-12-09"/>
-<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-07"/>
 <meta name="title" content="Tuning systems with saptune | SLES for SAP 12 SP5"/>
 <meta name="description" content="Tuning systems with saptune"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2019-12-09T00:00+02:00",
     "dateModified": "2019-12-09T00:00+02:00",
-    "datePublished": "2026-07-28T06:42+02:00",
+    "datePublished": "2026-09-07T08:05+02:00",
     "about": [
 
     ],
@@ -155,7 +155,7 @@ An SAP Note configuration contains the OS-specific part of the original SAP Note
     The command opens the default editor (defined in the environment variable <code class="literal">EDITOR</code>) with a copy of the Note configuration. Remove everything, except the parameters you want to change or disable, as well as the header of the section the parameter belongs to.
     </p><p>
     To change or set the parameter value, change or add the value of the parameter. To disable a parameter, remove the value, but leave the parameter and the <code class="literal">=</code> character. <code class="command">saptune</code> lists the parameter, but it does not change it or check it for the compliance status.
-For more information, refer to the <code class="literal">saptune-note(5)</code> manpage.
+For more information, refer to the <code class="literal">saptune-note(5)</code> man page.
    </p><p>
    This creates a <code class="filename">/etc/saptune/override/<em class="replaceable">NOTE</em></code> file. It is possible to create the file elsewhere and place it in <code class="filename">/etc/saptune/override/</code>.
    </p><p>
@@ -208,7 +208,7 @@ net.ipv4.tcp_syn_retries = 16</pre></div><p>
       </p></section><section class="sect2" id="sec-saptune-create" data-id-title="Creating a new SAP Note"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.2 </span><span class="title-name">Creating a new SAP Note</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-create">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>
     A new SAP Note can be created using the following command:
    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note create <em class="replaceable">NOTE</em></code></pre></div><p>
-    The command opens the default editor (defined in the environment variable <code class="literal">EDITOR</code>) with a Note configuration template. All features of <code class="command">saptune</code> are available here. For more information, refer to  the  <code class="literal">saptune-note(5)</code> manpage.
+    The command opens the default editor (defined in the environment variable <code class="literal">EDITOR</code>) with a Note configuration template. All features of <code class="command">saptune</code> are available here. For more information, refer to  the  <code class="literal">saptune-note(5)</code> man page.
     </p><p>
     This creates a <code class="filename">/etc/saptune/extra/<em class="replaceable">NOTE.conf</em></code> Note configuration file. It is possible to create the file elsewhere and place it in <code class="filename">/etc/saptune/extra/</code>.
     </p><p>
@@ -267,7 +267,7 @@ The <code class="command">simulate</code> command is deprecated since version 3.
   </p><p>
 An SAP Solution is a combination of SAP Note configurations grouped logically. It generally represents an SAP product or combination. Applying an SAP Solution effectively applies all SAP Note configurations listed in it. Instructions for listing and setting a solution are provided in <a class="xref" href="cha-tune.html#sec-saptune-configure-tuning" title="8.4. Configuring the tuning">Section 8.4, “Configuring the tuning”</a>.
   </p><section class="sect2" id="sec-saptune-customize-solution" data-id-title="Customizing an SAP Solution"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.6.1 </span><span class="title-name">Customizing an SAP Solution</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-customize-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/maintenance/12_SP5/xml/s4s_tune.xml" title="Edit source document"> </a></div></div></div></div></div><p>An SAP Solution can be customized using the following command:</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution customise <em class="replaceable">SOLUTION</em></code></pre></div><p>
-    The command opens the default editor (defined in the environment variable <code class="literal">EDITOR</code>) with a copy of the Solution configuration. Change the Note list for the architecture to your liking. For more information, refer to the <code class="literal">saptune-note(5)</code> manpage.
+    The command opens the default editor (defined in the environment variable <code class="literal">EDITOR</code>) with a copy of the Solution configuration. Change the Note list for the architecture to your liking. For more information, refer to the <code class="literal">saptune-note(5)</code> man page.
     </p><p>
     This creates an override file <code class="filename">/etc/saptune/override/<em class="replaceable">SOLUTION.sol</em></code>. It is possible to create the file elsewhere and place it in <code class="filename">/etc/saptune/override/</code>.
     </p><p>
