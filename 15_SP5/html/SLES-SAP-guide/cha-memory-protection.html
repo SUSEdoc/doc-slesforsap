@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2023-12-01"/>
 <meta name="dcterms.modified" content="2023-12-01"/>
-<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-07"/>
 <meta name="title" content="Tuning Workload Memory Protection | SLES for SAP 15 SP5"/>
 <meta name="description" content="Tuning Workload Memory Protection"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2023-12-01T00:00+02:00",
     "dateModified": "2023-12-01T00:00+02:00",
-    "datePublished": "2026-07-28T06:44+02:00",
+    "datePublished": "2026-09-07T07:45+02:00",
     "about": [
 
     ],
@@ -135,7 +135,7 @@
     HANA</a>.
   </p><div id="id-1.12.8.6" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important</div><p>
     Starting with SUSE Linux Enterprise Server for SAP applications 15 SP5, the package <span class="package">sapwmp</span> is
-    deprecated. For infomation about migration, see <a class="xref" href="cha-memory-protection.html#sec-sapwmp-migrate" title="9.5. Migration from Workload Memory Protection using sapwmp (SLES for SUSE Linux Enterprise Server for SAP applications 15 SP4 and earlier)">Section 9.5, “Migration from Workload Memory Protection using <span class="package">sapwmp</span> (SLES for SUSE Linux Enterprise Server for SAP applications 15 SP4 and
+    deprecated. For information about migration, see <a class="xref" href="cha-memory-protection.html#sec-sapwmp-migrate" title="9.5. Migration from Workload Memory Protection using sapwmp (SLES for SUSE Linux Enterprise Server for SAP applications 15 SP4 and earlier)">Section 9.5, “Migration from Workload Memory Protection using <span class="package">sapwmp</span> (SLES for SUSE Linux Enterprise Server for SAP applications 15 SP4 and
   earlier)”</a>.
   </p></div></section><section class="sect1" id="sec-memory-protection-setup" data-id-title="Setting up Workload Memory Protection"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">9.3 </span><span class="title-name">Setting up Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-setup">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><section class="sect2" id="sec-memory-protection-setup-preparation" data-id-title="Preparing for Workload Memory Protection"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">9.3.1 </span><span class="title-name">Preparing for Workload Memory Protection</span></span> <a title="Permalink" class="permalink" href="cha-memory-protection.html#sec-memory-protection-setup-preparation">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_tune_wmp.xml" title="Edit source document"> </a></div></div></div></div></div><p>
     The SAP Start Service puts SAP instances into the dedicated
@@ -164,7 +164,7 @@
      </p></li><li class="step"><p>
       Rewrite the GRUB2 configuration:
      </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> <code class="command">grub2-mkconfig</code> -o /boot/grub2/grub.cfg</pre></div><p>
-      After reboot (which is perfromed later), the cgroup hierarchy is switched to v2
+      After reboot (which is performed later), the cgroup hierarchy is switched to v2
       (unified hierarchy) only.
      </p></li><li class="step" id="st-conf-memorylow-sap-slice"><p>
       Configure <code class="varname">MemoryLow</code> for the

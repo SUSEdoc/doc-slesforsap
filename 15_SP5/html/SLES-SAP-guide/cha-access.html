@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2025-05-16"/>
 <meta name="dcterms.modified" content="2025-05-16"/>
-<meta name="dcterms.dateSubmitted" content="2026-07-28"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-07"/>
 <meta name="title" content="Configuring a firewall | SLES for SAP 15 SP5"/>
 <meta name="description" content="Configuring a firewall"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2025-05-16T00:00+02:00",
     "dateModified": "2025-05-16T00:00+02:00",
-    "datePublished": "2026-07-28T06:44+02:00",
+    "datePublished": "2026-09-07T07:45+02:00",
     "about": [
 
     ],
@@ -194,7 +194,7 @@ HANA firewall is active. Everything is OK.</pre></div></li></ol></div></div><p>
      Disabling the SAProuter service:
      <code class="command">systemctl disable saprouter</code>
     </p></li></ul></div></section><section class="sect1" id="sec-secure-dns" data-id-title="Securing DNS"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">10.4 </span><span class="title-name">Securing DNS</span></span> <a title="Permalink" class="permalink" href="cha-access.html#sec-secure-dns">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
-    On Linux systems, most applications rely on the glibc POSIX style APIs to perform host name resolution. Internally, glibc uses a "Name Service Switch" (NSS) framework to delegate these resolution requests to different configured tools. The configuration for NSS is located in the <code class="filename">/etc/nsswitch.conf</code> file. Several built-in types for host name resolution are available:
+    On Linux systems, most applications rely on the glibc POSIX style APIs to perform host name resolution. Internally, glibc uses a Name Service Switch (NSS) framework to delegate these resolution requests to different configured tools. The configuration for NSS is located in the <code class="filename">/etc/nsswitch.conf</code> file. Several built-in types for host name resolution are available:
   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
     files: This method uses the <code class="filename">/etc/hosts</code> file that contains static mappings of host names to IP addresses.
   </p></li><li class="listitem"><p>
