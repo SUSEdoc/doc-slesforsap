@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2022-10-12"/>
 <meta name="dcterms.modified" content="2022-10-12"/>
-<meta name="dcterms.dateSubmitted" content="2026-10-16"/>
+<meta name="dcterms.dateSubmitted" content="2026-10-20"/>
 <meta name="title" content="Installing SAP applications | SLES for SAP 15 SP5"/>
 <meta name="description" content="Installing SAP applications"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2022-10-12T00:00+02:00",
     "dateModified": "2022-10-12T00:00+02:00",
-    "datePublished": "2026-10-16T07:47+02:00",
+    "datePublished": "2026-10-20T12:25+02:00",
     "about": [
 
     ],
@@ -128,11 +128,11 @@
        <span class="guimenu">Only create SAP HANA file systems, do not install SAP products
        now</span>
       </span></dt><dd><p>
-        Create an SAP HANA file system on SAP BusinessOne-certified hardware.
+        Create an SAP HANA file system on SAP Business One-certified hardware.
        </p><div id="id-1.7.6.3.3.2.2.2.3" data-id-title="Hardware requirements" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Hardware requirements</div><p>
          Make sure your machine fulfills the hardware requirements for SAP HANA
          detailed in <a class="xref" href="cha-plan.html#sec-hardware" title="2.1. Hardware requirements">Section 2.1, “Hardware requirements”</a>.
-         Otherwise, this option will not create a new file system and the
+         Otherwise, this option does not create a new file system and the
          installation workflow ends at this point.
         </p></div></dd><dt id="id-1.7.6.3.3.2.3"><span class="term">
        <span class="guimenu">Finish wizard and proceed to OS login</span>
@@ -166,7 +166,7 @@
      In the screen <span class="guimenu">SAP Installation Wizard</span>, provide the
      <span class="guimenu">Location of the SAP Installation Master</span>
      (<a class="xref" href="cha-install-sap.html#fig-sap-wizard-source" title="Location of SAP installation master">Figure 4.1, “Location of SAP installation master”</a>). The
-     location can either be a local, removable, or remote installation source.
+     location can either be a local, removable or remote installation source.
     </p><div class="figure" id="fig-sap-wizard-source"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_source.png"><img src="images/s4s_sap_wizard_source.png" width="73%" alt="Location of SAP installation master" title="Location of SAP installation master"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.1: </span><span class="title-name">Location of SAP installation master </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-source">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div><p>
      Select the appropriate option from the drop-down box.
      In the text box, specify the path to your source according to the format
@@ -284,7 +284,7 @@
       </span></dt><dd><p>
         Use this option to set the installation parameters,
         but not perform the actual installation. With this option, the
-        SAP Installer (SAPinst) will stop without performing the actual SAP
+        SAP Installer (SAPinst) stops without performing the actual SAP
         product installation. However, the steps that follow fully apply.
        </p><p>
         For more information, see <a class="xref" href="cha-install-sap.html#sec-install-continue" title="4.4. Continuing an installation using an installation profile">Section 4.4, “Continuing an installation using an installation profile”</a>.
@@ -294,14 +294,14 @@
       </span></dt><dd><p>
         Set up this system as an installation server for other SUSE Linux Enterprise Server for SAP applications
         systems.
-        The media copied to this installation server will be offered through
+        The media copied to this installation server are offered through
         NFS and can be discovered via Service Location Protocol (SLP).
        </p></dd></dl></div><p>
      Proceed with <span class="guimenu">Next</span>.
     </p><p>
-     The SAP Installation Wizard will now copy the Installation Master to your local disk.
+     The SAP Installation Wizard now copies the Installation Master to your local disk.
      Depending on the type of Installation Master you selected, the installation
-     will continue differently:
+     continues differently:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
        If you are installing an SAP HANA database, skip ahead to
        <a class="xref" href="cha-install-sap.html#st-supplement" title="Step 8">Step 8</a>.
@@ -328,10 +328,10 @@
        </p></dd></dl></div><p>
      Proceed with <span class="guimenu">Next</span>.
     </p><p>
-     If you chose to copy Installation Media, the SAP Installation Wizard will copy the relevant
+     If you chose to copy Installation Media, the SAP Installation Wizard copies the relevant
      files to your local hard disk.
     </p><div class="figure" id="fig-sap-wizard-sapmedia"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_location_sapmedia.png"><img src="images/s4s_sap_wizard_location_sapmedia.png" width="73%" alt="SAP Installation Wizard: additional Installation Media" title="SAP Installation Wizard: additional Installation Media"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.2: </span><span class="title-name">SAP Installation Wizard: additional Installation Media </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-sapmedia">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
-     After copying the Installation Media, you will be asked whether you want to
+     After copying the Installation Media, you are asked whether you want to
      prepare additional Installation Media.
      To do so, click <span class="guimenu">Yes</span>.
      Then follow the instructions in
@@ -352,9 +352,9 @@
        </p></dd><dt id="id-1.7.7.6.5.2.4"><span class="term"><span class="guimenu">SAP high-availability system</span></span></dt><dd><p>
         Installation of SAP NetWeaver in a high-availability setup.
        </p></dd><dt id="id-1.7.7.6.5.2.5"><span class="term"><span class="guimenu">System rename</span></span></dt><dd><p>
-        Allows changing the various system properties such as the SAP system
-        ID, database ID, instance number, or host name. This can be used to
-        install the same product in a very similar configuration on different
+        Allows changing the system properties such as the SAP system
+        ID, database ID, instance number or host name. This can be used to
+        install the same product in a similar configuration on different
         systems.
        </p></dd></dl></div><div class="figure" id="fig-sap-wizard-mode-db"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_mode_db.png"><img src="images/s4s_sap_wizard_mode_db.png" width="73%" alt="SAP Installation Wizard: installation type and database" title="SAP Installation Wizard: installation type and database"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.3: </span><span class="title-name">SAP Installation Wizard: installation type and database </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-sap-wizard-mode-db">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
      If you selected <span class="guimenu">SAP Standard System</span>,
@@ -386,7 +386,7 @@
         Supplementary Media/Third-Party Media is installed using an AutoYaST file which allows
         creating an installation wizard and custom installation scripts.
        </p></li><li class="listitem"><p>
-        Additional software repositories are RPM package repositories that you will
+        Additional software repositories are RPM package repositories that you
         remain subscribed to. This means you receive updates for Third-Party Media
         along with your regular system updates.
        </p></li></ul></div></div><p>
@@ -417,7 +417,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
       in the <code class="filename">/etc/sysconfig/sap-installation-wizard</code>
       configuration file.
      </p></div></li><li class="step" id="st-collect-parameter"><p>
-     Depending on the product you are installing, one or more dialogs will
+     Depending on the product you are installing, one or more dialogs
      prompt you to supply values for several configuration parameters for the
      SAP application you are installing.
     </p><p>
@@ -428,7 +428,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
     </p><p>
      Fill out the form (or forms), then proceed with <span class="guimenu">OK</span>.
     </p><div class="figure" id="fig-product-parameter"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_product_param.png"><img src="images/s4s_sap_wizard_product_param.png" alt="Dialog to configure product parameters" title="Dialog to configure product parameters"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 4.5: </span><span class="title-name">Product parameters </span></span><a title="Permalink" class="permalink" href="cha-install-sap.html#fig-product-parameter">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div><p>
-     When you are done, the SAP Installation Wizard will download additional software packages.
+     When you are done, the SAP Installation Wizard downloads additional software packages.
     </p></li><li class="step"><p>
      You will be asked whether to continue the installation or prepare another
      SAP product for installation. If you choose to prepare another SAP
@@ -436,7 +436,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
     </p></li><li class="step"><p><span class="step-optional">(Optional)</span> 
      When installing SAP HANA on a system that is not certified for SAP HANA and
      does not meet the minimum hardware requirements for SAP HANA TDI
-     (Tailored Datacenter Integration), you will be
+     (Tailored Data Center Integration), you are
      asked whether to continue. If you receive this message unexpectedly,
      check <a class="xref" href="cha-plan.html#sec-hardware" title="2.1. Hardware requirements">Section 2.1, “Hardware requirements”</a> and the sizing guidelines from
      SAP at <a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>
@@ -447,12 +447,12 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
      The following steps differ depending on the type of
      SAP application you are installing:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       When installing an SAP HANA database, SAP HANA will now be installed
-       without further question.
+       When installing an SAP HANA database, SAP HANA is installed
+       without further user input.
       </p></li><li class="listitem"><p>
-       When installing an SAP NetWeaver application, the actual installation will
-       be performed using the SAP Installer (SAPinst). After a few seconds, SAP Installer
-       will open automatically.
+       When installing an SAP NetWeaver application, the actual installation is
+       performed using the SAP Installer (SAPinst). After a few seconds, SAP Installer
+       opens automatically.
       </p><p>
        Follow the SAP Installer as described in the documentation provided
        by SAP. Most configuration parameters are correctly filled already.
@@ -492,7 +492,7 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
      In <code class="filename">/etc/sysconfig/sap-installation-wizard</code>,
      set the following:
     </p><div class="verbatim-wrap"><pre class="screen">SAP_AUTO_INSTALL="yes"</pre></div></li><li class="step"><p>
-     In the case of an SAP HANA/SAP BusinessOne installation, the SAP Installation Wizard will later use
+     When installing SAP HANA/SAP Business One, the SAP Installation Wizard later uses
      the parameters documented in the AutoYaST files in
      <code class="filename">/data/SAP_INST/<em class="replaceable">number</em></code>.
     </p><p>
@@ -509,10 +509,10 @@ SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
      Follow the steps of SAP Installer as described in the documentation provided to
      you by SAP.
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       In the case of an SAP NetWeaver installation, all parameters of the SAP Installer
-       will be offered again for fine-tuning.
+       When installing SAP NetWeaver, all parameters of the SAP Installer
+       are offered again for fine-tuning.
       </p></li><li class="listitem"><p>
-       In the case of an SAP HANA/SAP BusinessOne installation, the installer will not be
+       When installing SAP HANA/SAP Business One, the installer does not
        offer to make any changes to parameters.
       </p></li></ul></div></li></ol></div></div></section><section class="sect1" id="sec-partition-command" data-id-title="Partitioning for an SAP application without the SAP Installation Wizard"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4.5 </span><span class="title-name">Partitioning for an SAP application without the SAP Installation Wizard</span></span> <a title="Permalink" class="permalink" href="cha-install-sap.html#sec-partition-command">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation_sap.xml" title="Edit source document"> </a></div></div></div></div></div><p>
    If you do not want to use the SAP Installation Wizard, you can also create the partitioning
