@@ -3,7 +3,7 @@
 <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <meta name="dcterms.created" content="2025-05-16"/>
 <meta name="dcterms.modified" content="2025-05-16"/>
-<meta name="dcterms.dateSubmitted" content="2026-10-16"/>
+<meta name="dcterms.dateSubmitted" content="2026-10-20"/>
 <meta name="title" content="Configuring a firewall | SLES for SAP 15 SP4"/>
 <meta name="description" content="Configuring a firewall"/>
 <meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2025-05-16T00:00+02:00",
     "dateModified": "2025-05-16T00:00+02:00",
-    "datePublished": "2026-10-16T07:48+02:00",
+    "datePublished": "2026-10-20T12:29+02:00",
     "about": [
 
     ],
@@ -83,7 +83,7 @@
     firewall, replacing SuSEfirewall2. SuSEfirewall2 has not been removed from
     SUSE Linux Enterprise Server for SAP applications 15 and is still part of the main repository, but it is
     not installed by default. If you are upgrading from a release older than
-    SUSE Linux Enterprise Server for SAP applications 15, SuSEfirewall2 will be unchanged and you must manually
+    SUSE Linux Enterprise Server for SAP applications 15, SuSEfirewall2 is unchanged and you must manually
     upgrade to <code class="systemitem">firewalld</code> (see Security and Hardening Guide).
    </p></div><p>
    The firewall must be manually configured to allow network access
@@ -107,7 +107,7 @@
   </p><p>
    HANA-Firewall consists of the following parts:
   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">YaST module <span class="guimenu">SAP HANA firewall</span>. </span>
-      Allows configuring, applying, and reverting firewall rules for SAP HANA
+      Allows configuring, applying and reverting firewall rules for SAP HANA
       from a graphical user interface.
      </p></li><li class="listitem"><p><span class="formalpara-title">Command-line utility <code class="systemitem">hana-firewall</code>. </span>
       Creates XML files containing firewall rules for SAP HANA.
@@ -148,9 +148,9 @@
     </p></li><li class="step"><p>
      When you are done, click <span class="guimenu">OK</span>.
     </p><p>
-     The firewall rules from HANA-Firewall will now
-     be compiled and applied. Then, the service
-     <code class="systemitem">hana-firewall</code> will be restarted.
+     The firewall rules from HANA-Firewall are now
+     compiled and applied. Then, the service
+     <code class="systemitem">hana-firewall</code> is restarted.
     </p></li><li class="step"><p>
      Finally, check whether HANA-Firewall was enabled
      correctly:
@@ -196,9 +196,9 @@ HANA firewall is active. Everything is OK.</pre></div></li></ol></div></div><p>
     </p></li></ul></div></section><section class="sect1" id="sec-secure-dns" data-id-title="Securing DNS"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">11.4 </span><span class="title-name">Securing DNS</span></span> <a title="Permalink" class="permalink" href="cha-access.html#sec-secure-dns">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_access.xml" title="Edit source document"> </a></div></div></div></div></div><p>
     On Linux systems, most applications rely on the glibc POSIX style APIs to perform host name resolution. Internally, glibc uses a Name Service Switch (NSS) framework to delegate these resolution requests to different configured tools. The configuration for NSS is located in the <code class="filename">/etc/nsswitch.conf</code> file. Several built-in types for host name resolution are available:
   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-    files: This method uses the <code class="filename">/etc/hosts</code> file that contains static mappings of host names to IP addresses.
+    <code class="literal">files</code>: This method uses the <code class="filename">/etc/hosts</code> file that contains static mappings of host names to IP addresses.
   </p></li><li class="listitem"><p>
-    dns: This option utilizes the glibc's built-in DNS resolver, which is configured via the <code class="filename">/etc/resolv.conf</code> file.
+    <code class="literal">dns</code>: This option utilizes the glibc's built-in DNS resolver, which is configured via the <code class="filename">/etc/resolv.conf</code> file.
   </p></li></ul></div><p>
     To address the security vulnerabilities inherent in the traditional DNS protocol, several protocol-level solutions have been developed.
   </p><p>
@@ -226,6 +226,6 @@ DNS=192.168.178.1
 DNSSEC=on</pre></div><p>
   Another approach is to secure DNS through the Unbound name server that can act as a DNS forwarder, capable of translating regular DNS queries into secure DNS protocols. To use Unbound, it is typically set up locally, and then the <code class="filename">/etc/resolv.conf</code> file is configured to point to the local Unbound instance.
 </p><p>
-  In SUSE's default configuration, Unbound performs DNSSEC verification by default. The <code class="literal">unbound-anchor</code> service is responsible for obtaining the standard ISC root key.
+  In SUSE's default configuration, Unbound performs DNSSEC verification by default. The <code class="literal">unbound-anchor</code> service handles obtaining the standard ISC root key.
 </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-memory-protection.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 10 </span>Tuning Workload Memory Protection</span></a> </div><div><a class="pagination-link next" href="cha-clamsap.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 12 </span>Protecting against malware with ClamSAP</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-access.html#sec-configure-firewall"><span class="title-number">11.1 </span><span class="title-name">Configuring <code class="systemitem">firewalld</code></span></a></span></li><li><span class="sect1"><a href="cha-access.html#sec-configure-firewall-hana"><span class="title-number">11.2 </span><span class="title-name">Configuring HANA-Firewall</span></a></span></li><li><span class="sect1"><a href="cha-access.html#sec-configure-saprouter"><span class="title-number">11.3 </span><span class="title-name">SAProuter integration</span></a></span></li><li><span class="sect1"><a href="cha-access.html#sec-secure-dns"><span class="title-number">11.4 </span><span class="title-name">Securing DNS</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
 <script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>
